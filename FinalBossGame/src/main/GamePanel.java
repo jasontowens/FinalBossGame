@@ -26,10 +26,6 @@ public class GamePanel extends JPanel implements Runnable {
      game updates per second close to the frames per second.
      */
 
-    private static final int NO_DELAYS_PER_YIELD = 16;
-    /* Number of frames with a delay of 0 ms before the
-     animation thread yields to other running threads. */
-
     public GamePanel(int width, int height) {
         this.setSize(width, height);
         //Create the scene manager
@@ -61,10 +57,7 @@ public class GamePanel extends JPanel implements Runnable {
 
             afterTime = System.currentTimeMillis();
             timeDiff = afterTime - beforeTime;
-            sleepTime = (period - timeDiff) - overSleepTime;
-
-            timeDiff = System.currentTimeMillis() - beforeTime;
-            sleepTime = period - timeDiff; // time left in this loop
+            sleepTime = period - timeDiff - overSleepTime; // time left in this loop
 
             if (sleepTime > 0) {
                 try {
@@ -75,11 +68,6 @@ public class GamePanel extends JPanel implements Runnable {
             } else { //sleeptime <=0; frame took longer than a period
                 excess -= sleepTime; //store excess time value
                 overSleepTime = 0;
-
-                if (++noDelays >= NO_DELAYS_PER_YIELD) {
-                    Thread.yield(); // give another thread a chance to run 
-                    noDelays = 0;
-                }
             }
 
             beforeTime = System.currentTimeMillis();
@@ -90,7 +78,8 @@ public class GamePanel extends JPanel implements Runnable {
             int skips = 0;
             while ((excess > period) && (skips < MAX_FRAME_SKIPS)) {
                 excess -= period;
-                gameUpdate(); // update state but don't render skips++;
+                gameUpdate(); // update state but don't render 
+                skips++;
             }
 
         }

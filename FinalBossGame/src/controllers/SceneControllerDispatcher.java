@@ -2,7 +2,9 @@ package controllers;
 
 import java.util.List;
 
-public class SceneControllerDispatcher {
+import util.Observer;
+
+public class SceneControllerDispatcher implements Observer {
 	
 	private List<SceneController> sceneControllers;
 	private SceneController activeController;
@@ -25,6 +27,12 @@ public class SceneControllerDispatcher {
 
 	public void setActiveController(SceneController activeController) {
 		this.activeController = activeController;
+	}
+
+	@Override
+	public void Notify() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

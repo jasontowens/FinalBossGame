@@ -12,7 +12,7 @@ import scene.SceneManager;
  */
 public class GamePanel extends JPanel implements Runnable {
 
-    private Thread animator;
+    private final Thread animator;
     private boolean showFPS = false; //Shows the current FPS on screen
     private int currentFPS;
     private boolean gameOver = false;

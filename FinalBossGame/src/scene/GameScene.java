@@ -10,11 +10,11 @@ import viewport.ViewPort;
  */
 public class GameScene extends Scene {
     
-    ViewPort mvp, statusViewPort;  
+    ViewPort map, status;  
     public GameScene(){
-        mvp = new MapViewPort();
-        statusViewPort = new StatusViewPort();
-        viewports.add(mvp);
-        viewports.add(statusViewPort);
+        map = new MapViewPort();
+        status = new StatusViewPort();
+        viewports.add(map);
+        viewports.add(status);
     }    
 }

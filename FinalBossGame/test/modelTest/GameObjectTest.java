@@ -12,7 +12,7 @@ public class GameObjectTest {
 	}
 
 	@Test
-	public void testGetName() {
+	public void testGetClassName() {
 		fail("Not yet implemented");
 	}
 

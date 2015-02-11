@@ -2,10 +2,12 @@ package model;
 
 public abstract class GameObject {
 	private int id;
-	private String name;
+	private String className;
 	private String description;
 	
+	
+	
 	public int getID(){ return id; }
-	public String getName(){ return name; }
+	public String getClassName(){ return className; }
 	public String getDescription(){ return description; }
 }

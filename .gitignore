@@ -6,6 +6,8 @@
 *.class
 
 # eclipse specific git ignore
+.recommenders
+
 *.pydevproject
 .project
 .metadata

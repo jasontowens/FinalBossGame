@@ -24,6 +24,9 @@ public class Takeable extends GameObject implements Item {
 	public void inventoryUse(Entity entity){
 		entity.mergeStats(modifiers);
 		entity.changeMoney(modifiers.getValue());
-		entity.removeItem(this);
+		modifiers.modDurability(-1); //decreases durability by 1 after use
+		if(modifiers.getDurability() <= 0){
+			entity.removeItem(this); //checks for used-up consumable to be removed
+		}
 	}
 }

@@ -27,7 +27,7 @@ public class Inventory {
 		else
 			return false;
 	}
-	public boolean unequipItem(EquipSlot slot){
+	public Equipable unequipItem(EquipSlot slot){
 		return myArmory.unequip(slot);
 	}
 	

@@ -79,7 +79,4 @@ public class PlayerStats extends Stats {
 	public void levelUp(){
 		modExperience(expPerLevel - (experience % expPerLevel));
 	}
-	
-	
-
 }

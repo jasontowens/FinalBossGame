@@ -24,12 +24,24 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+
+//Works as a Singleton
 public class IDGenerator {
 
-	private static final String FILEPATH = ".\\misc\\ids.xml";
+	
+	
+	
+	/*--------------------- DATA MEMBERS ---------------------*/
+	
+	private static final String FILEPATH = "misc" + File.separator + "gameObjectIDs.xml";
 	private Document doc;
 	private File file;
 
+	//Singleton member
+	private static IDGenerator idGenerator = null;
+	
+	
+	/*--------------------- PRIVATE METHODS ---------------------*/
 	
 	//helper method used by generateID to get a random UID for a created object
 	private int randInt( int min, int max){
@@ -64,6 +76,9 @@ public class IDGenerator {
 		}
        
 	}
+	
+	/*--------------------- CONSTRUCTORS ---------------------*/
+	
 	//sets up necessary components to be used in later methods
 	public IDGenerator(){
 		
@@ -89,6 +104,8 @@ public class IDGenerator {
 	
 	}
 	
+	
+	/*--------------------- PUBLIC METHODS ---------------------*/
 	
 	//Creates a UID and adds it to the given XMNL file. 
 	//If the ID is incapable of being created (all IDs are taken), -1 is returned
@@ -144,4 +161,15 @@ public class IDGenerator {
 		saveToFile();
 		return;
 	}
+	
+	
+	/*--------------------- SINGLETON METHODS ---------------------*/
+	public static IDGenerator getInstance() {
+		if(idGenerator == null) {
+			idGenerator = new IDGenerator();
+		}
+		return idGenerator;
+	}
+	
+	
 }

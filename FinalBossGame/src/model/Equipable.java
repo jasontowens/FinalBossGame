@@ -3,8 +3,8 @@ package model;
 public class Equipable extends Takeable implements Item {
 	private EquipSlot slot;
 	
-	public Equipable(String className, String description, ItemStats mods, GameMap active, EquipSlot equipSlot){
-		super(className, description, mods, active);
+	public Equipable(String className, String name, String description, ItemStats mods, GameMap active, EquipSlot equipSlot){
+		super(className, name, description, mods, active);
 		slot = equipSlot;
 	}
 	public EquipSlot getSlot(){

@@ -2,8 +2,20 @@ package factories;
 
 import entity.Entity
 import stats.PlayerStats;
+import entity.MotionType;
 
 public class EntityFactory extends PlaceableObjectFactory {
+
+	private static EntityFactory factory = null;
+	public static EntityFactory getInstance() {
+		if(factory == null) {
+			factory = new EntityFactory();
+		}
+		return factory;
+	}
+
+	/*---------------------------------------------------*/
+
 	
 	public Entity createSmasher() {
 		Inventory i = new Inventory(new Sack(), new Armory());

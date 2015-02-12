@@ -11,5 +11,5 @@ public abstract class SceneController {
 	public void useKey8() {}
 	public void useKey9() {}
 	public void useKeyEnter() {}
-	public void useKeyEscape() {}	
+	public void useKeyEscape() {}
 }

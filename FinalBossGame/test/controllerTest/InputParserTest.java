@@ -210,4 +210,13 @@ public class InputParserTest {
 	    EasyMock.verify(sceneController);
 	}
 	
+	@Test
+	public void testNonMappedKeyPressedDown() {
+		replay(sceneController);
+		
+		keyEvent.setKeyCode(KeyEvent.VK_B);
+		inputParser.keyPressed(keyEvent);
+		EasyMock.verify(sceneController);
+	}
+	
 }

@@ -1,9 +1,9 @@
 package model;
 
 public abstract class GameObject {
-	protected int id;
-	protected String className;
-	protected String description;
+	private int id;
+	private String className;
+	private String description;
 	
 	
 	//This constructor should be called only after the subclass constructor is called

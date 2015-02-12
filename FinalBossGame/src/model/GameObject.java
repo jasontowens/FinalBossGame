@@ -23,4 +23,5 @@ public abstract class GameObject {
 	public int getID(){ return id; }
 	public String getClassName(){ return className; }
 	public String getDescription(){ return description; }
+	public String getName() { return name; }
 }

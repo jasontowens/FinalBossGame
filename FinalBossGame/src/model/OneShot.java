@@ -3,8 +3,8 @@ package model;
 public class OneShot extends GameObject implements Item{
 	protected ItemStats modifier;
 	
-	public OneShot(String className, String description, ItemStats mods){
-		super(className, description);
+	public OneShot(String className, String name, String description, ItemStats mods){
+		super(className, name, description);
 		modifier = mods;
 	}
 	

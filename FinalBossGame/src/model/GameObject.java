@@ -2,6 +2,7 @@ package model;
 
 public abstract class GameObject {
 	private int id;
+	private String name;
 	private String className;
 	private String description;
 	
@@ -12,8 +13,9 @@ public abstract class GameObject {
 		id = idGen.generateID(className);
 	}
 	
-	protected GameObject(String className, String description){
+	protected GameObject(String className, String objectName, String description){
 		this();
+		this.name = objectName;
 		this.className = className;
 		this.description = description;
 	}

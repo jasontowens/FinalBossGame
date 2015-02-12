@@ -16,7 +16,7 @@ public class MenuControllerTest {
 	
 	@Test
 	public void testSingletonDoesNotReferToDifferentSceneController() {
-		assertNotEquals(MenuController.getInstance(), LoadMenuController.getInstance());
+		assertNotSame(MenuController.getInstance(), LoadMenuController.getInstance());
 	}
 
 }

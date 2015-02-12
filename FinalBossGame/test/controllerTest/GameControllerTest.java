@@ -16,7 +16,7 @@ public class GameControllerTest {
 	
 	@Test
 	public void testSingletonDoesNotReferToDifferentSceneController() {
-		assertNotEquals(GameController.getInstance(), MenuController.getInstance());
+		assertNotSame(GameController.getInstance(), MenuController.getInstance());
 	}
 
 }

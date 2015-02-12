@@ -1,7 +1,6 @@
 package controllerTest;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -17,7 +16,7 @@ public class PauseMenuControllerTest {
 	
 	@Test
 	public void testSingletonDoesNotReferToDifferentSceneController() {
-		assertNotEquals(PauseMenuController.getInstance(), LoadMenuController.getInstance());
+		assertNotSame(PauseMenuController.getInstance(), LoadMenuController.getInstance());
 	}
 
 }

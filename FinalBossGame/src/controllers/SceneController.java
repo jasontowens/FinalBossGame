@@ -12,4 +12,6 @@ public abstract class SceneController {
 	public void useKey9() {}
 	public void useKeyEnter() {}
 	public void useKeyEscape() {}
+	public void useKeyI() {}
+	public void useKeyA() {}
 }

@@ -1,4 +1,4 @@
-package model;
+package map;
 
 /*
  * Helper class for MapLoader.

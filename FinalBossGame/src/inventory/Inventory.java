@@ -1,4 +1,9 @@
-package model;
+package inventory;
+
+import inventory.Armory;
+import inventory.EquipSlimport model.Equipable;
+import item.Takeable;
+ot;
 
 
 public class Inventory {

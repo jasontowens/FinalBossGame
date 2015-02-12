@@ -1,6 +1,8 @@
 //ItemStats last edited by Matthew Kroeze on 2015-12-02
 
-package model;
+package stats;
+
+import stats.Stats;
 
 public class ItemStats extends Stats {
 	private int durability;

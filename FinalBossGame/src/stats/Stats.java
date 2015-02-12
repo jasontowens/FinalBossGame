@@ -1,6 +1,6 @@
 //Stats last modified by Matthew Kroeze on 2015-12-02
 
-package model;
+package stats;
 
 public class Stats {
 	protected int livesLeft;

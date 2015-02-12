@@ -1,4 +1,6 @@
-package model;
+package inventory;
+
+import item.Equipable;
 
 public class Armory {
 	int numOfSlots;

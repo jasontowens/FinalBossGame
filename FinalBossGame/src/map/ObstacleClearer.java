@@ -1,5 +1,8 @@
-package model;
+package map;
 
+import item.Obstacle;
+import item.Interactive;
+import entity.Entity;
 import java.util.ArrayList;
 
 public class ObstacleClearer extends Interactive {

@@ -1,4 +1,6 @@
-package model;
+package invento
+import item.Takeable;
+ry;
 
 public class Sack {
 	private int sizeOfSack;	

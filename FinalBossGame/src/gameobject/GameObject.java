@@ -1,4 +1,4 @@
-package model;
+package gameobject;
 
 public abstract class GameObject {
 	private int id;

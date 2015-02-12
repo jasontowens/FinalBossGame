@@ -1,4 +1,7 @@
-package model;
+package item;
+
+import gameobject.GameObject;
+import item.Item;
 
 public abstract class Interactive extends GameObject implements Item{
 	protected boolean hasActivated;

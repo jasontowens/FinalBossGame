@@ -1,4 +1,8 @@
-package model;
+package item;
+
+import gameobject.GameObject;
+import item.Item;
+import entity.Entity;
 
 public class Obstacle extends GameObject implements Item{
 	

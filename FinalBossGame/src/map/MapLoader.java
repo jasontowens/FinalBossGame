@@ -1,4 +1,4 @@
-package model;
+package map;
 /*
  * Reads XML File, Saves gamemap as bufferedImage
  * 

@@ -1,4 +1,9 @@
-package model;
+package item;
+
+import inventory.EquipSlot;
+import stats.ItemStats;
+import item.Item;
+import entity.Entity;
 
 public class Equipable extends Takeable implements Item {
 	private EquipSlot slot;

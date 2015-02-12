@@ -1,4 +1,9 @@
-package model;
+package item;
+
+import gameobject.GameObject;
+import stats.ItemStats;
+import item.Item;
+import entity.Entity;
 
 public class Takeable extends GameObject implements Item {
 	protected ItemStats modifiers;

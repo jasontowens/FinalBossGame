@@ -1,6 +1,12 @@
-package model;
+package entity;
 
 //need changeMoney(int) that adds the int to current amount of currency
+
+import gameobject.GameObject;
+import inventory.Inventory;
+import stats.PlayerStats;
+import item.Takeable;
+
 
 public class Entity extends GameObject{
 	

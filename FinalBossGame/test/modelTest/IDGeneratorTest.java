@@ -1,7 +1,7 @@
 package modelTest;
 
 import static org.junit.Assert.*;
-import model.IDGenerator;
+import gameobject.IDGenerator;
 
 import org.junit.Test;
 

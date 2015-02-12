@@ -6,7 +6,7 @@
 
 
 
-package model;
+package gameobject;
 
 import java.io.File;
 import java.util.Random;

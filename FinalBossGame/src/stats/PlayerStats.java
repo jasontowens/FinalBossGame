@@ -1,6 +1,8 @@
 //PlayerStats last modified by Matthew Kroeze on 2015-12-02
 
-package model;
+package stats;
+
+import stats.Stats;
 
 public class PlayerStats extends Stats {
 	private int level;

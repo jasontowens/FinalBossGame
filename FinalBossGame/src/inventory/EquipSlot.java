@@ -1,4 +1,4 @@
-package model;
+package inventory;
 
 public enum EquipSlot {
 	HEAD, 

@@ -1,3 +1,5 @@
+//Stats last modified by Matthew Kroeze on 2015-12-02
+
 package model;
 
 public class Stats {
@@ -10,6 +12,8 @@ public class Stats {
 	protected int movement;
 	protected int hpCurrent;
 	protected int mpCurrent;
+	protected int defense;	//used in defensiveRating
+	protected int offense;  //used in offensiveRating
 	
 	public Stats(int livesLeft,
 		  		 int strength,
@@ -19,7 +23,9 @@ public class Stats {
 		  		 int experience,
 		  		 int movement,
 		  		 int hpCurrent,
-		  		 int mpCurrent){
+		  		 int mpCurrent,
+		  		 int defense,
+		  		 int offense){
 		this.livesLeft =livesLeft;
 		this.strength = strength;
 		this.agility = agility;
@@ -29,6 +35,8 @@ public class Stats {
 		this.movement = movement;
 		this.hpCurrent = hpCurrent;
 		this.mpCurrent = mpCurrent;
+		this.defense = defense;
+		this.offense = offense;
 	}
 	//Accessors
 	public int getLivesLeft(){
@@ -58,6 +66,12 @@ public class Stats {
 	public int getmpCurrent(){
 		return mpCurrent;
 	}
+	public int getOffense(){
+		return offense;
+	}
+	public int getDefense(){
+		return defense;
+	}
 	//Setters
 	public void setLivesLeft(int nextLives){
 		livesLeft = nextLives;
@@ -85,6 +99,12 @@ public class Stats {
 	}
 	public void setmpCurrent(int nextMP){
 		mpCurrent = nextMP;
+	}
+	public void setDefense(int nextDef){
+		defense = nextDef;
+	}
+	public void setOffense(int nextOff){
+		offense = nextOff;
 	}
 	//Modifiers
 	public void modLivesLeft(int livesAdded){
@@ -114,6 +134,12 @@ public class Stats {
 	public void modmpCurrent(int mpAdded){
 		mpCurrent += mpAdded;
 	}
+	public void modOffense(int offAdded){
+		offense += offAdded;
+	}
+	public void modDefense(int defAdded){
+		defense += defAdded;
+	}
 	//Merge
 	public void mergeStats(Stats modifier){
 		modLivesLeft(modifier.getLivesLeft());
@@ -125,6 +151,8 @@ public class Stats {
 		modMovement(modifier.getMovement());
 		modhpCurrent(modifier.gethpCurrent());
 		modmpCurrent(modifier.getmpCurrent());
+		modOffense(modifier.getOffense());
+		modDefense(modifier.getDefense());
 	}
 	
 	

@@ -7,9 +7,15 @@ public abstract class GameObject {
 	
 	
 	//This constructor should be called only after the subclass constructor is called
-	public GameObject(){
+	protected GameObject(){
 		IDGenerator idGen = new IDGenerator();
 		id = idGen.generateID(className);
+	}
+	
+	protected GameObject(String className, String description){
+		this();
+		this.className = className;
+		this.description = description;
 	}
 	
 	public int getID(){ return id; }

@@ -6,21 +6,28 @@ package model;
 
 public class Entity extends GameObject{
 	
-	
+	MotionType myMotion;
+	Inventory myInventory;
+	Occupation myOccupation;
+	PlayerStats myStats;
 	
 	public Entity(String name, String description, MotionType mobility, Inventory inventory, Occupation occ, PlayerStats stats){
-		super(); //generates ID
-		
+		super("Entity", name, description); //generates ID
+		myMotion = mobility;
+		myOccupation = occ;
+		myStats = stats;		
 	}
 	
 	public void levelUp(){
-		
-		
+		myStats.levelUp();
+		//could update occupation abilities here
 	}
+	
+	/*dropItem removed, should be in inventory. - Jason
 	public void dropItem(item : Takeable){
 		
 		
-	}
+	}*/
 	public void move(int xDirection, int yDirection){
 		
 		

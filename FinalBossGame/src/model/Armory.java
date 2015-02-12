@@ -22,6 +22,11 @@ public class Armory {
 		numOfSlots = 10;
 		equippedItems = new Equipable[numOfSlots];
 	}
+	public Armory(int numberOfSlots){
+		numOfSlots = numberOfSlots;
+		equippedItems = new Equipable[numOfSlots];
+	}
+	
 	public Equipable unequip(EquipSlot slot){
 		int index = getIndex(slot);
 		
@@ -35,25 +40,16 @@ public class Armory {
 		return itemAtSlot;
 	}
 	
-	//equip returns false IFF the designated slot is already being occupied
-	//Inventory will use this information to unequip said Item and replace it
+	//should always return true for now, maybe false later if entity doesn't meet requirements 
 	public boolean equip(Equipable equipment){
-		int index = getIndex(equipment.getEquipSlot());
-		if(usedSlots[index])
-			return false;
-		else{
-			usedSlots[index]=true;
-			equippedItems[index]=equipment;	
-			
-			//update stats
-			//
-			//
-			//or have inventory do it, not yet decided
-			//
-			return true;
-		}
+		int index = getIndex(equipment.getSlot());
+		if(usedSlots[index]) //if there is already an item in the given slot, unequip it
+			unequip(equipment.getSlot());
 		
+		usedSlots[index]=true;
+		equippedItems[index]=equipment;
 		
+		return true;
 	}
 	private int getIndex(EquipSlot slot){ //returns index value of specified EquipSlot
 		int index=-1;

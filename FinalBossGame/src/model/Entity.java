@@ -4,6 +4,29 @@ package model;
 //need removeItem() so that Takeables can remove selves from inventory without being place
 //on ground after being consumed
 
-public class Entity {
-
+public class Entity extends GameObject{
+	
+	
+	
+	public Entity(String name, String description, MotionType mobility, Inventory inventory, Occupation occ, PlayerStats stats){
+		super(); //generates ID
+		
+	}
+	
+	public void levelUp(){
+		
+		
+	}
+	public void dropItem(item : Takeable){
+		
+		
+	}
+	public void move(int xDirection, int yDirection){
+		
+		
+	}
+	public void addItem(Takeable item){
+		
+	
+	}
 }

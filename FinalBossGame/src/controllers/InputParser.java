@@ -53,7 +53,11 @@ public class InputParser implements KeyListener {
 			case KeyEvent.VK_ESCAPE: 
 				sceneControllerDispatcher.getActiveController().useKeyEscape();
 				break;
-				
+			case KeyEvent.VK_I: 
+				sceneControllerDispatcher.getActiveController().useKeyI();
+				break;
+			case KeyEvent.VK_A:
+				sceneControllerDispatcher.getActiveController().useKeyA();
 			default : 
 				break;
 		}

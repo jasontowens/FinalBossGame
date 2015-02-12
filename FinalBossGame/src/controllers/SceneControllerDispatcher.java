@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import util.Observer;
@@ -10,7 +11,12 @@ public class SceneControllerDispatcher implements Observer {
 	private SceneController activeController;
 	
 	public SceneControllerDispatcher() {
-		
+		sceneControllers = new ArrayList<SceneController>();
+		sceneControllers.add(MenuController.getInstance());
+		sceneControllers.add(GameController.getInstance());
+		sceneControllers.add(PauseMenuController.getInstance());
+		sceneControllers.add(LoadMenuController.getInstance());
+		activeController = MenuController.getInstance();
 	}
 
 	public List<SceneController> getSceneControllers() {

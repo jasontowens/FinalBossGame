@@ -155,5 +155,9 @@ public class Stats {
 		modDefense(modifier.getDefense());
 	}
 	
+	public Stats inverted(){
+		return new Stats(livesLeft*-1,strength*-1,agility*-1,intellect*-1,hardiness*-1,experience*-1,movement*-1,hpCurrent*-1,mpCurrent*-1,offense*-1,defense*-1);
+	}
+	
 	
 }

@@ -31,6 +31,7 @@ public class MainMenuCoordinator {
 				break;
 			case Exit:
 				currentSelection = MainOption.Start;
+				break;
 		}
 	}
 	
@@ -44,6 +45,7 @@ public class MainMenuCoordinator {
 				break;
 			case Exit:
 				currentSelection = MainOption.Load;
+				break;
 		}
 	}
 	

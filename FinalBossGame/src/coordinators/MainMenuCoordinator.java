@@ -3,7 +3,9 @@ package coordinators;
 //Implemented as a singleton
 public class MainMenuCoordinator {
 
+	/*--------------------- DATA MEMBERS ---------------------*/
 	private static MainOption currentSelection = null;
+	private static CoordinatorScheduler scheduler = CoordinatorScheduler.getInstance();
 	
 	//Instance of Singleton
 	private static MainMenuCoordinator mainMenuCoordinator = null;
@@ -16,9 +18,18 @@ public class MainMenuCoordinator {
 	
 	/*--------------------- MAIN COMMANDS ---------------------*/
 	
-	//is this a void or a bool?
+	//TODO: Once MainMenu object is created, add functionality
 	public void confirmSelection(){
-		//TODO: Not really sure what occurs here
+		switch (currentSelection){
+		case Start:
+			break;
+		case Load:
+			scheduler.changeCoordinator(CoordinatorType.LOAD);
+			break;
+		case Exit:
+			break;
+		
+		}
 	}
 	
 	public void nextSelection(){

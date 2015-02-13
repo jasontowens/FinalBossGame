@@ -8,6 +8,9 @@ public class PauseMenuCoordinator {
 	private static String currentFile = "";
 	private static PauseOption currentSelection = null;
 	
+	/*--------------------- OTHER DATA MEMBERS ---------------------*/
+	private static CoordinatorScheduler scheduler = CoordinatorScheduler.getInstance();
+	
 	//Instance of singleton
 	private static PauseMenuCoordinator pauseMenuCoordinator = null;
 	
@@ -25,8 +28,19 @@ public class PauseMenuCoordinator {
 	
 	
 	/*--------------------- PAUSE COMMANDS ---------------------*/
+	
+	//TODO: Once PauseMenu object is created, add functionality
 	public void confirmSelection(){
-		
+		switch (currentSelection){
+			case Resume:
+				scheduler.changeCoordinator(CoordinatorType.GAME);
+			case Save:
+				break;
+			case MainMenu:
+				scheduler.changeCoordinator(CoordinatorType.MAIN_MENU);
+			case Exit:
+				break;
+		}
 	}
 	
 	public void nextSelection(){

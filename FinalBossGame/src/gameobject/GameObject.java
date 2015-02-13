@@ -22,7 +22,6 @@ public abstract class GameObject {
 		this.name = objectName;
 		this.className = className;
 		this.description = description;
-		this();
 	}
 	
 	private String getSpriteFilePath(){ return spriteFilePath; }

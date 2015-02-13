@@ -2,7 +2,7 @@ package factories;
 
 import entity.Entity
 import stats.PlayerStats;
-import entity.MotionType;
+import map.MotionType;
 
 public class EntityFactory extends PlaceableObjectFactory {
 

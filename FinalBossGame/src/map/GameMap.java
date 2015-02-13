@@ -15,9 +15,9 @@ public class GameMap {
     private int width; // in tiles
     
     //private CoordinatePair getLocation(Item item){return null;}
+    
     private ArrayList<Pair<Entity,CoordinatePair>> entitiesOnMap;
     private ArrayList<Pair<Item,CoordinatePair>> itemsOnMap;
-    //private ArrayList<Pair<Tile,CoordinatePair>> tilesOnMap;
     private Tile[][] tilesOnMap;
     
     private final Dimension tileSize;
@@ -62,6 +62,8 @@ public class GameMap {
     public  Tile[][] getAllTiles( ){
         return tilesOnMap;
     }
+    
+    
     
 
     public CoordinatePair addItem(Item item,  CoordinatePair location){
@@ -117,6 +119,7 @@ public class GameMap {
         return ent;        
     }
     public CoordinatePair requestMovement(Item item , CoordinatePair change ){  
+        
         return null;
     }
     

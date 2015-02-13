@@ -11,6 +11,7 @@ public class Inventory {
 	public Inventory(Sack sack, Armory armory){
 		mySack = sack;
 		myArmory = armory;
+                currency = 0;
 	}
 	public void addItem(Takeable item){
 		mySack.addItem(item);
@@ -36,6 +37,15 @@ public class Inventory {
 		return myArmory.unequip(slot);
 	}
 	
-	
+	public int getCurrency(){
+            return currency;
+        }
+        public int modCurrency(int change){
+            currency += change;
+            return currency;
+        }
+        public void setCurrency(int newAmount){
+            currency = newAmount;
+        }
 	
 }

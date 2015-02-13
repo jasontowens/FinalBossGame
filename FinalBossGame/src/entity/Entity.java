@@ -1,6 +1,6 @@
 package entity;
 
-//need changeMoney(int) that adds the int to current amount of currency
+//need changeCurrency(int) that adds the int to current amount of currency
 
 import gameobject.GameObject;
 import inventory.Inventory;
@@ -51,6 +51,20 @@ public class Entity extends GameObject{
             myInventory.addItem(item);
 	}
 	public MotionType getMotionType(){
-		return myMotion;
+            return myMotion;
 	}
+        
+        //returns new total amount, -1 if not enough money for mod
+        public int modCurrency(int change){
+            if(myInventory.getCurrency() + change >= 0)
+                return myInventory.modCurrency(change); 
+            else 
+                return -1; //not enough money
+        }
+        public void setCurrency(int newAmount){
+            myInventory.modCurrency(newAmount);        
+        }
+        public int getCurrency(){
+            return myInventory.getCurrency();
+        }
 }

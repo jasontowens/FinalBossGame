@@ -1,6 +1,5 @@
-package invento
-import item.Takeable;
-ry;
+package inventory;
+import item.*;
 
 public class Sack {
 	private int sizeOfSack;	

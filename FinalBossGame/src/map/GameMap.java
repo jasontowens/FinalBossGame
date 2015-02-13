@@ -14,6 +14,10 @@ public class GameMap {
     private int length; // in tiles
     private int width; // in tiles
     
+    private CoordinatePair getLocation(Item item){return null;}
+    private ArrayList<Pair<Entity,CoordinatePair>> entitiesOnMap;
+    private ArrayList<Pair<Item,CoordinatePair>> itemsOnMap;
+    private ArrayList<Pair<Tile,CoordinatePair>> tilesOnMap;
     
     private Dimension tileSize;
     

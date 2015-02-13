@@ -1,9 +1,6 @@
 package inventory;
 
-import inventory.Armory;
-import inventory.EquipSlimport model.Equipable;
-import item.Takeable;
-ot;
+import item.*;
 
 
 public class Inventory {
@@ -21,6 +18,9 @@ public class Inventory {
 	public Takeable removeItem(int location){
 		return mySack.removeItem(location);
 	}
+        public Takeable removeItem(Takeable item){
+                return mySack.removeItem(item);
+        }
 	public Takeable useItem(int location){
 		return mySack.useItem(location);
 	}

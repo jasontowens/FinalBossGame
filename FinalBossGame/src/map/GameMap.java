@@ -30,11 +30,17 @@ public class GameMap {
         this.tileSize = tileSize;
     }
     
+    //don't use this for printing every entity
     public CoordinatePair getLocation(Entity entity){
-        return null;
+        for(Pair p: entitiesOnMap){
+            if
+        }
     } 
     
-    public CoordinatePair getLocation(Item item){return null;}
+    public CoordinatePair getLocation(Item item){
+        return null;
+    }
+    
     public ArrayList<Pair<Entity,CoordinatePair>> getAllEntities( ){return null;} 
     public ArrayList<Pair<Item,CoordinatePair>> getAllItems( ){return null;} 
     public  ArrayList<Pair<Tile,CoordinatePair>> getAllTiles( ){return null;}

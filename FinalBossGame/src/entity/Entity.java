@@ -6,6 +6,8 @@ import gameobject.GameObject;
 import inventory.Inventory;
 import stats.PlayerStats;
 import item.Takeable;
+import map.GameMap;
+import map.CoordinatePair;
 
 
 public class Entity extends GameObject{
@@ -14,12 +16,16 @@ public class Entity extends GameObject{
 	Inventory myInventory;
 	Occupation myOccupation;
 	PlayerStats myStats;
+        
+        GameMap map;
 	
-	public Entity(String name, String description, MotionType mobility, Inventory inventory, Occupation occ, PlayerStats stats){
+	public Entity(String name, String description, MotionType mobility, Inventory inventory, Occupation occ, PlayerStats stats, GameMap m){
 		super("Entity", name, description); 
 		myMotion = mobility;
 		myOccupation = occ;
-		myStats = stats;		
+		myStats = stats;
+                
+                this.map = m; 
 	}
 	
 	public void levelUp(){
@@ -28,8 +34,10 @@ public class Entity extends GameObject{
 	}
 	
 	
-	public void dropItem(Takeable item){
-		myInventory.removeItem(item);
+	public void dropItem(Takeable item){	
+                CoordinatePair tmp = map.getLocation(this);
+                tmp.add(1, 0); //puts item one tile to the right of entity
+                map.addItem( myInventory.removeItem(item), tmp);
 		//the item should drop to map                
 	}
         

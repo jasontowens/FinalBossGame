@@ -1,5 +1,7 @@
 package map;
 
+import entity.MotionType;
+
 public class MotionValidator {
 	private static MotionValidator validator = null;
 	public static MotionValidator getInstance() {

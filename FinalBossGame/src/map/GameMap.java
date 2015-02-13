@@ -22,13 +22,16 @@ public class GameMap {
     
     private final Dimension tileSize;
     
+    private MotionValidator mValidator;
     
     GameMap(int tileWidth, int tileHeight){
         this.tileSize = new Dimension(tileWidth, tileHeight);
+        mValidator = new MotionValidator();
     }
     
     GameMap(Dimension tileSize){
         this.tileSize = tileSize;
+        mValidator = new MotionValidator();
     }
     
     //don't use this for printing every entity

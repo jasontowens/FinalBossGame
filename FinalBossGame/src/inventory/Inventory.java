@@ -12,8 +12,8 @@ public class Inventory {
 		mySack = sack;
 		myArmory = armory;
 	}
-	public void addItem(Takeable Item){
-		mySack.addItem(Item);
+	public void addItem(Takeable item){
+		mySack.addItem(item);
 	}
 	public Takeable removeItem(int location){
 		return mySack.removeItem(location);
@@ -25,8 +25,8 @@ public class Inventory {
 		return mySack.useItem(location);
 	}
 	public boolean equipItem(int location){
-		if(mySack.itemAt(location).getClassName() == "Equipable"){
-			myArmory.equip(mySack.removeItem(location));
+		if(mySack.itemAt(location).getClassName().equals("Equipable")){
+			myArmory.equip((Equipable)mySack.removeItem(location));
 			return true;
 		}
 		else

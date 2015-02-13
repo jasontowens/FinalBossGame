@@ -6,7 +6,6 @@ import gameobject.GameObject;
 import inventory.Inventory;
 import stats.PlayerStats;
 import item.Takeable;
-import map.MotionType;
 
 
 public class Entity extends GameObject{
@@ -17,7 +16,7 @@ public class Entity extends GameObject{
 	PlayerStats myStats;
 	
 	public Entity(String name, String description, MotionType mobility, Inventory inventory, Occupation occ, PlayerStats stats){
-		super("Entity", name, description); //generates ID
+		super("Entity", name, description); 
 		myMotion = mobility;
 		myOccupation = occ;
 		myStats = stats;		
@@ -33,15 +32,14 @@ public class Entity extends GameObject{
 		myInventory.removeItem(item);
 		//the item should drop to map                
 	}
-        /*
+        
 	public void move(int xDirection, int yDirection){
-		
+            //waiting on GameMap object
 		
 	}
-        */
+        
 	public void addItem(Takeable item){
-		
-	
+            myInventory.addItem(item);
 	}
 	public MotionType getMotionType(){
 		return myMotion;

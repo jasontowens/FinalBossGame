@@ -4,7 +4,6 @@ import entity.Entity;
 import item.Item;
 import java.awt.Dimension;
 import java.util.ArrayList;
-import map.CoordinatePair;
 
 /**
  *
@@ -21,7 +20,7 @@ public class GameMap {
     //private ArrayList<Pair<Tile,CoordinatePair>> tilesOnMap;
     private Tile[][] tilesOnMap;
     
-    private Dimension tileSize;
+    private final Dimension tileSize;
     
     
     GameMap(int tileWidth, int tileHeight){
@@ -57,13 +56,14 @@ public class GameMap {
     public ArrayList<Pair<Item,CoordinatePair>> getAllItems( ){
         return itemsOnMap;
     } 
-    public  ArrayList<Pair<Tile,CoordinatePair>> getAllTiles( ){
+    public  Tile[][] getAllTiles( ){
         return tilesOnMap;
     }
     
 
     public CoordinatePair addItem(Item item,  CoordinatePair location){
-        itemsOnMap.add(new Pair<Item, CoordinatePair>(item, location));
+        itemsOnMap.add(new Pair<>(item, location));
+        return location; //why?
     }
     
     public void removeItem(Item item){

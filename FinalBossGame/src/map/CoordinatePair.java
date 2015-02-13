@@ -4,7 +4,7 @@ package map;
  *
  * @author ChrisMoscoso
  */
-class CoordinatePair {
+public class CoordinatePair {
     private int x;
     private int y;
     

@@ -4,7 +4,7 @@ package map;
  *
  * @author ChrisMoscoso
  */
-class Pair<T0, T1> {
+public class Pair<T0, T1> {
     T0 left;
     T1 right;
     public Pair(T0 l, T1 r){

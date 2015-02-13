@@ -67,6 +67,7 @@ public class Armory {
 		case OFFHAND: index = 8; break;
 		case TWOHAND: index = 9; break;		
 		}
+                
 		return index;
 	}
 }

@@ -6,6 +6,7 @@ import gameobject.GameObject;
 import inventory.Inventory;
 import stats.PlayerStats;
 import item.Takeable;
+import map.MotionType;
 
 
 public class Entity extends GameObject{
@@ -27,17 +28,22 @@ public class Entity extends GameObject{
 		//could update occupation abilities here
 	}
 	
-	/*dropItem removed, should be in inventory. - Jason
-	public void dropItem(item : Takeable){
-		
-		
-	}*/
+	
+	public void dropItem(Takeable item){
+		myInventory.removeItem(item);
+		//the item should drop to map                
+	}
+        /*
 	public void move(int xDirection, int yDirection){
 		
 		
 	}
+        */
 	public void addItem(Takeable item){
 		
 	
+	}
+	public MotionType getMotionType(){
+		return myMotion;
 	}
 }

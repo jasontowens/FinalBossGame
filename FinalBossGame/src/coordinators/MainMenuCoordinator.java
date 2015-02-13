@@ -49,6 +49,13 @@ public class MainMenuCoordinator {
 		}
 	}
 	
+	public MainOption getCurrentSelection() {
+		return currentSelection;
+	}
+	
+	public void setCurrentSelection(MainOption option) {
+		currentSelection = option;
+	}
 	
 	/*--------------------- SINGLETON METHODS ---------------------*/
 	public static MainMenuCoordinator getInstance() {

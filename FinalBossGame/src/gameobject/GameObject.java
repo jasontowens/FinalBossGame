@@ -1,7 +1,9 @@
 package gameobject;
 
+import java.io.File;
+
 public abstract class GameObject {
-	private int id;
+	private String spriteFilePath;
 	private String name;
 	private String className;
 	private String description;
@@ -9,8 +11,11 @@ public abstract class GameObject {
 	
 	//This constructor should be called only after the subclass constructor is called
 	protected GameObject(){
-		IDGenerator idGen = new IDGenerator();
-		id = idGen.generateID(className);
+		spriteFilePath = "art" + File.separator;
+		name = "Generic Object";
+		className = "GameObject";
+		description = "Generic description";
+		
 	}
 	
 	protected GameObject(String className, String objectName, String description){
@@ -20,7 +25,7 @@ public abstract class GameObject {
 		this();
 	}
 	
-	public int getID(){ return id; }
+	private String getSpriteFilePath(){ return spriteFilePath; }
 	public String getClassName(){ return className; }
 	public String getDescription(){ return description; }
 	public String getName() { return name; }

@@ -54,15 +54,22 @@ public class Entity extends GameObject{
             return myMotion;
 	}
         
-        //returns new total amount, -1 if not enough money for mod
-        public int modCurrency(int change){
-            if(myInventory.getCurrency() + change >= 0)
-                return myInventory.modCurrency(change); 
-            else 
-                return -1; //not enough money
+        //returns false if not enough money for mod
+        public boolean modCurrency(int change){
+            if(myInventory.getCurrency() + change >= 0){
+                myInventory.modCurrency(change);
+                return true;
+            }
+            else
+                return false;
         }
-        public void setCurrency(int newAmount){
-            myInventory.modCurrency(newAmount);        
+        public boolean setCurrency(int newAmount){
+            if(newAmount >= 0){
+                myInventory.modCurrency(newAmount); 
+                return true;
+            }
+            else 
+                return false;
         }
         public int getCurrency(){
             return myInventory.getCurrency();

@@ -13,6 +13,13 @@ public class CoordinatePair {
         this.y = y;
     }
 
+    public int getX(){
+        return x;        
+    }
+    public int getY(){
+        return y;        
+    }
+    
     public void set( int nextX, int nextY){
         this.x = nextX;
         this.y = nextY;

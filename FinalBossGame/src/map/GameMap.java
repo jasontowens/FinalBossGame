@@ -26,12 +26,12 @@ public class GameMap {
     
     GameMap(int tileWidth, int tileHeight){
         this.tileSize = new Dimension(tileWidth, tileHeight);
-        mValidator = new MotionValidator();
+        mValidator = MotionValidator.getInstance();
     }
     
     GameMap(Dimension tileSize){
         this.tileSize = tileSize;
-        mValidator = new MotionValidator();
+        mValidator = MotionValidator.getInstance();
     }
     
     //don't use this for printing every entity
@@ -87,8 +87,34 @@ public class GameMap {
             }
         }
     }
-    public CoordinatePair requestMovement(Entity entity, CoordinatePair change){
+    private Tile tileAtCoordinatePair(CoordinatePair CP){
+        return tilesOnMap[CP.getX()][CP.getY()];
+    }
+    
+    private Pair getEntityPair(Entity entity){
+        for(Pair p: entitiesOnMap){
+            if(p.getRight() == entity)
+                return p;
+        }
         return null;
+    }
+    
+    
+    //note: this method WILL MOVE the entity if it is able to.
+    public CoordinatePair requestMovement(Entity entity, CoordinatePair change){
+        CoordinatePair ent = getLocation(entity);
+       
+        
+        CoordinatePair desired = new CoordinatePair(ent.getX()+change.getX(),ent.getY()+change.getY());
+        
+        Tile t = tileAtCoordinatePair(desired);
+        if(t.getTerrain().verifyMovement(entity)){              
+            Pair tmp;
+            tmp = getEntityPair(entity);
+            tmp.setRight(desired); //actually moving the entity
+            return desired;
+        }
+        return ent;        
     }
     public CoordinatePair requestMovement(Item item , CoordinatePair change ){  
         return null;

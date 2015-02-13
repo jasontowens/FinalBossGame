@@ -11,6 +11,14 @@ public class Pair<T0, T1> {
         left = l;
         right = r;        
     }
+    public void setLeft(T0 l){
+        left = l;
+    }
+    public void setRight(T1 r){
+        right = r;
+    }
+    
+    
     public T0 getLeft(){
         return left;
     }

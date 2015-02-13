@@ -52,6 +52,10 @@ public class Tile {
 		effects.remove(effect);
 		return;
 	}
+        
+        public Terrain getTerrain(){
+            return terrain;        
+        }
 
 	public void ChangeTerrain(Terrain terrain) {
 		this.terrain = terrain;

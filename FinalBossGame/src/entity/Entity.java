@@ -43,7 +43,8 @@ public class Entity extends GameObject{
         
 	public void move(int xDirection, int yDirection){
             //waiting on GameMap object
-		
+            CoordinatePair change = new CoordinatePair(xDirection, yDirection);
+            map.requestMovement(this, change);
 	}
         
 	public void addItem(Takeable item){

@@ -6,6 +6,7 @@ import gameobject.GameObject;
 import inventory.Inventory;
 import stats.PlayerStats;
 import item.Takeable;
+import map.MotionType;
 
 
 public class Entity extends GameObject{
@@ -39,5 +40,8 @@ public class Entity extends GameObject{
 	public void addItem(Takeable item){
 		
 	
+	}
+	public MotionType getMotionType(){
+		return myMotion;
 	}
 }

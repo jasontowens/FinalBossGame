@@ -23,7 +23,7 @@ public class PauseMenuCoordinator {
 	
 	/*--------------------- GAME STATUS CHANGES ---------------------*/
 	public void unPause(){
-		//TODO: 
+		scheduler.changeCoordinator(CoordinatorType.GAME);
 	}
 	
 	

@@ -1,15 +1,27 @@
 package controllers;
 
+import coordinators.LoadMenuCoordinator;
+
 public class LoadMenuController extends SceneController {
 	
 	private static LoadMenuController loadMenuController = null;
 	
+	private static LoadMenuCoordinator loadReceiver = LoadMenuCoordinator.getInstance();
+	
 	private LoadMenuController() { }
 	
-	public void useKey2() {}
-	public void useKey8() {}
-	public void useKeyEnter() {}
-	public void useKeyEscape() {}
+	public void useKey2() {
+		loadReceiver.nextSelection();
+	}
+	public void useKey8() {
+		loadReceiver.previousSelection();
+	}
+	public void useKeyEnter() {
+		loadReceiver.confirmSelection();
+	}
+	public void useKeyEscape() {
+		loadReceiver.backToMainMenu();
+	}
 	
 	
 	public static LoadMenuController getInstance() {

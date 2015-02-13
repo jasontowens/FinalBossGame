@@ -12,7 +12,6 @@ import org.junit.runner.RunWith;
 import static org.easymock.EasyMock.createNiceMock;
 import static org.easymock.EasyMock.replay;
 import static org.easymock.EasyMock.expectLastCall;
-
 import controllers.*;
 
 @RunWith(EasyMockRunner.class)
@@ -23,11 +22,12 @@ public class InputParserTest {
 	private KeyEvent keyEvent;
 	
 	@Before
-	public void init() {
+	public void init() throws InterruptedException {
 		sceneController = createNiceMock(SceneController.class);
 		inputParser = new InputParser();
 		inputParser.getSceneControllerDispatcher().setActiveController(sceneController);
 		keyEvent = new KeyEvent(new Button("click"), KeyEvent.KEY_TYPED, System.currentTimeMillis(), 0, KeyEvent.VK_UNDEFINED, 'Z');
+		Thread.sleep(1000);
 	}
 	
 	
@@ -243,4 +243,16 @@ public class InputParserTest {
 		EasyMock.verify(sceneController);
 	}
 	
+	@Test
+	public void testMultipleKeyPresses() {
+		sceneController.useKeyA();
+		expectLastCall();
+		
+		replay(sceneController);
+		
+		keyEvent.setKeyCode(KeyEvent.VK_A);
+		inputParser.keyPressed(keyEvent);
+		inputParser.keyPressed(keyEvent);
+		EasyMock.verify(sceneController);
+	}
 }

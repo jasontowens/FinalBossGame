@@ -6,7 +6,7 @@ public class MenuController extends SceneController {
 	
 	private static MenuController menuController = null;
 	
-	private static MainMenuCoordinator mainMenuReciever = MainMenuCoordinator.getInstance();
+	private static MainMenuCoordinator mainMenuReceiver = MainMenuCoordinator.getInstance();
 	
 	private MenuController() {	}
 	
@@ -16,13 +16,17 @@ public class MenuController extends SceneController {
 	/*--------------------- MAIN COMMANDS ---------------------*/
 	
 	public void useKey2() {
-		mainMenuReciever.previousSelection();
+		mainMenuReceiver.previousSelection();
 	}
 	public void useKey8() {
-		mainMenuReciever.nextSelection();
+		mainMenuReceiver.nextSelection();
 	}
-	public void useKeyEnter() {}
-	public void useKeyEscape() {}
+	public void useKeyEnter() {
+		mainMenuReceiver.confirmSelection();
+	}
+	public void useKeyEscape() {
+		//Exit Game
+	}
 	
 	
 	

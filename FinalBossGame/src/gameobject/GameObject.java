@@ -14,10 +14,10 @@ public abstract class GameObject {
 	}
 	
 	protected GameObject(String className, String objectName, String description){
-		this();
 		this.name = objectName;
 		this.className = className;
 		this.description = description;
+		this();
 	}
 	
 	public int getID(){ return id; }

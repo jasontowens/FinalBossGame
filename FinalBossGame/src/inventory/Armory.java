@@ -34,7 +34,6 @@ public class Armory {
 	public Equipable unequip(EquipSlot slot){
 		int index = getIndex(slot);
 		if(index < 0 || index > equippedItems.length) {
-			System.out.println("Hi");
 			return null;
 		} 
 		if(!usedSlots[index]){

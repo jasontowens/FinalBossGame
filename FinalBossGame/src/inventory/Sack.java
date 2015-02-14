@@ -28,6 +28,7 @@ public class Sack {
 	}
 	public Takeable removeItem(Takeable item){
 		for(int i = 0; i != sizeOfSack; ++i){
+
 			if(itemsInSack[i] == item){
 				slotsInUse[i] = false;
 				return itemsInSack[i];
@@ -35,30 +36,43 @@ public class Sack {
         }	
         return null;//not found
 	}
-        
-    public Takeable removeItem(int location){
-    	slotsInUse[location] = false;
-        return itemsInSack[location];
+
+	public Takeable removeItem(int location){
+		if(location >= 0 && location < sizeOfSack) {
+			slotsInUse[location] = false;
+			return itemsInSack[location];
+		}
+		return null;
 	}
         
-        //returns false if sack full
+	//returns false if sack full
 	public boolean addItem(Takeable item){
-            for(int i = 0; i != sizeOfSack; ++i){
-                if(!slotsInUse[i]){
-                    slotsInUse[i] = true;
-                    itemsInSack[i] = item;
-                    return true;
-                }
-            }
-            return false; //sack is full
+	        for(int i = 0; i != sizeOfSack; ++i){
+	            if(!slotsInUse[i]){
+	                slotsInUse[i] = true;
+	                itemsInSack[i] = item;
+	                return true;
+	            }
+	        }
+	        return false; //sack is full
 	}
         
-        public Takeable itemAt(int location){
-            if(slotsInUse[location])
-                return itemsInSack[location];
-            else
-                return null;            
-        }
+	public Takeable itemAt(int location){
+		if(location >= 0 && location < sizeOfSack) {
+			if(slotsInUse[location])
+				return itemsInSack[location];
+		}
+	    return null;            
+	}
+        
+	public boolean isInSack(Takeable item){
+		 for (int i = 0; i != sizeOfSack; ++i){
+			 if (itemsInSack[i] == (item))
+				 return true;
+		 }
+		 
+		 return false;
+	}
 
         /* TEST METHODS */
 		public int getSizeOfSack() {

@@ -71,6 +71,10 @@ public class Entity extends GameObject{
 		this.myStats.mergeStats(modifiers);
 	}
 	
+	public boolean equipItem(Takeable item){
+		return myInventory.equipItem(item);
+	}
+	
 	/*------------MAP LEVEL OPERATIONS----------------*/
 	public void levelUp(){
 		myStats.levelUp();
@@ -95,4 +99,6 @@ public class Entity extends GameObject{
 	public ArrayList<Takeable> getSack(){
 		
 	}
+	
+	
 }

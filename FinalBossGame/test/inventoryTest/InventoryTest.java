@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import inventory.Armory;
 import inventory.Inventory;
 import inventory.Sack;
+import item.Equipable;
 import item.Takeable;
 
 import org.easymock.EasyMock;
@@ -14,13 +15,13 @@ public class InventoryTest {
 	private Sack sack;
 	private Armory armory;
 	private Inventory inventory;
-	private Takeable takeable;
+	private Equipable takeable;
 
 	@Before
 	public void setUp() throws Exception {
 		sack = EasyMock.createNiceMock(Sack.class);
 		armory = EasyMock.createNiceMock(Armory.class);
-		takeable = EasyMock.createNiceMock(Takeable.class);
+		takeable = EasyMock.createNiceMock(Equipable.class);
 		inventory = new Inventory(sack,armory);
 	}
 
@@ -52,5 +53,105 @@ public class InventoryTest {
 	/*
 	 * TODO useItem methods
 	 */
+	
+	@Test
+	public void equipItem() {
+		EasyMock.expect(sack.isInSack(takeable)).andReturn(true);
+		EasyMock.expect(takeable.getClassName()).andReturn("Equipable");
+		EasyMock.expect(armory.equip((Equipable) takeable)).andReturn(takeable);
+
+		EasyMock.replay(sack);
+		EasyMock.replay(takeable);
+		EasyMock.replay(armory);
+		
+		boolean result = inventory.equipItem(takeable);
+		
+		assertTrue(result);
+		
+		EasyMock.verify(sack);
+		EasyMock.verify(takeable);
+		EasyMock.verify(armory);
+	}
+	
+	@Test
+	public void equipItemNonEquipableItem() {
+		EasyMock.expect(sack.isInSack(takeable)).andReturn(true);
+		EasyMock.expect(takeable.getClassName()).andReturn("MagicItem");
+		
+		EasyMock.replay(sack);
+		EasyMock.replay(takeable);
+
+		boolean result = inventory.equipItem(takeable);
+		
+		assertFalse(result);
+		
+		EasyMock.verify(sack);
+		EasyMock.verify(takeable);
+	}
+	
+	@Test
+	public void equipItemNotInSack() {
+		EasyMock.expect(sack.isInSack(takeable)).andReturn(false);
+	
+		EasyMock.replay(sack);
+		
+		boolean result = inventory.equipItem(takeable);
+		
+		assertFalse(result);
+		
+		EasyMock.verify(sack);
+	}
+	
+	@Test
+	public void removeItemGivenItem() {
+		EasyMock.expect(sack.removeItem(takeable)).andReturn(takeable);
+		
+		EasyMock.replay(sack);
+		
+		inventory.removeItem(takeable);
+		
+		EasyMock.verify(sack);
+	}
+	
+	@Test
+	public void testModCurrencyPositive() {
+		inventory.setCurrency(10);
+		boolean result = inventory.modCurrency(12);
+		
+		assertEquals(22,inventory.getCurrency());
+		assertTrue(result);
+	}
+	
+	@Test
+	public void testModCurrencyNegativeAmount() {
+		inventory.setCurrency(10);
+		boolean result = inventory.modCurrency(-3);
+		
+		assertEquals(7,inventory.getCurrency());
+		assertTrue(result);
+	}
+	
+	@Test
+	public void testModCurrencyNegativeAmountFails() {
+		inventory.setCurrency(10);
+		boolean result = inventory.modCurrency(-15);
+		
+		assertEquals(10,inventory.getCurrency());
+		assertFalse(result);
+	}
+	
+	@Test
+	public void testSetCurrency() {
+		boolean result = inventory.setCurrency(12);
+		assertTrue(result);
+		assertEquals(12,inventory.getCurrency());
+	}
+	
+	@Test
+	public void testSetCurrencyFalse() {
+		boolean result = inventory.setCurrency(-3);
+		assertFalse(result);
+		assertEquals(0,inventory.getCurrency());
+	}
 
 }

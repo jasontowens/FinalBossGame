@@ -18,7 +18,10 @@ public class LoadMenuCoordinator {
 	
 	/*--------------------- CONSTRUCTORS ---------------------*/
 	private LoadMenuCoordinator(){
-		currentFile = saveFiles.get(currentFileIndex);
+		/*Need to read from some directory */
+		//Commenting this out for now. Need to finalize this. Otherwise this breaks everything.
+		//saveFiles = new ArrayList<String>();
+		//currentFile = saveFiles.get(currentFileIndex);
 	}
 	
 	

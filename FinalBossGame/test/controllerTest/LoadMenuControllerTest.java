@@ -8,17 +8,18 @@ import org.junit.Test;
 
 import controllers.LoadMenuController;
 import controllers.MenuController;
+import coordinators.LoadMenuCoordinator;
 import coordinators.MainMenuCoordinator;
 
 public class LoadMenuControllerTest {
 	
-	private MainMenuCoordinator mainMenuCoordinator;
-	private MenuController menuController;
+	private LoadMenuCoordinator loadMenuCoordinator;
+	private LoadMenuController menuController;
 
 	@Before
 	public void init() throws InterruptedException {
-		mainMenuCoordinator = createNiceMock(MainMenuCoordinator.class);
-		menuController = MenuController.getInstance();
+		//mainMenuCoordinator = createNiceMock(MainMenuCoordinator.class);
+		//menuController = MenuController.getInstance();
 	}
 
 	@Test

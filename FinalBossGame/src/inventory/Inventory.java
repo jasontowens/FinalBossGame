@@ -22,10 +22,10 @@ public class Inventory {
 	}
 	public void useItem(int location){
 		if(location <= 9){
-			myArmory.unequip(location);
+			mySack.addItem(myArmory.unequip(location));
 		}
 		else{
-			mySack.useItem(location);
+			mySack.useItem(location-10);
 		}
 	}    
 	

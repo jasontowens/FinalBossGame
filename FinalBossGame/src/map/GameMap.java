@@ -101,6 +101,14 @@ public class GameMap {
         }
         return null;
     }
+    private Pair getItemPair(Item item){
+        for(Pair c: itemsOnMap){
+            if(c.getLeft() == item){
+                return c;
+            }
+        }
+        return null;
+    }
     
     private Item getItemAt(CoordinatePair CP){
         for(Pair c: itemsOnMap){
@@ -120,6 +128,7 @@ public class GameMap {
         return null;
     }
     
+    
     //note: this method WILL MOVE the entity if it is able to.
     public void requestMovement(Entity entity, CoordinatePair change){
         CoordinatePair ent = getLocation(entity);
@@ -135,20 +144,29 @@ public class GameMap {
         Tile t = tileAtCoordinatePair(desired);
         if(t.getTerrain().verifyMovement(entity)){    //terrain is passable
             Entity entityAtDesiredLocation = getEntityAt(desired);
-            if(entityAtDesiredLocation != null)
+            if(entityAtDesiredLocation != null){
+                return;
+            }
             Item itemAtDesiredLocation = getItemAt (desired);
             if(itemAtDesiredLocation != null){  //there is an item there.
-                
+                if(itemAtDesiredLocation.activate(entity)){ //item is not an obstacle
+                    Pair tmp;
+                    tmp = getEntityPair(entity);
+                    tmp.setRight(desired); //actually moving the entity
+                }
+                else{
+                    //return;
+                }
             }
-                Pair tmp;
-                tmp = getEntityPair(entity);
-                tmp.setRight(desired); //actually moving the entity
             
-        } 
+        }
     }
     public CoordinatePair requestMovement(Item item, CoordinatePair change ){  
+        Pair itemPair = getItemPair(item);
+        CoordinatePair CP = (CoordinatePair)itemPair.getRight();
         
-        return null;
+        CP.add(change);//new coordinate is old coordinate plus change
+        return CP;
     }
     
     

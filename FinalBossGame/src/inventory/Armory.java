@@ -43,15 +43,14 @@ public class Armory {
 	}
 	
 	//should always return true for now, maybe false later if entity doesn't meet requirements 
-	public boolean equip(Equipable equipment){
+	public Equipable equip(Equipable equipment){
+		Equipable value;
 		int index = getIndex(equipment.getSlot());
 		if(usedSlots[index]) //if there is already an item in the given slot, unequip it
-			unequip(equipment.getSlot());
-		
+			value = unequip(equipment.getSlot());
 		usedSlots[index]=true;
 		equippedItems[index]=equipment;
-		
-		return true;
+		return value;
 	}
 	private int getIndex(EquipSlot slot){ //returns index value of specified EquipSlot
 		int index=-1;

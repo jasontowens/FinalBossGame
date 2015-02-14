@@ -12,8 +12,12 @@ public class Equipable extends Takeable implements Item {
 	private EquipSlot slot;
 	
 	//constructors
-	public Equipable(String className, String name, String description, ItemStats mods, GameMap active, EquipSlot equipSlot){
+	protected Equipable(String className, String name, String description, ItemStats mods, GameMap active, EquipSlot equipSlot){
 		super(className, name, description, mods, active);
+		slot = equipSlot;
+	}
+	public Equipable(String name, String description, ItemStats mods, GameMap active, EquipSlot equipSlot){
+		super("Equipable", name, description, mods, active);
 		slot = equipSlot;
 	}
 	

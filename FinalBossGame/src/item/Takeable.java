@@ -12,8 +12,13 @@ public class Takeable extends GameObject implements Item {
 	protected GameMap current;
 	
 	//constructors
-	public Takeable(String className, String name, String description, ItemStats mods, GameMap active){
+	protected Takeable(String className, String name, String description, ItemStats mods, GameMap active){
 		super(className, name, description);
+		modifiers = mods;
+		current = active;
+	}
+	public Takeable(String name, String description, ItemStats mods, GameMap active){
+		super("Takeable", name, description);
 		modifiers = mods;
 		current = active;
 	}

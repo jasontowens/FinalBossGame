@@ -16,6 +16,8 @@ public class LoadMenuController extends SceneController {
 	public void useKey8() {
 		loadReceiver.previousSelection();
 	}
+	
+
 	public void useKeyEnter() {
 		loadReceiver.confirmSelection();
 	}
@@ -28,6 +30,14 @@ public class LoadMenuController extends SceneController {
 			loadMenuController = new LoadMenuController();
 		}
 		return loadMenuController;
+	}
+	/*---------------------------TEST METHODS ---------------------*/
+	public static void setLoadMenuController(LoadMenuController loadMenuController) {
+		LoadMenuController.loadMenuController = loadMenuController;
+	}
+
+	public void setLoadReceiver(LoadMenuCoordinator loadReceiver) {
+		this.loadReceiver = loadReceiver;
 	}
 
 }

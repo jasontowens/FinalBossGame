@@ -2,19 +2,25 @@ package coordinatorTest;
 
 import static org.junit.Assert.*;
 
+import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 
+import coordinators.CoordinatorScheduler;
+import coordinators.CoordinatorType;
 import coordinators.MainMenuCoordinator;
 import coordinators.MainOption;
 
 public class MainMenuCoordinatorTest {
 	
 	private MainMenuCoordinator mainMenuCoord;
+	private CoordinatorScheduler scheduler;
 	
 	@Before
 	public void init() {
 		mainMenuCoord = MainMenuCoordinator.getInstance();
+		scheduler = EasyMock.createNiceMock(CoordinatorScheduler.class);
+		mainMenuCoord.setScheduler(scheduler);
 	}
 	
 	@Test
@@ -53,6 +59,16 @@ public class MainMenuCoordinatorTest {
 		mainMenuCoord.setCurrentSelection(MainOption.Exit);
 		mainMenuCoord.previousSelection();
 		assertEquals(MainOption.Load, mainMenuCoord.getCurrentSelection());
+	}
+	@Test
+	public void testConfirmSelectionLoad() {
+		scheduler.changeCoordinator(CoordinatorType.LOAD);
+		EasyMock.expectLastCall();
+		EasyMock.replay(scheduler);
+		
+		mainMenuCoord.setCurrentSelection(MainOption.Load);
+		mainMenuCoord.confirmSelection();
+		EasyMock.verify(scheduler);
 	}
 	
 	

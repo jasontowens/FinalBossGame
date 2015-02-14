@@ -27,5 +27,9 @@ public class PauseMenuController extends SceneController {
 		}
 		return pauseMenuController;
 	}
+	
+	public static void setPauseReceiver(PauseMenuCoordinator pauseReceiver) {
+		PauseMenuController.pauseReceiver = pauseReceiver;
+	}
 
 }

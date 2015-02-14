@@ -28,7 +28,6 @@ public class MainMenuCoordinator {
 			break;
 		case Exit:
 			break;
-		
 		}
 	}
 	
@@ -76,6 +75,10 @@ public class MainMenuCoordinator {
 		return mainMenuCoordinator;
 	}
 	
+	/*----------------Test Methods -------------------------*/
+	public void setScheduler(CoordinatorScheduler sched) {
+		scheduler = sched;
+	}
 	
 	
 }

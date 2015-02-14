@@ -1,6 +1,7 @@
 package map;
 
 import entity.Entity;
+import gameobject.GameObject;
 
 public class Terrain extends GameObject {
 	private MotionType motiontype;

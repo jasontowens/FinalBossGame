@@ -36,7 +36,10 @@ public class LoadMenuCoordinator {
 	}
 	
 	public void previousSelection(){
-		currentFileIndex = (currentFileIndex - 1) % saveFiles.size(); //decrement index by 1 while keeping within list size indices
+		/*Java does a weird thing with modulus this fixes it */
+		currentFileIndex = --currentFileIndex % saveFiles.size()
+				+ (currentFileIndex < 0 ? saveFiles.size() : 0);
+
 		currentFile = saveFiles.get(currentFileIndex);
 	}
 	
@@ -54,4 +57,57 @@ public class LoadMenuCoordinator {
 		}
 		return loadMenuCoordinator;
 	}
+
+	/*---------------------------TEST METHODS ----------------------*/
+	public static CoordinatorScheduler getScheduler() {
+		return scheduler;
+	}
+
+
+	public static void setScheduler(CoordinatorScheduler scheduler) {
+		LoadMenuCoordinator.scheduler = scheduler;
+	}
+
+
+	public static LoadMenuCoordinator getLoadMenuCoordinator() {
+		return loadMenuCoordinator;
+	}
+
+
+	public static void setLoadMenuCoordinator(
+			LoadMenuCoordinator loadMenuCoordinator) {
+		LoadMenuCoordinator.loadMenuCoordinator = loadMenuCoordinator;
+	}
+
+
+	public static int getCurrentFileIndex() {
+		return currentFileIndex;
+	}
+
+
+	public static void setCurrentFileIndex(int currentFileIndex) {
+		LoadMenuCoordinator.currentFileIndex = currentFileIndex;
+	}
+
+
+	public static String getCurrentFile() {
+		return currentFile;
+	}
+
+
+	public static void setCurrentFile(String currentFile) {
+		LoadMenuCoordinator.currentFile = currentFile;
+	}
+
+
+	public static ArrayList<String> getSaveFiles() {
+		return saveFiles;
+	}
+
+	public void setSaveFiles(ArrayList<String> saveFiles) {
+		LoadMenuCoordinator.saveFiles = saveFiles;
+	}
+	
+	
+	
 }

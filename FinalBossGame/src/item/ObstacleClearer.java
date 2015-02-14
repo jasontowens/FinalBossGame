@@ -1,13 +1,12 @@
-<<<<<<< HEAD
-package src.map;
-=======
-package map;
->>>>>>> parent of 877613b... Changes to inventory package
+package item;
 
-import item.Obstacle;
-import item.Interactive;
+
+
 import entity.Entity;
+
 import java.util.ArrayList;
+
+import map.GameMap;
 
 public class ObstacleClearer extends Interactive {
 	private ArrayList<Obstacle> targetObstacles;

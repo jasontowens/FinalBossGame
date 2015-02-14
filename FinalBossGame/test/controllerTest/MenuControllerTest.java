@@ -59,6 +59,17 @@ public class MenuControllerTest {
 		EasyMock.verify(mainMenuReciever);
 	}
 	
+	@Test
+	public void testUseKeyEnter() {
+		mainMenuReciever.confirmSelection();
+		expectLastCall();
+		replay(mainMenuReciever);
+		
+		menuController.useKeyEnter();
+		
+		EasyMock.verify(mainMenuReciever);
+	}
+	
 	
 
 }

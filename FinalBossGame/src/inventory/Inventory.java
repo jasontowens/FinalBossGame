@@ -25,10 +25,10 @@ public class Inventory {
 	}
 	public void useItem(int location, Entity ent){
 		if(location <= 9){
-			mySack.addItem(myArmory.unequip(location));
+			mySack.addItem(myArmory.unequip(EquipSlot.values()[location]));
 		}
 		else{
-			mySack.useItem(location-10, ent);
+			mySack.useItem(location-10);
 		}
 	}    
 	

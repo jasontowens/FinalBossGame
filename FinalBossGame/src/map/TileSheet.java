@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-package src.map;
-=======
 package map;
->>>>>>> parent of 877613b... Changes to inventory package
+
 
 /*
  * Helper class for MapLoader.

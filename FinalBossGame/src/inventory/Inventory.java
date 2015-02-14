@@ -1,5 +1,6 @@
 package inventory;
 
+import entity.Entity;
 import item.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,12 +23,12 @@ public class Inventory {
 	public Takeable removeItem(int location){
 		return mySack.removeItem(location);
 	}
-	public void useItem(int location){
+	public void useItem(int location, Entity ent){
 		if(location <= 9){
 			mySack.addItem(myArmory.unequip(location));
 		}
 		else{
-			mySack.useItem(location-10);
+			mySack.useItem(location-10, ent);
 		}
 	}    
 	

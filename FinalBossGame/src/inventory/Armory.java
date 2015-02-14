@@ -50,6 +50,22 @@ public class Armory {
 		
 		return itemAtSlot;
 	}
+        public Equipable unequip(int position){
+		int index = position;
+		if(index < 0 || index > equippedItems.length) {
+			System.out.println("Hi");
+			return null;
+		} 
+		if(!usedSlots[index]){
+			return null;			
+		}
+				
+		Equipable itemAtSlot = equippedItems[index];
+		equippedItems[index] = null;
+		usedSlots[index]=false;					//signifies that the equippedItems[index] is now "empty"
+		
+		return itemAtSlot;
+	}
 	
 	//should always return true for now, maybe false later if entity doesn't meet requirements 
 	public Equipable equip(Equipable equipment){

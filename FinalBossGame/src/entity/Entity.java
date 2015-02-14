@@ -36,7 +36,7 @@ public class Entity extends GameObject{
     	map.addItem(myInventory.removeItem(location), map.getLocation(this));
     }    
     public void useItem(int location){
-    	myInventory.useItem(location);
+    	myInventory.useItem(location, this);
     }
 	public void move(CoordinatePair change){
 		map.requestMovement(this, change);

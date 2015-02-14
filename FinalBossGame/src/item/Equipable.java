@@ -9,7 +9,7 @@ import entity.Entity;
 
 public class Equipable extends Takeable implements Item {
 	//fields
-	private EquipSlot slot;
+	protected EquipSlot slot;
 	
 	//constructors
 	protected Equipable(String className, String name, String description, ItemStats mods, GameMap active, EquipSlot equipSlot){

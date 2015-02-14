@@ -14,8 +14,16 @@ public abstract class Interactive extends GameObject implements Item{
 		super(className, name, description);
 		hasActivated = false;
 	}
+	protected Interactive(String name, String description){
+		super("Interactive", name, description);
+		hasActivated = false;
+	}
 	protected Interactive(String className, String name, String description, bool activation){
 		super(className, name, description);
+		hasActivated = activation;
+	}
+	protected Interactive(String name, String description, bool activation){
+		super("Interactive", name, description);
 		hasActivated = activation;
 	}
 }

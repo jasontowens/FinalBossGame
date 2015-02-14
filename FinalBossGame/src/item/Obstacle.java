@@ -8,8 +8,11 @@ import entity.Entity;
 
 public class Obstacle extends GameObject implements Item{
 	//constructors
-	public Obstacle(String className, String name, String description){
+	protected Obstacle(String className, String name, String description){
 		super(className, name, description);
+	}
+	public Obstacle(String name, String description){
+		super("Obstacle", name, description);
 	}
 	
 	//Item interface operations

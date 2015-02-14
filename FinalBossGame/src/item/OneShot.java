@@ -11,8 +11,12 @@ public class OneShot extends GameObject implements Item{
 	protected ItemStats modifier;
 	
 	//constructors
-	public OneShot(String className, String name, String description, ItemStats mods){
+	protected OneShot(String className, String name, String description, ItemStats mods){
 		super(className, name, description);
+		modifier = mods;
+	}
+	public OneShot(String name, String description, ItemStats mods){
+		super("OneShot", name, description);
 		modifier = mods;
 	}
 	

@@ -20,12 +20,15 @@ public class GameCoordinator
     private static GameCoordinator gameCoordinator = null;
 
     /*--------------------- CONSTRUCTOR ---------------------*/
-    private GameCoordinator(){    }
+    private GameCoordinator(){
+    	inInventory = false;
+    }
 
     /*--------------------- GAME STATUS CHANGES---------------------*/
     public void toggleInventory()
     {
        inInventory = !inInventory;
+       //TODO: Send inventory to view
     }
 
     public void pause()
@@ -100,6 +103,9 @@ public class GameCoordinator
     	GameCoordinator.scheduler = scheduler;
     }
     
+
+    
+    /*--------------------- ACCESSOR / MUTATOR METHODS ---------------------*/
     public void setAvatar(Entity avatar){
     	this.avatar = avatar;
     }
@@ -107,7 +113,11 @@ public class GameCoordinator
     	this.activeMap = map;
     }
     
-  /*--------------------- SINGLETON METHODS ---------------------*/
+    public boolean isInInventory(){
+    	return inInventory;
+    }
+    
+    /*--------------------- SINGLETON METHODS ---------------------*/
     public static GameCoordinator getInstance() {
 		if(gameCoordinator == null) {
 			gameCoordinator = new GameCoordinator();

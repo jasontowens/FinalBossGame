@@ -1,6 +1,7 @@
 package factories;
 
 import item.Interactive;
+import gameobject.GameObject;
 
 public class InteractiveItemFactory extends PlaceableObjectFactory {
 	

@@ -1,6 +1,7 @@
 package factories;
 
 import item.Obstacle;
+import gameobject.GameObject;
 
 public class ObstacleFactory extends PlaceableObjectFactory {
 	

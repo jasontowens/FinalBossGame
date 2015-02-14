@@ -23,9 +23,9 @@ public class GameCoordinator
     private GameCoordinator(){    }
 
     /*--------------------- GAME STATUS CHANGES---------------------*/
-    public void toggleInventory(Entity entity)
+    public void toggleInventory()
     {
-       //TODO: wait until view is implemented
+       inInventory = !inInventory;
     }
 
     public void pause()

@@ -2,6 +2,7 @@ package factories;
 
 import item.Takeable;
 import stats.ItemStats;
+import gameobject.GameObject;
 
 public class TakeableFactory extends PlaceableObjectFactory {
 	

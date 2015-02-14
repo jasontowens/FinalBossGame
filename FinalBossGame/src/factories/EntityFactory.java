@@ -1,6 +1,9 @@
 package factories;
 
+import gameobject.GameObject;
 import entity.Entity;
+import entity.Occupation;
+import stats.Stats;
 import stats.PlayerStats;
 import entity.MotionType;
 

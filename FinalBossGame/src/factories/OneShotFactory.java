@@ -2,6 +2,7 @@ package factories;
 
 import item.OneShot;
 import stats.ItemStats;
+import gameobject.GameObject;
 
 public class OneShotFactory extends PlaceableObjectFactory {
 	

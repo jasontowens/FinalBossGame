@@ -20,6 +20,8 @@ public class Armory {
 	9:	twoHand 
 	  
 	 */
+	
+	/*-------------CONSTRUCTORS--------------*/
 	public Armory(){
 		numOfSlots = 10;
 		equippedItems = new Equipable[numOfSlots];
@@ -31,6 +33,7 @@ public class Armory {
 		usedSlots = new boolean[numOfSlots];
 	}
 	
+	/*----------MESSAGES PASSED FROM ENTITY-------------*/
 	public Equipable unequip(EquipSlot slot){
 		int index = getIndex(slot);
 		if(index < 0 || index > equippedItems.length) {

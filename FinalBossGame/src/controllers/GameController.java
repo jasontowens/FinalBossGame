@@ -11,8 +11,12 @@ public class GameController extends SceneController {
 	public void useKey1() { // southwest
             gameReceiver.moveAvatar(1);
         }
-	public void useKey2() { // south
-            gameReceiver.moveAvatar(2);
+	public void useKey2() { // south / down in Inventory
+			if (gameReceiver.isInInventory()){
+				gameReceiver.nextItem();
+			}
+			else
+				gameReceiver.moveAvatar(2);
         }
 	public void useKey3() { // southeast
             gameReceiver.moveAvatar(3);
@@ -21,6 +25,7 @@ public class GameController extends SceneController {
             gameReceiver.moveAvatar(4);
         }
 	public void useKey5() {
+			System.out.println("5 was pressed... not really sure what to do...");
         }
 	public void useKey6() { // east
             gameReceiver.moveAvatar(6);
@@ -28,7 +33,11 @@ public class GameController extends SceneController {
 	public void useKey7() { // northwest
             gameReceiver.moveAvatar(7);
         } 
-	public void useKey8() { // north
+	public void useKey8() { // north / up in Inventory
+		if (gameReceiver.isInInventory()){
+			gameReceiver.previousItem();
+		}
+		else
             gameReceiver.moveAvatar(8);
         } 
 	public void useKey9() { // northeast
@@ -38,6 +47,7 @@ public class GameController extends SceneController {
 		gameReceiver.toggleInventory();
 	}
 	public void useKeyEnter() { // inventory
+		if (gameReceiver.isInInventory())
             gameReceiver.activateItem();
         } 
 	public void useKeyEscape() { // 

@@ -26,10 +26,10 @@ public class Inventory {
 		return mySack.useItem(location);
 	}
         
-        //EQUIPABLES
-	public boolean equipItem(int location){
-		if(mySack.itemAt(location).getClassName().equals("Equipable")){
-			myArmory.equip((Equipable)mySack.removeItem(location));
+    //EQUIPABLES
+	public boolean equipItem(Takeable item){
+		if (mySack.isInSack(item) && item.getClassName().equals("Equipable")){
+			myArmory.equip((Equipable)item);
 			return true;
 		}
 		else

@@ -1,7 +1,9 @@
 package factories;
 
+import gameobject.GameObject;
 import item.Equipable;
 import stats.ItemStats;
+import stats.Stats;
 import inventory.EquipSlot;
 
 public class EquipableFactory extends PlaceableObjectFactory {

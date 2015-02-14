@@ -25,6 +25,8 @@ public class Inventory {
 	public Takeable useItem(int location){
 		return mySack.useItem(location);
 	}
+        
+        //EQUIPABLES
 	public boolean equipItem(int location){
 		if(mySack.itemAt(location).getClassName().equals("Equipable")){
 			myArmory.equip((Equipable)mySack.removeItem(location));
@@ -37,6 +39,8 @@ public class Inventory {
 		return myArmory.unequip(slot);
 	}
 	
+        
+        //CURRENCY
 	public int getCurrency(){
             return currency;
         }

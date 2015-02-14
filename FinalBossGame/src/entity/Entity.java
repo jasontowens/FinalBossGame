@@ -17,7 +17,7 @@ public class Entity extends GameObject{
 	Occupation myOccupation;
 	PlayerStats myStats;
         
-        GameMap map;
+        private GameMap map;
 	
 	public Entity(String name, String description, MotionType mobility, Inventory inventory, Occupation occ, PlayerStats stats, GameMap m){
 		super("Entity", name, description); 
@@ -35,11 +35,17 @@ public class Entity extends GameObject{
 	
 	
 	public void dropItem(Takeable item){	
-                CoordinatePair tmp = map.getLocation(this);
-                tmp.add(1, 0); //puts item one tile to the right of entity
-                map.addItem( myInventory.removeItem(item), tmp);
-		//the item should drop to map                
+            CoordinatePair tmp = map.getLocation(this);
+            tmp.add(1, 0); //puts item one tile to the right of entity
+            map.addItem( myInventory.removeItem(item), tmp);
+            //the item should drop to map                
 	}
+        
+        public void dropItem(int location){
+            CoordinatePair tmp = map.getLocation(this);
+            tmp.add(1, 0); //puts item one tile to the right of entity
+            map.addItem( myInventory.removeItem(location), tmp);
+        }
         
 	public void move(int xDirection, int yDirection){
             //waiting on GameMap object
@@ -54,8 +60,13 @@ public class Entity extends GameObject{
             return myMotion;
 	}
         
+        public void setOccupation(String occupationName){
+            myOccupation.name = occupationName;
+        }
+        
+        
         //returns false if not enough money for mod
-        public boolean modCurrency(int change){
+        public boolean changeMoney(int change){
             if(myInventory.getCurrency() + change >= 0){
                 myInventory.modCurrency(change);
                 return true;
@@ -63,7 +74,7 @@ public class Entity extends GameObject{
             else
                 return false;
         }
-        public boolean setCurrency(int newAmount){
+        public boolean setMoney(int newAmount){
             if(newAmount >= 0){
                 myInventory.modCurrency(newAmount); 
                 return true;
@@ -71,7 +82,7 @@ public class Entity extends GameObject{
             else 
                 return false;
         }
-        public int getCurrency(){
+        public int getMoney(){
             return myInventory.getCurrency();
         }
 }

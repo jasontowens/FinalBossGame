@@ -11,6 +11,7 @@ import java.util.ArrayList;
  */
 public class GameMap {
     
+    
     private int length; // in tiles
     private int width; // in tiles
     
@@ -22,7 +23,7 @@ public class GameMap {
     
     private final Dimension tileSize;
     
-    private MotionValidator mValidator;
+    private final MotionValidator mValidator;
     
     GameMap(int tileWidth, int tileHeight){
         this.tileSize = new Dimension(tileWidth, tileHeight);
@@ -101,24 +102,51 @@ public class GameMap {
         return null;
     }
     
+    private Item getItemAt(CoordinatePair CP){
+        for(Pair c: itemsOnMap){
+            if(c.getRight() == CP){
+                return (Item)c.getLeft();
+            }
+        }
+        return null;
+    }
+    
+    private Entity getEntityAt(CoordinatePair CP){
+        for(Pair c: entitiesOnMap){
+            if(c.getRight() == CP){
+                return (Entity)c.getLeft();
+            }
+        }
+        return null;
+    }
     
     //note: this method WILL MOVE the entity if it is able to.
-    public CoordinatePair requestMovement(Entity entity, CoordinatePair change){
+    public void requestMovement(Entity entity, CoordinatePair change){
         CoordinatePair ent = getLocation(entity);
        
         
         CoordinatePair desired = new CoordinatePair(ent.getX()+change.getX(),ent.getY()+change.getY());
         
+        //if terrainIsCorrect
+        //           if NotOccupiedByEntity
+        //                   if NotOccupiedByObstacle
+        
+        
         Tile t = tileAtCoordinatePair(desired);
-        if(t.getTerrain().verifyMovement(entity)){              
-            Pair tmp;
-            tmp = getEntityPair(entity);
-            tmp.setRight(desired); //actually moving the entity
-            return desired;
-        }
-        return ent;        
+        if(t.getTerrain().verifyMovement(entity)){    //terrain is passable
+            Entity entityAtDesiredLocation = getEntityAt(desired);
+            if(entityAtDesiredLocation != null)
+            Item itemAtDesiredLocation = getItemAt (desired);
+            if(itemAtDesiredLocation != null){  //there is an item there.
+                
+            }
+                Pair tmp;
+                tmp = getEntityPair(entity);
+                tmp.setRight(desired); //actually moving the entity
+            
+        } 
     }
-    public CoordinatePair requestMovement(Item item , CoordinatePair change ){  
+    public CoordinatePair requestMovement(Item item, CoordinatePair change ){  
         
         return null;
     }

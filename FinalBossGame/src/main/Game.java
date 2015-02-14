@@ -12,12 +12,25 @@ public class Game {
     
     public static void main(String[] args) {
         
+    	//MODEL SETUP
+    	
     	//TODO: CREATE MODEL, store avatar in myAvatar and active mao in myMap
+    	
+    	//CONTROLLER SETUP
     	InputParser myParser = new InputParser();
     	GameCoordinator myGameCoord = GameCoordiator.getInstance();
     	myGameCoord.setAvatar(myAvater);
     	myGameCoord.setActiveMap(myMap);
-        
+    	
+    	
+    	//
+    	//TODO: add the view:
+    	GameWindow window =	new GameWindow();
+    	//window.setModel( para1, para2...)
+    	
+    	
+    	//To end game:
+    	//RUNNING = false;
     }
     
 }

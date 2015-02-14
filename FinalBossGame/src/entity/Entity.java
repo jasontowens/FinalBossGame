@@ -67,7 +67,7 @@ public class Entity extends GameObject{
         else 
             return false;
     }
-	public void setOccupation(String occupationName){
+my	public void setOccupation(String occupationName){
     	myOccupation.name = occupationName;
     }
 	public void mergeStats(Stats modifiers){
@@ -77,6 +77,10 @@ public class Entity extends GameObject{
 	/*------------MAP LEVEL OPERATIONS----------------*/
 	public void levelUp(){
 		myStats.levelUp();
+	}
+	//TODO: BE ABLE TO DIE
+	public void die(){
+		myStats.modLivesLeft(-1);
 	}
      
 	/*------------ACCESSORS----------------------*/	

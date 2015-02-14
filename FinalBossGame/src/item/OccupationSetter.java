@@ -25,5 +25,6 @@ public class OccupationSetter extends Interactive{
 	
 	public boolean activate(Entity entity){
 		entity.setOccupation(jobName);
+		return true;
 	}
 }

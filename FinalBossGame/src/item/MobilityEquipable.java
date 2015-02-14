@@ -3,8 +3,8 @@
 package item;
 
 import inventory.EquipSlot;
+import map.GameMap;
 import stats.ItemStats;
-import item.Item;
 import entity.Entity;
 import entity.MotionType;
 
@@ -14,12 +14,12 @@ public class MobilityEquipable extends Equipable{
 	private MotionType originalMotion;
 	
 	//constructors
-	protected Mobility(String className, String name, String description, ItemStats mods, GameMap active, EquipSlot equipSlot, MotionType nextMotion){
+	protected MobilityEquipable(String className, String name, String description, ItemStats mods, GameMap active, EquipSlot equipSlot, MotionType nextMotion){
 		super(className, name, description, mods, active, equipSlot);
 		myMotion = nextMotion;
 		
 	}
-	public Equipable(String name, String description, ItemStats mods, GameMap active, EquipSlot equipSlot, MotionType nextMotion){
+	public MobilityEquipable(String name, String description, ItemStats mods, GameMap active, EquipSlot equipSlot, MotionType nextMotion){
 		super("MobilityEquipable", name, description, mods, active, equipSlot);
 		myMotion = nextMotion;
 	}

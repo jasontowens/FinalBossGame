@@ -99,6 +99,11 @@ public class Entity extends GameObject{
 	public ArrayList<Takeable> getSack(){
 		
 	}
+
+	public void setMotionType(MotionType myMotion2) {
+		myMotion = myMotion2;
+		
+	}
 	
 	
 }

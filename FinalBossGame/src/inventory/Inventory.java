@@ -45,19 +45,30 @@ public class Inventory {
 	}
 	public void removeItem(Takeable item){
 		mySack.removeItem(item);
-    }
+        }
 	public boolean modCurrency(int change){
+            if(currency + change >= 0){
 		currency += change;
-		return currency;
+		return true;
+            }
+            else{
+                return false;
+            }                   
 	}
 	public boolean setCurrency(int newAmount){
+            if(newAmount>=0){
 		currency = newAmount;
+                return true;
+            }
+            else{
+                return false;
+            }
 	}
         
     /*---------------ACCESSORS-----------------*/
 	public int getCurrency(){
 		return currency;
-    }
+        }
 	
 	/*---------PRIVATE UTILITY FUNCTIONS-------*/
 	private Equipable unequipItem(EquipSlot slot){
@@ -65,24 +76,12 @@ public class Inventory {
 	}
 	
         
-        //CURRENCY
-	public int getCurrency(){
-            return currency;
-        }
-        public int modCurrency(int change){
-            currency += change;
-            return currency;
-        }
-        public void setCurrency(int newAmount){
-            currency = newAmount;
+        public HashMap<EquipSlot, Equipable> getArmoryHMap() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
 
-    public HashMap<EquipSlot, Equipable> getArmoryHMap() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public ArrayList<Takeable> getSack() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        public ArrayList<Takeable> getSack() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
 	
 }

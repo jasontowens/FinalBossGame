@@ -28,7 +28,7 @@ public class Entity extends GameObject{
 		myMotion = mobility;
 		myOccupation = occ;
 		myStats = stats;
-        this.map = m; 
+                this.map = m; 
 	}
 	
 	/*------------COORDINATOR LEVEL OPERATIONS------------*/
@@ -54,8 +54,7 @@ public class Entity extends GameObject{
 	}
 	public boolean changeMoney(int change){
     	if(myInventory.getCurrency() + change >= 0){
-    		myInventory.modCurrency(change);
-    		return true;
+    		return myInventory.modCurrency(change);
     	}
     	else
     	return false;
@@ -93,11 +92,12 @@ public class Entity extends GameObject{
 	public Occupation getOccupation(){
 		return myOccupation;
 	}
+        
 	public HashMap<EquipSlot, Equipable> getArmory(){
-		return null;
+		return myInventory.getArmoryHMap();
 	}
 	public ArrayList<Takeable> getSack(){
-		
+		return myInventory.getSack();
 	}
 	
 	

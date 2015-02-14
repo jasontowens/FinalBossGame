@@ -18,7 +18,8 @@ public abstract class GameObject {
 		
 	}
 	
-	protected GameObject(String className, String objectName, String description){
+	protected GameObject(String className, String objectName, String description, String spriteFilePath){
+		this.spriteFilePath = spriteFilePath;
 		this.name = objectName;
 		this.className = className;
 		this.description = description;

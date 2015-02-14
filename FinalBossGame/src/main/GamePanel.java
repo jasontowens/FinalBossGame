@@ -44,13 +44,13 @@ public class GamePanel extends JPanel implements Runnable {
         int noDelays = 0;
         long excess = 0L;
 
-        period = 1000 / Game.FPS;
+        period = 1000 / RunGame.FPS;
 
         gameStartTime = System.currentTimeMillis();
         prevStatsTime = gameStartTime;
         beforeTime = gameStartTime;
 
-        while (Game.RUNNING) {
+        while (RunGame.RUNNING) {
             gameUpdate();// game state is updated
             gameRender();// render to a buffer
             paintScreen();// paint with the buffer

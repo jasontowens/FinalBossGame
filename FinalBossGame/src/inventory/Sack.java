@@ -9,7 +9,7 @@ public class Sack {
 	public Sack(){
 		sizeOfSack = 10; //default initial value for now
 		itemsInSack = new Takeable[sizeOfSack];
-		slotsInUse = new boolean[10];
+		slotsInUse = new boolean[sizeOfSack];
 	}
 	
 	
@@ -28,17 +28,17 @@ public class Sack {
 	}
 	public Takeable removeItem(Takeable item){
 		for(int i = 0; i != sizeOfSack; ++i){
-                    if(itemsInSack[i] == item){
-                        slotsInUse[i] = false;
-                        return itemsInSack[i];
-                    }
-                }	
-                return null;//not found
+			if(itemsInSack[i] == item){
+				slotsInUse[i] = false;
+				return itemsInSack[i];
+             }
+        }	
+        return null;//not found
 	}
         
-        public Takeable removeItem(int location){
-		 slotsInUse[location] = false;
-                 return itemsInSack[location];
+    public Takeable removeItem(int location){
+    	slotsInUse[location] = false;
+        return itemsInSack[location];
 	}
         
         //returns false if sack full
@@ -59,5 +59,20 @@ public class Sack {
             else
                 return null;            
         }
+
+        /* TEST METHODS */
+		public int getSizeOfSack() {
+			return sizeOfSack;
+		}
+
+
+		public Takeable[] getItemsInSack() {
+			return itemsInSack;
+		}
+
+
+		public boolean[] getSlotsInUse() {
+			return slotsInUse;
+		}
 
 }

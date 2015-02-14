@@ -16,10 +16,11 @@ public class ObjectFactory {
 		factories.add(new ObstacleFactory());
 		factories.add(new OneShotFactory());
 		factories.add(new TakeableFactory());
+		factories.add(new TileFactory());
 	}
 
 	public void ParseFile()
 	{
-		
+		//
 	}
 }

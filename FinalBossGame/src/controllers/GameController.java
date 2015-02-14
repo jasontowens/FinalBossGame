@@ -35,10 +35,10 @@ public class GameController extends SceneController {
             gameReceiver.moveAvatar(9);
         } 
 	public void useKeyI() { // Inventory button
-		
+		gameReceiver.toggleInventory();
 	}
 	public void useKeyEnter() { // inventory
-            gameReceiver.toggleInventory();
+            gameReceiver.activateItem();
         } 
 	public void useKeyEscape() { // 
             gameReceiver.pause();

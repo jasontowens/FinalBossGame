@@ -1,6 +1,8 @@
 package inventory;
 
 import item.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class Inventory {
@@ -51,5 +53,13 @@ public class Inventory {
         public void setCurrency(int newAmount){
             currency = newAmount;
         }
+
+    public HashMap<EquipSlot, Equipable> getArmoryHMap() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public ArrayList<Takeable> getSack() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 }

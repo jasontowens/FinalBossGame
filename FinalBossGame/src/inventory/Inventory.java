@@ -47,24 +47,22 @@ public class Inventory {
 	}
 	public void removeItem(Takeable item){
 		mySack.removeItem(item);
-        }
+    }
 	public boolean modCurrency(int change){
-            if(currency + change >= 0){
-		currency += change;
-		return true;
-            }
-            else{
-                return false;
-            }                   
+        if(currency + change >= 0){
+        	currency += change;
+        	return true;
+        }
+        return false;     
 	}
 	public boolean setCurrency(int newAmount){
-            if(newAmount>=0){
-		currency = newAmount;
-                return true;
-            }
-            else{
-                return false;
-            }
+        if(newAmount>=0){
+        	currency = newAmount;
+            return true;
+        }
+        else{
+        	return false;
+        }
 	}
         
     /*---------------ACCESSORS-----------------*/

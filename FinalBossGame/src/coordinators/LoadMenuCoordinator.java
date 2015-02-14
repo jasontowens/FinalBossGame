@@ -15,7 +15,6 @@ public class LoadMenuCoordinator {
 	private static String currentFile = "";
 	private static ArrayList<String> saveFiles;
 	
-	
 	/*--------------------- CONSTRUCTORS ---------------------*/
 	private LoadMenuCoordinator(){
 		/*Need to read from some directory */

@@ -10,7 +10,7 @@ public class PauseMenuCoordinator {
 	
 	/*--------------------- OTHER DATA MEMBERS ---------------------*/
 	private static CoordinatorScheduler scheduler = CoordinatorScheduler.getInstance();
-	
+
 	//Instance of singleton
 	private static PauseMenuCoordinator pauseMenuCoordinator = null;
 	
@@ -83,6 +83,10 @@ public class PauseMenuCoordinator {
 	
 	public void setCurrentFile(String fileName){ currentFile = fileName; }
 	public void setCurrentSelection(PauseOption option){ currentSelection = option; }
+	
+	public static void setScheduler(CoordinatorScheduler scheduler) {
+		PauseMenuCoordinator.scheduler = scheduler;
+	}
 	
 	/*--------------------- SINGLETON METHODS ---------------------*/
 	public static PauseMenuCoordinator getInstance() {

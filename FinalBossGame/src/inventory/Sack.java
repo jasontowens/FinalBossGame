@@ -18,7 +18,7 @@ public class Sack {
 	public Takeable useItem(int location, Entity ent){
 		if(slotsInUse[location]){	
 			Takeable item = itemsInSack[location];
-                        item.inventoryUse(ent);
+            item.inventoryUse(ent);
 			return itemsInSack[location];
 		}
 		else{

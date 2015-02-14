@@ -1,7 +1,5 @@
 package scene;
 
-import javax.imageio.ImageIO;
-
 /**
  *
  * @author ChrisMoscoso

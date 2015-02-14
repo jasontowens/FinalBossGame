@@ -3,6 +3,7 @@ package factories;
 import map.Tile;
 import map.Terrain;
 import entity.MotionType;
+import gameobject.GameObject;
 
 public class TileFactory extends PlaceableObjectFactory {
 	

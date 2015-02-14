@@ -16,19 +16,20 @@ public class Inventory {
 	public Inventory(Sack sack, Armory armory){
 		mySack = sack;
 		myArmory = armory;
-                currency = 0;
+        currency = 0;
 	}
 	
 	/*----------MESSAGES PASSED FROM COORDINATORS------------*/
 	public Takeable removeItem(int location){
 		return mySack.removeItem(location);
 	}
+			
 	public void useItem(int location, Entity ent){
 		if(location <= 9){
 			mySack.addItem(myArmory.unequip(EquipSlot.values()[location]));
 		}
 		else{
-			mySack.useItem(location-10);
+			mySack.useItem(location-10,ent);
 		}
 	}    
 	
@@ -46,24 +47,22 @@ public class Inventory {
 	}
 	public void removeItem(Takeable item){
 		mySack.removeItem(item);
-        }
+    }
 	public boolean modCurrency(int change){
-            if(currency + change >= 0){
-		currency += change;
-		return true;
-            }
-            else{
-                return false;
-            }                   
+        if(currency + change >= 0){
+        	currency += change;
+        	return true;
+        }
+        return false;     
 	}
 	public boolean setCurrency(int newAmount){
-            if(newAmount>=0){
-		currency = newAmount;
-                return true;
-            }
-            else{
-                return false;
-            }
+        if(newAmount>=0){
+        	currency = newAmount;
+            return true;
+        }
+        else{
+        	return false;
+        }
 	}
         
     /*---------------ACCESSORS-----------------*/

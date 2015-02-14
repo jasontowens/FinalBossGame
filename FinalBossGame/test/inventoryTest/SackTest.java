@@ -8,17 +8,21 @@ import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 
+import entity.Entity;
+
 public class SackTest {
 	
 	private Sack sack;
 	private Takeable takeable1;
 	private Takeable takeable2;
+	private Entity ent;
 
 	@Before
 	public void setUp() throws Exception {
 		sack = new Sack();
 		takeable1 = EasyMock.createNiceMock(Takeable.class);
 		takeable2 = EasyMock.createNiceMock(Takeable.class);
+		ent = EasyMock.createNiceMock(Entity.class);
 	}
 
 	@Test
@@ -151,6 +155,32 @@ public class SackTest {
 		Takeable item = sack.itemAt(100);
 		assertNull(item);
 	}
+	
+	@Test
+	public void testUseItem() {
+		boolean result = sack.addItem(takeable1);
+		assertTrue(result);
+		assertEquals(takeable1, sack.getItemsInSack()[0]);
+		assertTrue(sack.getSlotsInUse()[0]);
+		
+		takeable1.inventoryUse(ent);
+		EasyMock.expectLastCall();
+		
+		EasyMock.replay(takeable1);
+		
+		Takeable item = sack.useItem(0, ent);
+		EasyMock.verify(takeable1);
+		
+		assertEquals(takeable1, item);
+	}
+	
+	@Test
+	public void testUseItemWithNoItemThere() {
+		Takeable item = sack.useItem(0, ent);
+		assertNull(item);
+	}
+	
+	
 	
 	
 

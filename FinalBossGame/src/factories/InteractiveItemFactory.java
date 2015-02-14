@@ -4,18 +4,38 @@ import item.Interactive;
 
 public class InteractiveItemFactory extends PlaceableObjectFactory {
 	
-	private static InteractiveItemFactory factory = null;
-	public static InteractiveItemFactory getInstance() {
-		if(factory == null) {
-			factory = new InteractiveItemFactory();
+	public GameObject createObject(String object) {
+		switch(object) {
+			case "Smasher setter":
+				return createSmasherSetter();
+			case "Summoner setter":
+				return createSummonerSetter();
+			case "Sneak setter":
+				return createSneakSetter();
+			case "Obstacle clearer":
+				return createObstacleClearer();
+			default:
+				return null;
 		}
-		return factory;
 	}
 
-	/*---------------------------------------------------*/
+	public GameObject createSmasherSetter() {
+		GameObject i = new OccupationSetter("Smasher setter", "Makes you a smasher.", "ossmasherpath", "Smasher");
+		return i;
+	}
 
-	public InteractiveItem createSwitch() {
-		InteractiveItem i = new InteractiveItem("InteractiveItem", "Switch", "Opens something probably.");
+	public GameObject createSummonerSetter() {
+		GameObject i = new OccupationSetter("Summoner setter", "Makes you a summoner.", "ossummonerpath", "Summoner");
+		return i;
+	}
+
+	public GameObject createSneakSetter() {
+		GameObject i = new OccupationSetter("Sneak setter", "Makes you a sneak.", "ossneakpath", "Sneak");
+		return i;
+	}
+
+	public GameObject createObstacleClearer() {
+		i = new ObstacleClearer("Obstacle clearer", "Clears obstacles", "osclearerpath");
 		return i;
 	}
 }

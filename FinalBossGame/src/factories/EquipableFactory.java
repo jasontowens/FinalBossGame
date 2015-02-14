@@ -6,19 +6,18 @@ import inventory.EquipSlot;
 
 public class EquipableFactory extends PlaceableObjectFactory {
 	
-	private static EquipableFactory factory = null;
-	public static EquipableFactory getInstance() {
-		if(factory == null) {
-			factory = new EquipableFactory();
+	public GameObject createObject(String object) {
+		switch(object) {
+			case "Bronze Sword":
+				return createBronzeSword();
+			default:
+				return null;
 		}
-		return factory;
 	}
 
-	/*---------------------------------------------------*/
-
-	public Equipable createBronzeSword() {
+	public GameObject createBronzeSword() {
 		ItemStats i = new ItemStats(10, 0, 0, 0, 0, 0, 0, 0, 0, 100, 0, 10, 0);
-		Equipable e = new Equipable("Equipable", "Bronze Sword", "Swing it to kill things.", i, MAINHAND);
+		GameObject e = new Equipable("Bronze Sword", "Swing it to kill things.", "bronzeswordpath", i, MAINHAND);
 		return e;
 	}
 }

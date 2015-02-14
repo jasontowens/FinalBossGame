@@ -5,19 +5,18 @@ import stats.ItemStats;
 
 public class OneShotFactory extends PlaceableObjectFactory {
 	
-	private static OneShotFactory factory = null;
-	public static OneShotFactory getInstance() {
-		if(factory == null) {
-			factory = new OneShotFactory();
+	public GameObject createObject(String object) {
+		switch(object) {
+			case "Heart Container":
+				return createHeartContainer();
+			default:
+				return null;
 		}
-		return factory;
 	}
 
-	/*---------------------------------------------------*/
-
-	public OneShot createHeartContainer() {
+	public GameObject createHeartContainer() {
 		ItemStats i = new ItemStats(0, 0, 0, 0, 0, 0, 0, 10, 0, 1, 0, 0, 0);
-		OneShot o = new OneShot("OneShot", "Heart Container", "Raises health.", i);
+		GameObject o = new OneShot("Heart Container", "Raises health.", "hearthpath", i);
 		return o;
 	}
 }

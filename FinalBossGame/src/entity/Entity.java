@@ -1,12 +1,15 @@
 package entity;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import gameobject.GameObject;
 import inventory.Inventory;
 import stats.PlayerStats;
 import item.Takeable;
 import map.GameMap;
 import item.Equipable;
-import inventory.equipSlot;
+import inventory.EquipSlot;
 import map.CoordinatePair;
 
 public class Entity extends GameObject{
@@ -81,7 +84,7 @@ public class Entity extends GameObject{
 		return myOccupation;
 	}
 	public HashMap<EquipSlot, Equipable> getArmory(){
-		
+		return null;
 	}
 	public ArrayList<Takeable> getSack(){
 		

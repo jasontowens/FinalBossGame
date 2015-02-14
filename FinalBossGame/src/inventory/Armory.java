@@ -23,38 +23,49 @@ public class Armory {
 	public Armory(){
 		numOfSlots = 10;
 		equippedItems = new Equipable[numOfSlots];
+		usedSlots = new boolean[numOfSlots];
 	}
 	public Armory(int numberOfSlots){
 		numOfSlots = numberOfSlots;
 		equippedItems = new Equipable[numOfSlots];
+		usedSlots = new boolean[numOfSlots];
 	}
 	
 	public Equipable unequip(EquipSlot slot){
 		int index = getIndex(slot);
-		
+		if(index < 0 || index > equippedItems.length) {
+			System.out.println("Hi");
+			return null;
+		} 
 		if(!usedSlots[index]){
 			return null;			
 		}
 				
 		Equipable itemAtSlot = equippedItems[index];
+		equippedItems[index] = null;
 		usedSlots[index]=false;					//signifies that the equippedItems[index] is now "empty"
 		
 		return itemAtSlot;
 	}
 	
 	//should always return true for now, maybe false later if entity doesn't meet requirements 
-	public boolean equip(Equipable equipment){
+	public Equipable equip(Equipable equipment){
+		Equipable returnEquipable = equipment;
 		int index = getIndex(equipment.getSlot());
+		if(index < 0 || index > equippedItems.length) {
+			return null;
+		} 
+		
 		if(usedSlots[index]) //if there is already an item in the given slot, unequip it
-			unequip(equipment.getSlot());
+			returnEquipable = unequip(equipment.getSlot());
 		
 		usedSlots[index]=true;
 		equippedItems[index]=equipment;
 		
-		return true;
+		return returnEquipable;
 	}
 	private int getIndex(EquipSlot slot){ //returns index value of specified EquipSlot
-		int index=-1;
+		int index;
 		switch(slot){
 		case HEAD: index = 0; break;
 		case SHOULDERS: index = 1; break;
@@ -65,9 +76,32 @@ public class Armory {
 		case BOOTS: index = 6; break;
 		case MAINHAND: index = 7; break;
 		case OFFHAND: index = 8; break;
-		case TWOHAND: index = 9; break;		
+		case TWOHAND: index = 9; break;
+		default: index = -1; break;
 		}
                 
 		return index;
 	}
+	
+	/* TEST METHODS */
+	public int getNumOfSlots() {
+		return numOfSlots;
+	}
+	public void setNumOfSlots(int numOfSlots) {
+		this.numOfSlots = numOfSlots;
+	}
+	public Equipable[] getEquippedItems() {
+		return equippedItems;
+	}
+	public void setEquippedItems(Equipable[] equippedItems) {
+		this.equippedItems = equippedItems;
+	}
+	public boolean[] getUsedSlots() {
+		return usedSlots;
+	}
+	public void setUsedSlots(boolean[] usedSlots) {
+		this.usedSlots = usedSlots;
+	}
+	
+	
 }

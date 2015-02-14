@@ -1,4 +1,5 @@
 package inventory;
+import entity.Entity;
 import item.*;
 
 public class Sack {
@@ -14,12 +15,10 @@ public class Sack {
 	
 	
 	//<<Usage>>
-	public Takeable useItem(int location){
+	public Takeable useItem(int location, Entity ent){
 		if(slotsInUse[location]){	
-			//use item
-			//
-			//may do this in inventory, waiting for item class
-			//
+			Takeable item = itemsInSack[location];
+                        item.inventoryUse(ent);
 			return itemsInSack[location];
 		}
 		else{

@@ -1,5 +1,6 @@
 package inventory;
 
+import entity.Entity;
 import item.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,12 +23,12 @@ public class Inventory {
 	public Takeable removeItem(int location){
 		return mySack.removeItem(location);
 	}
-	public void useItem(int location){
+	public void useItem(int location, Entity ent){
 		if(location <= 9){
 			mySack.addItem(myArmory.unequip(location));
 		}
 		else{
-			mySack.useItem(location-10);
+			mySack.useItem(location-10, ent);
 		}
 	}    
 	
@@ -45,19 +46,30 @@ public class Inventory {
 	}
 	public void removeItem(Takeable item){
 		mySack.removeItem(item);
-    }
+        }
 	public boolean modCurrency(int change){
+            if(currency + change >= 0){
 		currency += change;
-		return currency;
+		return true;
+            }
+            else{
+                return false;
+            }                   
 	}
 	public boolean setCurrency(int newAmount){
+            if(newAmount>=0){
 		currency = newAmount;
+                return true;
+            }
+            else{
+                return false;
+            }
 	}
         
     /*---------------ACCESSORS-----------------*/
 	public int getCurrency(){
 		return currency;
-    }
+        }
 	
 	/*---------PRIVATE UTILITY FUNCTIONS-------*/
 	private Equipable unequipItem(EquipSlot slot){
@@ -65,24 +77,12 @@ public class Inventory {
 	}
 	
         
-        //CURRENCY
-	public int getCurrency(){
-            return currency;
-        }
-        public int modCurrency(int change){
-            currency += change;
-            return currency;
-        }
-        public void setCurrency(int newAmount){
-            currency = newAmount;
+        public HashMap<EquipSlot, Equipable> getArmoryHMap() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
 
-    public HashMap<EquipSlot, Equipable> getArmoryHMap() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public ArrayList<Takeable> getSack() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        public ArrayList<Takeable> getSack() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
 	
 }

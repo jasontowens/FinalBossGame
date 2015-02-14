@@ -8,6 +8,8 @@ public class PauseMenuController extends SceneController {
 	
 	private static PauseMenuCoordinator pauseReceiver = PauseMenuCoordinator.getInstance();
 	
+	private PauseMenuController(){ }
+	
 	public void useKey2() {
 		pauseReceiver.nextSelection();
 	}

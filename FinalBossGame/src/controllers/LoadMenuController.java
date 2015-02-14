@@ -6,9 +6,9 @@ public class LoadMenuController extends SceneController {
 	
 	private static LoadMenuController loadMenuController = null;
 	
-	private static LoadMenuCoordinator loadReceiver = LoadMenuCoordinator.getInstance();
+	private LoadMenuCoordinator loadReceiver = LoadMenuCoordinator.getInstance();
 	
-	private LoadMenuController() { }
+	private LoadMenuController() {}
 	
 	public void useKey2() {
 		loadReceiver.nextSelection();
@@ -22,7 +22,6 @@ public class LoadMenuController extends SceneController {
 	public void useKeyEscape() {
 		loadReceiver.backToMainMenu();
 	}
-	
 	
 	public static LoadMenuController getInstance() {
 		if(loadMenuController == null) {

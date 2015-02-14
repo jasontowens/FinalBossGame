@@ -24,6 +24,7 @@ public class MenuControllerTest {
 	public void init() {
 		mainMenuReciever = createNiceMock(MainMenuCoordinator.class);
 		menuController = MenuController.getInstance();
+		menuController.setCoordinator(mainMenuReciever);
 	}
 
 	@Test
@@ -35,7 +36,7 @@ public class MenuControllerTest {
 	public void testSingletonDoesNotReferToDifferentSceneController() {
 		assertNotSame(MenuController.getInstance(), LoadMenuController.getInstance());
 	}
-	/* Not sure why these tests don't pass.
+	
 	@Test
 	public void testUseKey2() {
 		mainMenuReciever.previousSelection();
@@ -46,8 +47,7 @@ public class MenuControllerTest {
 		
 		EasyMock.verify(mainMenuReciever);
 	}
-	*/
-	/*
+	
 	@Test
 	public void testUseKey8() {
 		mainMenuReciever.nextSelection();
@@ -58,7 +58,7 @@ public class MenuControllerTest {
 		
 		EasyMock.verify(mainMenuReciever);
 	}
-	*/
+	
 	
 
 }

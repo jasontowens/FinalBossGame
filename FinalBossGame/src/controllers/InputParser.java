@@ -3,8 +3,6 @@ package controllers;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import javax.swing.Timer;
-
 public class InputParser implements KeyListener {
 	private SceneControllerDispatcher sceneControllerDispatcher;
 	private static final long TIMER_DELAY = 1000;

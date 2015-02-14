@@ -39,4 +39,9 @@ public class MenuController extends SceneController {
 		}
 		return menuController;
 	}
+	
+	/*---------------------TEST METHODS ----------------*/
+	public void setCoordinator(MainMenuCoordinator menu) {
+		mainMenuReceiver = menu;
+	}
 }

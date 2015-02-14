@@ -16,19 +16,20 @@ public class Inventory {
 	public Inventory(Sack sack, Armory armory){
 		mySack = sack;
 		myArmory = armory;
-                currency = 0;
+        currency = 0;
 	}
 	
 	/*----------MESSAGES PASSED FROM COORDINATORS------------*/
 	public Takeable removeItem(int location){
 		return mySack.removeItem(location);
 	}
+			
 	public void useItem(int location, Entity ent){
 		if(location <= 9){
 			mySack.addItem(myArmory.unequip(EquipSlot.values()[location]));
 		}
 		else{
-			mySack.useItem(location-10);
+			mySack.useItem(location-10,ent);
 		}
 	}    
 	

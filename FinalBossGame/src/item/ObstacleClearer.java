@@ -12,12 +12,12 @@ public class ObstacleClearer extends Interactive {
 	private ArrayList<Obstacle> targetObstacles;
 	private GameMap current;
 	
-	protected ObstacleClearer(String className, String name, String description, ArrayList<Obstacle> targets, GameMap active){
-		super(className, name, description);
+	protected ObstacleClearer(String className, String name, String description, String spriteFilePath, ArrayList<Obstacle> targets, GameMap active){
+		super(className, name, description, spriteFilePath);
 		targetObstacles = targets;
 	}
-	public ObstacleClearer(String name, String description, ArrayList<Obstacle> targets, GameMap active){
-		super("ObstacleClearer", name, description);
+	public ObstacleClearer(String name, String description, String spriteFilePath, ArrayList<Obstacle> targets, GameMap active){
+		super("ObstacleClearer", name, description, spriteFilePath);
 		targetObstacles = targets;
 	}
 	

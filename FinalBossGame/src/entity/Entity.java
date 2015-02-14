@@ -23,8 +23,8 @@ public class Entity extends GameObject{
     private GameMap map;
 	
     /*---------CONSTRUCTORS---------------*/
-	public Entity(String name, String description, MotionType mobility, Inventory inventory, Occupation occ, PlayerStats stats, GameMap m){
-		super("Entity", name, description); 
+	public Entity(String name, String description, String spriteFilePath, MotionType mobility, Inventory inventory, Occupation occ, PlayerStats stats, GameMap m){
+		super("Entity", name, description, spriteFilePath); 
 		myMotion = mobility;
 		myOccupation = occ;
 		myStats = stats;

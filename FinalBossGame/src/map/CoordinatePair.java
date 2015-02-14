@@ -30,6 +30,10 @@ public class CoordinatePair {
     public void setY(int nextY){
         this.y = nextY;
     }
+    public void add(CoordinatePair CP){
+        this.x += CP.getX();
+        this.y += CP.getY();
+    }
     public void add(int addedX, int addedY){
         this.x += addedX;
         this.y += addedY;

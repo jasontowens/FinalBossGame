@@ -57,8 +57,7 @@ public class Sack {
             if(slotsInUse[location])
                 return itemsInSack[location];
             else
-                return null;
-            
+                return null;            
         }
 
 }

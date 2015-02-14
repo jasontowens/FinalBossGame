@@ -33,20 +33,25 @@ public class Entity extends GameObject{
 	
 	/*------------COORDINATOR LEVEL OPERATIONS------------*/
     public void dropItem(int location){
-            CoordinatePair tmp = map.getLocation(this);
-            map.addItem(myInventory.removeItem(location), tmp);
+    	map.addItem(myInventory.removeItem(location), map.getLocation(this));
     }    
+    public void useItem(int location){
+    	myInventory.useItem(location);
+    }
 	public void move(CoordinatePair change){
-            map.requestMovement(this, change);
+		map.requestMovement(this, change);
 	}   
 	
 	/*------------ITEM LEVEL OPERATIONS---------------*/
 	public void addItem(Takeable item){
         myInventory.addItem(item);
 	}
-	public void setOccupation(String occupationName){
-    	myOccupation.name = occupationName;
-    }
+	public boolean equipItem(Equipable item){
+		return myInventory.equipItem(item);
+	}
+	public void removeItem(Takeable item){	
+		myInventory.removeItem(item);                
+	}
 	public boolean changeMoney(int change){
     	if(myInventory.getCurrency() + change >= 0){
     		myInventory.modCurrency(change);
@@ -55,9 +60,6 @@ public class Entity extends GameObject{
     	else
     	return false;
     }
-	public void removeItem(Takeable item){	
-		myInventory.removeItem(item);                
-	}
 	public boolean setMoney(int newAmount){
         if(newAmount >= 0){
             myInventory.modCurrency(newAmount); 
@@ -66,13 +68,11 @@ public class Entity extends GameObject{
         else 
             return false;
     }
-	
+	public void setOccupation(String occupationName){
+    	myOccupation.name = occupationName;
+    }
 	public void mergeStats(Stats modifiers){
 		this.myStats.mergeStats(modifiers);
-	}
-	
-	public boolean equipItem(Takeable item){
-		return myInventory.equipItem(item);
 	}
 	
 	/*------------MAP LEVEL OPERATIONS----------------*/

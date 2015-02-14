@@ -1,12 +1,16 @@
 package entity;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import gameobject.GameObject;
+import inventory.EquipSlot;
 import inventory.Inventory;
 import stats.PlayerStats;
+import stats.Stats;
 import item.Takeable;
 import map.GameMap;
 import item.Equipable;
-import inventory.equipSlot;
 import map.CoordinatePair;
 
 public class Entity extends GameObject{
@@ -61,6 +65,10 @@ public class Entity extends GameObject{
         else 
             return false;
     }
+	
+	public void mergeStats(Stats modifiers){
+		this.myStats.mergeStats(modifiers);
+	}
 	
 	/*------------MAP LEVEL OPERATIONS----------------*/
 	public void levelUp(){

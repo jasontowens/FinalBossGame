@@ -2,6 +2,7 @@
 
 package item;
 
+import map.GameMap;
 import inventory.EquipSlot;
 import stats.ItemStats;
 import item.Item;

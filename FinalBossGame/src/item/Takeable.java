@@ -1,6 +1,7 @@
 //Last updated by Matthew Kroeze on 2015-02-12
 package item;
 
+import map.GameMap;
 import gameobject.GameObject;
 import stats.ItemStats;
 import item.Item;

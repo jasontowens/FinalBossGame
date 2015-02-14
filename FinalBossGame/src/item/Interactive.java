@@ -18,11 +18,11 @@ public abstract class Interactive extends GameObject implements Item{
 		super("Interactive", name, description, spriteFilePath);
 		hasActivated = false;
 	}
-	protected Interactive(String className, String name, String description, String spriteFilePath, bool activation){
+	protected Interactive(String className, String name, String description, String spriteFilePath, boolean activation){
 		super(className, name, description, spriteFilePath);
 		hasActivated = activation;
 	}
-	protected Interactive(String name, String description, String spriteFilePath, bool activation){
+	protected Interactive(String name, String description, String spriteFilePath, boolean activation){
 		super("Interactive", name, description, spriteFilePath);
 		hasActivated = activation;
 	}

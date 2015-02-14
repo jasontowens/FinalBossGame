@@ -14,11 +14,13 @@ public class Equipable extends Takeable implements Item {
 	
 	//constructors
 	protected Equipable(String className, String name, String description, ItemStats mods, GameMap active, EquipSlot equipSlot){
-		super(className, name, description, mods, active);
+		//TODO fix this sprite shit.
+		super(className, name, description, "sprite", mods, active);
 		slot = equipSlot;
 	}
 	public Equipable(String name, String description, ItemStats mods, GameMap active, EquipSlot equipSlot){
-		super("Equipable", name, description, mods, active);
+		//TODO fix this sprite shit.
+		super("Equipable", name, description, "sprite", mods, active);
 		slot = equipSlot;
 	}
 	

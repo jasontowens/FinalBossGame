@@ -37,6 +37,21 @@ public class Armory {
 	public Equipable unequip(EquipSlot slot){
 		int index = getIndex(slot);
 		if(index < 0 || index > equippedItems.length) {
+			return null;
+		} 
+		if(!usedSlots[index]){
+			return null;			
+		}
+				
+		Equipable itemAtSlot = equippedItems[index];
+		equippedItems[index] = null;
+		usedSlots[index]=false;					//signifies that the equippedItems[index] is now "empty"
+		
+		return itemAtSlot;
+	}
+        public Equipable unequip(int position){
+		int index = position;
+		if(index < 0 || index > equippedItems.length) {
 			System.out.println("Hi");
 			return null;
 		} 

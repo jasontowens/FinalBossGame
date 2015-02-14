@@ -1,4 +1,5 @@
 package inventory;
+import entity.Entity;
 import item.*;
 
 public class Sack {
@@ -9,17 +10,15 @@ public class Sack {
 	public Sack(){
 		sizeOfSack = 10; //default initial value for now
 		itemsInSack = new Takeable[sizeOfSack];
-		slotsInUse = new boolean[10];
+		slotsInUse = new boolean[sizeOfSack];
 	}
 	
 	
 	//<<Usage>>
-	public Takeable useItem(int location){
+	public Takeable useItem(int location, Entity ent){
 		if(slotsInUse[location]){	
-			//use item
-			//
-			//may do this in inventory, waiting for item class
-			//
+			Takeable item = itemsInSack[location];
+                        item.inventoryUse(ent);
 			return itemsInSack[location];
 		}
 		else{
@@ -28,17 +27,21 @@ public class Sack {
 	}
 	public Takeable removeItem(Takeable item){
 		for(int i = 0; i != sizeOfSack; ++i){
-	        if(itemsInSack[i] == item){
-	            slotsInUse[i] = false;
-	            return itemsInSack[i];
-	        }
+
+			if(itemsInSack[i] == item){
+				slotsInUse[i] = false;
+				return itemsInSack[i];
+             }
         }	
-		return null;//not found
+        return null;//not found
 	}
-        
+
 	public Takeable removeItem(int location){
-		slotsInUse[location] = false;
-		return itemsInSack[location];
+		if(location >= 0 && location < sizeOfSack) {
+			slotsInUse[location] = false;
+			return itemsInSack[location];
+		}
+		return null;
 	}
         
 	//returns false if sack full
@@ -54,19 +57,35 @@ public class Sack {
 	}
         
 	public Takeable itemAt(int location){
-	    if(slotsInUse[location])
-	        return itemsInSack[location];
-	    else
-	        return null;            
+		if(location >= 0 && location < sizeOfSack) {
+			if(slotsInUse[location])
+				return itemsInSack[location];
+		}
+	    return null;            
 	}
         
 	public boolean isInSack(Takeable item){
 		 for (int i = 0; i != sizeOfSack; ++i){
-			 if (itemsInSack[i].equals(item))
+			 if (itemsInSack[i] == (item))
 				 return true;
 		 }
 		 
 		 return false;
 	}
+
+        /* TEST METHODS */
+		public int getSizeOfSack() {
+			return sizeOfSack;
+		}
+
+
+		public Takeable[] getItemsInSack() {
+			return itemsInSack;
+		}
+
+
+		public boolean[] getSlotsInUse() {
+			return slotsInUse;
+		}
 
 }

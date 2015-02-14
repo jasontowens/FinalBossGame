@@ -11,6 +11,7 @@ public class Takeable extends GameObject implements Item {
 	//fields
 	protected ItemStats modifiers;
 	protected GameMap current;
+	protected String spriteFilePath;
 	
 	//constructors
 	protected Takeable(String className, String name, String description, String spriteFilePath, ItemStats mods, GameMap active){
@@ -19,7 +20,8 @@ public class Takeable extends GameObject implements Item {
 		current = active;
 	}
 	public Takeable(String name, String description, ItemStats mods, GameMap active){
-		super("Takeable", name, description, spriteFilePath);
+		//TODO fix this damn sprite file path
+		super("Takeable", name, description,"takeable");
 		modifiers = mods;
 		current = active;
 	}

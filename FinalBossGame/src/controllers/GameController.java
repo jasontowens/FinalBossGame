@@ -34,6 +34,9 @@ public class GameController extends SceneController {
 	public void useKey9() { // northeast
             gameReceiver.moveAvatar(9);
         } 
+	public void useKeyI() { // Inventory button
+		
+	}
 	public void useKeyEnter() { // inventory
             gameReceiver.toggleInventory();
         } 

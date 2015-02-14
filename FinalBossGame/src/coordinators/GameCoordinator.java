@@ -1,4 +1,5 @@
 package coordinators;
+import map.CoordinatePair;
 import map.GameMap;
 import entity.Entity;
 import viewport.MapViewPort;
@@ -19,10 +20,7 @@ public class GameCoordinator
     private static GameCoordinator gameCoordinator = null;
 
     /*--------------------- CONSTRUCTOR ---------------------*/
-    private GameCoordinator(Entity avatar, GameMap activeMap){
-    	this.avatar = avatar;
-    	this.activeMap = activeMap;
-    }
+    private GameCoordinator(){    }
 
     /*--------------------- GAME STATUS CHANGES---------------------*/
     public void toggleInventory(Entity entity)
@@ -39,66 +37,74 @@ public class GameCoordinator
 
     public void moveAvatar(int currentSelection)
     {
+    	CoordinatePair movement;
         switch (currentSelection){
             case 1: // southwest
-                --x;
-                --y;
+            	movement = new CoordinatePair(-1, -1);
                 break;
             case 2: // south
-                --y;
+            	movement = new CoordinatePair(0, -1);
                 break;
             case 3: // southeast
-                ++x;
-                --y;
+                movement = new CoordinatePair(1, -1);
                 break;
             case 4: // west
-                --x;
+                movement = new CoordinatePair(-1, 0);
                 break;
             case 6: // east
-                ++x;
+                movement = new CoordinatePair(1, 0);
                 break;
             case 7: // northwest
-                --x;
-                ++y;
+                movement = new CoordinatePair(-1, 1);
                 break;
             case 8: // north 
-                ++x;
+            	movement = new CoordinatePair(0, 1);
                 break;
             case 9: // northeast
-                ++x;
-                ++y;
+            	movement = new CoordinatePair(1, 1);
                 break;
-	}
+            default: // no movement
+            	movement = new CoordinatePair(0, 0);
+                break;
+        }
+        avatar.move(movement);
     }
 
-    // inventory commands
-
+    /*--------------------- INVENTORY COMMANDS---------------------*/
     public void nextItem() // upperbound?
     {
-        ++selectedItem;
+    	//TODO: Talk to Jason about how inventory will be presented
+        selectedItem = (selectedItem + 1) % avatar.getSack().size();
+        
     }
 
     public void previousItem()
     {
-        if(selectedItem == 0)
-            return;
-        --selectedItem;
+        selectedItem = --selectedItem % avatar.getSack().size()
+        		+ (selectedItem < 0 ? avatar.getSack().size() : 0);
     }
 
-    public void activateItem(Entity entity, int location) 
+    public void activateItem() 
     {
-        // wait for Matt to fix entity class
-        entity.equipItem(location);
-        entity.useItem(location);
+        avatar.useItem(selectedItem);
     }
 
-    public void dropItem(Entity entity, int location) 
+    public void dropItem() 
     {
-        entity.dropItem(location);
+        avatar.dropItem(selectedItem);
     }
     
+    
+    /*--------------------- COORDINATOR COMMANDS---------------------*/
     public static void setScheduler(CoordinatorScheduler scheduler) {
-	GameCoordinator.scheduler = scheduler;
+    	GameCoordinator.scheduler = scheduler;
+    }
+    
+    public void setAvatar(Entity avatar){
+    	this.avatar = avatar;
+    }
+    public void setActiveMap(GameMap map){
+    	this.activeMap = map;
     }
     
   /*--------------------- SINGLETON METHODS ---------------------*/

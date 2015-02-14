@@ -29,4 +29,5 @@ public abstract class GameObject {
 	public String getClassName(){ return className; }
 	public String getDescription(){ return description; }
 	public String getName() { return name; }
+	
 }

@@ -143,6 +143,10 @@ public class GameMap {
                     Pair tmp;
                     tmp = getEntityPair(entity);
                     tmp.setRight(desired); //actually moving the entity
+                    
+                    //apply AreaEffect
+                    
+                    
                 } else {
                     //return;
                 }

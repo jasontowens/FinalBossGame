@@ -33,13 +33,15 @@ public class InventoryCoordinator
     public void nextItem() 
     {
         //TODO: Talk to Jason about how inventory will be presented
-        selectedItem = (selectedItem + 1) % avatar.getSack().size();
+        selectedItem = (selectedItem + 1) % avatar.getSack().length;
     }
 
     public void previousItem()
     {
-        selectedItem = --selectedItem % avatar.getSack().size()
-                + (selectedItem < 0 ? avatar.getSack().size() : 0);
+        selectedItem = --selectedItem;
+        if(selectedItem == -1){
+            selectedItem = avatar.getSack().length;
+        }
     }
 
     public void activateItem() 
@@ -67,7 +69,7 @@ public class InventoryCoordinator
     
     /*--------------------- SINGLETON METHODS ---------------------*/
     public static InventoryCoordinator getInstance() {
-        if(inventoryCoordinator == null) {
+        if(inventoryCoordinator == null){
             inventoryCoordinator = new InventoryCoordinator();
         }
         return inventoryCoordinator;

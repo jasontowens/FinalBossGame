@@ -127,8 +127,17 @@ public class Entity extends GameObject implements Saveable{
 	public String toXML(){	
 		String str = "";
 		
+		/*
+		 * As of right now, Occupation's name field does not have an access modifier. 
+		 * I won't add one because I don't know if that will break anyone else's code or tests.
+		 * 
+		 * If Occupation's name becomes private, change the access below to use a getter.
+		 * 
+		 * -Hanif
+		 */
+		
 		//opening <entity x=".." y=".."> tag
-		str += "<entity occupation=\"" + myOccupation + "\"" + " x=\"" + this.getLocation().getX() +
+		str += "<entity occupation=\"" + myOccupation.name + "\"" + " x=\"" + this.getLocation().getX() +
 				"\"" + " y=" + "\"" + this.getLocation().getY() + "\"" + ">";
 		
 		//Newline is probably not strictly necessary, but makes XML file much more readable

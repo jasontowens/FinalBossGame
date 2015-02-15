@@ -5,7 +5,10 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import main.RunGame;
+import map.GameMap;
+import map.Tile;
 import scene.Scene;
+import stats.PlayerStats;
 
 /**
  *
@@ -13,24 +16,31 @@ import scene.Scene;
  */
 public class MapViewPort extends ViewPort {
 
-    int r = 0, g = 0, b = 0;
+    private GameMap map;
 
     public MapViewPort(Scene s) {
         super(s);
     }
 
     private void queryModel() {
-        r = 0;//(int) (Math.random() * 255);
-        g = 255;//(int) (Math.random() * 255);
-        b = 0;//(int) (Math.random() * 255);
-        //System.out.println("r:" + r + " g:" + g + "b:" + b);
+       Object o = scene.getModelObject("map");
+       this.map = (GameMap) o;
     }
 
     public void drawGraphics(Graphics g) {
-        queryModel();
-        g.setColor(new Color(r, this.g, b));
-        g.fillRect(0, 0, RunGame.WIDTH, RunGame.HEIGHT);
-        g.setColor(Color.BLACK);
+        Tile[][] tiles = null;
+        if(map == null){
+           queryModel();
+        }else{
+            tiles = map.getTilesForScreen();
+        }
+        if(tiles != null){
+            for(int i= 0; i <tiles.length; i++){
+                for(int j = 0; j < tiles[0].length; j++){
+                    tiles[i][j].getTerrain().getSpriteFilePath();
+                }
+            }
+        }
         g.setFont(new Font("TimesRoman", Font.PLAIN, 20));
         g.drawString("MAP VIEWPORT", RunGame.WIDTH/2 - 85, RunGame.HEIGHT/2);
     }

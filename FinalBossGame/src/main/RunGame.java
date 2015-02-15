@@ -2,7 +2,8 @@ package main;
 
 import entity.*;
 import map.*;
-
+import controllers.InputParser;
+import coordinators.GameCoordinator;
 
 /**
  *
@@ -30,6 +31,26 @@ public class RunGame {
     	myGameCoord.setAvatar(myAvater);
     	GameWindow window =	new GameWindow();
     	window.setModel(myGameCoord, )
+    	//MODEL SETUP
+    	
+    	//TODO: CREATE MODEL, store avatar in myAvatar and active mao in myMap
+    	
+    	//CONTROLLER SETUP
+    	InputParser myParser = new InputParser();
+    	GameCoordinator myGameCoord = GameCoordinator.getInstance();
+    	//myGameCoord.setAvatar(myAvater);
+    	//myGameCoord.setActiveMap(myMap);
+    	
+    	
+    	//
+    	//TODO: add the view:
+    	GameWindow window =	new GameWindow();
+        window.addKeyListener(myParser);
+    	//window.setModel( para1, para2...)
+    	
+    	
+    	//To end game:
+    	//RUNNING = false;
     }
     
 }

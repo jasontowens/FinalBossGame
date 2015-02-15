@@ -14,7 +14,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 
 import entity.Entity;
-import factories.*;
+import factories.*; 
 import gameobject.GameObject;
 import map.*;
 

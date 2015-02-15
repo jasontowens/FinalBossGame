@@ -6,20 +6,20 @@ import entity.Occupation;
 public class OccupationSetter extends Interactive{
 	private String jobName;
 	
-	protected OccupationSetter(String className, String name, String description, String spriteFilePath, String jobName){
-		super(className, name, description, spriteFilePath);
+	protected OccupationSetter(String className, String name, String description, int ID, String jobName){
+		super(className, name, description, ID); //TODO: change ID to how Hanif wants it set up 
 		this.jobName = jobName;
 	}
-	public OccupationSetter(String name, String description, String spriteFilePath, String jobName){
-		super("OccupationSetter", name, description, spriteFilePath);
+	public OccupationSetter(String name, String description, int ID, String jobName){
+		super("OccupationSetter", name, description, ID); //TODO: change ID to how Hanif wants it set up 
 		this.jobName = jobName;
 	}
-	protected OccupationSetter(String className, String name, String description, String spriteFilePath, boolean hasActivated, String jobName){
-		super(className, name, description, spriteFilePath, hasActivated);
+	protected OccupationSetter(String className, String name, String description, int ID, boolean hasActivated, String jobName){
+		super(className, name, description, ID, hasActivated); //TODO: change ID to how Hanif wants it set up 
 		this.jobName = jobName;
 	}
-	public OccupationSetter(String name, String description, String spriteFilePath, boolean hasActivated, String jobName){
-		super("OccupationSetter", name, description, spriteFilePath, hasActivated);
+	public OccupationSetter(String name, String description, int ID, boolean hasActivated, String jobName){
+		super("OccupationSetter", name, description, ID, hasActivated); //TODO: change ID to how Hanif wants it set up 
 		this.jobName = jobName;
 	}
 	

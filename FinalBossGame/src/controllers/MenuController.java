@@ -14,7 +14,7 @@ public class MenuController extends SceneController {
 	
 	private static MenuCoordinator menuCoordinator = MenuCoordinator.getInstance();
 	
-	private MenuController() {	}
+	private MenuController() {	} 
 	
 	
 	

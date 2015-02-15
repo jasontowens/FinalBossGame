@@ -26,6 +26,7 @@ public class ObjectFactory {
 	private OneShotFactory oneShotFactory;
 	private TakeableFactory takeableFactory;
 	private ElementValidator elementValidator;
+	private XMLReader xmlreader;
 
 	public ObjectFactory(InputStream file, GameMap currentmap) {
 		xmlfile = file;
@@ -36,21 +37,22 @@ public class ObjectFactory {
 		oneShotFactory = new OneShotFactory();
 		takeableFactory = new TakeableFactory();
 		elementValidator = new ElementValidator();
+		xmlreader = XMLReader.getInstance(xmlfile);
 	}
 
 	public void ParseFile() throws ParserConfigurationException, SAXException, IOException{
 		//Load document from xml file
-		Document d = XMLReader.parseDocument(xmlfile);
+		Document d = xmlreader.parseDocument();
 		Element head = d.getDocumentElement();
 		
 		int counter;
 		
 		//Entities
-		List<Element> entityElements = XMLReader.getElements("entity", head);
+		List<Element> entityElements = xmlreader.getElements("entity", head);
 		
 		for(counter = 0; counter < entityElements.size(); counter++) {
 			
-			List<Element> invElements = XMLReader.getElements("inventory", entityElements.get(counter));
+			List<Element> invElements = xmlreader.getElements("inventory", entityElements.get(counter));
 			ArrayList<Takeable> inv = new ArrayList<Takeable>();
 			
 			for(int i = 0; i < invElements.size(); i++) {
@@ -60,14 +62,14 @@ public class ObjectFactory {
 			}
 			
 			if(elementValidator.ValidElement(entityElements.get(counter), "entity")) {
-				Entity e = entityFactory.createEntity(map, entityElements.get(counter).getAttribute("name"), XMLReader.getElements("stats", entityElements.get(counter)).get(0), inv);
+				Entity e = entityFactory.createEntity(map, entityElements.get(counter).getAttribute("name"), xmlreader.getElements("stats", entityElements.get(counter)).get(0), inv);
 
 				map.addEntity(e, new CoordinatePair(Integer.parseInt(entityElements.get(counter).getAttribute("x")), Integer.parseInt(entityElements.get(counter).getAttribute("y"))));
 			}
 		}
 
 		//One Shot items
-		List<Element> oneShotElements = XMLReader.getElements("oneshot", head);
+		List<Element> oneShotElements = xmlreader.getElements("oneshot", head);
 
 		for(counter = 0; counter < oneShotElements.size(); counter++) {
 			
@@ -79,7 +81,7 @@ public class ObjectFactory {
 		}
 
 		//Interactive items
-		List<Element> interactiveElements = XMLReader.getElements("interactive", head);
+		List<Element> interactiveElements = xmlreader.getElements("interactive", head);
 
 		for(counter = 0; counter < interactiveElements.size(); counter++) {
 			
@@ -91,7 +93,7 @@ public class ObjectFactory {
 		}
 
 		//Obstacles
-		List<Element> obstacleElements = XMLReader.getElements("obstacle", head);
+		List<Element> obstacleElements = xmlreader.getElements("obstacle", head);
 
 		for(counter = 0; counter < obstacleElements.size(); counter++) {
 			
@@ -103,7 +105,7 @@ public class ObjectFactory {
 		}
 
 		//Takeable items
-		List<Element> takeableElements = XMLReader.getElements("takeable", head);
+		List<Element> takeableElements = xmlreader.getElements("takeable", head);
 
 		for(counter = 0; counter < takeableElements.size(); counter++) {
 			

@@ -14,6 +14,9 @@ public class AreaEffect extends GameObject {
             super(sprite, name, description, ID); //TODO: change ID to how Hanif wants it set up 
             this.modifiers = mods;
 	}
+        
+        
+        
 	
 	/*--------------------- USAGE ---------------------*/
 	public void affect(Entity entity){

@@ -1,6 +1,21 @@
 package coordinators;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
+
+import map.CoordinatePair;
+import map.GameMap;
+import map.Pair;
+import entity.Entity;
+import factories.ObjectFactory;
 
 public class LoadMenuCoordinator {
 	
@@ -12,23 +27,63 @@ public class LoadMenuCoordinator {
 	
 	/*--------------------- MENU STATUS ---------------------*/
 	private static int currentFileIndex = 0;
-	private static String currentFile = "";
+	private static String currentFile;
 	private static ArrayList<String> saveFiles;
+	//Might need to do file independent shit but I think java is good about it.
+	private static final File saveFolder = new File("src/resources/saves/");
+	private static final String fileExtension = ".xml";
+	
+	private GameMap loadedMap = new GameMap(30,21);
+	
+	private void setGameMap(GameMap map) {
+		this.loadedMap = map;
+	}
 	
 	/*--------------------- CONSTRUCTORS ---------------------*/
 	private LoadMenuCoordinator(){
-		/*Need to read from some directory */
-		//Commenting this out for now. Need to finalize this. Otherwise this breaks everything.
-		//saveFiles = new ArrayList<String>();
-		//currentFile = saveFiles.get(currentFileIndex);
+		saveFiles = new ArrayList<String>();
+		getSaveFilesFromFileSystem();
+		if(saveFiles.size() > 0) {
+			currentFile = saveFiles.get(currentFileIndex);
+		}
+	}
+	
+	private static void getSaveFilesFromFileSystem() {
+		for(File file : saveFolder.listFiles()) {
+			if(!file.isDirectory()) {
+				if(file.getName().endsWith(fileExtension)) {
+					saveFiles.add(file.getAbsolutePath());
+				}
+			}
+		}
+	}
+	
+	public static void updateSaveFiles() {
+		getSaveFilesFromFileSystem();
 	}
 	
 	
 	/*--------------------- LOAD COMMANDS ---------------------*/
-	public void confirmSelection(){
-		//TODO: Send selected filename to appropriate interface, change coordinator to game
+	public void confirmSelection() throws ParserConfigurationException, SAXException, IOException{
+		File saveFile = new File(currentFile);
+		InputStream file = new FileInputStream(saveFile);
+		createNewGame(file);
+		scheduler.changeCoordinator(CoordinatorType.GAME);
 	}
 	
+	private void createNewGame(InputStream file) throws ParserConfigurationException, SAXException, IOException {
+		//TODO: create the new game map
+
+				
+		ObjectFactory objectFactory = new ObjectFactory(file,loadedMap);
+		objectFactory.ParseFile();
+		ArrayList<Pair<Entity, CoordinatePair>> entities = loadedMap.getAllEntities();
+		Entity entity = entities.get(0).getLeft();
+		GameCoordinator gameCoordinator = GameCoordinator.getInstance();
+		gameCoordinator.setActiveMap(loadedMap);
+		gameCoordinator.setAvatar(entity);
+	}
+
 	public void nextSelection(){
 		currentFileIndex = (currentFileIndex + 1) % saveFiles.size(); //increment index by 1 while keeping within list size indices
 		currentFile = saveFiles.get(currentFileIndex);
@@ -54,6 +109,7 @@ public class LoadMenuCoordinator {
 		if(loadMenuCoordinator == null) {
 			loadMenuCoordinator = new LoadMenuCoordinator();
 		}
+		updateSaveFiles();
 		return loadMenuCoordinator;
 	}
 
@@ -90,7 +146,7 @@ public class LoadMenuCoordinator {
 
 
 	public static String getCurrentFile() {
-		return currentFile;
+		return currentFile.toString();
 	}
 
 

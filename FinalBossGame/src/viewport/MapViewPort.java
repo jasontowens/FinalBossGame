@@ -4,7 +4,8 @@ import viewport.ViewPort;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import main.Game;
+import main.RunGame;
+import scene.Scene;
 
 /**
  *
@@ -14,8 +15,8 @@ public class MapViewPort extends ViewPort {
 
     int r = 0, g = 0, b = 0;
 
-    public MapViewPort() {
-
+    public MapViewPort(Scene s) {
+        super(s);
     }
 
     private void queryModel() {
@@ -28,9 +29,9 @@ public class MapViewPort extends ViewPort {
     public void drawGraphics(Graphics g) {
         queryModel();
         g.setColor(new Color(r, this.g, b));
-        g.fillRect(0, 0, Game.WIDTH, Game.HEIGHT);
+        g.fillRect(0, 0, RunGame.WIDTH, RunGame.HEIGHT);
         g.setColor(Color.BLACK);
         g.setFont(new Font("TimesRoman", Font.PLAIN, 20));
-        g.drawString("MAP VIEWPORT", Game.WIDTH/2 - 85, Game.HEIGHT/2);
+        g.drawString("MAP VIEWPORT", RunGame.WIDTH/2 - 85, RunGame.HEIGHT/2);
     }
 }

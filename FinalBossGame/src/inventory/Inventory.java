@@ -2,11 +2,14 @@ package inventory;
 
 import entity.Entity;
 import item.*;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import util.Saveable;
 
-public class Inventory {
+
+public class Inventory implements Saveable {
 	private int currency;
 	private Sack mySack;
 	private Armory myArmory;
@@ -83,5 +86,27 @@ public class Inventory {
         public ArrayList<Takeable> getSack() {
             throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
+        
+    
+    public String toXML(){
+    	String str = "";
+    	if(mySack != null){
+    		str += mySack.toXML();
+        	str += "\n";
+    	}
+    	if(myArmory != null)
+    		str += myArmory.toXML();
+    
+    	
+    	return str;
+    	
+    }
 	
 }
+
+
+
+
+
+
+

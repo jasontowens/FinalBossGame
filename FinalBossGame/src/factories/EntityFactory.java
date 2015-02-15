@@ -1,49 +1,72 @@
 package factories;
 
-import gameobject.GameObject;
+import inventory.Armory;
+import inventory.Inventory;
+import inventory.Sack;
+import item.Takeable;
+
+import java.util.ArrayList;
+
 import entity.Entity;
 import entity.Occupation;
-import stats.Stats;
 import stats.PlayerStats;
 import entity.MotionType;
+import map.GameMap;
 
-public class EntityFactory extends PlaceableObjectFactory {
+import org.w3c.dom.Element;
 
-	public GameObject createObject(String object) {
-		switch(object) {
-			case "SmasherEntity":
-				return createSmasher();
-			case "SummonerEntity":
-				return createSummoner();
-			case "SneakEntity":
-				return createSneak();
+public class EntityFactory {
+
+	public Entity createEntity(GameMap map, String name, Element statsElement, ArrayList<Takeable> inv) {
+		
+		Inventory i = new Inventory(new Sack(), new Armory());
+		
+		for(Takeable t : inv) {
+			i.addItem(t);
+		}
+
+		PlayerStats s = new PlayerStats(
+			Integer.parseInt(statsElement.getAttribute("livesleft")),
+			Integer.parseInt(statsElement.getAttribute("strength")),
+			Integer.parseInt(statsElement.getAttribute("agility")),
+			Integer.parseInt(statsElement.getAttribute("intellect")),
+			Integer.parseInt(statsElement.getAttribute("hardiness")),
+			Integer.parseInt(statsElement.getAttribute("experience")),
+			Integer.parseInt(statsElement.getAttribute("movement")),
+			Integer.parseInt(statsElement.getAttribute("hpcurrent")),
+			Integer.parseInt(statsElement.getAttribute("mpcurrent")),
+			Integer.parseInt(statsElement.getAttribute("defense")),
+			Integer.parseInt(statsElement.getAttribute("offense")));
+			
+		
+		switch(name) {
+			case "Smasher":
+				return createSmasher(i, s, map);
+			case "Summoner":
+				return createSummoner(i, s, map);
+			case "Sneak":
+				return createSneak(i, s, map);
 			default:
 				return null;
 		}
 	}
 				
 	
-	public GameObject createSmasher() {
-		Inventory i = new Inventory(new Sack(), new Armory());
-		Occupation o = new Smasher();
-		Stats s = new PlayerStats(1, 10, 2, 4, 10, 0, 1, 40, 5, 20, 30);
-		GameObject e = new Entity("SmasherEntity", "Heavy brawler", "smashersprite", GROUND, i, o, s);
+	public Entity createSmasher(Inventory i, PlayerStats s, GameMap map) {
+		Occupation o = new Occupation("Smasher", "Brawls heavily.");
+		Entity e = new Entity("Smasher", "Brawls heavily", "smashersprite", MotionType.GROUND, i, o, s, map);
 		return e;
 	}
 
-	public GameObject createSummoner() {
-		Inventory i = new Inventory(new Sack(), new Armory());
-		Occupation o = new Summoner();
-		Stats s = new PlayerStats(1, 2, 10, 20, 5, 1, 20, 30, 10, 15);
-		GameObject e = new Entity("SummonerEntity" "Magical man", "summonersprite", GROUND, i, o, s);
+	public Entity createSummoner(Inventory i, PlayerStats s, GameMap map) {
+		Occupation o = new Occupation("Summoner", "Summons stuff.");
+		Entity e = new Entity("Summoner", "Summons stuff.", "summonersprite", MotionType.GROUND, i, o, s, map);
 		return e;
 	}
 
-	public GameObject createSneak() {
-		Inventory i = new Inventory(new Sack(), new Armory());
-		Occupation o = new Sneak();
-		Stats s = new PlayerStats(1, 5, 20, 10, 5, 1, 20, 10, 5, 40);
-		GameObject e = new Entity("SneakEntity", "Sneaky dude", "sneaksprite", GROUND, i, o, s);
+	public Entity createSneak(Inventory i, PlayerStats s, GameMap map) {
+		Occupation o = new Occupation("Sneak", "Sneaks around.");
+		Entity e = new Entity("Sneak", "Sneaks around.", "sneaksprite", MotionType.GROUND, i, o, s, map);
 		return e;
 	}
 }

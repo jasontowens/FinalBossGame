@@ -2,12 +2,11 @@ package factories;
 
 import item.OneShot;
 import stats.ItemStats;
-import gameobject.GameObject;
 
-public class OneShotFactory extends PlaceableObjectFactory {
+public class OneShotFactory {
 	
-	public GameObject createObject(String object) {
-		switch(object) {
+	public OneShot createOneShot(String name) {
+		switch(name) {
 			case "Heart Container":
 				return createHeartContainer();
 			default:
@@ -15,9 +14,9 @@ public class OneShotFactory extends PlaceableObjectFactory {
 		}
 	}
 
-	public GameObject createHeartContainer() {
+	public OneShot createHeartContainer() {
 		ItemStats i = new ItemStats(0, 0, 0, 0, 0, 0, 0, 10, 0, 1, 0, 0, 0);
-		GameObject o = new OneShot("Heart Container", "Raises health.", "hearthpath", i);
+		OneShot o = new OneShot("Heart Container", "Raises health.", "hearthpath", i);
 		return o;
 	}
 }

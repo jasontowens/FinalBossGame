@@ -12,8 +12,8 @@ public class GameScene extends Scene {
     
     ViewPort map, status;  
     public GameScene(){
-        map = new MapViewPort();
-        status = new StatusViewPort();
+        map = new MapViewPort(this);
+        status = new StatusViewPort(this);
         viewports.add(map);
         viewports.add(status);
     }    

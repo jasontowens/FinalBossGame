@@ -48,4 +48,6 @@ public class ItemStats extends Stats {
 	public void modValue(int valAdded){
 		value += valAdded;
 	}
+	
+	
 }

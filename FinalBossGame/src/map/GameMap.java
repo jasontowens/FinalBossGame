@@ -20,23 +20,18 @@ public class GameMap {
     private ArrayList<Pair<Entity, CoordinatePair>> entitiesOnMap;
     private ArrayList<Pair<Item, CoordinatePair>> itemsOnMap;
     private Tile[][] tilesOnMap;
-    private final Dimension tileSize;
+    private Dimension tileSize;
     private final MotionValidator mValidator;
     private Entity player;
 
     /*-----------CONSTRUCTORS-----------------*/
-    public GameMap(Tile[][] tilesOnMap) {
-        this.tilesOnMap = tilesOnMap;
+    public void takeTiles(Tile[][] map){
+        this.tilesOnMap = map;
         this.width = tilesOnMap.length;
         this.height = tilesOnMap[0].length;
-        this.tileSize = new Dimension(RunGame.TILE_WIDTH, RunGame.TILE_HEIGHT);
-        mValidator = MotionValidator.getInstance();
-        entitiesOnMap = new ArrayList<Pair<Entity, CoordinatePair>>();
-        itemsOnMap = new ArrayList<Pair<Item, CoordinatePair>>();
-        
-        thisMap = this; //singleton
+        this.tileSize = new Dimension(RunGame.TILE_WIDTH, RunGame.TILE_HEIGHT);        
     }
-
+    
     GameMap() {
         this.tileSize = new Dimension(RunGame.TILE_WIDTH, RunGame.TILE_HEIGHT);
         mValidator = MotionValidator.getInstance();
@@ -148,6 +143,10 @@ public class GameMap {
                     Pair tmp;
                     tmp = getEntityPair(entity);
                     tmp.setRight(desired); //actually moving the entity
+                    
+                    //apply AreaEffect
+                    
+                    
                 } else {
                     //return;
                 }

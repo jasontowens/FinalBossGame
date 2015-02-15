@@ -18,8 +18,6 @@ public class AreaEffect extends GameObject {
 	/*--------------------- USAGE ---------------------*/
 	public void affect(Entity entity){
 		entity.mergeStats(modifiers);
-	}
-	
-	
+	}	
 	
 }

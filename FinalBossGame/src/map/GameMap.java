@@ -145,7 +145,8 @@ public class GameMap {
                     tmp.setRight(desired); //actually moving the entity
                     
                     //apply AreaEffect
-                    
+                    AreaEffect AE = t.getAreaEffect();
+                    AE.affect(entity);
                     
                 } else {
                     //return;

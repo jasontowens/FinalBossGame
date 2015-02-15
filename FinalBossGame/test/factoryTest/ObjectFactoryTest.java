@@ -18,8 +18,7 @@ import factories.*;
 import gameobject.GameObject;
 import map.*;
 
-public class ObjectFactoryTest {
-	
+public class ObjectFactoryTest  
 
 	public static void main(String[] args) {
 		GameMap m = new GameMap();

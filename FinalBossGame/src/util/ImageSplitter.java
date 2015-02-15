@@ -124,7 +124,7 @@ public class ImageSplitter {
     public BufferedImage getTileFromID(int id){
     	
     	//TODO: make it throw invalid argument
-    	if(id < 1){
+    	if(id < 1 || id > (numTilesHorizontal * numTilesVertical)){
     		System.out.println("Invalid argument");
     	}
     	

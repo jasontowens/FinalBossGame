@@ -82,9 +82,9 @@ public class Entity extends GameObject implements Saveable{
         else 
             return false;
     }
-	public void setOccupation(String occupationName){
-    	myOccupation.name = occupationName;
-    }
+        public void setOccupation(String occupationName){
+            myOccupation.name = occupationName;
+        }
 	public void mergeStats(Stats modifiers){
 		this.myStats.mergeStats(modifiers);
 	}

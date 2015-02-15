@@ -32,7 +32,8 @@ public class Entity extends GameObject implements Saveable{
 		myMotion = mobility;
 		myOccupation = occ;
 		myStats = stats;
-                this.map = m; 
+		myInventory = inventory;
+        this.map = m; 
 	}
 	
 	//needed to add this for testing.  And should Entity really have a GameMap? 
@@ -40,6 +41,7 @@ public class Entity extends GameObject implements Saveable{
 		super("Entity", name, description, spriteFilePath); 
 		myMotion = mobility;
 		myOccupation = occ;
+		myInventory = inventory;
 		myStats = stats;
                  
 	}

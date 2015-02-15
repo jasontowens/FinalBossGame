@@ -59,7 +59,6 @@ public class EntityTest {
         myEntity = new Entity("Jason", "A perso", "Not/a/real/filepath.png",
         		MotionType.GROUND, inventory, occupation, stats, map);
 
-        myEntity = new Entity("Jason", "A perso", "Not/a/real/filepath.png", MotionType.GROUND, inventory, occupation, stats, map);
     }
 
     /**

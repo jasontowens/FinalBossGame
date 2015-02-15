@@ -4,31 +4,20 @@
  * and open the template in the editor.
  */
 package entity;
-import inventory.EquipSlot;
-import item.Equipable;
-import item.Item;
-import item.Takeable;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import map.CoordinatePair;
-
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
-import static org.junit.Assert.*;
-import stats.PlayerStats;
-import stats.Stats;
-import map.GameMap;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import inventory.Inventory;
+import item.Equipable;
+import item.Takeable;
+import map.CoordinatePair;
+import map.GameMap;
 
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+
+import stats.PlayerStats;
+import stats.Stats;
 
 /**
  *
@@ -248,125 +237,45 @@ public class EntityTest {
     
     @Test
     public void testMergeStats() {
+        stats.mergeStats(mergeStats);
+        EasyMock.expectLastCall();
         
+        EasyMock.replay(stats);
+        
+        myEntity.mergeStats(mergeStats);
+        
+        EasyMock.verify(stats);
     }
 
     /**
      * Test of levelUp method, of class Entity.
      */
-    /*
+    
     @Test
     public void testLevelUp() {
-        System.out.println("levelUp");
-        Entity instance = null;
-        instance.levelUp();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       stats.levelUp();
+       EasyMock.expectLastCall();
+       
+       EasyMock.replay(stats);
+       
+       myEntity.levelUp();
+       
+       EasyMock.verify(stats);
     }
 
     /**
      * Test of getMoney method, of class Entity.
      */
-    /*
-    @Test
-    public void testGetMoney() {
-        System.out.println("getMoney");
-        Entity instance = null;
-        int expResult = 0;
-        int result = instance.getMoney();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getMotionType method, of class Entity.
-     */
-    /*
-    @Test
-    public void testGetMotionType() {
-        System.out.println("getMotionType");
-        Entity instance = null;
-        MotionType expResult = null;
-        MotionType result = instance.getMotionType();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getStats method, of class Entity.
-     */
-    /*
-    @Test
-    public void testGetStats() {
-        System.out.println("getStats");
-        Entity instance = null;
-        PlayerStats expResult = null;
-        PlayerStats result = instance.getStats();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getOccupation method, of class Entity.
-     */
-    /*
-    @Test
-    public void testGetOccupation() {
-        System.out.println("getOccupation");
-        Entity instance = null;
-        Occupation expResult = null;
-        Occupation result = instance.getOccupation();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getArmory method, of class Entity.
-     */
-    /*
-    @Test
-    public void testGetArmory() {
-        System.out.println("getArmory");
-        Entity instance = null;
-        HashMap<EquipSlot, Equipable> expResult = null;
-        HashMap<EquipSlot, Equipable> result = instance.getArmory();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getSack method, of class Entity.
-     */
-    /*
-    @Test
-    public void testGetSack() {
-        System.out.println("getSack");
-        Entity instance = null;
-        ArrayList<Takeable> expResult = null;
-        ArrayList<Takeable> result = instance.getSack();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setMotionType method, of class Entity.
-     */
-    /*
-    @Test
-    public void testSetMotionType() {
-        System.out.println("setMotionType");
-        MotionType myMotion2 = null;
-        Entity instance = null;
-        instance.setMotionType(myMotion2);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    */
     
+   @Test
+   public void testLoseLives() {
+	   stats.modLivesLeft(-1);
+	   EasyMock.expectLastCall();
+	   
+	   EasyMock.replay(stats);
+	   
+	   myEntity.die();
+	   
+	   EasyMock.verify(stats);
+   }    
 }

@@ -1,5 +1,8 @@
 package main;
 
+import controllers.InputParser;
+import coordinators.GameCoordinator;
+
 /**
  *
  * @author moco
@@ -19,15 +22,16 @@ public class RunGame {
     	//TODO: CREATE MODEL, store avatar in myAvatar and active mao in myMap
     	
     	//CONTROLLER SETUP
-    	/*InputParser myParser = new InputParser();
-    	GameCoordinator myGameCoord = GameCoordiator.getInstance();
-    	myGameCoord.setAvatar(myAvater);
-    	myGameCoord.setActiveMap(myMap);*/
+    	InputParser myParser = new InputParser();
+    	GameCoordinator myGameCoord = GameCoordinator.getInstance();
+    	//myGameCoord.setAvatar(myAvater);
+    	//myGameCoord.setActiveMap(myMap);
     	
     	
     	//
     	//TODO: add the view:
     	GameWindow window =	new GameWindow();
+        window.addKeyListener(myParser);
     	//window.setModel( para1, para2...)
     	
     	

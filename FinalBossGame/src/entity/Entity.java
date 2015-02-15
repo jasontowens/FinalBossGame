@@ -6,7 +6,6 @@ import inventory.Inventory;
 import item.Equipable;
 import item.Takeable;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import map.CoordinatePair;

@@ -29,7 +29,7 @@ public class Menu {
         if(selectionIndex < 0){
             selectionIndex = options.length - 1;
         }
-        else if(selectionIndex > options.length){
+        else if(selectionIndex >= options.length){
             selectionIndex = 0;
         }else{
             selectionIndex = selection;
@@ -38,11 +38,11 @@ public class Menu {
     }
     
     public void next(){
-        setCurrentSelection(selectionIndex++);
+        setCurrentSelection(++selectionIndex);
     }
     
     public void prev(){
-        setCurrentSelection(selectionIndex--);
+        setCurrentSelection(--selectionIndex);
     }
     
     public MenuOption getCurrentSelection(){

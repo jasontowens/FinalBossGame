@@ -6,23 +6,28 @@ import static org.easymock.EasyMock.replay;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotSame;
 
+import java.io.IOException;
+
+import javax.xml.parsers.ParserConfigurationException;
+
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+import org.xml.sax.SAXException;
 
-import controllers.LoadMenuController;
+import controllers.GameController;
 import controllers.MenuController;
-import coordinators.MainMenuCoordinator;
+import coordinators.MenuCoordinator;
 
 public class MenuControllerTest {
 	
-	private MainMenuCoordinator mainMenuReciever;
+	private MenuCoordinator mainMenuReciever;
 	private MenuController menuController;
 	
 	
 	@Before
 	public void init() {
-		mainMenuReciever = createNiceMock(MainMenuCoordinator.class);
+		mainMenuReciever = createNiceMock(MenuCoordinator.class);
 		menuController = MenuController.getInstance();
 		menuController.setCoordinator(mainMenuReciever);
 	}
@@ -34,12 +39,12 @@ public class MenuControllerTest {
 	
 	@Test
 	public void testSingletonDoesNotReferToDifferentSceneController() {
-		assertNotSame(MenuController.getInstance(), LoadMenuController.getInstance());
+		assertNotSame(MenuController.getInstance(), GameController.getInstance());
 	}
 	
 	@Test
 	public void testUseKey2() {
-		mainMenuReciever.previousSelection();
+		mainMenuReciever.next();
 		expectLastCall();
 		replay(mainMenuReciever);
 		
@@ -50,7 +55,7 @@ public class MenuControllerTest {
 	
 	@Test
 	public void testUseKey8() {
-		mainMenuReciever.nextSelection();
+		mainMenuReciever.prev();
 		expectLastCall();
 		replay(mainMenuReciever);
 		
@@ -60,7 +65,7 @@ public class MenuControllerTest {
 	}
 	
 	@Test
-	public void testUseKeyEnter() {
+	public void testUseKeyEnter() throws ParserConfigurationException, SAXException, IOException {
 		mainMenuReciever.confirmSelection();
 		expectLastCall();
 		replay(mainMenuReciever);

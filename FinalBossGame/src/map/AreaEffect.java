@@ -10,8 +10,8 @@ public class AreaEffect extends GameObject {
 	private Stats modifiers;
 	
 	/*--------------------- CONSTRUCTORS ---------------------*/
-	public AreaEffect(String sprite, String name, String description, String spriteFilePath, Stats mods){
-		super(sprite, name, description, spriteFilePath);
+	public AreaEffect(String sprite, String name, String description, int ID, Stats mods){
+		super(sprite, name, description, ID); //TODO: change ID to how Hanif wants it set up 
 		this.modifiers = mods;
 	}
 	

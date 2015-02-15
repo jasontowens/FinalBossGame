@@ -13,14 +13,18 @@ import map.CoordinatePair;
 import map.GameMap;
 import stats.PlayerStats;
 import stats.Stats;
+import util.Saveable;
 
-public class Entity extends GameObject{
+public class Entity extends GameObject implements Saveable{
 	
 	private MotionType myMotion;
 	private Inventory myInventory;
 	private Occupation myOccupation;
 	private PlayerStats myStats;
     private GameMap map;
+    
+    //Entities should have a CoordinatePair.  TODO: Update Constructor!
+    private CoordinatePair myLocation;
 	
     /*---------CONSTRUCTORS---------------*/
 	public Entity(String name, String description, String spriteFilePath, MotionType mobility, Inventory inventory, Occupation occ, PlayerStats stats, GameMap m){
@@ -67,7 +71,7 @@ public class Entity extends GameObject{
         else 
             return false;
     }
-my	public void setOccupation(String occupationName){
+	public void setOccupation(String occupationName){
     	myOccupation.name = occupationName;
     }
 	public void mergeStats(Stats modifiers){
@@ -107,6 +111,30 @@ my	public void setOccupation(String occupationName){
 	public void setMotionType(MotionType myMotion2) {
 		myMotion = myMotion2;
 		
+	}
+	
+	/*-------------@Override------------*/	
+	//TODO: should MotionType also be saved?
+	public String toXML(){	
+		String str = "";
+		
+		//opening <entity x=".." y=".."> tag
+		str += "<entity occupation=\"" + myOccupation + "\"" + " x=\"" + myLocation.getX() +
+				"\"" + " y=" + "\"" + myLocation.getY() + "\"" + ">";
+		
+		//Newline is probably not strictly necessary, but makes XML file much more readable
+		str += "\n";
+		
+		str += myStats.toXML();
+		str += "\n";
+		str += myInventory.toXML();
+		str += "\n";
+
+		str += "</entity>";
+		
+		
+		
+		return str;
 	}
 	
 	

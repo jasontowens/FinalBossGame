@@ -9,11 +9,12 @@ import stats.PlayerStats;
 public class SceneManager {
 
     public Scene activeScene;
-    private Scene gameScene;
+    private Scene gameScene, menuScene;
 
     public static final int GAME_SCENE = 1;
 
     public SceneManager() {
+        menuScene = new MenuScene();
         gameScene = new GameScene();
         activeScene = gameScene;
         

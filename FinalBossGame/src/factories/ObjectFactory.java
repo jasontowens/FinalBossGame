@@ -11,11 +11,14 @@ import item.*;
 import map.GameMap;
 import map.CoordinatePair;
 
+import javax.xml.parsers.ParserConfigurationException;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.xml.sax.SAXException;
 
 public class ObjectFactory {
-	private String xmlfile;
+	private InputStream xmlfile;
 	private GameMap map;
 	private EntityFactory entityFactory;
 	private InteractiveFactory interactiveFactory;
@@ -23,7 +26,7 @@ public class ObjectFactory {
 	private OneShotFactory oneShotFactory;
 	private TakeableFactory takeableFactory;
 
-	public ObjectFactory(String file, GameMap currentmap) {
+	public ObjectFactory(InputStream file, GameMap currentmap) {
 		xmlfile = file;
 		map = currentmap;
 		entityFactory = new EntityFactory();
@@ -33,11 +36,9 @@ public class ObjectFactory {
 		takeableFactory = new TakeableFactory();
 	}
 
-	public void ParseFile()
-	{
+	public void ParseFile() throws ParserConfigurationException, SAXException, IOException{
 		//Load document from xml file
-		InputStream f = getClass().getResourceAsStream(xmlfile);
-		Document d = XMLReader.parseDocument(f);
+		Document d = XMLReader.parseDocument(xmlfile);
 		Element head = d.getDocumentElement();
 		
 		int counter;

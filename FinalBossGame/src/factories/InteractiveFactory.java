@@ -22,22 +22,22 @@ public class InteractiveFactory {
 		}
 	}
 
-	public Interactive createSmasherSetter() {
+	private Interactive createSmasherSetter() {
 		Interactive i = new OccupationSetter("Smasher setter", "Makes you a smasher.", "ossmasherpath", "Smasher");
 		return i;
 	}
 
-	public Interactive createSummonerSetter() {
+	private Interactive createSummonerSetter() {
 		Interactive i = new OccupationSetter("Summoner setter", "Makes you a summoner.", "ossummonerpath", "Summoner");
 		return i;
 	}
 
-	public Interactive createSneakSetter() {
+	private Interactive createSneakSetter() {
 		Interactive i = new OccupationSetter("Sneak setter", "Makes you a sneak.", "ossneakpath", "Sneak");
 		return i;
 	}
 
-	public Interactive createObstacleClearer(GameMap map) {
+	private Interactive createObstacleClearer(GameMap map) {
 		Interactive i = new ObstacleClearer("Obstacle clearer", "Clears obstacles", "osclearerpath", map);
 		return i;
 	}

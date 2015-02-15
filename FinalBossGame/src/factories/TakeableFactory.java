@@ -19,13 +19,13 @@ public class TakeableFactory {
 		}
 	}
 
-	public Takeable createHealthPotion(GameMap map, int durability) {
+	private Takeable createHealthPotion(GameMap map, int durability) {
 		ItemStats i = new ItemStats(0, 0, 0, 0, 0, 0, 0, 10, 0, durability, 10, 0, 0);
 		Takeable t = new Takeable("Health Potion", "Health up.", i, map);
 		return t;
 	}
 
-	public Takeable createBronzeSword(GameMap map, int durability) {
+	private Takeable createBronzeSword(GameMap map, int durability) {
 		ItemStats i = new ItemStats(10, 0, 0, 0, 0, 0, 0, 0, 0, durability, 0, 10, 0);
 		Takeable t = new Equipable("Bronze Sword", "Swing it to kill things.", i, map, EquipSlot.MAINHAND);
 		return t;

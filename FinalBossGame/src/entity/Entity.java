@@ -33,7 +33,7 @@ public class Entity extends GameObject implements Saveable{
 		myOccupation = occ;
 		myStats = stats;
 		myInventory = inventory;
-        this.map = m; 
+                this.map = m; 
 	}
 	
 	//needed to add this for testing.  And should Entity really have a GameMap? 

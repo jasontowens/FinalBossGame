@@ -13,7 +13,7 @@ public class ObstacleFactory {
 		}
 	}
 
-	public Obstacle createWall() {
+	private Obstacle createWall() {
 		Obstacle o = new Obstacle("Wall", "Can't walk through it.", "wallpath");
 		return o;
 	}

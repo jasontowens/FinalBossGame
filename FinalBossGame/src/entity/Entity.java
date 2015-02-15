@@ -58,7 +58,7 @@ public class Entity extends GameObject implements Saveable{
 	
 	/*------------ITEM LEVEL OPERATIONS---------------*/
 	public boolean addItem(Takeable item){
-            myInventory.addItem(item);
+        return myInventory.addItem(item);
 	}
 	public boolean equipItem(Equipable item){
 		return myInventory.equipItem(item);

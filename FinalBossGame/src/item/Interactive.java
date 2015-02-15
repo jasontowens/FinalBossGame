@@ -26,4 +26,11 @@ public abstract class Interactive extends GameObject implements Item{
 		super("Interactive", name, description, ID);
 		hasActivated = activation;
 	}
+	public String toXML(){
+		String str = "";
+		
+		//TODO: remember to add stat modifiers for Iteration2
+		str +=  "<interactive name=\"" + this.getName() + "\"" + "x=\"" + this.getLocation().getX() + "\" y=\"" + this.getLocation().getY() +"\" />" ;
+		return str;
+	}
 }

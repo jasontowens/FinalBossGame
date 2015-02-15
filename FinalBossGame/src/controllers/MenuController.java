@@ -22,10 +22,10 @@ public class MenuController extends SceneController {
 	/*--------------------- MAIN COMMANDS ---------------------*/
 	
 	public void useKey2() {
-		menuCoordinator.prev();
+		menuCoordinator.next();
 	}
 	public void useKey8() {
-		menuCoordinator.next();
+		menuCoordinator.prev();
 	}
 	public void useKeyEnter() throws ParserConfigurationException, SAXException, IOException {
 		menuCoordinator.confirmSelection();

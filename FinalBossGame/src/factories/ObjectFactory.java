@@ -52,18 +52,25 @@ public class ObjectFactory {
 		List<Element> entityElements = xmlreader.getElements("entity", head);
 		
 		for(counter = 0; counter < entityElements.size(); counter++) {
+			List<Element> sackElements = xmlreader.getElements("takeableItem", xmlreader.getElements("sack", entityElements.get(counter)).get(0));
+			List<Element> armoryElements = xmlreader.getElements("takeableItem", xmlreader.getElements("armory", entityElements.get(counter)).get(0));
+			ArrayList<Takeable> sack = new ArrayList<Takeable>();
+			ArrayList<Takeable> armory = new ArrayList<Takeable>();
 			
-			List<Element> invElements = xmlreader.getElements("inventory", entityElements.get(counter));
-			ArrayList<Takeable> inv = new ArrayList<Takeable>();
+			for(int i = 0; i < sackElements.size(); i++) {
+				if(elementValidator.ValidElement(sackElements.get(i), "takeableItem")) {
+					sack.add(takeableFactory.createTakeable(null, sackElements.get(i).getAttribute("name"), Integer.parseInt(sackElements.get(i).getAttribute("durability"))));
+				}
+			}
 			
-			for(int i = 0; i < invElements.size(); i++) {
-				if(elementValidator.ValidElement(invElements.get(i), "inventory")) {
-					inv.add(takeableFactory.createTakeable(map, invElements.get(i).getAttribute("name"), Integer.parseInt(invElements.get(i).getAttribute("durability"))));
+			for(int i = 0; i < armoryElements.size(); i++) {
+				if(elementValidator.ValidElement(armoryElements.get(i), "takeableItem")) {
+					armory.add(takeableFactory.createTakeable(null, armoryElements.get(i).getAttribute("name"), Integer.parseInt(armoryElements.get(i).getAttribute("durability"))));
 				}
 			}
 			
 			if(elementValidator.ValidElement(entityElements.get(counter), "entity")) {
-				Entity e = entityFactory.createEntity(map, entityElements.get(counter).getAttribute("name"), xmlreader.getElements("stats", entityElements.get(counter)).get(0), inv);
+				Entity e = entityFactory.createEntity(map, entityElements.get(counter).getAttribute("occupation"), xmlreader.getElements("stats", entityElements.get(counter)).get(0), sack, armory);
 
 				map.addEntity(e, new CoordinatePair(Integer.parseInt(entityElements.get(counter).getAttribute("x")), Integer.parseInt(entityElements.get(counter).getAttribute("y"))));
 				player = e;

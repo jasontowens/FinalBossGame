@@ -123,4 +123,9 @@ public class MenuCoordinator {
         return menuCoordinator;
     }
 
+	public void setScheduler(CoordinatorScheduler scheduler2) {
+		this.scheduler = scheduler2;
+		
+	}
+
 }

@@ -1,13 +1,12 @@
 package controllerTest;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
 import controllers.GameController;
-import controllers.LoadMenuController;
+import controllers.InventoryController;
 import controllers.MenuController;
-import controllers.PauseMenuController;
 import controllers.SceneController;
 import controllers.SceneControllerDispatcher;
 import coordinators.CoordinatorScheduler;
@@ -16,7 +15,7 @@ import coordinators.CoordinatorType;
 public class SceneControllerDispatcherTest {
 
 	private SceneControllerDispatcher controllerDispatcher = new SceneControllerDispatcher();
-	private final int numberOfControllers = 4;
+	private final int numberOfControllers = 3;
 	
 	@Test
 	public void testTotalNumberOfControllers() {
@@ -33,7 +32,7 @@ public class SceneControllerDispatcherTest {
 		//Currently this is PauseMenu
 		SceneController sceneController = controllerDispatcher.getSceneControllers().get(2);
 		controllerDispatcher.setActiveController(sceneController);
-		assertEquals(PauseMenuController.getInstance(), controllerDispatcher.getActiveController());
+		assertEquals(InventoryController.getInstance(), controllerDispatcher.getActiveController());
 	}
 	
 	@Test
@@ -43,24 +42,19 @@ public class SceneControllerDispatcherTest {
 		assertEquals(GameController.getInstance(), controllerDispatcher.getActiveController());
 	}
 
-	@Test
-	public void testNotifyObserverChangingToLoad() {
-		CoordinatorScheduler scheduler = controllerDispatcher.getCoordinatorScheduler();
-		scheduler.changeCoordinator(CoordinatorType.LOAD);
-		assertEquals(LoadMenuController.getInstance(), controllerDispatcher.getActiveController());
-	}
+	
 	
 	@Test
-	public void testNotifyObserverChangingToPause() {
+	public void testNotifyObserverChangingToInventory() {
 		CoordinatorScheduler scheduler = controllerDispatcher.getCoordinatorScheduler();
-		scheduler.changeCoordinator(CoordinatorType.PAUSE);
-		assertEquals(PauseMenuController.getInstance(), controllerDispatcher.getActiveController());
+		scheduler.changeCoordinator(CoordinatorType.INVENTORY);
+		assertEquals(InventoryController.getInstance(), controllerDispatcher.getActiveController());
 	}
 	
 	@Test
 	public void testNotifyObserverChangingToMainMenu() {
 		CoordinatorScheduler scheduler = controllerDispatcher.getCoordinatorScheduler();
-		scheduler.changeCoordinator(CoordinatorType.MAIN_MENU);
+		scheduler.changeCoordinator(CoordinatorType.MENU);
 		assertEquals(MenuController.getInstance(), controllerDispatcher.getActiveController());
 	}
 }

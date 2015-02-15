@@ -48,4 +48,5 @@ public abstract class GameObject {
 	public String getDescription(){ return description; }
 	public String getName() { return name; }
 	public CoordinatePair getLocation() { return location; };
+	public void setLocation(CoordinatePair p) { location = p; };
 }

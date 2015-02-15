@@ -38,11 +38,12 @@ public class Inventory implements Saveable {
 	
 	/*---------MESSAGES PASSED FROM ITEMS---------------*/
 	public boolean addItem(Takeable item){
-		mySack.addItem(item);
+		return mySack.addItem(item);
 	}
 	public boolean equipItem(Takeable item){
 		if (mySack.isInSack(item) && item.getClassName().equals("Equipable")){
 			myArmory.equip((Equipable)item);
+			mySack.removeItem(item);
 			return true;
 		}
 		else

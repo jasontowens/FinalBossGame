@@ -42,20 +42,14 @@ public class CoordinatorSchedulerTest {
 	
 	@Test 
 	public void testChangingCoordinatorTypeMenu() {
-		coordinatorScheduler.changeCoordinator(CoordinatorType.MAIN_MENU);
-		assertEquals(CoordinatorType.MAIN_MENU, coordinatorScheduler.getCoordinatorType());
+		coordinatorScheduler.changeCoordinator(CoordinatorType.MENU);
+		assertEquals(CoordinatorType.MENU, coordinatorScheduler.getCoordinatorType());
 	}
 	
 	@Test 
-	public void testChangingCoordinatorTypeLoad() {
-		coordinatorScheduler.changeCoordinator(CoordinatorType.LOAD);
-		assertEquals(CoordinatorType.LOAD, coordinatorScheduler.getCoordinatorType());
-	}
-	
-	@Test 
-	public void testChangingCoordinatorTypePause() {
-		coordinatorScheduler.changeCoordinator(CoordinatorType.LOAD);
-		assertEquals(CoordinatorType.LOAD, coordinatorScheduler.getCoordinatorType());
+	public void testChangingCoordinatorTypeInventory() {
+		coordinatorScheduler.changeCoordinator(CoordinatorType.INVENTORY);
+		assertEquals(CoordinatorType.INVENTORY, coordinatorScheduler.getCoordinatorType());
 	}
 	
 	@Test

@@ -2,12 +2,16 @@ package controllerTest;
 
 import java.awt.Button;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+
+import javax.xml.parsers.ParserConfigurationException;
 
 import org.easymock.EasyMock;
 import org.easymock.EasyMockRunner;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.xml.sax.SAXException;
 
 import static org.easymock.EasyMock.createNiceMock;
 import static org.easymock.EasyMock.replay;
@@ -139,7 +143,7 @@ public class InputParserTest {
 	}
 	
 	@Test
-	public void testKeyPressedEnter() {
+	public void testKeyPressedEnter() throws ParserConfigurationException, SAXException, IOException {
 		sceneController.useKeyEnter();
 		expectLastCall();
 	    

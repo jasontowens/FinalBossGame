@@ -5,6 +5,7 @@ import item.Item;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import main.RunGame;
+import gameobject.GameObject;
 
 /**
  *
@@ -48,7 +49,9 @@ public class GameMap {
     /*-----------Singleton------------------*/
     public static GameMap getInstance() {
         if(thisMap == null) {
-            throw new Error("GameMap singleton has not yet been instatiated, you can not call it yet.");
+            //throw new Error("GameMap singleton has not yet been instatiated, you can not call it yet.");
+            thisMap = new GameMap();
+            return thisMap;
         }
         else{
             return thisMap;
@@ -94,11 +97,13 @@ public class GameMap {
     
     public CoordinatePair addItem(Item item, CoordinatePair location) {
         itemsOnMap.add(new Pair<>(item, location));
+        ((GameObject) item).setLocation(location);
         return location; //why?
     }
 
     public CoordinatePair addEntity(Entity entity, CoordinatePair location) {
         entitiesOnMap.add(new Pair<>(entity, location));
+        entity.setLocation(location);
         return location; //because
     }
 
@@ -239,5 +244,22 @@ public class GameMap {
             return tiles;
         }
 
+    }
+
+    public String toXML()
+    {
+    	String str = "";
+    	
+    	for(Pair e : entitiesOnMap) {
+    			str += ((Entity) e.getLeft()).toXML();
+    			str += "\n";
+    	}
+    	
+    	for(Pair i : itemsOnMap) {
+    			str += ((Item) i.getLeft()).toXML();
+    			str += "\n";
+    	}
+    	
+    	return str;
     }
 }

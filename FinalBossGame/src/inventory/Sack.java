@@ -32,6 +32,7 @@ public class Sack implements Saveable{
 
 			if(itemsInSack[i] == item){
 				slotsInUse[i] = false;
+				itemsInSack[i] = null;
 				return itemsInSack[i];
              }
         }	
@@ -99,7 +100,7 @@ public class Sack implements Saveable{
 		
 		for(int i = 0; i < sizeOfSack; ++i){
 			if(itemsInSack[i] != null){
-				str+=itemsInSack[i].toXML();
+				str+=itemsInSack[i].toXML(true);
 				str+="\n";
 			}
 		}

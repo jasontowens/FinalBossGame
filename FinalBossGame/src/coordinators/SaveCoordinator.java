@@ -36,7 +36,7 @@ public class SaveCoordinator {
 		writeFile.close();
 		}
 		catch(FileNotFoundException a){
-			throw a;
+			a.printStackTrace();
 		}
 	}
 	

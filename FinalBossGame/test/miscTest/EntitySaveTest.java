@@ -22,7 +22,7 @@ public class EntitySaveTest {
 		Occupation occupation = new Occupation("Summoner" , " ");
 		PlayerStats stats = new PlayerStats(1 , 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);
 		//TODO add to XML for Stats
-		Entity entity = new Entity("Pacman" , "runs around" , "/path/to/nowhere" , MotionType.GROUND , inventory,
+		Entity entity = new Entity("Pacman" , "runs around" , 1 , MotionType.GROUND , inventory,
 				 occupation , stats);
 	
 		System.out.println(entity.toXML());

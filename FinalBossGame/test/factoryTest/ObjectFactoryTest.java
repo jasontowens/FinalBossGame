@@ -5,7 +5,7 @@ import item.Takeable;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;  
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
@@ -14,16 +14,17 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 
 import entity.Entity;
-import factories.*; 
+import factories.*;
 import gameobject.GameObject;
 import map.*;
 
-public class ObjectFactoryTest  
+public class ObjectFactoryTest {
+	
 
 	public static void main(String[] args) {
-		GameMap m = new GameMap();
+		GameMap m = GameMap.getInstance();
 		InputStream stream;
-		stream = ObjectFactoryTest.class.getResourceAsStream("/resources/saves/largesave.xml");
+		stream = ObjectFactoryTest.class.getResourceAsStream("/resources/saves/save1.xml");
 		/*try {
 			//stream = new FileInputStream("./resources/saves/save1.xml");
 		} catch (FileNotFoundException e1) {
@@ -58,21 +59,6 @@ public class ObjectFactoryTest
 		
 		System.out.println("\nPrinting map...\n");
 		
-		for(Pair p : entities) {
-			System.out.println(((Entity) p.getLeft()).getName() + " @ " + ((CoordinatePair) p.getRight()).getX() + ", " + ((CoordinatePair) p.getRight()).getY() + "\n");
-			System.out.println("    contains...\n");
-			Takeable[] t = ((Entity) p.getLeft()).getSack();
-			
-			for(int i = 0; i < t.length; i++) {
-			 
-				if(t[i] != null) {
-					System.out.println("    " + t[i].getName() + "\n");
-				}
-			}
-		}
-		
-		for(Pair p : items) {
-			System.out.println(((GameObject) p.getLeft()).getName() + " @ " + ((CoordinatePair) p.getRight()).getX() + ", " + ((CoordinatePair) p.getRight()).getY() + "\n");
-		}
+		System.out.println(m.toXML());
 	}
 }

@@ -1,5 +1,7 @@
 package factories;
 
+import java.util.ArrayList;
+
 import map.GameMap;
 import item.Interactive;
 import item.OccupationSetter;
@@ -38,7 +40,10 @@ public class InteractiveFactory {
 	}
 
 	private Interactive createObstacleClearer(GameMap map) {
-		Interactive i = new ObstacleClearer("Obstacle clearer", "Clears obstacles", 2, map);
+		ArrayList<String> targets = new ArrayList<String>();
+		targets.add("Door");
+		
+		Interactive i = new ObstacleClearer("Door Buster", "Clears doors", 2, map, targets);
 		return i;
 	}
 }

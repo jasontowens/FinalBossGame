@@ -71,6 +71,19 @@ public class GameMap {
         }
         return null;
     }
+    
+    public ArrayList<Item> findItemsByName(String name) {
+    	ArrayList<Item> foundList = new ArrayList<Item>();
+    	
+    	for(Pair i : itemsOnMap) {
+    		GameObject found = ((GameObject) i.getLeft());
+    		if(found.getName().equals(name)){
+    			foundList.add((Item) found);
+    		}
+    	}
+    	
+    	return foundList;
+    }
 
     public ArrayList<Pair<Entity, CoordinatePair>> getAllEntities() {
         return entitiesOnMap;

@@ -67,7 +67,7 @@ public class Entity extends GameObject{
         else 
             return false;
     }
-my	public void setOccupation(String occupationName){
+	public void setOccupation(String occupationName){
     	myOccupation.name = occupationName;
     }
 	public void mergeStats(Stats modifiers){

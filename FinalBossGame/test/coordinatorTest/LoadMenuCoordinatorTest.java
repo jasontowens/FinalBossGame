@@ -2,32 +2,49 @@ package coordinatorTest;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import map.CoordinatePair;
+import map.GameMap;
+import map.Pair;
 
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+import org.xml.sax.SAXException;
 
 import coordinators.CoordinatorScheduler;
 import coordinators.CoordinatorType;
+import coordinators.GameCoordinator;
 import coordinators.LoadMenuCoordinator;
+import entity.Entity;
+import factories.ObjectFactory;
 
 public class LoadMenuCoordinatorTest {
 	
 	private LoadMenuCoordinator coordinator;
+	private GameCoordinator gameCoord;
+	private Entity entity;
+	private CoordinatePair pair;
+	private Pair<Entity,CoordinatePair> entityPair;
+	private ObjectFactory objectFactory;
 	private ArrayList<String> testFiles;
+	private GameMap map;
 	private CoordinatorScheduler scheduler;
 	
 	@Before
 	public void Init() {
 		coordinator = LoadMenuCoordinator.getInstance();
-		testFiles = new ArrayList<String>();
-		testFiles.add("Test file 1");
-		testFiles.add("Test file 2");
-		testFiles.add("Test file 3");
-		coordinator.setSaveFiles(testFiles);
-		
+		testFiles = LoadMenuCoordinator.getSaveFiles();
 		scheduler = EasyMock.createNiceMock(CoordinatorScheduler.class);
+		gameCoord = EasyMock.createNiceMock(GameCoordinator.class);
+		pair = EasyMock.createNiceMock(CoordinatePair.class);
+		entityPair = EasyMock.createNiceMock(Pair.class);
+		objectFactory = EasyMock.createNiceMock(ObjectFactory.class);
+		map = EasyMock.createNiceMock(GameMap.class);
 		LoadMenuCoordinator.setScheduler(scheduler);
 	}
 	
@@ -89,7 +106,13 @@ public class LoadMenuCoordinatorTest {
 		EasyMock.verify(scheduler);
 	}
 	
-	
-	
-
+	@Test
+	public void testConfirmSelection() throws ParserConfigurationException, SAXException, IOException {
+		LoadMenuCoordinator.setCurrentFileIndex(0);
+		loadMenuCoordinator.
+		
+		
+		coordinator.confirmSelection();
+		
+	}
 }

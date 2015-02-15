@@ -26,7 +26,7 @@ public class GameCoordinator
 
     public void pause()
     {
-      scheduler.changeCoordinator(CoordinatorType.PAUSE);
+      scheduler.changeCoordinator(CoordinatorType.MENU);
     }
 
     /*--------------------- GAME COMMANDS---------------------*/
@@ -86,4 +86,8 @@ public class GameCoordinator
 		}
 		return gameCoordinator;
 	}
+
+    public GameMap getActiveMap() {
+        return this.activeMap;
+    }
 }

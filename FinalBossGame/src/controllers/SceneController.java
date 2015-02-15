@@ -1,5 +1,11 @@
 package controllers;
 
+import java.io.IOException;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
+
 public abstract class SceneController {
 	public void useKey1() {}
 	public void useKey2() {}
@@ -10,7 +16,7 @@ public abstract class SceneController {
 	public void useKey7() {}
 	public void useKey8() {}
 	public void useKey9() {}
-	public void useKeyEnter() {}
+	public void useKeyEnter() throws ParserConfigurationException, SAXException, IOException {}
 	public void useKeyEscape() {}
 	public void useKeyI() {}
 	public void useKeyA() {}

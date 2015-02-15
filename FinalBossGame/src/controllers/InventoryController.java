@@ -12,14 +12,14 @@ public class InventoryController extends SceneController {
 	public void useKey2() // move down in inventory
 	{
 		inventoryReceiver.nextItem();
-    }
+        }
 
 	public void useKey8() // move up in inventory
 	{
 		inventoryReceiver.previousItem();
-    } 
+        } 
 
-    public void useKeyDelete() // backspace/delete
+        public void useKeyDelete() // backspace/delete
 	{
 		inventoryReceiver.dropItem();
 	}
@@ -31,8 +31,8 @@ public class InventoryController extends SceneController {
 
 	public void useKeyEnter() // use item 
 	{
-        inventoryReceiver.activateItem();
-    }
+            inventoryReceiver.activateItem();
+        }
 	
 	public static InventoryController getInstance() {
 		if(inventoryController == null) {

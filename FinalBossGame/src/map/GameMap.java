@@ -5,6 +5,7 @@ import item.Item;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import main.RunGame;
+import gameobject.GameObject;
 
 /**
  *
@@ -48,7 +49,9 @@ public class GameMap {
     /*-----------Singleton------------------*/
     public static GameMap getInstance() {
         if(thisMap == null) {
-            throw new Error("GameMap singleton has not yet been instatiated, you can not call it yet.");
+            //throw new Error("GameMap singleton has not yet been instatiated, you can not call it yet.");
+            thisMap = new GameMap();
+            return thisMap;
         }
         else{
             return thisMap;

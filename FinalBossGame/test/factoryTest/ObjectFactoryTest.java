@@ -22,7 +22,7 @@ public class ObjectFactoryTest {
 	
 
 	public static void main(String[] args) {
-		GameMap m = new GameMap();
+		GameMap m = GameMap.getInstance();
 		InputStream stream;
 		stream = ObjectFactoryTest.class.getResourceAsStream("/resources/saves/save1.xml");
 		/*try {

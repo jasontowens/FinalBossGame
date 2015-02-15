@@ -40,12 +40,13 @@ public class ObjectFactory {
 		xmlreader = XMLReader.getInstance(xmlfile);
 	}
 
-	public void ParseFile() throws ParserConfigurationException, SAXException, IOException{
+	public Entity ParseFile() throws ParserConfigurationException, SAXException, IOException{
 		//Load document from xml file
 		Document d = xmlreader.parseDocument();
 		Element head = d.getDocumentElement();
 		
 		int counter;
+		Entity player = null;
 		
 		//Entities
 		List<Element> entityElements = xmlreader.getElements("entity", head);
@@ -65,6 +66,7 @@ public class ObjectFactory {
 				Entity e = entityFactory.createEntity(map, entityElements.get(counter).getAttribute("name"), xmlreader.getElements("stats", entityElements.get(counter)).get(0), inv);
 
 				map.addEntity(e, new CoordinatePair(Integer.parseInt(entityElements.get(counter).getAttribute("x")), Integer.parseInt(entityElements.get(counter).getAttribute("y"))));
+				player = e;
 			}
 		}
 
@@ -115,5 +117,7 @@ public class ObjectFactory {
 				map.addItem(t, new CoordinatePair(Integer.parseInt(takeableElements.get(counter).getAttribute("x")), Integer.parseInt(takeableElements.get(counter).getAttribute("y"))));
 			}
 		}
+		
+		return player;
 	}
 }

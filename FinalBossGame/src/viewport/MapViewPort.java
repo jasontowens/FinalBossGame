@@ -1,14 +1,13 @@
 package viewport;
 
-import viewport.ViewPort;
-import java.awt.Color;
+import coordinators.GameCoordinator;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+
 import main.RunGame;
 import map.GameMap;
-import map.Tile;
 import scene.Scene;
-import stats.PlayerStats;
 
 /**
  *
@@ -23,25 +22,23 @@ public class MapViewPort extends ViewPort {
     }
 
     private void queryModel() {
-       Object o = scene.getModelObject("map");
-       this.map = (GameMap) o;
+       Object o = scene.getModelObject("game");
+       GameCoordinator gc = (GameCoordinator) o;
+       this.map = gc.getActiveMap();
     }
 
     public void drawGraphics(Graphics g) {
-        Tile[][] tiles = null;
-        if(map == null){
-           queryModel();
-        }else{
-            tiles = map.getTilesForScreen();
-        }
-        if(tiles != null){
-            for(int i= 0; i <tiles.length; i++){
-                for(int j = 0; j < tiles[0].length; j++){
-                    tiles[i][j].getTerrain().getSpriteFilePath();
-                }
-            }
-        }
+        
         g.setFont(new Font("TimesRoman", Font.PLAIN, 20));
         g.drawString("MAP VIEWPORT", RunGame.WIDTH/2 - 85, RunGame.HEIGHT/2);
+        
+        BufferedImage[][] images = RunGame.ml.getMap();
+        for(int i = 0; i < RunGame.NUM_OF_TILES_HIGH; i++){
+            for(int j = 0; j < RunGame.NUM_OF_TILES_WIDE; j++){
+                g.drawImage(images[j][i], i*RunGame.TILE_WIDTH, j*RunGame.TILE_HEIGHT, null);
+            }
+        }
+        
+        
     }
 }

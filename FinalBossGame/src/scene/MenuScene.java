@@ -1,6 +1,6 @@
 package scene;
 
-import viewport.MainMenuViewPort;
+import viewport.MenuViewPort;
 import viewport.ViewPort;
 
 /**
@@ -11,7 +11,7 @@ public class MenuScene extends Scene {
     
     ViewPort mainMenu;  
     public MenuScene(){
-        mainMenu = new MainMenuViewPort(this);
+        mainMenu = new MenuViewPort(this);
         viewports.add(mainMenu);
         
     }    

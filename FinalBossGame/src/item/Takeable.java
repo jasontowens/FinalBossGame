@@ -4,14 +4,15 @@ package item;
 import map.GameMap;
 import gameobject.GameObject;
 import stats.ItemStats;
+import util.Saveable;
 import item.Item;
 import entity.Entity;
 
-public class Takeable extends GameObject implements Item {
+public class Takeable extends GameObject implements Item , Saveable {
 	//fields
-	protected ItemStats modifiers;
+	protected ItemStats modifiers;   //TODO: add this to save XML
 	protected GameMap current;
-	protected String spriteFilePath;
+	protected String spriteFilePath; //should soon be deprecated
 	
 	//constructors
 	protected Takeable(String className, String name, String description, String spriteFilePath, ItemStats mods, GameMap active){
@@ -41,5 +42,13 @@ public class Takeable extends GameObject implements Item {
 		if(modifiers.getDurability() <= 0){
 			entity.removeItem(this); //checks for used-up consumable to be removed
 		}
+	}
+	
+	public String toXML(){
+		String str = "";
+		
+		//TODO: remember to add stat modifiers for Iteration2
+		str +=  "<takeableItem> name=\"" + this.getName() + "\""  ;
+		return str;
 	}
 }

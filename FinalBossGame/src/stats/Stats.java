@@ -2,7 +2,9 @@
 
 package stats;
 
-public class Stats {
+import util.Saveable;
+
+public class Stats implements Saveable{
 	protected int livesLeft;
 	protected int strength;
 	protected int agility;
@@ -159,5 +161,44 @@ public class Stats {
 		return new Stats(livesLeft*-1,strength*-1,agility*-1,intellect*-1,hardiness*-1,experience*-1,movement*-1,hpCurrent*-1,mpCurrent*-1,offense*-1,defense*-1);
 	}
 	
-	
+	public String toXML(){
+		//all Stat data stored as tag attributes for now, might be better to make
+		//them separate child tags
+		
+		String str = "";
+		str += "<stat livesLeft=\"" + livesLeft + "\"" 
+				+ " strength=\"" + strength + "\""
+				+ " agility=\"" + agility + "\""
+				+ " intellect=\"" + intellect + "\""
+				+ " hardiness=\"" + hardiness + "\""
+				+ " experience=\"" + experience + "\""
+				+ " movement=\"" + movement + "\""
+				+ " hpCurrent=\"" + hpCurrent + "\""
+				+ " mpCurrent=\"" + mpCurrent + "\""
+				+ " defense=\"" + defense + "\""
+				+ " offense=\"" + offense + "\""
+				;
+		str += " />";
+		return str;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

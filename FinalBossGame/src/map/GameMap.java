@@ -63,6 +63,10 @@ public class GameMap {
         itemsOnMap.add(new Pair<>(item, location));
         return location; //why?
     }
+    public CoordinatePair addEntity(Entity entity, CoordinatePair location){
+	entitiesOnMap.add(new Pair<>(entity, location));
+	return location; //because
+    }
     public void removeItem(Item item){
         for(int i =0; i!=itemsOnMap.size(); ++i){
             Pair p = itemsOnMap.get(i);

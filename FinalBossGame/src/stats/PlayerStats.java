@@ -3,6 +3,7 @@
 package stats;
 
 import stats.Stats;
+import util.Saveable;
 
 public class PlayerStats extends Stats {
 	private int level;
@@ -81,4 +82,19 @@ public class PlayerStats extends Stats {
 	public void levelUp(){
 		modExperience(expPerLevel - (experience % expPerLevel));
 	}
+	
+	/* Stat super class should take care of it for now
+	public String toXML(){
+		String str = "";
+		str = super.toXML();
+		
+		
+		str += "<stat level=\"" + level + "\"" + " hpMax=\"" + hpMax  + "\"" + 
+				" mpMax=\""  + mpMax + "\"" +  " defensiveRating=\"" + defensiveRating + "\""
+				+ " offensiveRating=\"" + offensiveRating + "\"" + " armorRating=\"" + 
+				armorRating + "\"" + " />";
+			
+		return str;
+	}
+*/
 }

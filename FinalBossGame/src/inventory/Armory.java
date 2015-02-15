@@ -1,8 +1,10 @@
 package inventory;
 
+import util.Saveable;
 import item.Equipable;
+import java.util.HashMap;
 
-public class Armory {
+public class Armory implements Saveable {
 	int numOfSlots;
 	Equipable[] equippedItems;
 	boolean[] usedSlots; // true if slot is used, false otherwise
@@ -104,6 +106,7 @@ public class Armory {
 	}
 	
 	/* TEST METHODS */
+	//Saving also relies on some of these methods, so looks like they might have to stay.
 	public int getNumOfSlots() {
 		return numOfSlots;
 	}
@@ -123,5 +126,33 @@ public class Armory {
 		this.usedSlots = usedSlots;
 	}
 	
+	
+	public String toXML(){
+		String str = "";
+		str += "<armory>";
+		str += "\n";
+		if(equippedItems != null){
+			for(int i = 0; i < numOfSlots; ++i){
+				if(equippedItems[i] != null){
+					str += equippedItems[i].toXML();
+					str += "\n";
+				}			
+			}
+		}
+		
+		str += "</armory>";
+		
+		
+		return str;
+		
+	}
+
+    public HashMap<EquipSlot, Equipable> getHMap() {
+        HashMap<EquipSlot, Equipable> hMap = new HashMap<>();
+        for(Equipable e: equippedItems){
+            hMap.put(e.getSlot(), e);
+        }
+        return hMap;
+    }
 	
 }

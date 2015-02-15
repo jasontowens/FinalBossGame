@@ -5,6 +5,7 @@ package item;
 import map.GameMap;
 import inventory.EquipSlot;
 import stats.ItemStats;
+import util.Saveable;
 import item.Item;
 import entity.Entity;
 
@@ -40,5 +41,15 @@ public class Equipable extends Takeable implements Item {
 	}
 	public void onUnequip(Entity entity){
 		entity.mergeStats(modifiers.inverted());
+	}
+	
+	public String toXML(){
+		String str = "";
+		
+		str += "<equipableItem name=\"" + this.getName() + "\"" + " />";
+		
+		
+		return str;
+		
 	}
 }

@@ -37,7 +37,7 @@ public class Inventory implements Saveable {
 	}    
 	
 	/*---------MESSAGES PASSED FROM ITEMS---------------*/
-	public void addItem(Takeable item){
+	public boolean addItem(Takeable item){
 		mySack.addItem(item);
 	}
 	public boolean equipItem(Takeable item){

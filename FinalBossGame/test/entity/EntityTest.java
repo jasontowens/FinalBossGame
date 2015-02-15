@@ -45,8 +45,8 @@ public class EntityTest {
         coordinate = EasyMock.createNiceMock(CoordinatePair.class);
         mergeStats = EasyMock.createNiceMock(Stats.class);
         equip = EasyMock.createNiceMock(Equipable.class);
-        myEntity = new Entity("Jason", "A perso", "Not/a/real/filepath.png",
-        		MotionType.GROUND, inventory, occupation, stats, map);
+        myEntity = new Entity("Jason", "A perso", 36,
+        		MotionType.GROUND, inventory, occupation, stats, map); //TODO: change ID to how Hanif wants it set up 
 
     }
 

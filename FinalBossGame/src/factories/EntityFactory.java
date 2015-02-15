@@ -3,6 +3,7 @@ package factories;
 import inventory.Armory;
 import inventory.Inventory;
 import inventory.Sack;
+import item.Equipable;
 import item.Takeable;
 
 import java.util.ArrayList;
@@ -17,13 +18,9 @@ import org.w3c.dom.Element;
 
 public class EntityFactory {
 
-	public Entity createEntity(GameMap map, String name, Element statsElement, ArrayList<Takeable> inv) {
+	public Entity createEntity(GameMap map, String name, Element statsElement, ArrayList<Takeable> sack, ArrayList<Takeable> armory) {
 		
 		Inventory i = new Inventory(new Sack(), new Armory());
-		
-		for(Takeable t : inv) {
-			i.addItem(t);
-		}
 
 		PlayerStats s = new PlayerStats(
 			Integer.parseInt(statsElement.getAttribute("livesleft")),
@@ -38,14 +35,41 @@ public class EntityFactory {
 			Integer.parseInt(statsElement.getAttribute("defense")),
 			Integer.parseInt(statsElement.getAttribute("offense")));
 			
-		
+		Entity e;
 		switch(name) {
 			case "Smasher":
-				return createSmasher(i, s, map);
+				e = createSmasher(i, s, map);
+				for(Takeable t : sack) {
+					e.addItem(t);
+				}
+				
+				for(Takeable t : armory) {
+					e.addItem(t);
+					e.equipItem((Equipable) t);
+				}
+				return e;
 			case "Summoner":
-				return createSummoner(i, s, map);
+				e = createSummoner(i, s, map);
+				for(Takeable t : sack) {
+					e.addItem(t);
+				}
+				
+				for(Takeable t : armory) {
+					e.addItem(t);
+					e.equipItem((Equipable) t);
+				}
+				return e;
 			case "Sneak":
-				return createSneak(i, s, map);
+				e = createSneak(i, s, map);
+				for(Takeable t : sack) {
+					e.addItem(t);
+				}
+				
+				for(Takeable t : armory) {
+					e.addItem(t);
+					e.equipItem((Equipable) t);
+				}
+				return e;
 			default:
 				return null;
 		}
@@ -54,19 +78,19 @@ public class EntityFactory {
 	
 	private Entity createSmasher(Inventory i, PlayerStats s, GameMap map) {
 		Occupation o = new Occupation("Smasher", "Brawls heavily.");
-		Entity e = new Entity("Smasher", "Brawls heavily", "player.png", MotionType.GROUND, i, o, s, map);
+		Entity e = new Entity("Smasher", "Brawls heavily", 1, MotionType.GROUND, i, o, s, map);
 		return e;
 	}
 
 	private Entity createSummoner(Inventory i, PlayerStats s, GameMap map) {
 		Occupation o = new Occupation("Summoner", "Summons stuff.");
-		Entity e = new Entity("Summoner", "Summons stuff.", "player.png", MotionType.GROUND, i, o, s, map);
+		Entity e = new Entity("Summoner", "Summons stuff.", 1, MotionType.GROUND, i, o, s, map);
 		return e;
 	}
 
 	private Entity createSneak(Inventory i, PlayerStats s, GameMap map) {
 		Occupation o = new Occupation("Sneak", "Sneaks around.");
-		Entity e = new Entity("Sneak", "Sneaks around.", "player.png", MotionType.GROUND, i, o, s, map);
+		Entity e = new Entity("Sneak", "Sneaks around.", 1, MotionType.GROUND, i, o, s, map);
 		return e;
 	}
 }

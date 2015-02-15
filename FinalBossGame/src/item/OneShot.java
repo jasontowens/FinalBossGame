@@ -26,4 +26,12 @@ public class OneShot extends GameObject implements Item{
 		entity.changeMoney(modifier.getValue());
 		return true;
 	}
+
+	public String toXML(){
+		String str = "";
+		
+		//TODO: remember to add stat modifiers for Iteration2
+		str +=  "<oneshot name=\"" + this.getName() + "\"" + "x=\"" + this.getLocation().getX() + "\" y=\"" + this.getLocation().getY() +"\" />" ;
+		return str;
+	}
 }

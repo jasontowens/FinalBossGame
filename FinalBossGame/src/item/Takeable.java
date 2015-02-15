@@ -12,7 +12,6 @@ public class Takeable extends GameObject implements Item , Saveable {
 	//fields
 	protected ItemStats modifiers;   //TODO: add this to save XML
 	protected GameMap current;
-	protected String spriteFilePath; //should soon be deprecated
 	
 	//constructors
 	protected Takeable(String className, String name, String description, int ID, ItemStats mods, GameMap active){
@@ -27,11 +26,15 @@ public class Takeable extends GameObject implements Item , Saveable {
 		current = active;
 	}
 	
-	//Item interface operations
+	/*--------- ITEM INTERFACE OPERATIONS ----------*/
 	public boolean activate(Entity entity){
-		current.removeItem(this);
-		entity.addItem(this);
-		return true;
+                if(entity.addItem(this)){
+                    current.removeItem(this);
+                    return true;
+                }
+		else
+                    return false;
+		
 	}
 	
 	//usage operations
@@ -44,11 +47,19 @@ public class Takeable extends GameObject implements Item , Saveable {
 		}
 	}
 	
+	public String toXML(boolean b){
+		String str = "";
+		
+		//TODO: remember to add stat modifiers for Iteration2
+		str +=  "<takeableItem name=\"" + this.getName() + "\"" + " durability=\"" + this.modifiers.getDurability() + "\" />" ;
+		return str;
+	}
+	
 	public String toXML(){
 		String str = "";
 		
 		//TODO: remember to add stat modifiers for Iteration2
-		str +=  "<takeableItem> name=\"" + this.getName() + "\""  ;
+		str +=  "<takeable name=\"" + this.getName() + "\"" + " durability=\"" + this.modifiers.getDurability() + "\" x=\"" + this.getLocation().getX() + "\" y=\"" + this.getLocation().getY() +"\" />" ;
 		return str;
 	}
 }

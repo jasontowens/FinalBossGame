@@ -69,23 +69,45 @@ public class Armory implements Saveable {
 	}
 	
 	//should always return true for now, maybe false later if entity doesn't meet requirements 
-	public Equipable equip(Equipable equipment){
-		Equipable returnEquipable = equipment;
-		
-		int index = getIndex(equipment.getSlot());
-		if(index < 0 || index > equippedItems.length) {
-			return null;
-		} 
-		
-		if(usedSlots[index]) //if there is already an item in the given slot, unequip it
+	public Equipable equip(Equipable equipment)
+{
+	Equipable returnEquipable = equipment;
+	int index = getIndex(equipment.getSlot());
 
-			returnEquipable = unequip(equipment.getSlot());
-		
-		usedSlots[index]=true;
-		equippedItems[index]=equipment;
-		
-		return returnEquipable;
+	// invalid index
+	if(index < 0 || index > equippedItems.length)
+		return null;
+
+	// equipping mainHand or offHand, must unequip twoHand
+	else if((index == 7 || index == 8) && usedSlots[9])
+		returnEquipable = unequip(9);
+
+	// equipping twoHand, must unequip mainHand and/or offHand
+	else if(index == 9 && (usedSlots[7] || usedSlots[8]))
+	{
+		// flawed function return, because we can potentially 
+		// unequip both mainHand and offHand. however, inevitable
+		// given return type
+		if(usedSlots[7])
+			returnEquipable = unequip(7);
+		if(usedSlots[8])
+			returnEquipable = unequip(8);
 	}
+
+	// if there is already an item in a slot that is not 7, 8, or 9,
+	// unequip it
+	else 
+	{
+		if(usedSlots[index])
+			returnEquipable = unequip(equipment.getSlot());
+	}
+
+	usedSlots[index] = true;
+	equippedItems[index] = equipment;
+
+	return returnEquipable;
+        }
+        
 	private int getIndex(EquipSlot slot){ //returns index value of specified EquipSlot
 		int index;
 		switch(slot){
@@ -134,7 +156,7 @@ public class Armory implements Saveable {
 		if(equippedItems != null){
 			for(int i = 0; i < numOfSlots; ++i){
 				if(equippedItems[i] != null){
-					str += equippedItems[i].toXML();
+					str += equippedItems[i].toXML(true);
 					str += "\n";
 				}			
 			}

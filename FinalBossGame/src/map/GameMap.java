@@ -94,11 +94,13 @@ public class GameMap {
     
     public CoordinatePair addItem(Item item, CoordinatePair location) {
         itemsOnMap.add(new Pair<>(item, location));
+        ((GameObject) item).setLocation(location);
         return location; //why?
     }
 
     public CoordinatePair addEntity(Entity entity, CoordinatePair location) {
         entitiesOnMap.add(new Pair<>(entity, location));
+        entity.setLocation(location);
         return location; //because
     }
 
@@ -235,5 +237,22 @@ public class GameMap {
             return tiles;
         }
 
+    }
+
+    public String toXML()
+    {
+    	String str = "";
+    	
+    	for(Pair e : entitiesOnMap) {
+    			str += ((Entity) e.getLeft()).toXML();
+    			str += "\n";
+    	}
+    	
+    	for(Pair i : itemsOnMap) {
+    			str += ((Item) i.getLeft()).toXML();
+    			str += "\n";
+    	}
+    	
+    	return str;
     }
 }

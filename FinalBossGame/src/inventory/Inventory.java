@@ -90,14 +90,16 @@ public class Inventory implements Saveable {
     
     public String toXML(){
     	String str = "";
+    	str += "<inventory>";
+    	str += "\n";
     	if(mySack != null){
     		str += mySack.toXML();
         	str += "\n";
     	}
     	if(myArmory != null)
     		str += myArmory.toXML();
-    
-    	
+    	str += "\n";
+    	str += "</inventory>";
     	return str;
     	
     }

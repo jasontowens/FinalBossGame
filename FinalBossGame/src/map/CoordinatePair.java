@@ -12,6 +12,12 @@ public class CoordinatePair {
         this.x = x;
         this.y = y;
     }
+    
+    //default constructor
+    public CoordinatePair(){
+    	this.x = 0;
+    	this.y = 0;
+    }
 
     public int getX(){
         return x;        

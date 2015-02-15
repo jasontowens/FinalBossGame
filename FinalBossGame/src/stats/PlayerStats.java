@@ -3,8 +3,9 @@
 package stats;
 
 import stats.Stats;
+import util.Saveable;
 
-public class PlayerStats extends Stats {
+public class PlayerStats extends Stats implements Saveable {
 	private int level;
 	private int hpMax;
 	private int mpMax;
@@ -80,5 +81,11 @@ public class PlayerStats extends Stats {
 	//Usage
 	public void levelUp(){
 		modExperience(expPerLevel - (experience % expPerLevel));
+	}
+	
+	public String toXML(){
+		String str = "";
+		
+		return str;
 	}
 }

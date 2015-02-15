@@ -13,7 +13,7 @@ public class Menu {
     private int selectionIndex; 
     
     public enum MenuOption{
-        NEW_GAME, LOAD_GAME, EXIT, RESUME_GAME, OPEN_SAVE_FILE, SAVE, RETURN_TO_MAIN_MENU
+        NEW_GAME, SWITCH_TO_LOAD_MENU, SAVE_FILE, EXIT, RESUME_GAME, OPEN_SAVE_FILE, RETURN_TO_MAIN_MENU
     }
     
     public Menu(MenuOption[] options){

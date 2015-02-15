@@ -13,7 +13,7 @@ public class CoordinatorScheduler {
 	private List<Observer> observers;
 	
 	private CoordinatorScheduler() {
-		coordinatorType = CoordinatorType.MAIN_MENU;
+		coordinatorType = CoordinatorType.MENU;
 		observers = new ArrayList<Observer>();
 	}
 	//Singleton method

@@ -51,6 +51,9 @@ public class XMLReader {
 			e.printStackTrace();
 		}
 	}
+	/*
+	 * TODO: add setter for InputStream
+	 */
 	
 	public static XMLReader getInstance(InputStream is){
 		if(reader == null){

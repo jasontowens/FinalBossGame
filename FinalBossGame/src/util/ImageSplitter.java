@@ -10,6 +10,8 @@ import java.awt.image.BufferedImage;
  * IMPORTANT: Save yourself a lot of trouble and be sure to see the note above the 
  * getTile() method. 
  * 
+ * Fixed indexing bug 2/15/15 - Hanif
+ * 
  * @author: Hanif 
  */
 public class ImageSplitter {
@@ -21,8 +23,8 @@ public class ImageSplitter {
     private int tileWidth;
     private int tileHeight;
 
-    private int x; //Number of tiles horizontal
-    private int y; //Number of tiles vertical
+    private int numTilesHorizontal; //Number of tiles horizontal
+    private int numTilesVertical; //Number of tiles vertical
 
     BufferedImage[][] tiles;
 
@@ -34,8 +36,8 @@ public class ImageSplitter {
         tileHeight = tHeight;
         tileWidth = tWidth;
 
-        x = sheetWidth / tileWidth;
-        y = sheetHeight / tileHeight;
+        numTilesHorizontal = sheetWidth / tileWidth;
+        numTilesVertical = sheetHeight / tileHeight;
 
         tiles = makeTiles();
 
@@ -50,13 +52,13 @@ public class ImageSplitter {
     	return splitter;
     }
     private BufferedImage[][] makeTiles() {
-        BufferedImage[][] image = new BufferedImage[x][y];
+        BufferedImage[][] image = new BufferedImage[numTilesVertical][numTilesHorizontal];
         int xPos = 0;
         int yPos = 0;
     
-        for(int i = 0; i < y; ++i){
-        	for(int j = 0; j < x; ++j){
-        		image[j][i] = img.getSubimage(xPos, yPos, tileWidth, tileHeight);
+        for(int i = 0; i < numTilesVertical; ++i){
+        	for(int j = 0; j < numTilesHorizontal; ++j){
+        		image[i][j] = img.getSubimage(xPos, yPos, tileWidth, tileHeight);
         		//System.out.println("i=" + i + " j=" + j + " " + xPos + " , " +  yPos);
         		xPos += tileWidth;
         	}
@@ -80,9 +82,7 @@ public class ImageSplitter {
     /*
      * WARNING: Here be Dragons!
      * 
-     * Notice how i and j appear to be flipped? That's because 
-     * the natural way to query this method should be the same as how
-     * 2D arrays are indexed.  getTile(0 , 1) is the tile on the 0th row, 1st column, 
+     * getTile(0 , 1) is the tile on the 0th row, 1st column, 
      * right where the @ symbol is.
      * 
      *  	* @ * * * ....
@@ -99,21 +99,60 @@ public class ImageSplitter {
      *
      */
     public BufferedImage getTile(int i, int j) {
-        return tiles[j][i];
+        return tiles[i][j];
     }
 
     //The number of tiles horizontal
-    public int getX() {
-        return x;
+    public int getNumTilesHorizontal() {
+        return numTilesHorizontal;
     }
 
     //The number of tiles vertically
-    public int getY() {
-        return y;
+    public int getNumTilesVertical() {
+        return numTilesVertical;
     }
 
+   
     public BufferedImage[][] getTileArray() {
-        return tiles;
+    	return tiles;
     }
-
+    
+    
+    /*
+     * Tested
+     */
+    public BufferedImage getTileFromID(int id){
+    	
+    	//TODO: make it throw invalid argument
+    	if(id < 1){
+    		System.out.println("Invalid argument");
+    	}
+    	
+    	int i = (id - 1) / numTilesHorizontal;
+    	int j = (id - 1) % numTilesHorizontal;
+    	
+    	return getTile(i , j);
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

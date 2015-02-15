@@ -115,7 +115,7 @@ public class Entity extends GameObject implements Saveable{
 	public HashMap<EquipSlot, Equipable> getArmory(){
 		return myInventory.getArmoryHMap();
 	}
-	public ArrayList<Takeable> getSack(){
+	public Takeable[] getSack(){
 		return myInventory.getSack();
 	}
 

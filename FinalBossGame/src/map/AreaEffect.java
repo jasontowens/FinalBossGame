@@ -11,8 +11,8 @@ public class AreaEffect extends GameObject {
 	
 	/*--------------------- CONSTRUCTORS ---------------------*/
 	public AreaEffect(String sprite, String name, String description, int ID, Stats mods){
-		super(sprite, name, description, ID); //TODO: change ID to how Hanif wants it set up 
-		this.modifiers = mods;
+            super(sprite, name, description, ID); //TODO: change ID to how Hanif wants it set up 
+            this.modifiers = mods;
 	}
 	
 	/*--------------------- USAGE ---------------------*/

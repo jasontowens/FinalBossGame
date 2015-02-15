@@ -43,7 +43,7 @@ public class Equipable extends Takeable implements Item {
 		entity.mergeStats(modifiers.inverted());
 	}
 	
-	public String toXML(){
+	/*public String toXML(){
 		String str = "";
 		
 		str += "<equipableItem name=\"" + this.getName() + "\"" + " />";
@@ -51,5 +51,5 @@ public class Equipable extends Takeable implements Item {
 		
 		return str;
 		
-	}
+	}*/
 }

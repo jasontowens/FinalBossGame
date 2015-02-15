@@ -11,8 +11,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-import miscTest.ImageSplitterTest;
-
 /*
  * Responsible for reading the map XML file, and storing a 2D array of tiles corresponding 
  * to the map, so that View classes can query for rendering. 
@@ -124,23 +122,3 @@ public class MapLoader {
 	}
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

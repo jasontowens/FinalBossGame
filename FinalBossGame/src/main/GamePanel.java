@@ -1,5 +1,8 @@
 package main;
 
+import coordinators.GameCoordinator;
+import coordinators.InventoryCoordinator;
+import coordinators.MenuCoordinator;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -28,10 +31,14 @@ public class GamePanel extends JPanel implements Runnable {
 
     public GamePanel(int width, int height) {
         this.setSize(width, height);
-        //Create the scene manager
-        sm = new SceneManager();
-        //Create the animator thread
         animator = new Thread((Runnable) this);
+    }
+
+    public GamePanel(GameCoordinator gc, MenuCoordinator mc, InventoryCoordinator ic) {
+        this(RunGame.WIDTH, RunGame.HEIGHT);
+        //Create the scene manager
+        sm = new SceneManager(gc, mc, ic);
+        //Start the animator thread
         animator.start();
     }
 

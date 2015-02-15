@@ -6,6 +6,11 @@ import map.Pair;
 import map.CoordinatePair;
 import entity.Entity;
 import item.Item;
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.io.File;
+import java.io.PrintWriter;
+import java.io.FileNotFoundException;
 
 public class SaveCoordinator {
 	private static SaveCoordinator saveCoord = SaveCoordinator.getInstance();
@@ -17,14 +22,21 @@ public class SaveCoordinator {
 	/*-----------USAGE--------------*/
 	
 	public void save(){
-		//TODO: create XML file to write to called "writeFile"
-		ArrayList<Pair<Entity, CoordinatePair>> entityList = activeMap.getAllEntities();
-		ArrayList<Pair<Item, CoordinatePair>> itemList = activeMap.getAllItems();
-		for(Pair<Entity, CoordinatePair> iterPair : entityList){
-			writeFile = iterPair.getLeft().toXML();
+		JFileChooser chooser = new JFileChooser();
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("XML files", "xml");
+		chooser.setFileFilter(filter);
+		int returnVal = chooser.showOpenDialog(null); //MAY NOT NEED TO BE NULL		
+		if(returnVal == JFileChooser.APPROVE_OPTION){
+			System.out.println("Opened the file: " + chooser.getSelectedFile().getName());
 		}
-		for(Pair<Item, CoordinatePair> iterPair : itemList){
-			writeFile = iterPair.getLeft().toXML();
+		File timeToWrite = chooser.getSelectedFile();
+		try{
+		PrintWriter writeFile = new PrintWriter(timeToWrite);
+		writeFile.println(activeMap.toXML());
+		writeFile.close();
+		}
+		catch(FileNotFoundException a){
+			throw a;
 		}
 	}
 	

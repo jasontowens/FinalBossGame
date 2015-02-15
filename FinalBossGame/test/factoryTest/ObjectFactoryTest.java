@@ -5,7 +5,7 @@ import item.Takeable;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.IOException;  
 import java.io.InputStream;
 import java.util.ArrayList;
 
@@ -14,12 +14,11 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 
 import entity.Entity;
-import factories.*;
+import factories.*; 
 import gameobject.GameObject;
 import map.*;
 
-public class ObjectFactoryTest {
-	
+public class ObjectFactoryTest  
 
 	public static void main(String[] args) {
 		GameMap m = new GameMap();

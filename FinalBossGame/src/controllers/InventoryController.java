@@ -7,7 +7,7 @@ public class InventoryController extends SceneController {
 	private static InventoryController inventoryController = null;
     private static InventoryCoordinator inventoryReceiver = InventoryCoordinator.getInstance();
 	
-	private InventoryController() {}
+	private InventoryController() {} 
 	
 	public void useKey2() // move down in inventory
 	{

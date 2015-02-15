@@ -26,8 +26,8 @@ public class Entity extends GameObject implements Saveable{
     //private CoordinatePair myLocation;
 	
     /*---------CONSTRUCTORS---------------*/
-	public Entity(String name, String description, String spriteFilePath, MotionType mobility, Inventory inventory, Occupation occ, PlayerStats stats, GameMap m){
-		super("Entity", name, description, spriteFilePath); 
+	public Entity(String name, String description, int ID, MotionType mobility, Inventory inventory, Occupation occ, PlayerStats stats, GameMap m){
+		super("Entity", name, description, ID); //TODO: change ID to how Hanif wants it set up 
 		myMotion = mobility;
 		myOccupation = occ;
 		myStats = stats;
@@ -36,8 +36,8 @@ public class Entity extends GameObject implements Saveable{
 	}
 	
 	//needed to add this for testing.  And should Entity really have a GameMap? 
-	public Entity(String name, String description, String spriteFilePath, MotionType mobility, Inventory inventory, Occupation occ, PlayerStats stats){
-		super("Entity", name, description, spriteFilePath); 
+	public Entity(String name, String description, int ID, MotionType mobility, Inventory inventory, Occupation occ, PlayerStats stats){
+		super("Entity", name, description, ID); //TODO: change ID to how Hanif wants it set up 
 		myMotion = mobility;
 		myOccupation = occ;
 		myInventory = inventory;

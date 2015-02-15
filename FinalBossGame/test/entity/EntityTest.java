@@ -33,7 +33,8 @@ public class EntityTest {
     private Entity myEntity;
     private Inventory inventory;
     private Occupation occupation;
-    private Stats stats;
+    private PlayerStats stats;
+    private GameMap map;
     
     public EntityTest() {
         
@@ -52,8 +53,9 @@ public class EntityTest {
     public void setUp() {
         inventory = EasyMock.createNiceMock(Inventory.class);
         occupation = EasyMock.createNiceMock(Occupation.class);
-        stats = EasyMock.createNiceMock(Stats.class);
-        myEntity = new Entity("Jason", "A perso", "Not/a/real/filepath.png", MotionType.GROUND, inventory, occupation, new PlayerStats(), new GameMap(10,10));
+        stats = EasyMock.createNiceMock(PlayerStats.class);
+        map = EasyMock.createNiceMock(GameMap.class);
+        myEntity = new Entity("Jason", "A perso", "Not/a/real/filepath.png", MotionType.GROUND, inventory, occupation, stats, map);
     }
     
     @After

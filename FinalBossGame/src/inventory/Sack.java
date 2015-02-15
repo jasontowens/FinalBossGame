@@ -2,6 +2,7 @@ package inventory;
 import util.Saveable;
 import entity.Entity;
 import item.*;
+import java.util.ArrayList;
 
 public class Sack implements Saveable{
 	private int sizeOfSack;	
@@ -107,6 +108,10 @@ public class Sack implements Saveable{
 		
 		return str;
 	}
+
+        public final Takeable[] getArray() {
+            return itemsInSack;
+        }
 		
 	
 

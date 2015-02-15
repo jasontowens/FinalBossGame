@@ -80,14 +80,15 @@ public class Inventory implements Saveable {
 	
         
         public HashMap<EquipSlot, Equipable> getArmoryHMap() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            return myArmory.getHMap();
         }
 
-        public ArrayList<Takeable> getSack() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        public Takeable[] getSack() {
+            return mySack.getArray();
         }
         
     
+
     public String toXML(){
     	String str = "";
     	str += "<inventory>";
@@ -103,6 +104,8 @@ public class Inventory implements Saveable {
     	return str;
     	
     }
+
+
 	
 }
 

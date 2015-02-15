@@ -12,11 +12,7 @@ public class GameController extends SceneController {
             gameReceiver.moveAvatar(1);
         }
 	public void useKey2() { // south / down in Inventory
-			if (gameReceiver.isInInventory()){
-				gameReceiver.nextItem();
-			}
-			else
-				gameReceiver.moveAvatar(2);
+            gameReceiver.moveAvatar(2);
         }
 	public void useKey3() { // southeast
             gameReceiver.moveAvatar(3);
@@ -34,25 +30,17 @@ public class GameController extends SceneController {
             gameReceiver.moveAvatar(7);
         } 
 	public void useKey8() { // north / up in Inventory
-		if (gameReceiver.isInInventory()){
-			gameReceiver.previousItem();
-		}
-		else
             gameReceiver.moveAvatar(8);
         } 
 	public void useKey9() { // northeast
             gameReceiver.moveAvatar(9);
         } 
 	public void useKeyI() { // Inventory button
-		gameReceiver.toggleInventory();
+		gameReceiver.inventory();
 	}
-	public void useKeyEnter() { // inventory
-		if (gameReceiver.isInInventory())
-            gameReceiver.activateItem();
-        } 
 	public void useKeyEscape() { // 
-            gameReceiver.pause();
-        }
+        gameReceiver.pause();
+    }
 	
 	public static GameController getInstance() {
 		if(gameController == null) {
@@ -60,5 +48,4 @@ public class GameController extends SceneController {
 		}
 		return gameController;
 	}
-
 }

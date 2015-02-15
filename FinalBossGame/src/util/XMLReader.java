@@ -20,16 +20,20 @@ import org.xml.sax.SAXException;
  * XML needs to be read. Can either return parsed document or
  * all elements containing specified tag.
  * 
+ * 
+ * Refactored to be a singleton class.
+ * 
  * @author: Hanif
  */
 public class XMLReader {
 	
-	// very sensitive code! if you make a call, check that it 
-	// does not return null!
-	public static Document parseDocument(InputStream is){
-		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder db;
-		Document doc = null;
+	
+	private DocumentBuilderFactory factory;
+	private static XMLReader reader = null;
+	DocumentBuilder db;
+	Document doc;
+	private XMLReader(InputStream is){
+		factory = DocumentBuilderFactory.newInstance();
 		try {
 			db = factory.newDocumentBuilder();
 			doc = db.parse(new InputSource(is));
@@ -46,21 +50,36 @@ public class XMLReader {
 			System.out.println("IO Exception");
 			e.printStackTrace();
 		}
+	}
+	
+	public static XMLReader getInstance(InputStream is){
+		if(reader == null){
+			reader = new XMLReader(is);
+		}
+		
+		return reader;
+	}
+	
+	public Document parseDocument(){
+		if(doc == null){
+			System.out.println("Error creating XMLReader instance, check InputStream");
+		}
 		return doc;
 	}
 	
+	
+	
 	//returns ArrayList of all children of element 'e' with tag 'tag'
-	public static List<Element> getElements(String tag , Element e){
-		
+	
+	public List<Element> getElements(String tag , Element e){
 		ArrayList<Element> elements = new ArrayList<Element>();
 		NodeList nodes = e.getElementsByTagName(tag);
-		
+
 		for(int i = 0; i < nodes.getLength(); ++i){
 			elements.add( (Element) (nodes.item(i)));
 		}
 		
-		return elements;
-	
+		return elements;		
 	}
 }
 

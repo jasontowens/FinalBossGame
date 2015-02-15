@@ -15,7 +15,10 @@ import stats.*;
  */
 public class EntitySaveTest {
 	public static void main(String [] args){
+		
+		
 		Inventory inventory = new Inventory(new Sack() , new Armory());
+		
 		Occupation occupation = new Occupation("Summoner" , " ");
 		PlayerStats stats = new PlayerStats(1 , 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);
 		//TODO add to XML for Stats

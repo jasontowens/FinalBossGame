@@ -31,7 +31,7 @@ public class XMLReader {
 	private DocumentBuilderFactory factory;
 	private static XMLReader reader = null;
 	DocumentBuilder db;
-	Document doc;
+	Document doc = null;
 	private XMLReader(InputStream is){
 		factory = DocumentBuilderFactory.newInstance();
 		try {

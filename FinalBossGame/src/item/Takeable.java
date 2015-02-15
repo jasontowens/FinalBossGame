@@ -22,7 +22,7 @@ public class Takeable extends GameObject implements Item , Saveable {
 	}
 	public Takeable(String name, String description, ItemStats mods, GameMap active){
 		//TODO fix this damn sprite file path
-		super("Takeable", name, description,"takeable");
+		super("Takeable", name, description,"gameobject.png");
 		modifiers = mods;
 		current = active;
 	}

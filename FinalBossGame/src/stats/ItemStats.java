@@ -49,5 +49,6 @@ public class ItemStats extends Stats {
 		value += valAdded;
 	}
 	
+	//TODO: override toXML() to  durability.
 	
 }

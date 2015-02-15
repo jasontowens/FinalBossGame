@@ -14,7 +14,7 @@ public class ObstacleFactory {
 	}
 
 	private Obstacle createWall() {
-		Obstacle o = new Obstacle("Wall", "Can't walk through it.", "wallpath");
+		Obstacle o = new Obstacle("Wall", "Can't walk through it.", "gameobject.png");
 		return o;
 	}
 }

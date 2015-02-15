@@ -1,12 +1,13 @@
 package factories;
 
+import map.GameMap;
 import item.Interactive;
 import item.OccupationSetter;
 import item.ObstacleClearer;
 
 public class InteractiveFactory {
 	
-	public Interactive createInteractive(String name) {
+	public Interactive createInteractive(GameMap map, String name) {
 		switch(name) {
 			case "Smasher setter":
 				return createSmasherSetter();
@@ -15,7 +16,7 @@ public class InteractiveFactory {
 			case "Sneak setter":
 				return createSneakSetter();
 			case "Obstacle clearer":
-				return createObstacleClearer();
+				return createObstacleClearer(map);
 			default:
 				return null;
 		}
@@ -27,7 +28,7 @@ public class InteractiveFactory {
 	}
 
 	public Interactive createSummonerSetter() {
-		InteractiveItem i = new OccupationSetter("Summoner setter", "Makes you a summoner.", "ossummonerpath", "Summoner");
+		Interactive i = new OccupationSetter("Summoner setter", "Makes you a summoner.", "ossummonerpath", "Summoner");
 		return i;
 	}
 
@@ -36,8 +37,8 @@ public class InteractiveFactory {
 		return i;
 	}
 
-	public Interactive createObstacleClearer() {
-		Interactive i = new ObstacleClearer("Obstacle clearer", "Clears obstacles", "osclearerpath");
+	public Interactive createObstacleClearer(GameMap map) {
+		Interactive i = new ObstacleClearer("Obstacle clearer", "Clears obstacles", "osclearerpath", map);
 		return i;
 	}
 }

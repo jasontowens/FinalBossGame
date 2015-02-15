@@ -10,15 +10,17 @@ import map.GameMap;
 
 public class ObstacleClearer extends Interactive {
 	private ArrayList<Obstacle> targetObstacles;
-	private static GameMap current;
+	private GameMap current;
 	
-	protected ObstacleClearer(String className, String name, String description, String spriteFilePath){
+	protected ObstacleClearer(String className, String name, String description, String spriteFilePath, GameMap currentmap){
 		super(className, name, description, spriteFilePath);
 		targetObstacles = new ArrayList<Obstacle>();
+		current = currentmap;
 	}
-	public ObstacleClearer(String name, String description, String spriteFilePath){
+	public ObstacleClearer(String name, String description, String spriteFilePath, GameMap currentmap){
 		super("ObstacleClearer", name, description, spriteFilePath);
 		targetObstacles = new ArrayList<Obstacle>();
+		current = currentmap;
 	}
 	
 	public boolean activate(Entity entity){
@@ -32,14 +34,6 @@ public class ObstacleClearer extends Interactive {
 		if(!targetObstacles.contains(target)) {
 			targetObstacles.add(target);
 		}
-	}
-
-	public static void SetGameMap(GameMap current) {
-		this.current = current;
-	}
-
-	private static GameMap GetGameMap() {
-		return current;
 	}
 	
 }

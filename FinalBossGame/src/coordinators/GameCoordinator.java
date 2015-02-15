@@ -86,4 +86,8 @@ public class GameCoordinator
 		}
 		return gameCoordinator;
 	}
+
+    public GameMap getActiveMap() {
+        return this.activeMap;
+    }
 }

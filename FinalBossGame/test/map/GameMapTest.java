@@ -60,7 +60,7 @@ public class GameMapTest {
         mergeStats = EasyMock.createNiceMock(Stats.class);
         equip = EasyMock.createNiceMock(Equipable.class);
         testEntity = new Entity("Jason", "A perso", "Not/a/real/filepath.png",
-        		MotionType.GROUND, inventory, occupation, stats, map);
+                MotionType.GROUND, inventory, occupation, stats, map);
     }
     
     @After

@@ -29,7 +29,7 @@ public class Inventory implements Saveable {
 			
 	public void useItem(int location, Entity ent){
 		if(location <= 9){
-			mySack.addItem(myArmory.unequip(EquipSlot.values()[location]));
+			mySack.addItem(myArmory.unequip(location));
 		}
 		else{
 			mySack.useItem(location-10,ent);

@@ -11,17 +11,21 @@ import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 
+import entity.Entity;
+
 public class InventoryTest {
 	private Sack sack;
 	private Armory armory;
 	private Inventory inventory;
 	private Equipable takeable;
+	private Entity entity;
 
 	@Before
 	public void setUp() throws Exception {
 		sack = EasyMock.createNiceMock(Sack.class);
 		armory = EasyMock.createNiceMock(Armory.class);
 		takeable = EasyMock.createNiceMock(Equipable.class);
+		entity = EasyMock.createNiceMock(Entity.class);
 		inventory = new Inventory(sack,armory);
 	}
 
@@ -50,6 +54,30 @@ public class InventoryTest {
 		EasyMock.verify(sack);
 	}
 	
+	@Test
+	public void testUseItemArmory() {
+		EasyMock.expect(sack.addItem(takeable)).andReturn(true);
+		EasyMock.expect(armory.unequip(1)).andReturn(takeable);
+		
+		EasyMock.replay(sack);
+		EasyMock.replay(armory);
+		
+		inventory.useItem(1, entity);
+		
+		EasyMock.verify(sack);
+		EasyMock.verify(armory);	
+	}
+	
+	@Test
+	public void testUseItemSack() {
+		EasyMock.expect(sack.useItem(1,entity)).andReturn(takeable);
+		
+		EasyMock.replay(sack);
+		
+		inventory.useItem(11, entity);
+		
+		EasyMock.verify(sack);	
+	}
 	/*
 	 * TODO useItem methods
 	 */

@@ -6,15 +6,20 @@
 package entity;
 import inventory.EquipSlot;
 import item.Equipable;
+import item.Item;
 import item.Takeable;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+
 import map.CoordinatePair;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 import stats.PlayerStats;
 import stats.Stats;
@@ -34,20 +39,11 @@ public class EntityTest {
     private Inventory inventory;
     private Occupation occupation;
     private PlayerStats stats;
+    private Stats mergeStats;
     private GameMap map;
-    
-    public EntityTest() {
-        
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-        
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
+    private Takeable item;
+    private Equipable equip;
+    private CoordinatePair coordinate;
     
     @Before
     public void setUp() {
@@ -55,11 +51,15 @@ public class EntityTest {
         occupation = EasyMock.createNiceMock(Occupation.class);
         stats = EasyMock.createNiceMock(PlayerStats.class);
         map = EasyMock.createNiceMock(GameMap.class);
+
+        item = EasyMock.createNiceMock(Takeable.class);
+        coordinate = EasyMock.createNiceMock(CoordinatePair.class);
+        mergeStats = EasyMock.createNiceMock(Stats.class);
+        equip = EasyMock.createNiceMock(Equipable.class);
+        myEntity = new Entity("Jason", "A perso", "Not/a/real/filepath.png",
+        		MotionType.GROUND, inventory, occupation, stats, map);
+
         myEntity = new Entity("Jason", "A perso", "Not/a/real/filepath.png", MotionType.GROUND, inventory, occupation, stats, map);
-    }
-    
-    @After
-    public void tearDown() {
     }
 
     /**
@@ -67,12 +67,19 @@ public class EntityTest {
      */
     @Test
     public void testDropItem() {
-        System.out.println("dropItem");
         int location = 0;
-        Entity instance = null;
-        instance.dropItem(location);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        EasyMock.expect(map.addItem(item, coordinate)).andReturn(coordinate);
+        
+        EasyMock.expect(inventory.removeItem(location)).andReturn(item);
+        EasyMock.expect(map.getLocation(myEntity)).andReturn(coordinate);
+        
+        EasyMock.replay(map);
+        EasyMock.replay(inventory);
+        
+        myEntity.dropItem(location);
+        
+        EasyMock.verify(map);
+        EasyMock.verify(inventory);
     }
 
     /**
@@ -80,81 +87,116 @@ public class EntityTest {
      */
     @Test
     public void testUseItem() {
-        System.out.println("useItem");
-        int location = 0;
-        Entity instance = null;
-        instance.useItem(location);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    	inventory.useItem(0, myEntity);
+    	EasyMock.expectLastCall();
+    	
+    	EasyMock.replay(inventory);
+
+        myEntity.useItem(0);
+        
+        EasyMock.verify(inventory);
     }
 
     /**
      * Test of move method, of class Entity.
      */
+    
     @Test
     public void testMove() {
-        System.out.println("move");
-        CoordinatePair change = null;
-        Entity instance = null;
-        instance.move(change);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        map.requestMovement(myEntity, coordinate);
+        EasyMock.expectLastCall();
+        
+        EasyMock.replay(map);
+        
+        myEntity.move(coordinate);
+        
+        EasyMock.verify(map);
     }
 
     /**
      * Test of addItem method, of class Entity.
      */
+   
     @Test
     public void testAddItem() {
-        System.out.println("addItem");
-        Takeable item = null;
-        Entity instance = null;
-        instance.addItem(item);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    	inventory.addItem(item);
+        EasyMock.expectLastCall();
+        
+        EasyMock.replay(inventory);
+        
+        inventory.addItem(item);
+        
+        EasyMock.verify(inventory);
     }
+    
 
     /**
      * Test of equipItem method, of class Entity.
      */
+    
     @Test
     public void testEquipItem() {
-        System.out.println("equipItem");
-        Equipable item = null;
-        Entity instance = null;
-        boolean expResult = false;
-        boolean result = instance.equipItem(item);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        EasyMock.expect(inventory.equipItem(equip)).andReturn(true);
+        
+        EasyMock.replay(inventory);
+        
+        boolean result = myEntity.equipItem(equip);
+        
+        assertTrue(result);
+    }
+    @Test
+    public void testEquipItemFailse() {
+        EasyMock.expect(inventory.equipItem(equip)).andReturn(false);
+        
+        EasyMock.replay(inventory);
+        
+        boolean result = myEntity.equipItem(equip);
+        
+        assertFalse(result);
     }
 
     /**
      * Test of removeItem method, of class Entity.
      */
+    
     @Test
     public void testRemoveItem() {
-        System.out.println("removeItem");
-        Takeable item = null;
-        Entity instance = null;
-        instance.removeItem(item);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        inventory.removeItem(item);
+        EasyMock.expectLastCall();
+        
+        EasyMock.replay(inventory);
+        
+        myEntity.removeItem(item);
+        
+        EasyMock.verify(inventory);
     }
 
     /**
      * Test of changeMoney method, of class Entity.
      */
+    
     @Test
     public void testChangeMoney() {
-        System.out.println("changeMoney");
-        int change = 0;
-        Entity instance = null;
-        boolean expResult = false;
-        boolean result = instance.changeMoney(change);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        EasyMock.expect(inventory.modCurrency(10)).andReturn(true);
+        
+        EasyMock.replay(inventory);
+        
+        boolean result = myEntity.changeMoney(10);
+        
+        assertTrue(result);
+        EasyMock.verify(inventory);
+    }
+    
+    @Test
+    public void testChangeMoneyFalse() {
+    	EasyMock.expect(inventory.modCurrency(-5)).andReturn(false);
+    	
+    	EasyMock.replay(inventory);
+    	
+    	boolean result = myEntity.changeMoney(-5);
+    	
+    	assertFalse(result);
+    	EasyMock.verify(inventory);
     }
 
     /**
@@ -162,45 +204,58 @@ public class EntityTest {
      */
     @Test
     public void testSetMoney() {
-        System.out.println("setMoney");
-        int newAmount = 0;
-        Entity instance = null;
-        boolean expResult = false;
-        boolean result = instance.setMoney(newAmount);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        EasyMock.expect(inventory.setCurrency(10)).andReturn(true);
+        
+        EasyMock.replay(inventory);
+        
+        boolean result = myEntity.setMoney(10);
+        
+        assertTrue(result);
+        
+        EasyMock.verify(inventory);
+    }
+    
+    @Test
+    public void testSetMoneyReturnsFalse() {
+        EasyMock.expect(inventory.setCurrency(-10)).andReturn(false);
+        
+        EasyMock.replay(inventory);
+        
+        boolean result = myEntity.setMoney(-10);
+        
+        assertFalse(result);
+        
+        EasyMock.verify(inventory);
     }
 
     /**
      * Test of setOccupation method, of class Entity.
      */
+    
     @Test
     public void testSetOccupation() {
-        System.out.println("setOccupation");
-        String occupationName = "";
-        Entity instance = null;
-        instance.setOccupation(occupationName);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    	occupation.setName("name");
+    	EasyMock.expectLastCall();
+    	
+    	EasyMock.replay(occupation);
+    	
+    	myEntity.setOccupation("name");
+    	
+    	EasyMock.verify(occupation);
     }
-
     /**
      * Test of mergeStats method, of class Entity.
      */
+    
     @Test
     public void testMergeStats() {
-        System.out.println("mergeStats");
-        Stats modifiers = null;
-        Entity instance = null;
-        instance.mergeStats(modifiers);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
      * Test of levelUp method, of class Entity.
      */
+    /*
     @Test
     public void testLevelUp() {
         System.out.println("levelUp");
@@ -213,6 +268,7 @@ public class EntityTest {
     /**
      * Test of getMoney method, of class Entity.
      */
+    /*
     @Test
     public void testGetMoney() {
         System.out.println("getMoney");
@@ -227,6 +283,7 @@ public class EntityTest {
     /**
      * Test of getMotionType method, of class Entity.
      */
+    /*
     @Test
     public void testGetMotionType() {
         System.out.println("getMotionType");
@@ -241,6 +298,7 @@ public class EntityTest {
     /**
      * Test of getStats method, of class Entity.
      */
+    /*
     @Test
     public void testGetStats() {
         System.out.println("getStats");
@@ -255,6 +313,7 @@ public class EntityTest {
     /**
      * Test of getOccupation method, of class Entity.
      */
+    /*
     @Test
     public void testGetOccupation() {
         System.out.println("getOccupation");
@@ -269,6 +328,7 @@ public class EntityTest {
     /**
      * Test of getArmory method, of class Entity.
      */
+    /*
     @Test
     public void testGetArmory() {
         System.out.println("getArmory");
@@ -283,6 +343,7 @@ public class EntityTest {
     /**
      * Test of getSack method, of class Entity.
      */
+    /*
     @Test
     public void testGetSack() {
         System.out.println("getSack");
@@ -297,6 +358,7 @@ public class EntityTest {
     /**
      * Test of setMotionType method, of class Entity.
      */
+    /*
     @Test
     public void testSetMotionType() {
         System.out.println("setMotionType");
@@ -306,5 +368,6 @@ public class EntityTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    */
     
 }

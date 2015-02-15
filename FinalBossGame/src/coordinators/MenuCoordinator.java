@@ -62,7 +62,7 @@ public class MenuCoordinator {
                 break;
             //Load Menu options
             case OPEN_SAVE_FILE:
-                JFileChooser chooser = new JFileChooser("./resources");
+                JFileChooser chooser = new JFileChooser("./resources/saves");
                 int choice = chooser.showOpenDialog(null);
                 if (choice == JFileChooser.APPROVE_OPTION) {
                     File loadFile = chooser.getSelectedFile();
@@ -100,15 +100,15 @@ public class MenuCoordinator {
     private void loadGame(File saveFile) throws ParserConfigurationException, SAXException, IOException{
     	InputStream file = new FileInputStream(saveFile);
     	
+    	//tiles
+    	
     	GameMap loadedMap = GameMap.getInstance();
    			
    		ObjectFactory objectFactory = new ObjectFactory(file,loadedMap);
-   		objectFactory.ParseFile();
-   		ArrayList<Pair<Entity, CoordinatePair>> entities = loadedMap.getAllEntities();
-   		Entity entity = entities.get(0).getLeft();
+   		Entity player = objectFactory.ParseFile();
    		GameCoordinator gameCoordinator = GameCoordinator.getInstance();
    		gameCoordinator.setActiveMap(loadedMap);
-   		gameCoordinator.setAvatar(entity);    
+   		gameCoordinator.setAvatar(player);    
     }
 
     public void setCurrentMenu(Menu menu) {

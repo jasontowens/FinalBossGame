@@ -13,15 +13,13 @@ public class SceneControllerDispatcher implements Observer {
 	private CoordinatorScheduler coordinatorScheduler;
 	private static final int menuControllerLocation = 0;
 	private static final int gameControllerLocation = 1;
-	private static final int pauseMenuControllerLocation = 2;
-	private static final int loadMenuControllerLocation = 3;
+	private static final int inventoryControllerLocation = 2;
 	
 	public SceneControllerDispatcher() {
 		sceneControllers = new ArrayList<SceneController>();
 		sceneControllers.add(MenuController.getInstance());
 		sceneControllers.add(GameController.getInstance());
-		sceneControllers.add(PauseMenuController.getInstance());
-		sceneControllers.add(LoadMenuController.getInstance());
+		sceneControllers.add(InventoryController.getInstance());
 		activeController = MenuController.getInstance();
 		coordinatorScheduler = CoordinatorScheduler.getInstance();
 		coordinatorScheduler.registerObserver(this);
@@ -50,17 +48,14 @@ public class SceneControllerDispatcher implements Observer {
 	@Override
 	public void Notify() {
 		switch (coordinatorScheduler.getCoordinatorType()) {
-			case PAUSE:
-				this.activeController = sceneControllers.get(pauseMenuControllerLocation);
-				break;
 			case GAME:
 				this.activeController = sceneControllers.get(gameControllerLocation);
 				break;
-			case MAIN_MENU:
-				this.activeController = sceneControllers.get(menuControllerLocation);
+			case INVENTORY:
+				this.activeController = sceneControllers.get(inventoryControllerLocation);
 				break;
-			case LOAD:
-				this.activeController = sceneControllers.get(loadMenuControllerLocation);
+			case MENU:
+				this.activeController = sceneControllers.get(menuControllerLocation);
 				break;
 			default :
 				break;

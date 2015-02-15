@@ -109,7 +109,7 @@ public class LoadMenuCoordinatorTest {
 	@Test
 	public void testConfirmSelection() throws ParserConfigurationException, SAXException, IOException {
 		LoadMenuCoordinator.setCurrentFileIndex(0);
-		
+		loadMenuCoordinator.
 		
 		
 		coordinator.confirmSelection();

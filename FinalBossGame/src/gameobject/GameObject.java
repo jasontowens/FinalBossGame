@@ -5,7 +5,7 @@ import java.io.File;
 import map.CoordinatePair;
 
 public abstract class GameObject {
-	private String spriteFilePath;
+	private int id;
 	private String name;
 	private String className;
 	private String description;
@@ -17,7 +17,7 @@ public abstract class GameObject {
 	
 	//This constructor should be called only after the subclass constructor is called
 	protected GameObject(){
-		spriteFilePath = "art" + File.separator;
+		id = 0; //will need to be changed later manually
 		name = "Generic Object";
 		className = "GameObject";
 		description = "Generic description";
@@ -25,8 +25,8 @@ public abstract class GameObject {
 		
 	}
 	
-	protected GameObject(String className, String objectName, String description, String spriteFilePath){
-		this.spriteFilePath = spriteFilePath;
+	protected GameObject(String className, String objectName, String description, int ID){
+		this.id = ID;
 		this.name = objectName;
 		this.className = className;
 		this.description = description;
@@ -43,7 +43,7 @@ public abstract class GameObject {
         * called States
         */
         public int getState(){return 0;}
-	public String getSpriteFilePath(){ return spriteFilePath; }
+	public int getID(){ return id; }
 	public String getClassName(){ return className; }
 	public String getDescription(){ return description; }
 	public String getName() { return name; }

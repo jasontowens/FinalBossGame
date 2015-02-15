@@ -2,6 +2,8 @@ package util;
 
 import java.awt.image.BufferedImage;
 
+import main.RunGame;
+
 /*
  * Takes a BufferedImage (the sprite sheet), the sheet/tile height/width, and returns
  * a 2D array of the individual tiles.
@@ -33,8 +35,8 @@ public class ImageSplitter {
         img = i;
         sheetWidth = i.getWidth();
         sheetHeight = i.getHeight();
-        tileHeight = tHeight;
-        tileWidth = tWidth;
+        tileHeight = RunGame.TILE_HEIGHT;
+        tileWidth = RunGame.TILE_WIDTH;
 
         numTilesHorizontal = sheetWidth / tileWidth;
         numTilesVertical = sheetHeight / tileHeight;
@@ -124,7 +126,7 @@ public class ImageSplitter {
     public BufferedImage getTileFromID(int id){
     	
     	//TODO: make it throw invalid argument
-    	if(id < 1){
+    	if(id < 1 || id > (numTilesHorizontal * numTilesVertical)){
     		System.out.println("Invalid argument");
     	}
     	

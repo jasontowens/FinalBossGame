@@ -6,7 +6,12 @@
 package map;
 
 import entity.Entity;
+import entity.MotionType;
+import entity.Occupation;
+import inventory.Inventory;
+import item.Equipable;
 import item.Item;
+import item.Takeable;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -15,29 +20,52 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import org.easymock.EasyMock;
+import org.junit.Before;
+import org.junit.Test;
+import stats.PlayerStats;
+import stats.Stats;
+
 /**
  *
  * @author Owner
  */
 public class GameMapTest {
-    
-    public GameMapTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
+    private Tile[][] tiles;
+    private Entity testEntity;
+    private Inventory inventory;
+    private Occupation occupation;
+    private PlayerStats stats;
+    private Stats mergeStats;
+    private GameMap map;
+    private Takeable item;
+    private Equipable equip;
+    private CoordinatePair coordinate;
+            
     @Before
     public void setUp() {
+        for(int i = 0; i != 10;++i){
+            for(int j = 0; j != 20;++j){
+                tiles[i][j] = EasyMock.createNiceMock(Tile.class);
+            }
+        }
+        GameMap map = new GameMap(tiles);
+        inventory = EasyMock.createNiceMock(Inventory.class);
+        occupation = EasyMock.createNiceMock(Occupation.class);
+        stats = EasyMock.createNiceMock(PlayerStats.class);
+        map = EasyMock.createNiceMock(GameMap.class);
+
+        item = EasyMock.createNiceMock(Takeable.class);
+        coordinate = EasyMock.createNiceMock(CoordinatePair.class);
+        mergeStats = EasyMock.createNiceMock(Stats.class);
+        equip = EasyMock.createNiceMock(Equipable.class);
+        testEntity = new Entity("Jason", "A perso", "Not/a/real/filepath.png",
+        		MotionType.GROUND, inventory, occupation, stats, map);
     }
     
     @After
     public void tearDown() {
+        
     }
 
     /**
@@ -45,14 +73,30 @@ public class GameMapTest {
      */
     @Test
     public void testGetLocation_Entity() {
+        
+        CoordinatePair coordinate = new CoordinatePair(5,5);
+        EasyMock.expect(map.addEntity(testEntity, coordinate)).andReturn(coordinate);
+        //EasyMock.
+        
+        
+        
+        EasyMock.expect(inventory.removeItem(location)).andReturn(item);
+        EasyMock.expect(map.getLocation(myEntity)).andReturn(coordinate);
+        
+        EasyMock.replay(map);
+        EasyMock.replay(inventory);
+        
+        myEntity.dropItem(location);
+        
+        EasyMock.verify(map);
+        EasyMock.verify(inventory);
+        
         System.out.println("getLocation");
-        Entity entity = null;
-        GameMap instance = null;
-        CoordinatePair expResult = null;
+        Entity entity = testEntity;
+        GameMap instance = map;
+        CoordinatePair expResult = new CoordinatePair(5,5);
         CoordinatePair result = instance.getLocation(entity);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**

@@ -12,6 +12,8 @@ import main.RunGame;
  */
 public class GameMap {
 
+    private static GameMap thisMap;
+    
     private int height; // in tiles
     private int width; // in tiles
     private ArrayList<Pair<Entity, CoordinatePair>> entitiesOnMap;
@@ -30,6 +32,8 @@ public class GameMap {
         mValidator = MotionValidator.getInstance();
         entitiesOnMap = new ArrayList<Pair<Entity, CoordinatePair>>();
         itemsOnMap = new ArrayList<Pair<Item, CoordinatePair>>();
+        
+        thisMap = this; //singleton
     }
 
     GameMap() {
@@ -37,8 +41,19 @@ public class GameMap {
         mValidator = MotionValidator.getInstance();
         entitiesOnMap = new ArrayList<Pair<Entity, CoordinatePair>>();
         itemsOnMap = new ArrayList<Pair<Item, CoordinatePair>>();
+        
+        thisMap = this; //singleton
     }
 
+    /*-----------Singleton------------------*/
+    public static GameMap getInstance() {
+        if(thisMap == null) {
+            throw new Error("GameMap singleton has not yet been instatiated, you can not call it yet.");
+        }
+        else{
+            return thisMap;
+        }
+    }
     /*------------ACCESSORS-----------------*/
     //don't use this for printing every entity
     public CoordinatePair getLocation(Entity entity) {

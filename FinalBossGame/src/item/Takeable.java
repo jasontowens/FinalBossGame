@@ -15,14 +15,14 @@ public class Takeable extends GameObject implements Item , Saveable {
 	protected String spriteFilePath; //should soon be deprecated
 	
 	//constructors
-	protected Takeable(String className, String name, String description, String spriteFilePath, ItemStats mods, GameMap active){
-		super(className, name, description, spriteFilePath);
+	protected Takeable(String className, String name, String description, int ID, ItemStats mods, GameMap active){
+		super(className, name, description, ID); //TODO: change ID to how Hanif wants it set up 
 		modifiers = mods;
 		current = active;
 	}
 	public Takeable(String name, String description, ItemStats mods, GameMap active){
-		//TODO fix this damn sprite file path
-		super("Takeable", name, description,"gameobject.png");
+		//TODO:  fix this damn sprite file path
+		super("Takeable", name, description, 4); //TODO: change ID to how Hanif wants it set up 
 		modifiers = mods;
 		current = active;
 	}

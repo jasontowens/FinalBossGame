@@ -46,7 +46,7 @@ public class MapLoader {
 	private MapLoader(InputStream in){
 		reader = XMLReader.getInstance(in);
 		try {
-			spriteSheet = ImageIO.read(ImageSplitterTest.class.getResource("/resources/spriteSheets/tiles-map.png"));
+			spriteSheet = ImageIO.read(getClass().getResource("/resources/spriteSheets/tiles-map.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -100,7 +100,7 @@ public class MenuCoordinator {
     private void loadGame(File saveFile) throws ParserConfigurationException, SAXException, IOException{
     	InputStream file = new FileInputStream(saveFile);
     	
-    	GameMap loadedMap = new GameMap();
+    	GameMap loadedMap = GameMap.getInstance();
    			
    		ObjectFactory objectFactory = new ObjectFactory(file,loadedMap);
    		objectFactory.ParseFile();

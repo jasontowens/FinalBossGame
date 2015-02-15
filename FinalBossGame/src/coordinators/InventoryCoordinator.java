@@ -12,7 +12,7 @@ public class InventoryCoordinator
     /*--------------------- OTHER DATA MEMBERS ---------------------*/
     private static CoordinatorScheduler scheduler = CoordinatorScheduler.getInstance();
     private Entity avatar;
-    private GameMap activeMap;
+    private GameMap activeMap; 
     
     //Instance of singleton
     private static InventoryCoordinator inventoryCoordinator = null;

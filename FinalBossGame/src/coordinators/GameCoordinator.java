@@ -7,10 +7,6 @@ import viewport.StatusViewPort;
 
 public class GameCoordinator
 {
-    private boolean inInventory;
-    private int selectedItem = 0;
-    
-    
     /*--------------------- OTHER DATA MEMBERS ---------------------*/
     private static CoordinatorScheduler scheduler = CoordinatorScheduler.getInstance();
     private Entity avatar;
@@ -20,15 +16,12 @@ public class GameCoordinator
     private static GameCoordinator gameCoordinator = null;
 
     /*--------------------- CONSTRUCTOR ---------------------*/
-    private GameCoordinator(){
-    	inInventory = false;
-    }
+    private GameCoordinator(){}
 
     /*--------------------- GAME STATUS CHANGES---------------------*/
-    public void toggleInventory()
+    public void inventory()
     {
-       inInventory = !inInventory;
-       //TODO: Send inventory to view
+       scheduler.changeCoordinator(CoordinatorType.INVENTORY);
     }
 
     public void pause()
@@ -72,38 +65,11 @@ public class GameCoordinator
         }
         avatar.move(movement);
     }
-
-    /*--------------------- INVENTORY COMMANDS---------------------*/
-    public void nextItem() // upperbound?
-    {
-    	//TODO: Talk to Jason about how inventory will be presented
-        selectedItem = (selectedItem + 1) % avatar.getSack().size();
-        
-    }
-
-    public void previousItem()
-    {
-        selectedItem = --selectedItem % avatar.getSack().size()
-        		+ (selectedItem < 0 ? avatar.getSack().size() : 0);
-    }
-
-    public void activateItem() 
-    {
-        avatar.useItem(selectedItem);
-    }
-
-    public void dropItem() 
-    {
-        avatar.dropItem(selectedItem);
-    }
-    
     
     /*--------------------- COORDINATOR COMMANDS---------------------*/
     public static void setScheduler(CoordinatorScheduler scheduler) {
     	GameCoordinator.scheduler = scheduler;
     }
-    
-
     
     /*--------------------- ACCESSOR / MUTATOR METHODS ---------------------*/
     public void setAvatar(Entity avatar){
@@ -111,10 +77,6 @@ public class GameCoordinator
     }
     public void setActiveMap(GameMap map){
     	this.activeMap = map;
-    }
-    
-    public boolean isInInventory(){
-    	return inInventory;
     }
     
     /*--------------------- SINGLETON METHODS ---------------------*/

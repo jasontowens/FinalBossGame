@@ -2,6 +2,7 @@ package inventory;
 
 import util.Saveable;
 import item.Equipable;
+import java.util.HashMap;
 
 public class Armory implements Saveable {
 	int numOfSlots;
@@ -145,5 +146,13 @@ public class Armory implements Saveable {
 		return str;
 		
 	}
+
+    public HashMap<EquipSlot, Equipable> getHMap() {
+        HashMap<EquipSlot, Equipable> hMap = new HashMap<>();
+        for(Equipable e: equippedItems){
+            hMap.put(e.getSlot(), e);
+        }
+        return hMap;
+    }
 	
 }

@@ -32,6 +32,7 @@ public class Sack implements Saveable{
 
 			if(itemsInSack[i] == item){
 				slotsInUse[i] = false;
+				itemsInSack[i] = null;
 				return itemsInSack[i];
              }
         }	

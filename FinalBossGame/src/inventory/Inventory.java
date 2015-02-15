@@ -43,6 +43,7 @@ public class Inventory implements Saveable {
 	public boolean equipItem(Takeable item){
 		if (mySack.isInSack(item) && item.getClassName().equals("Equipable")){
 			myArmory.equip((Equipable)item);
+			mySack.removeItem(item);
 			return true;
 		}
 		else

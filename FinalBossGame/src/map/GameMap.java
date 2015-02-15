@@ -72,6 +72,11 @@ public class GameMap {
     }
 
     /*-----------MUTATORS------------------*/
+    
+    public void addTile(Tile tile, CoordinatePair location){
+        tilesOnMap[location.getX()][location.getY()] = tile;
+    }    
+    
     public CoordinatePair addItem(Item item, CoordinatePair location) {
         itemsOnMap.add(new Pair<>(item, location));
         return location; //why?

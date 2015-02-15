@@ -2,20 +2,19 @@ package factories;
 
 import item.Obstacle;
 
-public class ObstacleFactory extends PlaceableObjectFactory {
+public class ObstacleFactory {
 	
-	private static ObstacleFactory factory = null;
-	public static ObstacleFactory getInstance() {
-		if(factory == null) {
-			factory = new ObstacleFactory();
+	public Obstacle createObstacle(String name) {
+		switch(name) {
+			case "Wall":
+				return createWall();
+			default:
+				return null;
 		}
-		return factory;
 	}
 
-	/*---------------------------------------------------*/
-
-	public Obstacle createWall() {
-		Obstacle o = new Obstacle("Obstacle", "Wall", "Can't walk through it.");
+	private Obstacle createWall() {
+		Obstacle o = new Obstacle("Wall", "Can't walk through it.", "gameobject.png");
 		return o;
 	}
 }

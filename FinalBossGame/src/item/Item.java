@@ -16,4 +16,5 @@ public interface Item{
 	 * PERFORMS whatever function is required of the item when it an entity attempts to touch it.
 	 */
 	public boolean activate(Entity entity);
+	public String toXML();
 }

@@ -1,51 +1,116 @@
 package inventory;
 
+import entity.Entity;
 import item.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 
-public class Inventory {
-	int currency;
-	Sack mySack;
-	Armory myArmory;
+import util.Saveable;
+
+
+public class Inventory implements Saveable {
+	private int currency;
+	private Sack mySack;
+	private Armory myArmory;
 	
+	
+	/*---------CONSTRUCTORS----------*/
 	public Inventory(Sack sack, Armory armory){
-		mySack = sack;
-		myArmory = armory;
-                currency = 0;
+            mySack = sack;
+            myArmory = armory;
+            currency = 0;
 	}
-	public void addItem(Takeable item){
-		mySack.addItem(item);
-	}
+	
+	/*----------MESSAGES PASSED FROM COORDINATORS------------*/
 	public Takeable removeItem(int location){
 		return mySack.removeItem(location);
 	}
-        public Takeable removeItem(Takeable item){
-                return mySack.removeItem(item);
-        }
-	public Takeable useItem(int location){
-		return mySack.useItem(location);
+			
+	public void useItem(int location, Entity ent){
+		if(location <= 9){
+			mySack.addItem(myArmory.unequip(location));
+		}
+		else{
+			mySack.useItem(location-10,ent);
+		}
+	}    
+	
+	/*---------MESSAGES PASSED FROM ITEMS---------------*/
+	public void addItem(Takeable item){
+		mySack.addItem(item);
 	}
-	public boolean equipItem(int location){
-		if(mySack.itemAt(location).getClassName().equals("Equipable")){
-			myArmory.equip((Equipable)mySack.removeItem(location));
+	public boolean equipItem(Takeable item){
+		if (mySack.isInSack(item) && item.getClassName().equals("Equipable")){
+			myArmory.equip((Equipable)item);
 			return true;
 		}
 		else
 			return false;
 	}
-	public Equipable unequipItem(EquipSlot slot){
+        
+        public Equipable unequipItem(EquipSlot slot){
 		return myArmory.unequip(slot);
 	}
-	
+        
+	public void removeItem(Takeable item){
+		mySack.removeItem(item);
+        }
+	public boolean modCurrency(int change){
+        if(currency + change >= 0){
+        	currency += change;
+        	return true;
+        }
+        return false;     
+	}
+	public boolean setCurrency(int newAmount){
+            if(newAmount>=0){
+                    currency = newAmount;
+                return true;
+            }
+            else{
+                    return false;
+            }
+	}
+        
+        /*---------------ACCESSORS-----------------*/
 	public int getCurrency(){
-            return currency;
+		return currency;
+        }	
+        
+        public HashMap<EquipSlot, Equipable> getArmoryHMap() {
+            return myArmory.getHMap();
         }
-        public int modCurrency(int change){
-            currency += change;
-            return currency;
+
+        public Takeable[] getSack() {
+            return mySack.getArray();
         }
-        public void setCurrency(int newAmount){
-            currency = newAmount;
-        }
+        
+    
+
+    public String toXML(){
+    	String str = "";
+    	str += "<inventory>";
+    	str += "\n";
+    	if(mySack != null){
+    		str += mySack.toXML();
+        	str += "\n";
+    	}
+    	if(myArmory != null)
+    		str += myArmory.toXML();
+    	str += "\n";
+    	str += "</inventory>";
+    	return str;
+    	
+    }
+
+
 	
 }
+
+
+
+
+
+
+

@@ -1,5 +1,7 @@
 package map;
 
+import java.util.ArrayList;
+
 import entity.Entity;
 
 /**
@@ -14,13 +16,13 @@ public class Tile {
 	public Tile(Terrain terrain) {
 		this.terrain = terrain;
 		decal = null;
-		effects = new ArrayList<AreaEffect>;
+		effects = new ArrayList<AreaEffect>();
 	}
 
 	public Tile(Terrain terrain, Decal decal) {
 		this.terrain = terrain;
 		this.decal = decal;
-    		effects = new ArrayList<AreaEffect>;
+    		effects = new ArrayList<AreaEffect>();
 	}
 
 	public Tile(Terrain terrain, Decal decal, ArrayList<AreaEffect> effects) {

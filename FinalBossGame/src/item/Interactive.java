@@ -10,12 +10,20 @@ public abstract class Interactive extends GameObject implements Item{
 	protected boolean hasActivated;
 	
 	//constructors
-	protected Interactive(String className, String name, String description){
-		super(className, name, description);
+	protected Interactive(String className, String name, String description, int ID){
+		super(className, name, description, ID); //TODO: change ID to how Hanif wants it set up 
 		hasActivated = false;
 	}
-	protected Interactive(String className, String name, String description, bool activation){
-		super(className, name, description);
+	protected Interactive(String name, String description, int ID){
+		super("Interactive", name, description, ID); //TODO: change ID to how Hanif wants it set up 
+		hasActivated = false;
+	}
+	protected Interactive(String className, String name, String description, int ID, boolean activation){
+		super(className, name, description, ID); //TODO: change ID to how Hanif wants it set up 
+		hasActivated = activation;
+	}
+	protected Interactive(String name, String description, int ID, boolean activation){
+		super("Interactive", name, description, ID);
 		hasActivated = activation;
 	}
 }

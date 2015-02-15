@@ -1,19 +1,28 @@
 //Last updated by Matthew Kroeze on 2015-02-12
 package item;
 
+import map.GameMap;
 import gameobject.GameObject;
 import stats.ItemStats;
+import util.Saveable;
 import item.Item;
 import entity.Entity;
 
-public class Takeable extends GameObject implements Item {
+public class Takeable extends GameObject implements Item , Saveable {
 	//fields
-	protected ItemStats modifiers;
+	protected ItemStats modifiers;   //TODO: add this to save XML
 	protected GameMap current;
+	protected String spriteFilePath; //should soon be deprecated
 	
 	//constructors
-	public Takeable(String className, String name, String description, ItemStats mods, GameMap active){
-		super(className, name, description);
+	protected Takeable(String className, String name, String description, int ID, ItemStats mods, GameMap active){
+		super(className, name, description, ID); //TODO: change ID to how Hanif wants it set up 
+		modifiers = mods;
+		current = active;
+	}
+	public Takeable(String name, String description, ItemStats mods, GameMap active){
+		//TODO:  fix this damn sprite file path
+		super("Takeable", name, description, 4); //TODO: change ID to how Hanif wants it set up 
 		modifiers = mods;
 		current = active;
 	}
@@ -33,5 +42,13 @@ public class Takeable extends GameObject implements Item {
 		if(modifiers.getDurability() <= 0){
 			entity.removeItem(this); //checks for used-up consumable to be removed
 		}
+	}
+	
+	public String toXML(){
+		String str = "";
+		
+		//TODO: remember to add stat modifiers for Iteration2
+		str +=  "<takeableItem> name=\"" + this.getName() + "\""  ;
+		return str;
 	}
 }

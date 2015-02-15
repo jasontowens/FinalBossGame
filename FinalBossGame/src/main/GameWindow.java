@@ -10,7 +10,8 @@ import javax.swing.JPanel;
 public class GameWindow extends JFrame {
         
     public GameWindow(){
-        this.setSize(Game.WIDTH, Game.HEIGHT);
+        int menuBarOffset = 20;
+        this.setSize(RunGame.WIDTH, RunGame.HEIGHT + menuBarOffset);
         this.setTitle("FINAL BOSS");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);

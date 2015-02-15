@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects>
+<entity name="Smasher" x="1" y="1">
+<stats livesleft = "1" strength="1" agility="1" intellect="1" hardiness="1" experience="1" movement="1" hpcurrent="1" mpcurrent="1" defense="1" offense="1" />
+<inventory name="Bronze Sword" durability="100" />
+<inventory name="Health Potion" durability="1" />
+</entity>
+<takeable name="Bronze Sword" durability="100" x="4" y="4" />
+<takeable name="Bronze Sword" durability="50" x="3" y="2" />
+<obstacle name="Wall" x="2" y="1" />
+<obstacle name="Wall" x="2" y="2" />
+<obstacle name="Wall" x="2" y="3" />
+<obstacle name="Wall" x="2" y="4" />
+</objects>

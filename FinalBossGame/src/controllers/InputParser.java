@@ -2,8 +2,11 @@ package controllers;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
 
-import javax.swing.Timer;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
 
 public class InputParser implements KeyListener {
 	private SceneControllerDispatcher sceneControllerDispatcher;
@@ -54,8 +57,14 @@ public class InputParser implements KeyListener {
 				case KeyEvent.VK_9 :
 					sceneControllerDispatcher.getActiveController().useKey9();
 					break;
+					//TODO This println
 				case KeyEvent.VK_ENTER :
+				try {
 					sceneControllerDispatcher.getActiveController().useKeyEnter();
+				} catch (ParserConfigurationException | SAXException
+						| IOException e1) {
+					System.out.println("We done screwed up.");
+				}
 					break;
 				case KeyEvent.VK_ESCAPE: 
 					sceneControllerDispatcher.getActiveController().useKeyEscape();

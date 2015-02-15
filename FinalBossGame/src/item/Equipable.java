@@ -2,18 +2,26 @@
 
 package item;
 
+import map.GameMap;
 import inventory.EquipSlot;
 import stats.ItemStats;
+import util.Saveable;
 import item.Item;
 import entity.Entity;
 
 public class Equipable extends Takeable implements Item {
 	//fields
-	private EquipSlot slot;
+	protected EquipSlot slot;
 	
 	//constructors
-	public Equipable(String className, String name, String description, ItemStats mods, GameMap active, EquipSlot equipSlot){
-		super(className, name, description, mods, active);
+	protected Equipable(String className, String name, String description, ItemStats mods, GameMap active, EquipSlot equipSlot){
+		//TODO: change ID to how Hanif wants it set up 
+		super(className, name, description, 69, mods, active);
+		slot = equipSlot;
+	}
+	public Equipable(String name, String description, ItemStats mods, GameMap active, EquipSlot equipSlot){
+		//TODO: change ID to how Hanif wants it set up 
+		super("Equipable", name, description, 69, mods, active);
 		slot = equipSlot;
 	}
 	
@@ -33,5 +41,15 @@ public class Equipable extends Takeable implements Item {
 	}
 	public void onUnequip(Entity entity){
 		entity.mergeStats(modifiers.inverted());
+	}
+	
+	public String toXML(){
+		String str = "";
+		
+		str += "<equipableItem name=\"" + this.getName() + "\"" + " />";
+		
+		
+		return str;
+		
 	}
 }

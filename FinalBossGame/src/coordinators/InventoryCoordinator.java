@@ -12,7 +12,7 @@ public class InventoryCoordinator
     /*--------------------- OTHER DATA MEMBERS ---------------------*/
     private static CoordinatorScheduler scheduler = CoordinatorScheduler.getInstance();
     private Entity avatar;
-    private GameMap activeMap; 
+    private GameMap activeMap;// = GameMap.getInstance(); 
     
     //Instance of singleton
     private static InventoryCoordinator inventoryCoordinator = null;
@@ -33,14 +33,13 @@ public class InventoryCoordinator
     public void nextItem() 
     {
         //TODO: Talk to Jason about how inventory will be presented
-        selectedItem = (selectedItem + 1) % avatar.getSack().length;
+        selectedItem = (++selectedItem) % (avatar.getSack().length+ avatar.getArmory().size());
     }
 
     public void previousItem()
     {
-        selectedItem = --selectedItem;
-        if(selectedItem == -1){
-            selectedItem = avatar.getSack().length;
+        if(--selectedItem == -1){
+            selectedItem = avatar.getSack().length + avatar.getArmory().size();
         }
     }
 

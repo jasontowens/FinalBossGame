@@ -1,8 +1,9 @@
 package inventory;
+import util.Saveable;
 import entity.Entity;
 import item.*;
 
-public class Sack {
+public class Sack implements Saveable{
 	private int sizeOfSack;	
 	private Takeable[] itemsInSack; 
 	private boolean[] slotsInUse;
@@ -74,6 +75,7 @@ public class Sack {
 	}
 
         /* TEST METHODS */
+		//Saving also relies on some of these methods, so looks like they might have to stay.
 		public int getSizeOfSack() {
 			return sizeOfSack;
 		}
@@ -87,5 +89,25 @@ public class Sack {
 		public boolean[] getSlotsInUse() {
 			return slotsInUse;
 		}
+		
+		
+	public String toXML(){
+		String str = "";
+		str += "<sack>";
+		str += "\n";
+		
+		for(int i = 0; i < sizeOfSack; ++i){
+			if(itemsInSack[i] != null){
+				str+=itemsInSack[i].toXML();
+				str+="\n";
+			}
+		}
+		
+		str+= "</sack>";
+		
+		return str;
+	}
+		
+	
 
 }

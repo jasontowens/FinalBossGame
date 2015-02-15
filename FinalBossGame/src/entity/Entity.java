@@ -21,10 +21,10 @@ public class Entity extends GameObject implements Saveable{
 	private Inventory myInventory;
 	private Occupation myOccupation;
 	private PlayerStats myStats;
-    private GameMap map;
+    private GameMap map;			// TODO: is this necessary?
     
     //Entities should have a CoordinatePair.  TODO: Update Constructor!
-    private CoordinatePair myLocation;
+    //private CoordinatePair myLocation;
 	
     /*---------CONSTRUCTORS---------------*/
 	public Entity(String name, String description, String spriteFilePath, MotionType mobility, Inventory inventory, Occupation occ, PlayerStats stats, GameMap m){
@@ -33,6 +33,15 @@ public class Entity extends GameObject implements Saveable{
 		myOccupation = occ;
 		myStats = stats;
                 this.map = m; 
+	}
+	
+	//needed to add this for testing.  And should Entity really have a GameMap? 
+	public Entity(String name, String description, String spriteFilePath, MotionType mobility, Inventory inventory, Occupation occ, PlayerStats stats){
+		super("Entity", name, description, spriteFilePath); 
+		myMotion = mobility;
+		myOccupation = occ;
+		myStats = stats;
+                 
 	}
 	
 	/*------------COORDINATOR LEVEL OPERATIONS------------*/
@@ -119,16 +128,22 @@ public class Entity extends GameObject implements Saveable{
 		String str = "";
 		
 		//opening <entity x=".." y=".."> tag
-		str += "<entity occupation=\"" + myOccupation + "\"" + " x=\"" + myLocation.getX() +
-				"\"" + " y=" + "\"" + myLocation.getY() + "\"" + ">";
+		str += "<entity occupation=\"" + myOccupation + "\"" + " x=\"" + this.getLocation().getX() +
+				"\"" + " y=" + "\"" + this.getLocation().getY() + "\"" + ">";
 		
 		//Newline is probably not strictly necessary, but makes XML file much more readable
 		str += "\n";
 		
-		str += myStats.toXML();
-		str += "\n";
-		str += myInventory.toXML();
-		str += "\n";
+		if(myStats != null){
+			str += myStats.toXML();
+			str += "\n";
+		}
+		
+		if(myInventory != null){
+			str += myInventory.toXML();
+			str += "\n";
+		}
+		
 
 		str += "</entity>";
 		

@@ -14,13 +14,13 @@ public class Occupation {
         this.name = name;
         this.description = description;
         
-        if(name == "Smasher"){
+        if(name.equals("Smasher")){
             //stuff that Smashers do
         }
-        else if(name == "Sneak"){
+        else if(name.equals("Sneak")){
             //stuff that Sneaks do
         }
-        else if(name == "Summoner"){
+        else if(name.equals("Summoner")){
             //stuff that Summoners do
         }
         else{

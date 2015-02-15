@@ -32,6 +32,7 @@ public class Entity extends GameObject implements Saveable{
 		myMotion = mobility;
 		myOccupation = occ;
 		myStats = stats;
+		myInventory = inventory;
                 this.map = m; 
 	}
 	
@@ -41,6 +42,7 @@ public class Entity extends GameObject implements Saveable{
 		myMotion = mobility;
 		myOccupation = occ;
 		myStats = stats;
+		myInventory = inventory;
                  
 	}
 	

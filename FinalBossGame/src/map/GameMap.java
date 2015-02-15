@@ -19,13 +19,17 @@ public class GameMap {
     private final MotionValidator mValidator;
    
     /*-----------CONSTRUCTORS-----------------*/
-    GameMap(int tileWidth, int tileHeight){
+    public GameMap(int tileWidth, int tileHeight){
         this.tileSize = new Dimension(tileWidth, tileHeight);
         mValidator = MotionValidator.getInstance();
+        entitiesOnMap = new ArrayList<Pair<Entity,CoordinatePair>>();
+        itemsOnMap = new ArrayList<Pair<Item,CoordinatePair>>();
     }
     GameMap(Dimension tileSize){
         this.tileSize = tileSize;
         mValidator = MotionValidator.getInstance();
+        entitiesOnMap = new ArrayList<Pair<Entity,CoordinatePair>>();
+        itemsOnMap = new ArrayList<Pair<Item,CoordinatePair>>();
     }
     
     /*------------ACCESSORS-----------------*/

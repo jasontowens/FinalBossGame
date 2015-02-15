@@ -14,7 +14,7 @@ public class OneShotFactory {
 		}
 	}
 
-	public OneShot createHeartContainer() {
+	private OneShot createHeartContainer() {
 		ItemStats i = new ItemStats(0, 0, 0, 0, 0, 0, 0, 10, 0, 1, 0, 0, 0);
 		OneShot o = new OneShot("Heart Container", "Raises health.", "hearthpath", i);
 		return o;

@@ -14,6 +14,7 @@ import java.awt.image.BufferedImage;
  */
 public class ImageSplitter {
 
+	private static ImageSplitter splitter = null;
     private BufferedImage img;
     private int sheetHeight;
     private int sheetWidth;
@@ -25,7 +26,7 @@ public class ImageSplitter {
 
     BufferedImage[][] tiles;
 
-    public ImageSplitter(BufferedImage i,
+    private ImageSplitter(BufferedImage i,
             int tWidth, int tHeight) {
         img = i;
         sheetWidth = i.getWidth();
@@ -40,6 +41,14 @@ public class ImageSplitter {
 
     }
 
+    
+    public static ImageSplitter getInstance(BufferedImage i , int tWidth, int tHeight){
+    	if(splitter == null){
+    		splitter = new ImageSplitter(i , tWidth , tHeight);
+    	}
+    	
+    	return splitter;
+    }
     private BufferedImage[][] makeTiles() {
         BufferedImage[][] image = new BufferedImage[x][y];
         int xPos = 0;

@@ -21,7 +21,7 @@ public class Entity extends GameObject implements Saveable{
 	private Inventory myInventory;
 	private Occupation myOccupation;
 	private PlayerStats myStats;
-    private GameMap map;			// TODO: is this necessary?
+        private GameMap map;			// TODO: is this necessary?
     
     //Entities should have a CoordinatePair.  TODO: Update Constructor!
     //private CoordinatePair myLocation;
@@ -106,7 +106,7 @@ public class Entity extends GameObject implements Saveable{
 	public HashMap<EquipSlot, Equipable> getArmory(){
 		return myInventory.getArmoryHMap();
 	}
-	public ArrayList<Takeable> getSack(){
+	public Takeable[] getSack(){
 		return myInventory.getSack();
 	}
 

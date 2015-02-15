@@ -51,12 +51,15 @@ public class EntityTest {
         occupation = EasyMock.createNiceMock(Occupation.class);
         stats = EasyMock.createNiceMock(PlayerStats.class);
         map = EasyMock.createNiceMock(GameMap.class);
+
         item = EasyMock.createNiceMock(Takeable.class);
         coordinate = EasyMock.createNiceMock(CoordinatePair.class);
         mergeStats = EasyMock.createNiceMock(Stats.class);
         equip = EasyMock.createNiceMock(Equipable.class);
         myEntity = new Entity("Jason", "A perso", "Not/a/real/filepath.png",
         		MotionType.GROUND, inventory, occupation, stats, map);
+
+        myEntity = new Entity("Jason", "A perso", "Not/a/real/filepath.png", MotionType.GROUND, inventory, occupation, stats, map);
     }
 
     /**

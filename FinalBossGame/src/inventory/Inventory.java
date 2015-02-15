@@ -48,9 +48,14 @@ public class Inventory implements Saveable {
 		else
 			return false;
 	}
+        
+        public Equipable unequipItem(EquipSlot slot){
+		return myArmory.unequip(slot);
+	}
+        
 	public void removeItem(Takeable item){
 		mySack.removeItem(item);
-    }
+        }
 	public boolean modCurrency(int change){
         if(currency + change >= 0){
         	currency += change;
@@ -59,48 +64,47 @@ public class Inventory implements Saveable {
         return false;     
 	}
 	public boolean setCurrency(int newAmount){
-        if(newAmount>=0){
-        	currency = newAmount;
-            return true;
-        }
-        else{
-        	return false;
-        }
+            if(newAmount>=0){
+                    currency = newAmount;
+                return true;
+            }
+            else{
+                    return false;
+            }
 	}
         
-    /*---------------ACCESSORS-----------------*/
+        /*---------------ACCESSORS-----------------*/
 	public int getCurrency(){
 		return currency;
-        }
-	
-	/*---------PRIVATE UTILITY FUNCTIONS-------*/
-	private Equipable unequipItem(EquipSlot slot){
-		return myArmory.unequip(slot);
-	}
-	
+        }	
         
         public HashMap<EquipSlot, Equipable> getArmoryHMap() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            return myArmory.getHMap();
         }
 
-        public ArrayList<Takeable> getSack() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        public Takeable[] getSack() {
+            return mySack.getArray();
         }
         
     
+
     public String toXML(){
     	String str = "";
+    	str += "<inventory>";
+    	str += "\n";
     	if(mySack != null){
     		str += mySack.toXML();
         	str += "\n";
     	}
     	if(myArmory != null)
     		str += myArmory.toXML();
-    
-    	
+    	str += "\n";
+    	str += "</inventory>";
     	return str;
     	
     }
+
+
 	
 }
 

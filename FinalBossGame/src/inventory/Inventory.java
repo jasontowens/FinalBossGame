@@ -17,9 +17,9 @@ public class Inventory implements Saveable {
 	
 	/*---------CONSTRUCTORS----------*/
 	public Inventory(Sack sack, Armory armory){
-		mySack = sack;
-		myArmory = armory;
-        currency = 0;
+            mySack = sack;
+            myArmory = armory;
+            currency = 0;
 	}
 	
 	/*----------MESSAGES PASSED FROM COORDINATORS------------*/
@@ -29,7 +29,7 @@ public class Inventory implements Saveable {
 			
 	public void useItem(int location, Entity ent){
 		if(location <= 9){
-			mySack.addItem(myArmory.unequip(EquipSlot.values()[location]));
+			mySack.addItem(myArmory.unequip(location));
 		}
 		else{
 			mySack.useItem(location-10,ent);

@@ -6,7 +6,6 @@ import inventory.Inventory;
 import item.Equipable;
 import item.Takeable;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import map.CoordinatePair;
@@ -59,7 +58,7 @@ public class Entity extends GameObject implements Saveable{
 	
 	/*------------ITEM LEVEL OPERATIONS---------------*/
 	public void addItem(Takeable item){
-        myInventory.addItem(item);
+            myInventory.addItem(item);
 	}
 	public boolean equipItem(Equipable item){
 		return myInventory.equipItem(item);
@@ -68,22 +67,13 @@ public class Entity extends GameObject implements Saveable{
 		myInventory.removeItem(item);                
 	}
 	public boolean changeMoney(int change){
-    	if(myInventory.getCurrency() + change >= 0){
-    		return myInventory.modCurrency(change);
-    	}
-    	else
-    	return false;
+    	return myInventory.modCurrency(change);
     }
 	public boolean setMoney(int newAmount){
-        if(newAmount >= 0){
-            myInventory.modCurrency(newAmount); 
-            return true;
-        }
-        else 
-            return false;
+        return myInventory.setCurrency(newAmount);
     }
         public void setOccupation(String occupationName){
-            myOccupation.name = occupationName;
+            myOccupation.setName(occupationName);
         }
 	public void mergeStats(Stats modifiers){
 		this.myStats.mergeStats(modifiers);
@@ -139,7 +129,7 @@ public class Entity extends GameObject implements Saveable{
 		 */
 		
 		//opening <entity x=".." y=".."> tag
-		str += "<entity occupation=\"" + myOccupation.name + "\"" + " x=\"" + this.getLocation().getX() +
+		str += "<entity occupation=\"" + myOccupation.getName() + "\"" + " x=\"" + this.getLocation().getX() +
 				"\"" + " y=" + "\"" + this.getLocation().getY() + "\"" + ">";
 		
 		//Newline is probably not strictly necessary, but makes XML file much more readable

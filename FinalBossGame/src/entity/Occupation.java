@@ -16,8 +16,8 @@ public class Occupation {
 	 * -Hanif
 	 */
 	
-	 String name;
-     String description;
+	 private String name;
+     private String description;
     
     //string name needs to be one of the three types
     public Occupation(String name, String description){
@@ -36,6 +36,20 @@ public class Occupation {
         else{
             throw new IllegalArgumentException("Occupation name doesn't match any of the current types.");
         }
+    }
+    
+    public String getName() {
+    	return this.name;
+    }
+    public void setName(String name) {
+    	this.name = name;
+    }
+    
+    public String getDescription() {
+    	return this.description;
+    }
+    public void setDescription(String description) {
+    	this.description = description;
     }
 
 

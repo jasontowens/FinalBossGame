@@ -17,9 +17,9 @@ public class Inventory implements Saveable {
 	
 	/*---------CONSTRUCTORS----------*/
 	public Inventory(Sack sack, Armory armory){
-		mySack = sack;
-		myArmory = armory;
-        currency = 0;
+            mySack = sack;
+            myArmory = armory;
+            currency = 0;
 	}
 	
 	/*----------MESSAGES PASSED FROM COORDINATORS------------*/

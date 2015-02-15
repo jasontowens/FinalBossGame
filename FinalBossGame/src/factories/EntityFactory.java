@@ -1,49 +1,65 @@
 package factories;
 
-import gameobject.GameObject;
 import entity.Entity;
 import entity.Occupation;
 import stats.Stats;
 import stats.PlayerStats;
 import entity.MotionType;
 
-public class EntityFactory extends PlaceableObjectFactory {
+import org.w3c.dom.Element;
 
-	public GameObject createObject(String object) {
-		switch(object) {
-			case "SmasherEntity":
-				return createSmasher();
-			case "SummonerEntity":
-				return createSummoner();
-			case "SneakEntity":
-				return createSneak();
+public class EntityFactory {
+
+	public Entity createEntity(String name, Element statsElement, ArrayList<Takeable> inv) {
+		
+		Inventory i = new Inventory(new Sack(), new Armory());
+		
+		for(Takeable t : inv) {
+			i.addItem(t);
+		}
+
+		PlayerStats s = new PlayerStats(
+			statsElement.getAttribute("livesleft"),
+			statsElement.getAttribute("strength"),
+			statsElement.getAttribute("agility"),
+			statsElement.getAttribute("intellect"),
+			statsElement.getAttribute("hardiness"),
+			statsElement.getAttribute("experience"),
+			statsElement.getAttribute("movement"),
+			statsElement.getAttribute("hpcurrent"),
+			statsElement.getAttribute("mpcurrent"),
+			statsElement.getAttribute("defense"),
+			statsElement.getAttribute("offense"));
+			
+		
+		switch(name) {
+			case "Smasher":
+				return createSmasher(i, s);
+			case "Summoner":
+				return createSummoner(i, s);
+			case "Sneak":
+				return createSneak(i, s);
 			default:
 				return null;
 		}
 	}
 				
 	
-	public GameObject createSmasher() {
-		Inventory i = new Inventory(new Sack(), new Armory());
-		Occupation o = new Smasher();
-		Stats s = new PlayerStats(1, 10, 2, 4, 10, 0, 1, 40, 5, 20, 30);
-		GameObject e = new Entity("SmasherEntity", "Heavy brawler", "smashersprite", GROUND, i, o, s);
+	public Entity createSmasher(Inventory i, PlayerStats s) {
+		Occupation o = new Occupation("Smasher", "Brawls heavily.");
+		Entity e = new Entity("Smasher", "Brawls heavily", "smashersprite", GROUND, i, o, s);
 		return e;
 	}
 
-	public GameObject createSummoner() {
-		Inventory i = new Inventory(new Sack(), new Armory());
-		Occupation o = new Summoner();
-		Stats s = new PlayerStats(1, 2, 10, 20, 5, 1, 20, 30, 10, 15);
-		GameObject e = new Entity("SummonerEntity" "Magical man", "summonersprite", GROUND, i, o, s);
+	public Entity createSummoner(Inventory i, PlayerStats s) {
+		Occupation o = new Occupation("Summoner", "Summons stuff.");
+		Entity e = new Entity("Summoner", "Summons stuff.", "summonersprite", GROUND, i, o, s);
 		return e;
 	}
 
-	public GameObject createSneak() {
-		Inventory i = new Inventory(new Sack(), new Armory());
-		Occupation o = new Sneak();
-		Stats s = new PlayerStats(1, 5, 20, 10, 5, 1, 20, 10, 5, 40);
-		GameObject e = new Entity("SneakEntity", "Sneaky dude", "sneaksprite", GROUND, i, o, s);
+	public Entity createSneak(Inventory i, PlayerStats s) {
+		Occupation o = new Occupation("Sneak", "Sneaks around.");
+		Entity e = new Entity("Sneak", "Sneaks around.", "sneaksprite", GROUND, i, o, s);
 		return e;
 	}
 }

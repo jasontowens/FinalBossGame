@@ -1,12 +1,11 @@
 package factories;
 
 import item.Obstacle;
-import gameobject.GameObject;
 
-public class ObstacleFactory extends PlaceableObjectFactory {
+public class ObstacleFactory {
 	
-	public GameObject createObject(String object) {
-		switch(object) {
+	public Obstacle createObstacle(String name) {
+		switch(name) {
 			case "Wall":
 				return createWall();
 			default:
@@ -14,8 +13,8 @@ public class ObstacleFactory extends PlaceableObjectFactory {
 		}
 	}
 
-	public GameObject createWall() {
-		GameObject o = new Obstacle("Obstacle", "Wall", "wallpath", "Can't walk through it.");
+	public Obstacle createWall() {
+		Obstacle o = new Obstacle("Wall", "Can't walk through it.", "wallpath");
 		return o;
 	}
 }

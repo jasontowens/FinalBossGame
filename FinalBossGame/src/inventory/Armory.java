@@ -156,7 +156,7 @@ public class Armory implements Saveable {
 		if(equippedItems != null){
 			for(int i = 0; i < numOfSlots; ++i){
 				if(equippedItems[i] != null){
-					str += equippedItems[i].toXML();
+					str += equippedItems[i].toXML(true);
 					str += "\n";
 				}			
 			}

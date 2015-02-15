@@ -99,7 +99,7 @@ public class Sack implements Saveable{
 		
 		for(int i = 0; i < sizeOfSack; ++i){
 			if(itemsInSack[i] != null){
-				str+=itemsInSack[i].toXML();
+				str+=itemsInSack[i].toXML(true);
 				str+="\n";
 			}
 		}

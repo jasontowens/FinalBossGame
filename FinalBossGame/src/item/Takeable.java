@@ -47,11 +47,19 @@ public class Takeable extends GameObject implements Item , Saveable {
 		}
 	}
 	
+	public String toXML(boolean b){
+		String str = "";
+		
+		//TODO: remember to add stat modifiers for Iteration2
+		str +=  "<takeableItem name=\"" + this.getName() + "\"" + " durability=\"" + this.modifiers.getDurability() + "\" />" ;
+		return str;
+	}
+	
 	public String toXML(){
 		String str = "";
 		
 		//TODO: remember to add stat modifiers for Iteration2
-		str +=  "<takeableItem> name=\"" + this.getName() + "\""  ;
+		str +=  "<takeable name=\"" + this.getName() + "\"" + " durability=\"" + this.modifiers.getDurability() + "\" x=\"" + this.getLocation().getX() + "\" y=\"" + this.getLocation().getY() +"\" />" ;
 		return str;
 	}
 }

@@ -72,16 +72,20 @@ public class IdToGameObjectTranslator {
 		terrain[60] = util.Terrain.GRASS;
 		terrain[76] = util.Terrain.GRASS;
 		terrain[77] = util.Terrain.GRASS;
+
 		terrain[66] = util.Terrain.WATER;
+
 		terrain[60] = util.Terrain.MOUNTAIN;
 		terrain[61] = util.Terrain.MOUNTAIN;
 		terrain[62] = util.Terrain.MOUNTAIN;
-		terrain[63] = util.Terrain.MOUNTAIN;
+		terrain[63] = util.Terrain.MOUNTAIN; 
 		terrain[64] = util.Terrain.WATER;
 		terrain[65] = util.Terrain.WATER;
-		terrain[71] = util.Terrain.WATER;
-		terrain[72] = util.Terrain.WATER;
-		terrain[73] = util.Terrain.WATER;
+
+		terrain[71] = util.Terrain.WATER; 
+		terrain[72] = util.Terrain.MOUNTAIN;
+		terrain[73] = util.Terrain.MOUNTAIN; 
+
         terrain[74] = util.Terrain.GRASS;
         terrain[98] = util.Terrain.GRASS;
 		

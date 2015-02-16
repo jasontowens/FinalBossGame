@@ -199,6 +199,19 @@ public class Stats implements Saveable{
 
     private void modLevel(int levels) {
         this.level += levels;
+        for(int i = 0; i < levels; ++i){
+		modLivesLeft(1);
+		modStrength(1);
+		modAgility(1);
+		modIntellect(1);
+		modHardiness(1);
+		modExperience(1);
+		modMovement(1);
+		modhpCurrent(1);
+		modmpCurrent(1);
+		modOffense(1);
+		modDefense(1);
+        }
     }
 }
 

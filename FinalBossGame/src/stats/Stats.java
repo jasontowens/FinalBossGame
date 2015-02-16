@@ -5,6 +5,7 @@ package stats;
 import util.Saveable;
 
 public class Stats implements Saveable{
+	
 	protected int livesLeft;
 	protected int strength;
 	protected int agility;
@@ -76,71 +77,71 @@ public class Stats implements Saveable{
 	}
 	//Setters
 	public void setLivesLeft(int nextLives){
-		livesLeft = nextLives;
+		livesLeft = verifyBounds(nextLives) ? nextLives : livesLeft;
 	}
 	public void setStrength(int nextStr){
-		strength = nextStr;
+		strength = verifyBounds(nextStr) ? nextStr : strength;
 	}
 	public void setAgility(int nextAgi){
-		agility = nextAgi;
+		agility = verifyBounds(nextAgi) ? nextAgi : agility;
 	}
 	public void setIntellect(int nextInt){
-		intellect = nextInt;
+		intellect = verifyBounds(nextInt) ? nextInt : intellect;
 	}
 	public void setHardiness(int nextHard){
-		hardiness = nextHard;
+		hardiness = verifyBounds(nextHard) ? nextHard : hardiness;
 	}
 	public void setExperience(int nextExp){
-		experience = nextExp;
+		experience = verifyBounds(nextExp) ? nextExp : experience;
 	}
 	public void setMovement(int nextMove){
-		movement = nextMove;
+		movement = verifyBounds(nextMove) ? nextMove : movement;
 	}
 	public void sethpCurrent(int nextHP){
-		hpCurrent = nextHP;
+		hpCurrent = verifyBounds(nextHP) ? nextHP : hpCurrent;
 	}
 	public void setmpCurrent(int nextMP){
-		mpCurrent = nextMP;
+		mpCurrent = verifyBounds(nextMP) ? nextMP : mpCurrent;
 	}
 	public void setDefense(int nextDef){
-		defense = nextDef;
+		defense = verifyBounds(nextDef) ? nextDef : defense;
 	}
 	public void setOffense(int nextOff){
-		offense = nextOff;
+		offense = verifyBounds(nextOff) ? nextOff : offense;
 	}
 	//Modifiers
 	public void modLivesLeft(int livesAdded){
-		livesLeft += livesAdded;
+		livesLeft = verifyBounds(livesLeft+livesAdded) ? (livesLeft + livesAdded) : 0;
 	}
 	public void modStrength(int strAdded){
-		strength += strAdded;
+		strength = verifyBounds(strength+strAdded) ? (strength+strAdded) : 0;
 	}
 	public void modAgility(int agiAdded){
-		agility += agiAdded;
+		agility = verifyBounds(agility + agiAdded) ? (agility + agiAdded) : 0;
 	}
 	public void modIntellect(int intAdded){
-		intellect += intAdded;
+		intellect = verifyBounds(intellect + intAdded) ? (intellect+intAdded) : 0;
 	}
 	public void modHardiness(int hardAdded){
-		hardiness += hardAdded;
+		hardiness = verifyBounds(hardiness + hardAdded) ? (hardiness + hardAdded) : 0;
 	}
 	public void modExperience(int expAdded){
-		experience += expAdded;
+		experience = verifyBounds(experience + expAdded) ? (experience + expAdded) : 0;
 	}
 	public void modMovement(int moveAdded){
-		movement += moveAdded;
+		movement = verifyBounds(movement + moveAdded) ? (movement + moveAdded) : 0;
 	}
 	public void modhpCurrent(int hpAdded){
-		hpCurrent += hpAdded;
+		hpCurrent = verifyBounds(hpCurrent + hpAdded) ? (hpCurrent + hpAdded) : 0;
 	}
 	public void modmpCurrent(int mpAdded){
-		mpCurrent += mpAdded;
+		mpCurrent = verifyBounds(mpCurrent + mpAdded) ? (mpCurrent + mpAdded) : 0;
 	}
 	public void modOffense(int offAdded){
-		offense += offAdded;
+		offense = verifyBounds(offense + offAdded) ? (offense + offAdded) : 0;
 	}
 	public void modDefense(int defAdded){
-		defense += defAdded;
+		defense = verifyBounds(defense + defAdded) ? (defense + defAdded) : 0;
 	}
 	//Merge
 	public void mergeStats(Stats modifier){
@@ -159,6 +160,10 @@ public class Stats implements Saveable{
 	
 	public Stats inverted(){
 		return new Stats(livesLeft*-1,strength*-1,agility*-1,intellect*-1,hardiness*-1,experience*-1,movement*-1,hpCurrent*-1,mpCurrent*-1,offense*-1,defense*-1);
+	}
+	
+	public boolean verifyBounds(int value) {
+		return (value < 0) ? false : true;
 	}
 	
 	public String toXML(){

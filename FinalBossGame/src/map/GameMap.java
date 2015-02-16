@@ -195,7 +195,7 @@ public class GameMap {
     }
 
     public void addAreaEffect(AreaEffect AE, CoordinatePair CP){
-        tilesOnMap[CP.getX()][CP.getY()].setAreaEffect(AE);
+        tilesOnMap[CP.getY()][CP.getX()].setAreaEffect(AE);
     }
     
     //note: this method WILL MOVE the entity if it is able to.

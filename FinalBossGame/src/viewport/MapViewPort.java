@@ -64,7 +64,7 @@ public class MapViewPort extends ViewPort {
                         img = splitter.getTileFromID(id);
                     }
                 }
-                g.drawImage(img, i * RunGame.TILE_WIDTH, j * RunGame.TILE_HEIGHT, null);
+                g.drawImage(img, j * RunGame.TILE_WIDTH, i * RunGame.TILE_HEIGHT, null);
             }
         }
 

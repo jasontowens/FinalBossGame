@@ -14,13 +14,5 @@
 </armory>
 </inventory>
 </entity>
-<takeable name="Sword of 1000 Truths" durability="100" x="4" y="4" />
-<takeable name="Health Potion" durability="100" x="4" y="3" />
-<obstacle name="Wall" x="10" y="2" />
-<obstacle name="Wall" x="10" y="5" />
-<obstacle name="Wall" x="30" y="2" />
-<interactive name="Smasher setter" x="4" y="2" />
-<oneshot name="Heart Container" x="24" y="2" />
-<oneshot name="Summoner setter" x="11" y="1" />
-
+<takeable name="Jesus Boots" durability="100" x="25" y="5" />
 </objects>

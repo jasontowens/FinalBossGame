@@ -10,7 +10,7 @@ public class Sack implements Saveable{
 	private boolean[] slotsInUse;
 	
 	public Sack(){
-		sizeOfSack = 10; //default initial value for now
+		sizeOfSack = 5; //default initial value for now
 		itemsInSack = new Takeable[sizeOfSack];
 		slotsInUse = new boolean[sizeOfSack];
 	}
@@ -21,7 +21,7 @@ public class Sack implements Saveable{
 		if(slotsInUse[location]){	
 			Takeable item = itemsInSack[location];
             item.inventoryUse(ent);
-			return itemsInSack[location];
+			return item;
 		}
 		else{
 			return null;
@@ -32,8 +32,9 @@ public class Sack implements Saveable{
 
 			if(itemsInSack[i] == item){
 				slotsInUse[i] = false;
+				Takeable returnedItem = itemsInSack[i];
 				itemsInSack[i] = null;
-				return itemsInSack[i];
+				return returnedItem;
              }
         }	
         return null;//not found

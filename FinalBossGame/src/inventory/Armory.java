@@ -25,7 +25,7 @@ public class Armory implements Saveable {
 	
 	/*-------------CONSTRUCTORS--------------*/
 	public Armory(){
-		numOfSlots = 10;
+		numOfSlots = 5;
 		equippedItems = new Equipable[numOfSlots];
 		usedSlots = new boolean[numOfSlots];
 	}
@@ -54,7 +54,6 @@ public class Armory implements Saveable {
         public Equipable unequip(int position){
 		int index = position;
 		if(index < 0 || index > equippedItems.length) {
-			System.out.println("Hi");
 			return null;
 		} 
 		if(!usedSlots[index]){
@@ -77,7 +76,7 @@ public class Armory implements Saveable {
 	// invalid index
 	if(index < 0 || index > equippedItems.length)
 		return null;
-
+	/*
 	// equipping mainHand or offHand, must unequip twoHand
 	else if((index == 7 || index == 8) && usedSlots[9])
 		returnEquipable = unequip(9);
@@ -92,7 +91,7 @@ public class Armory implements Saveable {
 			returnEquipable = unequip(7);
 		if(usedSlots[8])
 			returnEquipable = unequip(8);
-	}
+	}*/
 
 	// if there is already an item in a slot that is not 7, 8, or 9,
 	// unequip it
@@ -112,6 +111,11 @@ public class Armory implements Saveable {
 		int index;
 		switch(slot){
 		case HEAD: index = 0; break;
+		case MAINHAND: index =1; break;
+		case CHEST: index = 2; break;
+		case LEGS: index = 3; break;
+		case BOOTS: index = 4; break;
+		/*
 		case SHOULDERS: index = 1; break;
 		case NECKLACE: index = 2; break;
 		case WHISTLE: index = 3; break;
@@ -121,6 +125,7 @@ public class Armory implements Saveable {
 		case MAINHAND: index = 7; break;
 		case OFFHAND: index = 8; break;
 		case TWOHAND: index = 9; break;
+		*/
 		default: index = -1; break;
 		}
                 

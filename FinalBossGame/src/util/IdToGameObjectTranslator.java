@@ -122,7 +122,7 @@ public class IdToGameObjectTranslator {
 			tile.setTerrain(new map.Terrain(entity.MotionType.WATER));
 		
 		else{
-			tile.setTerrain(new map.Terrain(entity.MotionType.UNATTAINABLE));
+			tile.setTerrain(new map.Terrain(entity.MotionType.WATER));
 		}
 		
 		

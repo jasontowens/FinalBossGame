@@ -6,6 +6,7 @@ import util.Saveable;
 
 public class Stats implements Saveable{
 	
+    protected int level; //only for levelUp 
 	protected int livesLeft;
 	protected int strength;
 	protected int agility;
@@ -18,7 +19,8 @@ public class Stats implements Saveable{
 	protected int defense;	//used in defensiveRating
 	protected int offense;  //used in offensiveRating
 	
-	public Stats(int livesLeft,
+	public Stats(int levels,
+                 int livesLeft,
 		  		 int strength,
 		  		 int agility,
 		  		 int intellect,
@@ -29,6 +31,7 @@ public class Stats implements Saveable{
 		  		 int mpCurrent,
 		  		 int defense,
 		  		 int offense){
+        this.level = levels;
 		this.livesLeft =livesLeft;
 		this.strength = strength;
 		this.agility = agility;
@@ -42,6 +45,9 @@ public class Stats implements Saveable{
 		this.offense = offense;
 	}
 	//Accessors
+	public int getLevels() {
+		return this.level;
+	}
 	public int getLivesLeft(){
 		return livesLeft;
 	}
@@ -76,6 +82,9 @@ public class Stats implements Saveable{
 		return defense;
 	}
 	//Setters
+    public void setLevelUps(int levels){ //this should only be used for level up AEs or other (possibly item) effects
+		level = verifyBounds(levels) ? levels : level;
+	}
 	public void setLivesLeft(int nextLives){
 		livesLeft = verifyBounds(nextLives) ? nextLives : livesLeft;
 	}
@@ -159,7 +168,7 @@ public class Stats implements Saveable{
 	}
 	
 	public Stats inverted(){
-		return new Stats(livesLeft*-1,strength*-1,agility*-1,intellect*-1,hardiness*-1,experience*-1,movement*-1,hpCurrent*-1,mpCurrent*-1,offense*-1,defense*-1);
+		return new Stats(level*-1,livesLeft*-1,strength*-1,agility*-1,intellect*-1,hardiness*-1,experience*-1,movement*-1,hpCurrent*-1,mpCurrent*-1,offense*-1,defense*-1);
 	}
 	
 	public boolean verifyBounds(int value) {

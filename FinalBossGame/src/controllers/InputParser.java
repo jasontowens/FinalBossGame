@@ -10,7 +10,7 @@ import org.xml.sax.SAXException;
 
 public class InputParser implements KeyListener {
 	private SceneControllerDispatcher sceneControllerDispatcher;
-	private static final long TIMER_DELAY = 1000;
+	private static final long TIMER_DELAY = 10;
 	private long timerStart;
 	
 	public InputParser() {

@@ -34,10 +34,10 @@ public class GamePanel extends JPanel implements Runnable {
         animator = new Thread((Runnable) this);
     }
 
-    public GamePanel(GameCoordinator gc, MenuCoordinator mc, InventoryCoordinator ic) {
+    public GamePanel() {
         this(RunGame.WIDTH, RunGame.HEIGHT);
         //Create the scene manager
-        sm = new SceneManager(gc, mc, ic);
+        sm = SceneManager.getInstance();
         //Start the animator thread
         animator.start();
     }

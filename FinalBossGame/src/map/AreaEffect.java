@@ -11,7 +11,7 @@ public class AreaEffect extends GameObject {
 	private String name ; // corresponds to Type (should be deprecated in It2)
 	/*--------------------- CONSTRUCTORS ---------------------*/
 	public AreaEffect(String name, int ID, Stats mods){
-            super(name, name, ID); //TODO: change ID to how Hanif wants it set up 
+            super(name, name, name, -1000); //TODO: change ID to how Hanif wants it set up 
             this.modifiers = mods;
 	}
         

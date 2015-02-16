@@ -21,7 +21,7 @@ public class Entity extends GameObject implements Saveable{
 	private Occupation myOccupation;
 	private PlayerStats myStats;
         private GameMap map;			// TODO: is this necessary?
-    private int id;
+   // private int id;
     
     //Entities should have a CoordinatePair.  TODO: Update Constructor!
     //private CoordinatePair myLocation;
@@ -45,6 +45,10 @@ public class Entity extends GameObject implements Saveable{
 		myInventory = inventory;
 		myStats = stats;
                  
+	}
+	
+	public void setID(int id){
+		this.id = id;
 	}
 	
 	/*------------COORDINATOR LEVEL OPERATIONS------------*/

@@ -26,6 +26,11 @@ public class CoordinatePair {
         return y;        
     }
     
+    public boolean equals(CoordinatePair CP){
+    	if(getX() == CP.getX() && getY() == CP.getY()) return true;
+    	return false;
+    }
+    
     public void set( int nextX, int nextY){
         this.x = nextX;
         this.y = nextY;

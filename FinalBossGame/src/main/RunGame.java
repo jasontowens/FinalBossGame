@@ -4,16 +4,22 @@ import coordinators.GameCoordinator;
 import coordinators.InventoryCoordinator;
 import coordinators.MenuCoordinator;
 import factories.EntityFactory;
+
 import java.awt.BorderLayout;
 import java.awt.image.BufferedImage;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+
 import javax.xml.parsers.ParserConfigurationException;
+
 import map.GameMap;
+
 import org.xml.sax.SAXException;
+
 import static sun.audio.AudioPlayer.player;
 import util.MapLoader;
+import util.SpriteSheetHandler;
 
 /**
  *
@@ -27,6 +33,7 @@ public class RunGame {
     public static final int FPS = 60;//The prefered FPS animation rate
     public static boolean RUNNING = true;
     public static MapLoader ml;
+    public static SpriteSheetHandler ssh;
     
     GameCoordinator gc;
     MenuCoordinator mc;
@@ -37,6 +44,8 @@ public class RunGame {
         
         InputStream is = RunGame.class.getResourceAsStream("/resources/levels/level 1.xml");
         ml = MapLoader.getInstance(is);
+        ssh = SpriteSheetHandler.getInstance();
+        ssh.SetupSheet("/resources/spriteSheets/spritesheetv1.png", 32, 32, 9, 11);
         
 
         NUM_OF_TILES_WIDE = ml.getMapWidth();

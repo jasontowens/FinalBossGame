@@ -16,7 +16,7 @@ public class ObstacleFactory {
 	}
 
 	private Obstacle createWall() {
-		Obstacle o = new Obstacle("Wall", "Can't walk through it.", 2);
+		Obstacle o = new Obstacle("Wall", "Can't walk through it.", 56);
 		return o;
 	}
 	

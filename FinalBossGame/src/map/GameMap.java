@@ -6,6 +6,8 @@ import java.awt.Dimension;
 import java.util.ArrayList;
 import main.RunGame;
 import gameobject.GameObject;
+import java.util.Collections;
+import java.util.List;
 
 /**
  *
@@ -96,12 +98,14 @@ public class GameMap {
         return foundList;
     }
 
-    public synchronized ArrayList<Pair<Entity, CoordinatePair>> getAllEntities() {
-        return entitiesOnMap;
+    public synchronized List<Pair<Entity, CoordinatePair>> getAllEntities() {
+        List<Pair<Entity, CoordinatePair>> list = Collections.synchronizedList(entitiesOnMap);
+        return list;
     }
 
-    public synchronized ArrayList<Pair<Item, CoordinatePair>> getAllItems() {
-        return itemsOnMap;
+    public synchronized List<Pair<Item, CoordinatePair>> getAllItems() {
+        List<Pair<Item, CoordinatePair>> list = Collections.synchronizedList(itemsOnMap);
+        return list;
     }
 
     public Tile[][] getAllTiles() {

@@ -1,17 +1,12 @@
 package viewport;
 
 import coordinators.GameCoordinator;
-import entity.Entity;
 import item.Item;
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 
 import entity.Entity;
+import java.util.List;
 import main.RunGame;
 import map.CoordinatePair;
 import map.GameMap;
@@ -19,7 +14,6 @@ import map.Pair;
 import map.Tile;
 import scene.Scene;
 import util.ImageSplitter;
-import util.MapLoader;
 
 /**
  *
@@ -54,6 +48,10 @@ public class MapViewPort extends ViewPort {
 
         //Draw AreaEffect
         Tile[][] tiles = map.getAllTiles();
+        while(tiles == null){
+            System.out.println("NULL tiles");
+            tiles = map.getAllTiles();
+        }
         for (int i = 0; i < tiles.length; i++) {
             for (int j = 0; j < tiles[0].length; j++) {
                 BufferedImage img = null;
@@ -69,7 +67,9 @@ public class MapViewPort extends ViewPort {
         }
 
         //Draw Items
-        for (Pair p : map.getAllItems()) {
+        List<Pair<Item,CoordinatePair>> list = map.getAllItems();
+        synchronized(list) {
+        for (Pair p : list) {
             Item item = (Item) p.getLeft();
             CoordinatePair c = (CoordinatePair) p.getRight();
 
@@ -79,6 +79,7 @@ public class MapViewPort extends ViewPort {
             g.drawImage(image, c.getX() * RunGame.TILE_WIDTH, c.getY() * RunGame.TILE_HEIGHT, null);
 
         }
+    }
 
         //Draw Entities
         for (Pair p : map.getAllEntities()) {

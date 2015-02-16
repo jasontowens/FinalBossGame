@@ -29,31 +29,31 @@ public class TakeableFactory {
 
 	private Takeable createHealthPotion(GameMap map, int durability) {
 		ItemStats i = new ItemStats(0, 0, 0, 0, 0, 0, 0, 10, 0, durability, 10, 0, 0);
-		Takeable t = new Takeable("Health Potion", "Health up.", 3, i, map);
+		Takeable t = new Takeable("Health Potion", "Health up.", 83, i, map);
 		return t;
 	}
 	
 	private Takeable createWhistle(GameMap map, int durability) {
-		ItemStats i = new ItemStats(0, 0, 0, 0, 0, 0, 0, 0, 0, durability, 0, 0, 0);
-		Takeable t = new Takeable("Whistle", "Does literally nothing.", 3, i, map);
+		ItemStats i = new ItemStats(0, 0, 0, 100, 0, 0, 0, 0, 0, durability, 0, 0, 0);
+		Takeable t = new Takeable("Whistle", "Does literally nothing.", 70, i, map);
 		return t;
 	}
 
 	private Takeable createTruthSword(GameMap map, int durability) {
 		ItemStats i = new ItemStats(10, 0, 0, 0, 0, 0, 0, 0, 0, durability, 0, 10, 0);
-		Takeable t = new Equipable("Sword of 1000 Truths", "Swing it to kill things.", 3, i, map, EquipSlot.MAINHAND);
+		Takeable t = new Equipable("Sword of 1000 Truths", "Swing it to kill things.", 95, i, map, EquipSlot.MAINHAND);
 		return t;
 	}
 	
 	private Takeable createSlothHelmet(GameMap map, int durability) {
 		ItemStats i = new ItemStats(10, 0, 0, 0, 0, 0, 0, 0, 0, durability, 0, 10, 0);
-		Takeable t = new Equipable("Sloth Helmet", "Wear it on your head to be slow.", 3, i, map, EquipSlot.HEAD);
+		Takeable t = new Equipable("Sloth Helmet", "Wear it on your head to be slow.", 84, i, map, EquipSlot.HEAD);
 		return t;
 	}
 	
 	private Takeable createJesusBoots(GameMap map, int durability) {
 		ItemStats i = new ItemStats(0, 0, 0, 0, 0, 0, 0, 0, 0, durability, 0, 0, 0);
-		Takeable t = new MobilityEquipable("Jesus Boots", "Walk on water!", 3, i, map, EquipSlot.HEAD, MotionType.WATER);
+		Takeable t = new MobilityEquipable("Jesus Boots", "Walk on water!", 94, i, map, EquipSlot.HEAD, MotionType.WATER);
 		return t;
 	}
 }

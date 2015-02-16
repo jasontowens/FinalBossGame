@@ -78,19 +78,19 @@ public class EntityFactory {
 	
 	private Entity createSmasher(Inventory i, PlayerStats s, GameMap map) {
 		Occupation o = new Occupation("Smasher", "Brawls heavily.");
-		Entity e = new Entity("Smasher", "Brawls heavily", 1, MotionType.GROUND, i, o, s, map);
+		Entity e = new Entity("Smasher", "Brawls heavily", 85, MotionType.GROUND, i, o, s, map);
 		return e;
 	}
 
 	private Entity createSummoner(Inventory i, PlayerStats s, GameMap map) {
 		Occupation o = new Occupation("Summoner", "Summons stuff.");
-		Entity e = new Entity("Summoner", "Summons stuff.", 1, MotionType.GROUND, i, o, s, map);
+		Entity e = new Entity("Summoner", "Summons stuff.", 85, MotionType.GROUND, i, o, s, map);
 		return e;
 	}
 
 	private Entity createSneak(Inventory i, PlayerStats s, GameMap map) {
 		Occupation o = new Occupation("Sneak", "Sneaks around.");
-		Entity e = new Entity("Sneak", "Sneaks around.", 1, MotionType.GROUND, i, o, s, map);
+		Entity e = new Entity("Sneak", "Sneaks around.", 85, MotionType.GROUND, i, o, s, map);
 		return e;
 	}
 }

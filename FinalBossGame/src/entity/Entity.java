@@ -21,18 +21,20 @@ public class Entity extends GameObject implements Saveable{
 	private Occupation myOccupation;
 	private PlayerStats myStats;
         private GameMap map;			// TODO: is this necessary?
+    private int id;
     
     //Entities should have a CoordinatePair.  TODO: Update Constructor!
     //private CoordinatePair myLocation;
 	
     /*---------CONSTRUCTORS---------------*/
 	public Entity(String name, String description, int ID, MotionType mobility, Inventory inventory, Occupation occ, PlayerStats stats, GameMap m){
-		super("Entity", name, description, ID); //TODO: change ID to how Hanif wants it set up 
+		super("Entity", name, description , 85); //TODO: change ID to how Hanif wants it set up 
 		myMotion = mobility;
 		myOccupation = occ;
 		myStats = stats;
 		myInventory = inventory;
                 this.map = m; 
+        //id = 85; 	// TODO: get the directions working.
 	}
 	
 	//needed to add this for testing.  And should Entity really have a GameMap? 

@@ -5,7 +5,7 @@ import java.io.File;
 import map.CoordinatePair;
 
 public abstract class GameObject {
-	private int id;
+	protected int id;
 	private String name;
 	private String className;
 	private String description;
@@ -25,11 +25,12 @@ public abstract class GameObject {
 		
 	}
 	
-	protected GameObject(String className, String objectName, String description, int ID){
-		this.id = ID;
+	protected GameObject(String className, String objectName, String description , int ID){
+		//this.id = -1;	//should always be overriden
 		this.name = objectName;
 		this.className = className;
 		this.description = description;
+		this.id = ID;
 		location = new CoordinatePair(); // default constructor, (0 , 0)
 		
 	}

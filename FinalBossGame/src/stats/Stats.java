@@ -154,6 +154,7 @@ public class Stats implements Saveable{
 	}
 	//Merge
 	public void mergeStats(Stats modifier){
+                modLevel(modifier.getLevels());
 		modLivesLeft(modifier.getLivesLeft());
 		modStrength(modifier.getStrength());
 		modAgility(modifier.getAgility());
@@ -195,6 +196,10 @@ public class Stats implements Saveable{
 		str += " />";
 		return str;
 	}
+
+    private void modLevel(int levels) {
+        this.level += levels;
+    }
 }
 
 

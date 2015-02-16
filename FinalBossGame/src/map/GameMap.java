@@ -182,7 +182,8 @@ public class GameMap {
         
       //apply AreaEffect
         AreaEffect AE = t.getAreaEffect();
-        if(AE != null) AE.affect(entity);
+        if(AE != null) 
+            AE.affect(entity);
     }
 
     public void addAreaEffect(AreaEffect AE, CoordinatePair CP){

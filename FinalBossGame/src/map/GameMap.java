@@ -39,6 +39,9 @@ public class GameMap {
         itemsOnMap = new ArrayList<Pair<Item, CoordinatePair>>();
         
         thisMap = this; //singleton
+        
+        setAreaEffect(new AreaEffect("Heal"), new CoordinatePair());
+        
     }
 
     /*-----------Singleton------------------*/

@@ -14,7 +14,7 @@ import gameobject.GameObject;
 public class GameMap {
 
     private static GameMap thisMap = null;
-    
+
     private int height; // in tiles
     private int width; // in tiles
     private ArrayList<Pair<Entity, CoordinatePair>> entitiesOnMap;
@@ -25,31 +25,32 @@ public class GameMap {
     private Entity player;
 
     /*-----------CONSTRUCTORS-----------------*/
-    public void takeTiles(Tile[][] map){
+    public void takeTiles(Tile[][] map) {
         this.tilesOnMap = map;
         this.width = tilesOnMap.length;
         this.height = tilesOnMap[0].length;
-        this.tileSize = new Dimension(RunGame.TILE_WIDTH, RunGame.TILE_HEIGHT);        
+        this.tileSize = new Dimension(RunGame.TILE_WIDTH, RunGame.TILE_HEIGHT);
     }
-    
+
     private GameMap() {
         this.tileSize = new Dimension(RunGame.TILE_WIDTH, RunGame.TILE_HEIGHT);
         mValidator = MotionValidator.getInstance();
         entitiesOnMap = new ArrayList<Pair<Entity, CoordinatePair>>();
         itemsOnMap = new ArrayList<Pair<Item, CoordinatePair>>();
-        
+
         thisMap = this; //singleton
     }
 
     /*-----------Singleton------------------*/
     public static GameMap getInstance() {
-        if(thisMap == null) {
+        if (thisMap == null) {
             //throw new Error("GameMap singleton has not yet been instatiated, you can not call it yet.");
             thisMap = new GameMap();
         }
         return thisMap;
     }
     /*------------ACCESSORS-----------------*/
+
     //don't use this for printing every entity
     public CoordinatePair getLocation(Entity entity) {
         for (Pair p : entitiesOnMap) {
@@ -68,18 +69,18 @@ public class GameMap {
         }
         return null;
     }
-    
+
     public ArrayList<Item> findItemsByName(String name) {
-    	ArrayList<Item> foundList = new ArrayList<Item>();
-    	
-    	for(Pair i : itemsOnMap) {
-    		GameObject found = ((GameObject) i.getLeft());
-    		if(found.getName().equals(name)){
-    			foundList.add((Item) found);
-    		}
-    	}
-    	
-    	return foundList;
+        ArrayList<Item> foundList = new ArrayList<Item>();
+
+        for (Pair i : itemsOnMap) {
+            GameObject found = ((GameObject) i.getLeft());
+            if (found.getName().equals(name)) {
+                foundList.add((Item) found);
+            }
+        }
+
+        return foundList;
     }
 
     public ArrayList<Pair<Entity, CoordinatePair>> getAllEntities() {
@@ -95,14 +96,15 @@ public class GameMap {
     }
 
     /*-----------MUTATORS------------------*/
-    
-    public void addTile(Tile tile, CoordinatePair location){
+    public void addTile(Tile tile, CoordinatePair location) {
         tilesOnMap[location.getX()][location.getY()] = tile;
-    }    
-    
+    }
+
     public CoordinatePair addItem(Item item, CoordinatePair location) {
-        itemsOnMap.add(new Pair<>(item, location));
-        ((GameObject) item).setLocation(location);
+        if (item != null) {
+            itemsOnMap.add(new Pair<>(item, location));
+            ((GameObject) item).setLocation(location);
+        }
         return location; //why?
     }
 
@@ -135,7 +137,7 @@ public class GameMap {
     /*-------------------USAGE---------------*/
     public void requestMovement(Entity entity, CoordinatePair change) {
         CoordinatePair ent = getLocation(entity);
-        
+
         CoordinatePair desired = new CoordinatePair(ent.getX() + change.getX(), ent.getY() + change.getY());
 
         //if terrainIsCorrect
@@ -143,7 +145,7 @@ public class GameMap {
         //                   if NotOccupiedByObstacle
         Tile t = getTileAtCoordinatePair(desired);
         System.out.println("Terrain: " + t.getTerrain());
-        System.out.println("Verify movement:" +t.getTerrain().verifyMovement(entity));
+        System.out.println("Verify movement:" + t.getTerrain().verifyMovement(entity));
         if (t.getTerrain().verifyMovement(entity)) {    //terrain is passable
             Entity entityAtDesiredLocation = getEntityAt(desired);
             if (entityAtDesiredLocation != null) {
@@ -153,28 +155,30 @@ public class GameMap {
             if (itemAtDesiredLocation != null) {  //there is an item there.
                 if (itemAtDesiredLocation.activate(entity)) { //item is not an obstacle
                     /* Commenting this out, because the entity moves later on
-                    Pair tmp;
+                     Pair tmp;
                     
-                    tmp = getEntityPair(entity);
-                    tmp.setRight(desired); //actually moving the entity
+                     tmp = getEntityPair(entity);
+                     tmp.setRight(desired); //actually moving the entity
                     
-                    */
-                    
+                     */
+
                 } else {
                     return;
                 }
             }
-            
-        }else{
+
+        } else {
             return;
         }
         //Move the entity in the map
         getLocation(entity).add(change);
         entity.setLocation(getLocation(entity));
-        
-      //apply AreaEffect
+
+        //apply AreaEffect
         AreaEffect AE = t.getAreaEffect();
-        if(AE != null) AE.affect(entity);
+        if (AE != null) {
+            AE.affect(entity);
+        }
     }
 
     //note: this method WILL MOVE the entity if it is able to.
@@ -215,7 +219,7 @@ public class GameMap {
 
     public Item getItemAt(CoordinatePair CP) {
         for (Pair c : itemsOnMap) {
-            if (((CoordinatePair)c.getRight()).equals(CP)) {
+            if (((CoordinatePair) c.getRight()).equals(CP)) {
                 return (Item) c.getLeft();
             }
         }
@@ -224,7 +228,7 @@ public class GameMap {
 
     public Entity getEntityAt(CoordinatePair CP) {
         for (Pair c : entitiesOnMap) {
-            if (((CoordinatePair)c.getRight()).equals(CP)) {
+            if (((CoordinatePair) c.getRight()).equals(CP)) {
                 return (Entity) c.getLeft();
             }
         }
@@ -252,7 +256,7 @@ public class GameMap {
             int startingTileY = c.getY() - (RunGame.NUM_OF_TILES_HIGH - 1);
 
             Tile[][] tiles = new Tile[RunGame.NUM_OF_TILES_WIDE][RunGame.NUM_OF_TILES_HIGH];
-            
+
             for (int x = startingTileX; x < RunGame.NUM_OF_TILES_WIDE; x++) {
                 for (int y = startingTileY; y < RunGame.NUM_OF_TILES_HIGH; y++) {
                     tiles[x][y] = getTileAtCoordinatePair(new CoordinatePair(x, y));
@@ -263,20 +267,19 @@ public class GameMap {
 
     }
 
-    public String toXML()
-    {
-    	String str = "";
-    	
-    	for(Pair e : entitiesOnMap) {
-    			str += ((Entity) e.getLeft()).toXML();
-    			str += "\n";
-    	}
-    	
-    	for(Pair i : itemsOnMap) {
-    			str += ((Item) i.getLeft()).toXML();
-    			str += "\n";
-    	}
-    	
-    	return str;
+    public String toXML() {
+        String str = "";
+
+        for (Pair e : entitiesOnMap) {
+            str += ((Entity) e.getLeft()).toXML();
+            str += "\n";
+        }
+
+        for (Pair i : itemsOnMap) {
+            str += ((Item) i.getLeft()).toXML();
+            str += "\n";
+        }
+
+        return str;
     }
 }

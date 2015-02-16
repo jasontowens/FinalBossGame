@@ -74,11 +74,11 @@ public class MenuCoordinator {
             //Load Menu options
             case OPEN_SAVE_FILE:
                 //URL location = MenuCoordinator.getClass().getLocation();
-                InputStream is = RunGame.class.getResourceAsStream("/resources/saves/save1.xml");
+                //InputStream is = RunGame.class.getResourceAsStream("/resources/saves/save1.xml");
                 //File f = new File(is);
                 System.out.println("OVER HERE");
                 JFileChooser chooser = new JFileChooser();
-                chooser.setCurrentDirectory(new File("./game/src/resources/saves/"));
+                chooser.setCurrentDirectory(new File("./FinalBossGame/src/resources/saves/"));
                 int choice = chooser.showOpenDialog(null);
                 if (choice == JFileChooser.APPROVE_OPTION) {
                     File loadFile = chooser.getSelectedFile();
@@ -87,6 +87,7 @@ public class MenuCoordinator {
                     scheduler.changeCoordinator(CoordinatorType.GAME);
                     SceneManager sm = SceneManager.getInstance();
                     sm.setActiveScene(SceneManager.GAME_SCENE);
+                    GameCoordinator.getInstance().showPauseMenu(false);
                 }
                 break;
             //Load menu and pause menu option
@@ -161,14 +162,21 @@ public class MenuCoordinator {
     	XMLReader reader = XMLReader.getInstance(file);
         reader.setInputStream(file);
         GameMap loadedMap = GameMap.getInstance();
+        loadedMap.takeTiles(main.RunGame.ml.getAllTiles());
 
         ObjectFactory objectFactory = new ObjectFactory(file, loadedMap);
-        objectFactory.ParseFile();
-        ArrayList<Pair<Entity, CoordinatePair>> entities = loadedMap.getAllEntities();
-        //Entity entity = entities.get(0).getLeft();
         GameCoordinator gameCoordinator = GameCoordinator.getInstance();
         gameCoordinator.setActiveMap(loadedMap);
-        //gameCoordinator.setAvatar(entity);    
+        try {
+			Entity avatar = objectFactory.ParseFile();
+			if(avatar == null)
+				System.out.println("null avatar");
+			gameCoordinator.setAvatar(avatar);
+			
+		} catch (ParserConfigurationException | SAXException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     public void setCurrentMenu(Menu menu) {

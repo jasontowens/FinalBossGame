@@ -46,7 +46,7 @@ public class TakeableFactory {
 	}
 	
 	private Takeable createSlothHelmet(GameMap map, int durability) {
-		ItemStats i = new ItemStats(10, 0, 0, 0, 0, 0, 0, 0, 0, durability, 0, 10, 0);
+		ItemStats i = new ItemStats(0, 0, 0, 0, 0, 0, 0, 0, 0, durability, 0, 10, 0);
 		Takeable t = new Equipable("Sloth Helmet", "Wear it on your head to be slow.", 84, i, map, EquipSlot.HEAD);
 		return t;
 	}

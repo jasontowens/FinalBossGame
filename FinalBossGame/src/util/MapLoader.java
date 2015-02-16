@@ -71,11 +71,13 @@ public class MapLoader {
 		fillIDTable();
 		fillMap();
                 
-                fillTiles();
+        fillTiles();
 	}
 	
         private void fillTiles(){
             IdToGameObjectTranslator idTrans = IdToGameObjectTranslator.getInstance();
+            if(idTrans == null)
+            	//System.out.println("null");
             for(int i =0; i < mapHeight; ++i){
                 for(int j =0; j < mapWidth; ++j){
                     tiles[i][j] = idTrans.getTileFromId(idTable[i][j]);
@@ -90,7 +92,7 @@ public class MapLoader {
             return tiles[i][j];
         }
         
-	public static MapLoader getIntance(InputStream in){
+	public static MapLoader getInstance(InputStream in){
 		if(thisMapLoader == null){
 			thisMapLoader = new MapLoader(in);
 		}

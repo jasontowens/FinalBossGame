@@ -3,6 +3,7 @@ package coordinators;
 import map.CoordinatePair;
 import map.GameMap;
 import entity.Entity;
+import scene.SceneManager;
 
 public class GameCoordinator {
     /*--------------------- OTHER DATA MEMBERS ---------------------*/
@@ -32,6 +33,9 @@ public class GameCoordinator {
     public void pause() {
         scheduler.changeCoordinator(CoordinatorType.MENU);
         MenuCoordinator.getInstance().setCurrentMenu(MenuCoordinator.pauseMenu);
+        //In this case we want to stay in the game scene
+        SceneManager sm = SceneManager.getInstance();
+        sm.setActiveScene(SceneManager.GAME_SCENE);
         showPauseMenu = true;
     }
 

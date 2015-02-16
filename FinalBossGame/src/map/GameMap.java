@@ -100,7 +100,7 @@ public class GameMap {
         return entitiesOnMap;
     }
 
-    public ArrayList<Pair<Item, CoordinatePair>> getAllItems() {
+    public synchronized ArrayList<Pair<Item, CoordinatePair>> getAllItems() {
         return itemsOnMap;
     }
 

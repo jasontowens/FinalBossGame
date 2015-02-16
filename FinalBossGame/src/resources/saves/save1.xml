@@ -15,4 +15,15 @@
 </inventory>
 </entity>
 <takeable name="Jesus Boots" durability="100" x="25" y="5" />
+<takeable name="Health Potion" durability="1" x="23" y="2" />
+<oneshot name="Heart Container" durability="1" x="24" y="2" />
+<takeable name="Sword of 1000 Truths" durability="1" x="19" y="10" />
+<takeable name="Whistle" durability="1" x="13" y="10" />
+<takeable name="Sloth Helmet" durability="1" x="10" y="10" />
+<obstacle name="Door" durability="1" x="7" y="15" />
+<obstacle name="Door" durability="1" x="22" y="13" />
+<obstacle name="Door" durability="1" x="19" y="12" />
+<obstacle name="Door" durability="1" x="15" y="12" />
+<obstacle name="Door" durability="1" x="11" y="12" />
+<interactive name="Door Buster" durability="1" x="21" y="19" />
 </objects>

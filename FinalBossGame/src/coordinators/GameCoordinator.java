@@ -49,27 +49,35 @@ public class GameCoordinator {
         switch (currentSelection) {
             case 1: // southwest
                 movement = new CoordinatePair(-1, -1);
+                avatar.setID(87);
                 break;
             case 2: // south
                 movement = new CoordinatePair(0, -1);
+                avatar.setID(85);
                 break;
             case 3: // southeast
                 movement = new CoordinatePair(1, -1);
+                avatar.setID(99);
                 break;
             case 4: // west
                 movement = new CoordinatePair(-1, 0);
+                avatar.setID(96);
                 break;
             case 6: // east
                 movement = new CoordinatePair(1, 0);
+                avatar.setID(97);
                 break;
             case 7: // northwest
                 movement = new CoordinatePair(-1, 1);
+                avatar.setID(98);
                 break;
             case 8: // north 
                 movement = new CoordinatePair(0, 1);
+                avatar.setID(86);
                 break;
             case 9: // northeast
                 movement = new CoordinatePair(1, 1);
+                avatar.setID(88);
                 break;
             default: // no movement
                 movement = new CoordinatePair(0, 0);

@@ -20,8 +20,9 @@ public class ObstacleFactory {
 		return o;
 	}
 	
+	//never make this because obstacles should be impassable.
 	private Obstacle createDoor() {
-		Obstacle o = new Obstacle("Door", "Can open maybe", 2);
+		Obstacle o = new Obstacle("Door", "Can open maybe", 51);
 		return o;
 	}
 }

@@ -19,6 +19,11 @@ import org.xml.sax.SAXException;
 
 import entity.Entity;
 import factories.ObjectFactory;
+import java.net.URL;
+import main.RunGame;
+import static main.RunGame.ml;
+import scene.SceneManager;
+import util.MapLoader;
 
 /**
  * Handles the logic for menus.
@@ -60,29 +65,33 @@ public class MenuCoordinator {
                 break;
             case SWITCH_TO_LOAD_MENU:
                 setCurrentMenu(loadMenu);
-                for (int i = 0; i < menuCoordinator.getCurrentMenu().getOptions().length; i++) {
-                    System.out.println(getCurrentMenu().getOptions()[i].toString());
-                }
                 break;
             //Load Menu options
             case OPEN_SAVE_FILE:
-                JFileChooser chooser = new JFileChooser("./resources/saves");
+                //URL location = MenuCoordinator.getClass().getLocation();
+                InputStream is = RunGame.class.getResourceAsStream("/resources/levels/level 1.xml");
+                //File f = new File(is);
+                JFileChooser chooser = new JFileChooser("/resources/levels");
                 int choice = chooser.showOpenDialog(null);
                 if (choice == JFileChooser.APPROVE_OPTION) {
                     File loadFile = chooser.getSelectedFile();
                     loadGame(loadFile);
+                    System.out.println(loadFile.getPath());
+                    scheduler.changeCoordinator(CoordinatorType.GAME);
+                    SceneManager sm = SceneManager.getInstance();
+                    sm.setActiveScene(SceneManager.GAME_SCENE);
                 }
-                scheduler.changeCoordinator(CoordinatorType.GAME);
                 break;
             //Load menu and pause menu option
             case RESUME_GAME:
                 scheduler.changeCoordinator(CoordinatorType.GAME);
+                SceneManager sm = SceneManager.getInstance();
+                sm.setActiveScene(SceneManager.GAME_SCENE);
+                GameCoordinator.getInstance().showPauseMenu(false);
                 break;
             case RETURN_TO_MAIN_MENU:
                 setCurrentMenu(mainMenu);
-                for (int i = 0; i < getCurrentMenu().getOptions().length; i++) {
-                    System.out.println(getCurrentMenu().getOptions()[i].toString());
-                }
+                SceneManager.getInstance().setActiveScene(SceneManager.MENU_SCENE);
                 break;
             case EXIT:
                 System.exit(0);
@@ -101,6 +110,15 @@ public class MenuCoordinator {
     }
 
     private void startNewGame() {
+        InputStream is = RunGame.class.getResourceAsStream("/resources/levels/level 1.xml");
+        ml = MapLoader.getIntance(is);
+        
+        GameMap loadedMap = GameMap.getInstance();
+        
+        GameCoordinator gameCoordinator = GameCoordinator.getInstance();
+        gameCoordinator.setActiveMap(loadedMap);
+        SceneManager sm = SceneManager.getInstance();
+        sm.setActiveScene(SceneManager.GAME_SCENE);
 
     }
 

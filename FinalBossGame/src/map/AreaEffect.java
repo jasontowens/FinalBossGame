@@ -9,9 +9,11 @@ public class AreaEffect extends GameObject {
 	/*--------------------- DATA MEMBERS ---------------------*/
 	private Stats modifiers;
 	private String name ; // corresponds to Type (should be deprecated in It2)
+	
 	/*--------------------- CONSTRUCTORS ---------------------*/
-	public AreaEffect(String name, int ID, Stats mods){
-            super(name, name, name, -1000); //TODO: change ID to how Hanif wants it set up 
+	public AreaEffect(String name, Stats mods){
+            super(name, name, name , -1); //TODO: change ID to how Hanif wants it set up 
+
             this.modifiers = mods;
 	}
         
@@ -24,7 +26,8 @@ public class AreaEffect extends GameObject {
                 case "Heal": s.modhpCurrent(100);
                 case "Level Up": s.setLevelUps(1);
                 case "Take Dameage": s.modhpCurrent(-10);
-                case "Instant Death": s.modhpCurrent(-1000);                                
+                case "Instant Death": s.modhpCurrent(-1000);   
+                
             }
 	}
 	

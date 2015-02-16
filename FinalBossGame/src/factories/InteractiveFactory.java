@@ -25,17 +25,17 @@ public class InteractiveFactory {
 	}
 
 	private Interactive createSmasherSetter() {
-		Interactive i = new OccupationSetter("Smasher setter", "Makes you a smasher.", 2, "Smasher");
+		Interactive i = new OccupationSetter("Smasher setter", "Makes you a smasher.", 81, "Smasher");
 		return i;
 	}
 
 	private Interactive createSummonerSetter() {
-		Interactive i = new OccupationSetter("Summoner setter", "Makes you a summoner.", 2, "Summoner");
+		Interactive i = new OccupationSetter("Summoner setter", "Makes you a summoner.", 82, "Summoner");
 		return i;
 	}
 
 	private Interactive createSneakSetter() {
-		Interactive i = new OccupationSetter("Sneak setter", "Makes you a sneak.", 2, "Sneak");
+		Interactive i = new OccupationSetter("Sneak setter", "Makes you a sneak.", 92, "Sneak");
 		return i;
 	}
 

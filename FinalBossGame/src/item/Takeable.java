@@ -18,6 +18,7 @@ public class Takeable extends GameObject implements Item , Saveable {
 		super(className, name, description, ID); //TODO: change ID to how Hanif wants it set up 
 		modifiers = mods;
 		current = active;
+		
 	}
 	public Takeable(String name, String description, int ID, ItemStats mods, GameMap active){
 		//TODO:  fix this damn sprite file path

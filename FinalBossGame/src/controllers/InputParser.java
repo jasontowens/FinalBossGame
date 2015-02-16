@@ -27,6 +27,7 @@ public class InputParser implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
+            System.out.println(e.getKeyCode());
 		if(System.currentTimeMillis() - timerStart >= TIMER_DELAY) {
 			timerStart = System.currentTimeMillis();
 			switch(e.getKeyCode()) {

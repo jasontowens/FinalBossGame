@@ -66,7 +66,7 @@ public class MenuCoordinator {
                 break;
             //Load Menu options
             case OPEN_SAVE_FILE:
-                JFileChooser chooser = new JFileChooser(".");
+                JFileChooser chooser = new JFileChooser("./resources/saves");
                 int choice = chooser.showOpenDialog(null);
                 if (choice == JFileChooser.APPROVE_OPTION) {
                     File loadFile = chooser.getSelectedFile();

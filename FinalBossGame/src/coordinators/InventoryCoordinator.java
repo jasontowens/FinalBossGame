@@ -1,9 +1,7 @@
 package coordinators;
-import map.CoordinatePair;
+import item.Takeable;
 import map.GameMap;
 import entity.Entity;
-import viewport.MapViewPort;
-import viewport.StatusViewPort;
 
 public class InventoryCoordinator
 {
@@ -12,6 +10,7 @@ public class InventoryCoordinator
     /*--------------------- OTHER DATA MEMBERS ---------------------*/
     private static CoordinatorScheduler scheduler = CoordinatorScheduler.getInstance();
     private Entity avatar;
+    //TODO
     private GameMap activeMap;// = GameMap.getInstance(); 
     
     //Instance of singleton
@@ -51,6 +50,17 @@ public class InventoryCoordinator
     public void dropItem() 
     {
         avatar.dropItem(selectedItem);
+    }
+    
+    public Takeable getSelectedItem() {
+    	//TODO if necessary
+    	/*
+    	if(selectedItem < avatar.getArmory().size()) {
+    		return avatar.getArmory().g
+    	}
+    	if(selectedItem())
+    	*/
+    	return null;
     }
     
     /*--------------------- COORDINATOR COMMANDS---------------------*/

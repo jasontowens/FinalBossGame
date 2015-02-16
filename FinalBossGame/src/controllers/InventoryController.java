@@ -19,7 +19,7 @@ public class InventoryController extends SceneController {
 		inventoryReceiver.previousItem();
         } 
 
-        public void useKeyDelete() // backspace/delete
+        public void useKey5() // backspace/delete
 	{
 		inventoryReceiver.dropItem();
 	}
@@ -39,5 +39,9 @@ public class InventoryController extends SceneController {
 			inventoryController = new InventoryController();
 		}
 		return inventoryController;
+	}
+	
+	public void setInventoryCoordinator(InventoryCoordinator coord) {
+		inventoryReceiver = coord;
 	}
 }

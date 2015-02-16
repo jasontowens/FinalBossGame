@@ -13,6 +13,12 @@ public class Terrain extends GameObject {
 		this.motiontype = motiontype;
 		
 	}
+	
+	//name should probably be based on MotionType, 
+	public Terrain(MotionType motiontype){
+		//super("Terrain" , "a terrain" , "unncessary description");
+		this.motiontype = motiontype;
+	}
 
 	public boolean verifyMovement(Entity entity) {
 		return MotionValidator.getInstance().canTraverse(entity.getMotionType(), motiontype);

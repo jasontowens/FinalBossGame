@@ -14,13 +14,13 @@ public class MobilityEquipable extends Equipable{
 	private MotionType originalMotion;
 	
 	//constructors
-	protected MobilityEquipable(String className, String name, String description, ItemStats mods, GameMap active, EquipSlot equipSlot, MotionType nextMotion){
-		super(className, name, description, mods, active, equipSlot);
+	protected MobilityEquipable(String className, String name, String description, int ID, ItemStats mods, GameMap active, EquipSlot equipSlot, MotionType nextMotion){
+		super(className, name, description, ID, mods, active, equipSlot);
 		myMotion = nextMotion;
 		
 	}
-	public MobilityEquipable(String name, String description, ItemStats mods, GameMap active, EquipSlot equipSlot, MotionType nextMotion){
-		super("MobilityEquipable", name, description, mods, active, equipSlot);
+	public MobilityEquipable(String name, String description, int ID, ItemStats mods, GameMap active, EquipSlot equipSlot, MotionType nextMotion){
+		super("MobilityEquipable", name, description, ID, mods, active, equipSlot);
 		myMotion = nextMotion;
 	}
 	

@@ -111,7 +111,7 @@ public class MenuCoordinator {
 
     private void startNewGame() {
         InputStream is = RunGame.class.getResourceAsStream("/resources/levels/level 1.xml");
-        ml = MapLoader.getIntance(is);
+        ml = MapLoader.getInstance(is);
         
         GameMap loadedMap = GameMap.getInstance();
         

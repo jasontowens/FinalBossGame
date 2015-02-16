@@ -49,7 +49,10 @@ public class InventoryCoordinator {
     }
 
     public void dropItem() {
-        avatar.dropItem(selectedItem);
+        if(selectedItem >= 5){
+            avatar.dropItem(selectedItem-5);
+        }
+        
     }
 
     /*

@@ -16,6 +16,7 @@ import main.RunGame;
 import map.CoordinatePair;
 import map.GameMap;
 import map.Pair;
+import map.Tile;
 import scene.Scene;
 import util.ImageSplitter;
 import util.MapLoader;
@@ -33,60 +34,61 @@ public class MapViewPort extends ViewPort {
     }
 
     private void queryModel() {
-       Object o = scene.getModelObject("game");
-       GameCoordinator gc = (GameCoordinator) o;
-       //this.map = gc.getActiveMap();
+        Object o = scene.getModelObject("game");
+        GameCoordinator gc = (GameCoordinator) o;
+        //this.map = gc.getActiveMap();
     }
 
     public void drawGraphics(Graphics g) {
         queryModel();
-        //g.setFont(new Font("TimesRoman", Font.PLAIN, 20));
-        //g.drawString("MAP VIEWPORT", RunGame.WIDTH/2 - 85, RunGame.HEIGHT/2);
-        
+
+        //Draw Tiles
         GameMap cmap = GameMap.getInstance();
         BufferedImage[][] images = RunGame.ml.getMap();
-        for(int i = 0; i < RunGame.ml.getMapWidth(); i++){
-            for(int j = 0; j < RunGame.ml.getMapHeight(); j++){
-                g.drawImage(images[j][i], i*RunGame.TILE_WIDTH, j*RunGame.TILE_HEIGHT, null);
-         
-                /* Item itemat = cmap.getItemAt(new CoordinatePair(i,j));
-                if(itemat != null)
-                {
-                	g.drawImage(RunGame.ssh.getSprite(((GameObject) itemat).getID()), i*RunGame.TILE_WIDTH, j*RunGame.TILE_HEIGHT, null);
-                }
-                
-                Entity entat = cmap.getEntityAt(new CoordinatePair(i,j));
-                if(entat != null)
-                {
-                	g.drawImage(RunGame.ssh.getSprite(entat.getID()), i*RunGame.TILE_WIDTH, j*RunGame.TILE_HEIGHT, null);
-                } */
+        for (int i = 0; i < RunGame.ml.getMapWidth(); i++) {
+            for (int j = 0; j < RunGame.ml.getMapHeight(); j++) {
+                g.drawImage(images[j][i], i * RunGame.TILE_WIDTH, j * RunGame.TILE_HEIGHT, null);
             }
         }
-        
-        
-         map = GameMap.getInstance();
-        
+        map = GameMap.getInstance();
+
+        //Draw AreaEffect
+        Tile[][] tiles = map.getAllTiles();
+        for (int i = 0; i < tiles.length; i++) {
+            for (int j = 0; j < tiles[0].length; j++) {
+                BufferedImage img = null;
+                if (tiles[i][j].getAreaEffect() != null) {
+                    ImageSplitter splitter = ImageSplitter.getInstance();
+                    int id = tiles[i][j].getAreaEffect().getID();
+                    if (id > 0) {
+                        img = splitter.getTileFromID(id);
+                    }
+                }
+                g.drawImage(img, i * RunGame.TILE_WIDTH, j * RunGame.TILE_HEIGHT, null);
+            }
+        }
+
+        //Draw Items
+        for (Pair p : map.getAllItems()) {
+            Item item = (Item) p.getLeft();
+            CoordinatePair c = (CoordinatePair) p.getRight();
+
+            ImageSplitter splitter = ImageSplitter.getInstance();
+            BufferedImage image = splitter.getTileFromID(item.getID());
+
+            g.drawImage(image, c.getX() * RunGame.TILE_WIDTH, c.getY() * RunGame.TILE_HEIGHT, null);
+
+        }
+
         //Draw Entities
-        for (Pair p : map.getAllEntities()){
+        for (Pair p : map.getAllEntities()) {
             Entity e = (Entity) p.getLeft();
-            CoordinatePair c = (CoordinatePair) p.getRight();            
+            CoordinatePair c = (CoordinatePair) p.getRight();
             ImageSplitter splitter = ImageSplitter.getInstance();
             BufferedImage i = splitter.getTileFromID(e.getID());
             //g.setColor(Color.pink);
             //g.fillRect(c.getX() * RunGame.TILE_WIDTH , c.getY() * RunGame.TILE_HEIGHT, RunGame.TILE_WIDTH, RunGame.TILE_HEIGHT);
-              g.drawImage(i, c.getX()*RunGame.TILE_WIDTH, c.getY()*RunGame.TILE_HEIGHT, null); 
-        }
-        
-        //Draw Items
-        for(Pair p: map.getAllItems()){
-            Item item = (Item) p.getLeft();
-            CoordinatePair c = (CoordinatePair) p.getRight();
-            
-            ImageSplitter splitter = ImageSplitter.getInstance();
-            BufferedImage image = splitter.getTileFromID(item.getID());
-            
-            g.drawImage(image, c.getX()*RunGame.TILE_WIDTH, c.getY()*RunGame.TILE_HEIGHT, null);
-               
+            g.drawImage(i, c.getX() * RunGame.TILE_WIDTH, c.getY() * RunGame.TILE_HEIGHT, null);
         }
     }
 }

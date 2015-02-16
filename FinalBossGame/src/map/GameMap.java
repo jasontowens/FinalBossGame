@@ -96,7 +96,7 @@ public class GameMap {
         return foundList;
     }
 
-    public ArrayList<Pair<Entity, CoordinatePair>> getAllEntities() {
+    public synchronized ArrayList<Pair<Entity, CoordinatePair>> getAllEntities() {
         return entitiesOnMap;
     }
 

@@ -42,7 +42,9 @@ public class Sack implements Saveable{
 	public Takeable removeItem(int location){
 		if(location >= 0 && location < sizeOfSack) {
 			slotsInUse[location] = false;
-			return itemsInSack[location];
+                        Takeable takeable = itemsInSack[location];
+                        itemsInSack[location] = null;
+			return takeable;
 		}
 		return null;
 	}

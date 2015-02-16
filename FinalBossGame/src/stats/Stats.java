@@ -18,6 +18,7 @@ public class Stats implements Saveable{
 	protected int mpCurrent;
 	protected int defense;	//used in defensiveRating
 	protected int offense;  //used in offensiveRating
+	final static protected int expPerLevel = 10;
 	
 	public Stats(int levels,
                  int livesLeft,
@@ -198,7 +199,7 @@ public class Stats implements Saveable{
 	}
 
     public void modLevel(int levels) {
-        this.level += levels;
+        this.experience += expPerLevel*levels;
         for(int i = 0; i < levels; ++i){
 		modLivesLeft(1);
 		modStrength(1);

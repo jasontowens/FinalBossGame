@@ -12,7 +12,6 @@ public class PlayerStats extends Stats {
 	private int defensiveRating;
 	private int offensiveRating;
 	private int armorRating;
-	final static private int expPerLevel = 1000;
 	
 	//Updaters
 	private void updateLevel(){

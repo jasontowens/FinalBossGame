@@ -62,6 +62,7 @@ public class MenuCoordinator {
             case NEW_GAME:
                 startNewGame();
                 scheduler.changeCoordinator(CoordinatorType.GAME);
+                GameCoordinator.getInstance().showPauseMenu(false);
                 break;
             case SWITCH_TO_LOAD_MENU:
                 setCurrentMenu(loadMenu);
@@ -69,7 +70,7 @@ public class MenuCoordinator {
             //Load Menu options
             case OPEN_SAVE_FILE:
                 //URL location = MenuCoordinator.getClass().getLocation();
-                InputStream is = RunGame.class.getResourceAsStream("/resources/levels/level 1.xml");
+                InputStream is = RunGame.class.getResourceAsStream("/resources/saves/save1.xml");
                 //File f = new File(is);
                 JFileChooser chooser = new JFileChooser("/resources/levels");
                 int choice = chooser.showOpenDialog(null);
@@ -91,7 +92,7 @@ public class MenuCoordinator {
                 break;
             case RETURN_TO_MAIN_MENU:
                 setCurrentMenu(mainMenu);
-                SceneManager.getInstance().setActiveScene(SceneManager.MENU_SCENE);
+                    SceneManager.getInstance().setActiveScene(SceneManager.MENU_SCENE);
                 break;
             case EXIT:
                 System.exit(0);

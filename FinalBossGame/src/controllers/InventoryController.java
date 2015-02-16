@@ -1,5 +1,6 @@
 
 package controllers;
+import coordinators.GameCoordinator;
 import coordinators.InventoryCoordinator;
 
 public class InventoryController extends SceneController {
@@ -27,6 +28,7 @@ public class InventoryController extends SceneController {
 	public void useKeyI() // go back to Game
 	{
 		inventoryReceiver.exitInventory();
+                GameCoordinator.getInstance().showInventory(false);
 	}
 
 	public void useKeyEnter() // use item 

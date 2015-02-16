@@ -32,6 +32,7 @@ public class XMLReader {
 	private static XMLReader reader = null;
 	DocumentBuilder db;
 	Document doc = null;
+	InputStream in;
 	private XMLReader(InputStream is){
 		factory = DocumentBuilderFactory.newInstance();
 		try {
@@ -71,13 +72,22 @@ public class XMLReader {
 	}
 	
 	
+	public void setInputStream(InputStream in){
+		try {
+			doc = db.parse(new InputSource(in));
+		} catch (SAXException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	//returns ArrayList of all children of element 'e' with tag 'tag'
 	
 	public List<Element> getElements(String tag , Element e){
 		ArrayList<Element> elements = new ArrayList<Element>();
 		NodeList nodes = e.getElementsByTagName(tag);
-
+		int x = nodes.getLength();
+		System.out.println(nodes.getLength());
 		for(int i = 0; i < nodes.getLength(); ++i){
 			elements.add( (Element) (nodes.item(i)));
 		}

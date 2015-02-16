@@ -119,6 +119,10 @@ public class IdToGameObjectTranslator {
 		else if(tileTerrain == util.Terrain.WATER)
 			tile.setTerrain(new map.Terrain(entity.MotionType.WATER));
 		
+		else{
+			tile.setTerrain(new map.Terrain(entity.MotionType.UNATTAINABLE));
+		}
+		
 		
 		if(tileEffect == util.AreaEffect.HEAL)
 			tile.setAreaEffect(new map.AreaEffect("Heal"));

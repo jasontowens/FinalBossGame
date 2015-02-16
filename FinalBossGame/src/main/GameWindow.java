@@ -8,9 +8,11 @@ import javax.swing.JPanel;
  * @author ChrisMoscoso
  */
 public class GameWindow extends JFrame {
+    
+    public static GamePanel gp;
         
     public GameWindow(){
-        GamePanel gp = new GamePanel();
+        gp = new GamePanel();
         this.getContentPane().add(gp, BorderLayout.CENTER);
         
         int menuBarOffset = 20;

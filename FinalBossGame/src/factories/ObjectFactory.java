@@ -49,6 +49,7 @@ public class ObjectFactory {
 		Entity player = null;
 		
 		//Entities
+		
 		List<Element> entityElements = xmlreader.getElements("entity", head);
 		
 		for(counter = 0; counter < entityElements.size(); counter++) {
@@ -74,6 +75,7 @@ public class ObjectFactory {
 			if(elementValidator.ValidElement(entityElements.get(counter), "entity")) {
 				Entity e = entityFactory.createEntity(map, entityElements.get(counter).getAttribute("occupation"), xmlreader.getElements("stats", entityElements.get(counter)).get(0), sack, armory);
 
+				
 				if(e != null){
 					map.addEntity(e, new CoordinatePair(Integer.parseInt(entityElements.get(counter).getAttribute("x")), Integer.parseInt(entityElements.get(counter).getAttribute("y"))));
 					player = e;

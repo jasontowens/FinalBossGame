@@ -38,7 +38,7 @@ public class RunGame {
         InputStream is = RunGame.class.getResourceAsStream("/resources/levels/level 1.xml");
         ml = MapLoader.getInstance(is);
         
-        //GameMap map = ml.getMap();
+
         NUM_OF_TILES_WIDE = ml.getMapWidth();
         NUM_OF_TILES_HIGH = ml.getMapHeight();
         WIDTH = NUM_OF_TILES_WIDE * TILE_WIDTH;

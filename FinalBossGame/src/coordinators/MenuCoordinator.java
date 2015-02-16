@@ -19,11 +19,14 @@ import org.xml.sax.SAXException;
 
 import entity.Entity;
 import factories.ObjectFactory;
+
 import java.net.URL;
+
 import main.RunGame;
 import static main.RunGame.ml;
 import scene.SceneManager;
 import util.MapLoader;
+import util.XMLReader;
 
 /**
  * Handles the logic for menus.
@@ -47,7 +50,7 @@ public class MenuCoordinator {
         MenuOption[] loadMenuOptions = {MenuOption.OPEN_SAVE_FILE, MenuOption.RETURN_TO_MAIN_MENU};
         loadMenu = new Menu(loadMenuOptions);
         //Create Pause Menu
-        MenuOption[] pauseMenuOptions = {MenuOption.RESUME_GAME, MenuOption.RETURN_TO_MAIN_MENU, MenuOption.SWITCH_TO_LOAD_MENU, MenuOption.SAVE_FILE, MenuOption.EXIT};
+        MenuOption[] pauseMenuOptions = {MenuOption.RESUME_GAME, MenuOption.RETURN_TO_MAIN_MENU, MenuOption.SAVE_FILE, MenuOption.EXIT};
         pauseMenu = new Menu(pauseMenuOptions);
 
         currentMenu = mainMenu;
@@ -61,8 +64,9 @@ public class MenuCoordinator {
         switch (currentMenu.getCurrentSelection()) {
             case NEW_GAME:
                 startNewGame();
-                scheduler.changeCoordinator(CoordinatorType.GAME);
                 GameCoordinator.getInstance().showPauseMenu(false);
+                scheduler.changeCoordinator(CoordinatorType.GAME);
+                
                 break;
             case SWITCH_TO_LOAD_MENU:
                 setCurrentMenu(loadMenu);
@@ -72,7 +76,9 @@ public class MenuCoordinator {
                 //URL location = MenuCoordinator.getClass().getLocation();
                 InputStream is = RunGame.class.getResourceAsStream("/resources/saves/save1.xml");
                 //File f = new File(is);
-                JFileChooser chooser = new JFileChooser("/resources/levels");
+                System.out.println("OVER HERE");
+                JFileChooser chooser = new JFileChooser();
+                chooser.setCurrentDirectory(new File("./game/src/resources/saves/"));
                 int choice = chooser.showOpenDialog(null);
                 if (choice == JFileChooser.APPROVE_OPTION) {
                     File loadFile = chooser.getSelectedFile();
@@ -92,7 +98,10 @@ public class MenuCoordinator {
                 break;
             case RETURN_TO_MAIN_MENU:
                 setCurrentMenu(mainMenu);
-                    SceneManager.getInstance().setActiveScene(SceneManager.MENU_SCENE);
+                SceneManager.getInstance().setActiveScene(SceneManager.MENU_SCENE);
+                break;
+            case SAVE_FILE:
+
                 break;
             case EXIT:
                 System.exit(0);
@@ -110,14 +119,38 @@ public class MenuCoordinator {
         currentMenu.prev();
     }
 
-    private void startNewGame() {
-        InputStream is = RunGame.class.getResourceAsStream("/resources/levels/level 1.xml");
-        ml = MapLoader.getInstance(is);
-        
-        GameMap loadedMap = GameMap.getInstance();
-        
+    private void saveFile() {
+        JFileChooser chooser = new JFileChooser("/resources/levels");
+        int choice = chooser.showOpenDialog(null);
+        if (choice == JFileChooser.APPROVE_OPTION) {
+            File saveFile = chooser.getSelectedFile();
+            /***** TO DO: SAVE TO FILE ****/
+        }
+    }
+
+	private void startNewGame() {        
+    GameMap loadedMap = GameMap.getInstance();
+    loadedMap.takeTiles(main.RunGame.ml.getAllTiles());
+    
+    InputStream file = getClass().getResourceAsStream("/resources/saves/save1.xml");
+    XMLReader reader = XMLReader.getInstance(file);
+    reader.setInputStream(file);
+    ObjectFactory objectFactory = new ObjectFactory(file, loadedMap);
+   
         GameCoordinator gameCoordinator = GameCoordinator.getInstance();
         gameCoordinator.setActiveMap(loadedMap);
+        try {
+			Entity avatar = objectFactory.ParseFile();
+			if(avatar == null)
+				System.out.println("null avatar");
+			gameCoordinator.setAvatar(avatar);
+			
+		} catch (ParserConfigurationException | SAXException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+        
         SceneManager sm = SceneManager.getInstance();
         sm.setActiveScene(SceneManager.GAME_SCENE);
 
@@ -125,7 +158,8 @@ public class MenuCoordinator {
 
     private void loadGame(File saveFile) throws ParserConfigurationException, SAXException, IOException {
         InputStream file = new FileInputStream(saveFile);
-
+    	XMLReader reader = XMLReader.getInstance(file);
+        reader.setInputStream(file);
         GameMap loadedMap = GameMap.getInstance();
 
         ObjectFactory objectFactory = new ObjectFactory(file, loadedMap);

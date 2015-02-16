@@ -13,7 +13,7 @@ import gameobject.GameObject;
  */
 public class GameMap {
 
-    private static GameMap thisMap;
+    private static GameMap thisMap = null;
     
     private int height; // in tiles
     private int width; // in tiles
@@ -32,7 +32,7 @@ public class GameMap {
         this.tileSize = new Dimension(RunGame.TILE_WIDTH, RunGame.TILE_HEIGHT);        
     }
     
-    GameMap() {
+    private GameMap() {
         this.tileSize = new Dimension(RunGame.TILE_WIDTH, RunGame.TILE_HEIGHT);
         mValidator = MotionValidator.getInstance();
         entitiesOnMap = new ArrayList<Pair<Entity, CoordinatePair>>();
@@ -46,11 +46,8 @@ public class GameMap {
         if(thisMap == null) {
             //throw new Error("GameMap singleton has not yet been instatiated, you can not call it yet.");
             thisMap = new GameMap();
-            return thisMap;
         }
-        else{
-            return thisMap;
-        }
+        return thisMap;
     }
     /*------------ACCESSORS-----------------*/
     //don't use this for printing every entity

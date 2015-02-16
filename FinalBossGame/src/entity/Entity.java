@@ -19,7 +19,7 @@ public class Entity extends GameObject implements Saveable{
 	private MotionType myMotion;
 	private Inventory myInventory;
 	private Occupation myOccupation;
-	private String occupationName;
+	private static String occupationName  = null;
 	private PlayerStats myStats;
         private GameMap map;			// TODO: is this necessary?
    // private int id;
@@ -34,7 +34,7 @@ public class Entity extends GameObject implements Saveable{
 		myOccupation = occ;
 		myStats = stats;
 		myInventory = inventory;
-		occupationName = "Smasher";
+		setOccupation("Smasher");
                 this.map = m; 
         //id = 85; 	// TODO: get the directions working.
 	}
@@ -46,7 +46,7 @@ public class Entity extends GameObject implements Saveable{
 		myOccupation = occ;
 		myInventory = inventory;
 		myStats = stats;
-		occupationName = "Smasher";
+		setOccupation("Smasher");
                  
 	}
 	
@@ -85,9 +85,20 @@ public class Entity extends GameObject implements Saveable{
 	public boolean setMoney(int newAmount){
         return myInventory.setCurrency(newAmount);
     }
-        public void setOccupation(String occupationName){
-           // myOccupation.setName(occupationName);
+    public void setOccupation(String occupationName){
+    		if(this.occupationName != null){
+    			switch(this.occupationName){
+    			case "Smasher": myStats.modStrength(-10); break;
+    			case "Summoner": myStats.modIntellect(-10); break;
+    			case "Sneak": myStats.modAgility(-10); break;
+    			}
+    		}
             this.occupationName = occupationName;
+            switch(this.occupationName){
+			case "Smasher": myStats.modStrength(10); break;
+			case "Summoner": myStats.modIntellect(10); break;
+			case "Sneak": myStats.modAgility(10); break;
+			}
         }
 	public void mergeStats(Stats modifiers){
 		this.myStats.mergeStats(modifiers);

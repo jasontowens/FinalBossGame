@@ -89,7 +89,7 @@ public class ObjectFactory {
 		for(counter = 0; counter < oneShotElements.size(); counter++) {
 			
 			if(elementValidator.ValidElement(oneShotElements.get(counter), "oneshot")) {
-				OneShot o = oneShotFactory.createOneShot(oneShotElements.get(counter).getAttribute("name"));
+				OneShot o = oneShotFactory.createOneShot(map, oneShotElements.get(counter).getAttribute("name"));
 
 				if(o != null) map.addItem(o, new CoordinatePair(Integer.parseInt(oneShotElements.get(counter).getAttribute("x")), Integer.parseInt(oneShotElements.get(counter).getAttribute("y"))));
 			}

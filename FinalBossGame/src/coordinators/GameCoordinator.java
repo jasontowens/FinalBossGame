@@ -52,7 +52,7 @@ public class GameCoordinator {
                 avatar.setID(87);
                 break;
             case 2: // south
-                movement = new CoordinatePair(0, -1);
+                movement = new CoordinatePair(0, 1);
                 avatar.setID(85);
                 break;
             case 3: // southeast
@@ -72,7 +72,7 @@ public class GameCoordinator {
                 avatar.setID(98);
                 break;
             case 8: // north 
-                movement = new CoordinatePair(0, 1);
+                movement = new CoordinatePair(0, -1);
                 avatar.setID(86);
                 break;
             case 9: // northeast

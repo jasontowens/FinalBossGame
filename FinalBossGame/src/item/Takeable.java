@@ -30,7 +30,7 @@ public class Takeable extends GameObject implements Item , Saveable {
 	/*--------- ITEM INTERFACE OPERATIONS ----------*/
 	public boolean activate(Entity entity){
                 if(entity.addItem(this)){
-                    current.removeItem(this);
+                    GameMap.getInstance().removeItem(this);
                     return true;
                 }
 		else

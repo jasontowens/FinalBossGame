@@ -29,7 +29,12 @@ public class GameMap {
         this.tilesOnMap = map;
         this.width = tilesOnMap.length;
         this.height = tilesOnMap[0].length;
-        this.tileSize = new Dimension(RunGame.TILE_WIDTH, RunGame.TILE_HEIGHT);        
+        this.tileSize = new Dimension(RunGame.TILE_WIDTH, RunGame.TILE_HEIGHT);    
+        
+        addAreaEffect(new AreaEffect("Level Up"), new CoordinatePair(15,10));
+        addAreaEffect(new AreaEffect("Heal"), new CoordinatePair(15,12));
+        addAreaEffect(new AreaEffect("Instant Death"), new CoordinatePair(13,12));
+        addAreaEffect(new AreaEffect("Take Damage"), new CoordinatePair(17,12));
     }
     
     private GameMap() {
@@ -40,7 +45,7 @@ public class GameMap {
         
         thisMap = this; //singleton
         
-        setAreaEffect(new AreaEffect("Heal"), new CoordinatePair());
+        
         
     }
 

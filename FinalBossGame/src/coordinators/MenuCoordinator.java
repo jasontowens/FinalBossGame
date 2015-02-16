@@ -78,7 +78,7 @@ public class MenuCoordinator {
                 //File f = new File(is);
                 System.out.println("OVER HERE");
                 JFileChooser chooser = new JFileChooser();
-                chooser.setCurrentDirectory(new File("."));
+                chooser.setCurrentDirectory(new File("./game/src/resources/saves/"));
                 int choice = chooser.showOpenDialog(null);
                 if (choice == JFileChooser.APPROVE_OPTION) {
                     File loadFile = chooser.getSelectedFile();
@@ -158,8 +158,8 @@ public class MenuCoordinator {
 
     private void loadGame(File saveFile) throws ParserConfigurationException, SAXException, IOException {
         InputStream file = new FileInputStream(saveFile);
-
-        
+    	XMLReader reader = XMLReader.getInstance(file);
+        reader.setInputStream(file);
         GameMap loadedMap = GameMap.getInstance();
 
         ObjectFactory objectFactory = new ObjectFactory(file, loadedMap);

@@ -6,6 +6,8 @@ import java.io.InputStream;
 import java.util.List;
 
 import javax.imageio.ImageIO;
+import map.GameMap;
+import map.Tile;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -87,6 +89,16 @@ public class MapLoader {
 			}
 		}
 	}
+        
+        /*private void fillMap(){
+            for(int i = 0; i < mapHeight; ++i){
+			for(int j = 0; j < mapWidth; ++j){
+                            
+                           // map.addTile(new Tile(), new CoordinatePair());
+			}
+		}
+            return map;
+        }*/
 	
 	private void fillIDTable(){
 		Element head = levelXML.getDocumentElement();
@@ -103,7 +115,7 @@ public class MapLoader {
 		
 		
 	}
-	
+        
 	public BufferedImage[][] getMap(){
 		return map;
 	}

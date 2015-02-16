@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <objects>    
 <entity occupation="Smasher" x="10" y="6">
+=======
+<objects>
+<entity occupation="Smasher" x="15" y="15">
+>>>>>>> bb1e47cc9c976facc973140bac4f960791398952
 <stats livesleft = "1" strength="1" agility="1" intellect="1" hardiness="1" experience="1" movement="1" hpcurrent="1" mpcurrent="1" defense="1" offense="1" />
 <inventory>
 <sack>

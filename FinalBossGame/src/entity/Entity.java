@@ -56,7 +56,7 @@ public class Entity extends GameObject implements Saveable{
 	
 	/*------------COORDINATOR LEVEL OPERATIONS------------*/
     public void dropItem(int location){
-    	map.addItem(myInventory.removeItem(location), map.getLocation(this));
+    	map.addItem(myInventory.removeItem(location), new CoordinatePair(map.getLocation(this).getX(),map.getLocation(this).getY()));
     }    
     public void useItem(int location){
     	myInventory.useItem(location, this);

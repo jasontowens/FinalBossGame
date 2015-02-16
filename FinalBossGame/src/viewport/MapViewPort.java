@@ -26,7 +26,7 @@ import util.MapLoader;
  */
 public class MapViewPort extends ViewPort {
 
-    private GameMap map;
+    private volatile GameMap map;
 
     public MapViewPort(Scene s) {
         super(s);
@@ -64,7 +64,7 @@ public class MapViewPort extends ViewPort {
         }
         
         
-        GameMap map = GameMap.getInstance();
+         map = GameMap.getInstance();
         
         //Draw Entities
         for (Pair p : map.getAllEntities()){

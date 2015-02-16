@@ -22,21 +22,19 @@ public class AreaEffect extends GameObject {
 	
 	public AreaEffect(String name){
             Stats s = new Stats(0,0,0,0,0,0,0,0,0,0,0,0);
+            this.modifiers = s;
             switch(name){
-                case "Heal": s.modhpCurrent(100); setID(1); break;
-                case "Level Up": s.setLevelUps(1); setID(76); break;
-                case "Take Dameage": s.modhpCurrent(-10); setID(93); break;
-                case "Instant Death": s.modhpCurrent(-1000); break;
+                case "Heal": modifiers.sethpCurrent(100); setID(1); break;
+                case "Level Up": modifiers.setLevelUps(1); setID(76); break;
+                case "Take Damage": modifiers.sethpCurrent(-10); setID(93); break;
+                case "Die": modifiers.sethpCurrent(-1000); setID(71); break;
                 
             }
-            
-            this.modifiers = s;
 	}
 	
 	/*--------------------- USAGE ---------------------*/
 	public void affect(Entity entity){
 		System.out.println("areaaffect!!!");
-		entity.mergeStats(modifiers);
 	}	
 	
 }

@@ -209,18 +209,18 @@ public class GameMap {
         return null;
     }
 
-    private Item getItemAt(CoordinatePair CP) {
+    public Item getItemAt(CoordinatePair CP) {
         for (Pair c : itemsOnMap) {
-            if (c.getRight() == CP) {
+            if (((CoordinatePair)c.getRight()).equals(CP)) {
                 return (Item) c.getLeft();
             }
         }
         return null;
     }
 
-    private Entity getEntityAt(CoordinatePair CP) {
+    public Entity getEntityAt(CoordinatePair CP) {
         for (Pair c : entitiesOnMap) {
-            if (c.getRight() == CP) {
+            if (((CoordinatePair)c.getRight()).equals(CP)) {
                 return (Entity) c.getLeft();
             }
         }

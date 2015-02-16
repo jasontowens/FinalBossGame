@@ -52,7 +52,7 @@ public class IdToGameObjectTranslator {
 		 * Hard coding this shit...refactor in It2.
 		 */
 		
-		System.out.println(SIZE);
+		//System.out.println(SIZE);
 		
 		terrain[11] = util.Terrain.GRASS;
 		terrain[12] = util.Terrain.GRASS;
@@ -85,6 +85,8 @@ public class IdToGameObjectTranslator {
 		terrain[73] = util.Terrain.MOUNTAIN;
 		terrain[72] = util.Terrain.WATER;
 		terrain[73] = util.Terrain.WATER;
+                terrain[74] = util.Terrain.GRASS;
+                terrain[98] = util.Terrain.GRASS;
 		
 		
 		

@@ -47,7 +47,7 @@ public class MapLoader {
 	private MapLoader(InputStream in){
 		reader = XMLReader.getInstance(in);
 		try {
-			spriteSheet = ImageIO.read(getClass().getResource("/resources/spriteSheets/tiles-map.png"));
+			spriteSheet = ImageIO.read(getClass().getResource("/resources/spriteSheets/spritesheetv2.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -83,7 +83,7 @@ public class MapLoader {
             for(int i =0; i < mapHeight; ++i){
                 for(int j =0; j < mapWidth; ++j){
      
-                	System.out.println("i" + i + " " + "j " + j);
+                	//System.out.println("i" + i + " " + "j " + j);
                     tiles[i][j] = idTrans.getTileFromId(idTable[i][j]);
                 }
             }

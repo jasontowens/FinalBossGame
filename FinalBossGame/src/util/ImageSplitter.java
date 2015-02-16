@@ -17,8 +17,7 @@ import main.RunGame;
  * @author: Hanif 
  */
 public class ImageSplitter {
-
-	private static ImageSplitter splitter = null;
+    private static ImageSplitter splitter = null;
     private BufferedImage img;
     private int sheetHeight;
     private int sheetWidth;
@@ -31,7 +30,7 @@ public class ImageSplitter {
     BufferedImage[][] tiles;
 
     private ImageSplitter(BufferedImage i,
-            int tWidth, int tHeight) {
+        int tWidth, int tHeight) {
         img = i;
         sheetWidth = i.getWidth();
         sheetHeight = i.getHeight();
@@ -45,6 +44,9 @@ public class ImageSplitter {
 
     }
 
+    public static ImageSplitter getInstance(){
+        return splitter == null ? null : splitter;
+    }
     
     public static ImageSplitter getInstance(BufferedImage i , int tWidth, int tHeight){
     	if(splitter == null){

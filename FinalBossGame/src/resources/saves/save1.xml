@@ -5,22 +5,12 @@
 <stats livesleft = "1" strength="1" agility="1" intellect="1" hardiness="1" experience="1" movement="1" hpcurrent="1" mpcurrent="1" defense="1" offense="1" />
 <inventory>
 <sack>
-    <takeableItem name="Sword of 1000 Truths" durability="100" />
-    <takeableItem name="Health Potion" durability="1" />
-    <takeableItem name="Health Potion" durability="1" />
-    <takeableItem name="Health Potion" durability="1" />
 </sack>
 <armory>
-    <takeableItem name="Sword of 1000 Truths" durability="100" />
 </armory>
 </inventory>
 </entity>
-<takeable name="Sword of 1000 Truths" durability="100" x="4" y="4" />
-<takeable name="Health Potion" durability="100" x="4" y="3" />
-<obstacle name="Wall" x="10" y="2" />
-<obstacle name="Wall" x="10" y="5" />
-<obstacle name="Wall" x="30" y="2" />
-<interactive name="Smasher setter" x="4" y="2" />
+
 <oneshot name="Heart Container" x="24" y="2" />
 <takeable name="Sword of 1000 Truths" durability="1" x="19" y="10" />
 <takeable name="Whistle" durability="1" x="13" y="10" />

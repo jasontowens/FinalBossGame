@@ -28,7 +28,7 @@ public class MapLoader {
 	Document levelXML;
 	
 	int[][] idTable;
-        Tile[][] tiles;
+    Tile[][] tiles;
 	BufferedImage[][] map;
 	
 	
@@ -68,6 +68,7 @@ public class MapLoader {
 		splitter = splitter.getInstance(spriteSheet, mapWidth, mapHeight);
 		idTable = new int[mapHeight][mapWidth];
 		map = new BufferedImage[mapHeight][mapWidth];
+		tiles = new Tile[mapHeight][mapWidth];
 		fillIDTable();
 		fillMap();
                 
@@ -77,9 +78,12 @@ public class MapLoader {
         private void fillTiles(){
             IdToGameObjectTranslator idTrans = IdToGameObjectTranslator.getInstance();
             if(idTrans == null)
-            	//System.out.println("null");
+            	System.out.println("null");
+       
             for(int i =0; i < mapHeight; ++i){
                 for(int j =0; j < mapWidth; ++j){
+     
+                	System.out.println("i" + i + " " + "j " + j);
                     tiles[i][j] = idTrans.getTileFromId(idTable[i][j]);
                 }
             }
@@ -90,6 +94,10 @@ public class MapLoader {
             int i = (id - 1) / mapWidth;
             int j = (id - 1) % mapWidth;
             return tiles[i][j];
+        }
+        
+        public Tile[][] getAllTiles(){
+        	return tiles;
         }
         
 	public static MapLoader getInstance(InputStream in){

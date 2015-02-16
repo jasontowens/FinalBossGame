@@ -38,15 +38,13 @@ public class RunGame {
         InputStream is = RunGame.class.getResourceAsStream("/resources/levels/level 1.xml");
         ml = MapLoader.getInstance(is);
         
-        //GameMap map = ml.getMap();
+
         NUM_OF_TILES_WIDE = ml.getMapWidth();
         NUM_OF_TILES_HIGH = ml.getMapHeight();
         WIDTH = NUM_OF_TILES_WIDE * TILE_WIDTH;
         HEIGHT = NUM_OF_TILES_HIGH * TILE_HEIGHT;
         
         System.out.println("Game Window Size: " + WIDTH + "x" + HEIGHT); //initial message
-
-        EntityFactory e = new EntityFactory();
 
             	
     	GameWindow window = new GameWindow();

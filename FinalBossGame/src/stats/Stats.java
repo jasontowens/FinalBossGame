@@ -107,7 +107,7 @@ public class Stats implements Saveable{
 		movement = verifyBounds(nextMove) ? nextMove : movement;
 	}
 	public void sethpCurrent(int nextHP){
-		hpCurrent = verifyBounds(nextHP) ? nextHP : hpCurrent;
+		hpCurrent = nextHP;
 	}
 	public void setmpCurrent(int nextMP){
 		mpCurrent = verifyBounds(nextMP) ? nextMP : mpCurrent;
@@ -141,7 +141,7 @@ public class Stats implements Saveable{
 		movement = verifyBounds(movement + moveAdded) ? (movement + moveAdded) : 0;
 	}
 	public void modhpCurrent(int hpAdded){
-		hpCurrent = verifyBounds(hpCurrent + hpAdded) ? (hpCurrent + hpAdded) : 0;
+		hpCurrent += hpAdded;
 	}
 	public void modmpCurrent(int mpAdded){
 		mpCurrent = verifyBounds(mpCurrent + mpAdded) ? (mpCurrent + mpAdded) : 0;

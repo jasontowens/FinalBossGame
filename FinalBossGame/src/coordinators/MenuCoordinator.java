@@ -103,7 +103,7 @@ public class MenuCoordinator {
             case RETURN_TO_MAIN_MENU:
                 setCurrentMenu(mainMenu);
                 SceneManager.getInstance().setActiveScene(SceneManager.MENU_SCENE);
-                GameMap.getInstance().refresh();
+                //GameMap.getInstance().refresh();
                 break;
             case SAVE_FILE:
             	save();

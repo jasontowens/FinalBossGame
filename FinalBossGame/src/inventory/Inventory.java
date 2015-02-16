@@ -30,7 +30,7 @@ public class Inventory implements Saveable {
 	public void useItem(int location, Entity ent){
 		if(location < 5){
 			//Do unequiping here
-			mySack.addItem(myArmory.unequip(location));
+			mySack.addItem(myArmory.unequip(location, ent));
 		}
 		else{
 			mySack.useItem(location-5,ent);
@@ -41,9 +41,9 @@ public class Inventory implements Saveable {
 	public boolean addItem(Takeable item){
 		return mySack.addItem(item);
 	}
-	public boolean equipItem(Takeable item){
+	public boolean equipItem(Takeable item, Entity ent){
 		if (mySack.isInSack(item) && (item.getClassName().equals("Equipable") || item.getClassName().equals("MobilityEquipable"))){
-			myArmory.equip((Equipable)item);
+			myArmory.equip((Equipable)item, ent);
 			mySack.removeItem(item);
 			return true;
 		}
@@ -51,8 +51,8 @@ public class Inventory implements Saveable {
 			return false;
 	}
         
-        public Equipable unequipItem(EquipSlot slot){
-		return myArmory.unequip(slot);
+        public Equipable unequipItem(EquipSlot slot, Entity ent){
+		return myArmory.unequip(slot, ent);
 	}
         
 	public void removeItem(Takeable item){

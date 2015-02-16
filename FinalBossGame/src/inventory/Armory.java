@@ -2,7 +2,10 @@ package inventory;
 
 import util.Saveable;
 import item.Equipable;
+
 import java.util.HashMap;
+
+import entity.Entity;
 
 public class Armory implements Saveable {
 	int numOfSlots;
@@ -36,7 +39,7 @@ public class Armory implements Saveable {
 	}
 	
 	/*----------MESSAGES PASSED FROM ENTITY-------------*/
-	public Equipable unequip(EquipSlot slot){
+	public Equipable unequip(EquipSlot slot, Entity ent){
 		int index = getIndex(slot);
 		if(index < 0 || index > equippedItems.length) {
 			return null;
@@ -49,9 +52,10 @@ public class Armory implements Saveable {
 		equippedItems[index] = null;
 		usedSlots[index]=false;					//signifies that the equippedItems[index] is now "empty"
 		
+		itemAtSlot.onUnequip(ent);
 		return itemAtSlot;
 	}
-        public Equipable unequip(int position){
+        public Equipable unequip(int position, Entity ent){
 		int index = position;
 		if(index < 0 || index > equippedItems.length) {
 			return null;
@@ -64,11 +68,12 @@ public class Armory implements Saveable {
 		equippedItems[index] = null;
 		usedSlots[index]=false;					//signifies that the equippedItems[index] is now "empty"
 		
+		itemAtSlot.onUnequip(ent);
 		return itemAtSlot;
 	}
 	
 	//should always return true for now, maybe false later if entity doesn't meet requirements 
-	public Equipable equip(Equipable equipment)
+	public Equipable equip(Equipable equipment, Entity ent)
 {
 	Equipable returnEquipable = equipment;
 	int index = getIndex(equipment.getSlot());
@@ -98,7 +103,7 @@ public class Armory implements Saveable {
 	else 
 	{
 		if(usedSlots[index])
-			returnEquipable = unequip(equipment.getSlot());
+			returnEquipable = unequip(equipment.getSlot(), ent);
 	}
 
 	usedSlots[index] = true;

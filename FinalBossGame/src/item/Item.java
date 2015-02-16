@@ -17,4 +17,5 @@ public interface Item{
 	 */
 	public boolean activate(Entity entity);
 	public String toXML();
+        public int getID();
 }

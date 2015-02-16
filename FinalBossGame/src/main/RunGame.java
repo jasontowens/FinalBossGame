@@ -47,7 +47,6 @@ public class RunGame {
         System.out.println("Game Window Size: " + WIDTH + "x" + HEIGHT); //initial message
 
         EntityFactory e = new EntityFactory();
-
             	
     	GameWindow window = new GameWindow();
         window.addKeyListener(new InputParser());

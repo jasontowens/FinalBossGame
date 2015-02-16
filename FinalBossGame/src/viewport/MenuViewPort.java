@@ -20,6 +20,7 @@ import scene.Scene;
 public class MenuViewPort extends ViewPort {
 
     MenuCoordinator menuCoordinator;
+    //GameCoordinator gameCoordinator;
     MenuOption options;
 
     public MenuViewPort(Scene s) {
@@ -28,6 +29,7 @@ public class MenuViewPort extends ViewPort {
 
     public void queryModel() {
         menuCoordinator = MenuCoordinator.getInstance();
+        //gameCoordinator = GameCoordinator.getInstance();
     }
 
     @Override
@@ -36,7 +38,7 @@ public class MenuViewPort extends ViewPort {
         queryModel();
         g.setFont(new Font(g.getFont().getFamily(), Font.PLAIN, 30));
         
-        
+        g.setColor(Color.CYAN);
         g.fillRect(0, 0, RunGame.WIDTH, RunGame.HEIGHT);
         for (int i = 0; i < menuCoordinator.getCurrentMenu().getOptions().length; i++) {
             if (menuCoordinator.getCurrentMenu().getCurrentSelection() == menuCoordinator.getCurrentMenu().getOptions()[i]) {

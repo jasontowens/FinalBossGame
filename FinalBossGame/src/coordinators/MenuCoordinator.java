@@ -47,7 +47,7 @@ public class MenuCoordinator {
         MenuOption[] loadMenuOptions = {MenuOption.OPEN_SAVE_FILE, MenuOption.RETURN_TO_MAIN_MENU};
         loadMenu = new Menu(loadMenuOptions);
         //Create Pause Menu
-        MenuOption[] pauseMenuOptions = {MenuOption.RESUME_GAME, MenuOption.RETURN_TO_MAIN_MENU, MenuOption.SWITCH_TO_LOAD_MENU, MenuOption.SAVE_FILE, MenuOption.EXIT};
+        MenuOption[] pauseMenuOptions = {MenuOption.RESUME_GAME, MenuOption.RETURN_TO_MAIN_MENU, MenuOption.SAVE_FILE, MenuOption.EXIT};
         pauseMenu = new Menu(pauseMenuOptions);
 
         currentMenu = mainMenu;
@@ -92,7 +92,10 @@ public class MenuCoordinator {
                 break;
             case RETURN_TO_MAIN_MENU:
                 setCurrentMenu(mainMenu);
-                    SceneManager.getInstance().setActiveScene(SceneManager.MENU_SCENE);
+                SceneManager.getInstance().setActiveScene(SceneManager.MENU_SCENE);
+                break;
+            case SAVE_FILE:
+
                 break;
             case EXIT:
                 System.exit(0);
@@ -110,12 +113,21 @@ public class MenuCoordinator {
         currentMenu.prev();
     }
 
+    private void saveFile() {
+        JFileChooser chooser = new JFileChooser("/resources/levels");
+        int choice = chooser.showOpenDialog(null);
+        if (choice == JFileChooser.APPROVE_OPTION) {
+            File saveFile = chooser.getSelectedFile();
+            /***** TO DO: SAVE TO FILE ****/
+        }
+    }
+
     private void startNewGame() {
         InputStream is = RunGame.class.getResourceAsStream("/resources/levels/level 1.xml");
         ml = MapLoader.getInstance(is);
-        
+
         GameMap loadedMap = GameMap.getInstance();
-        
+
         GameCoordinator gameCoordinator = GameCoordinator.getInstance();
         gameCoordinator.setActiveMap(loadedMap);
         SceneManager sm = SceneManager.getInstance();

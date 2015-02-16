@@ -35,7 +35,7 @@ public class RunGame {
     public static void main(String[] args) throws FileNotFoundException, ParserConfigurationException, SAXException, IOException {
     	
         
-        InputStream is = RunGame.class.getResourceAsStream("/resources/levels/10x10.xml");
+        InputStream is = RunGame.class.getResourceAsStream("/resources/levels/level 1.xml");
         ml = MapLoader.getIntance(is);
         
         //GameMap map = ml.getMap();

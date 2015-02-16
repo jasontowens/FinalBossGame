@@ -33,8 +33,8 @@ public class MapViewPort extends ViewPort {
         g.drawString("MAP VIEWPORT", RunGame.WIDTH/2 - 85, RunGame.HEIGHT/2);
         
         BufferedImage[][] images = RunGame.ml.getMap();
-        for(int i = 0; i < RunGame.NUM_OF_TILES_HIGH; i++){
-            for(int j = 0; j < RunGame.NUM_OF_TILES_WIDE; j++){
+        for(int i = 0; i < RunGame.ml.getMapWidth(); i++){
+            for(int j = 0; j < RunGame.ml.getMapHeight(); j++){
                 g.drawImage(images[j][i], i*RunGame.TILE_WIDTH, j*RunGame.TILE_HEIGHT, null);
             }
         }

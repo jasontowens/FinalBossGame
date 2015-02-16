@@ -34,6 +34,9 @@ public class MenuViewPort extends ViewPort {
     public void drawGraphics(Graphics g) {
 
         queryModel();
+        g.setFont(new Font(g.getFont().getFamily(), Font.PLAIN, 30));
+        
+        
         g.fillRect(0, 0, RunGame.WIDTH, RunGame.HEIGHT);
         for (int i = 0; i < menuCoordinator.getCurrentMenu().getOptions().length; i++) {
             if (menuCoordinator.getCurrentMenu().getCurrentSelection() == menuCoordinator.getCurrentMenu().getOptions()[i]) {
@@ -67,7 +70,7 @@ public class MenuViewPort extends ViewPort {
 
             }
 
-            g.drawString(s, 25, 50 * i + 50);
+            g.drawString(s, RunGame.WIDTH/2 - 85, 400 + i * 50);
         }
 
         BufferedImage i = null;
@@ -76,6 +79,6 @@ public class MenuViewPort extends ViewPort {
         } catch (IOException ex) {
             Logger.getLogger(MenuViewPort.class.getName()).log(Level.SEVERE, null, ex);
         }
-        g.drawImage(i, RunGame.WIDTH / 2 - 100, 100, null);
+        g.drawImage(i, RunGame.WIDTH / 2 - i.getWidth()/2, 100, null);
     }
 }

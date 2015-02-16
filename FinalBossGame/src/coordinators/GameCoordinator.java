@@ -12,6 +12,16 @@ public class GameCoordinator
     private static CoordinatorScheduler scheduler = CoordinatorScheduler.getInstance();
     private Entity avatar;
     private GameMap activeMap;
+    private Boolean showInventory = false, showPauseMenu = false;
+
+    public Boolean isShowInventory() {
+        return showInventory;
+    }
+
+    public Boolean isShowPauseMenu() {
+        return showPauseMenu;
+    }
+    
     
     //Instance of singleton
     private static GameCoordinator gameCoordinator = null;
@@ -23,13 +33,19 @@ public class GameCoordinator
     public void inventory()
     {
        scheduler.changeCoordinator(CoordinatorType.INVENTORY);
+       showInventory = true;
     }
 
     public void pause()
     {
       scheduler.changeCoordinator(CoordinatorType.MENU);
+      MenuCoordinator.getInstance().setCurrentMenu(MenuCoordinator.pauseMenu);
+      showPauseMenu = true;
     }
 
+    public void showPauseMenu(){
+        showPauseMenu =false;
+    }
     /*--------------------- GAME COMMANDS---------------------*/
 
     public void moveAvatar(int currentSelection)
@@ -70,8 +86,6 @@ public class GameCoordinator
     /*--------------------- COORDINATOR COMMANDS---------------------*/
     public static void setScheduler(CoordinatorScheduler scheduler) {
     	GameCoordinator.scheduler = scheduler;
-        SceneManager sm = SceneManager.getInstance();
-        sm.setActiveScene(SceneManager.GAME_SCENE);
     }
     
     /*--------------------- ACCESSOR / MUTATOR METHODS ---------------------*/
@@ -92,5 +106,9 @@ public class GameCoordinator
 
     public GameMap getActiveMap() {
         return this.activeMap;
+    }
+
+    void showPauseMenu(boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

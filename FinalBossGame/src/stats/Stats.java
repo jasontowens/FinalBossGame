@@ -197,7 +197,7 @@ public class Stats implements Saveable{
 		return str;
 	}
 
-    private void modLevel(int levels) {
+    public void modLevel(int levels) {
         this.level += levels;
         for(int i = 0; i < levels; ++i){
 		modLivesLeft(1);

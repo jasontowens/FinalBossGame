@@ -24,10 +24,10 @@ public class AreaEffect extends GameObject {
             Stats s = new Stats(0,0,0,0,0,0,0,0,0,0,0,0);
             this.modifiers = s;
             switch(name){
-                case "Heal": modifiers.sethpCurrent(100); setID(1); break;
-                case "Level Up": modifiers.setLevelUps(1); setID(76); break;
-                case "Take Damage": modifiers.sethpCurrent(-10); setID(93); break;
-                case "Die": modifiers.sethpCurrent(-1000); setID(71); break;
+                case "Heal": this.name = name; setID(1); break;
+                case "Level Up": this.name = name; setID(76); break;
+                case "Take Damage": this.name = name; setID(93); break;
+                case "Die": this.name = name; setID(71); break;
                 
             }
 	}
@@ -35,6 +35,13 @@ public class AreaEffect extends GameObject {
 	/*--------------------- USAGE ---------------------*/
 	public void affect(Entity entity){
 		System.out.println("areaaffect!!!");
+		switch(name){
+        case "Heal": entity.getStats().modhpCurrent(1); break;
+        case "Level Up": entity.getStats().modLevel(1); break;
+        case "Take Damage": entity.getStats().modhpCurrent(-3); break;
+        case "Die": entity.getStats().modhpCurrent(-1000); break;
+    }
+		if(entity.getStats().gethpCurrent() <= 0) entity.die();
 	}	
 	
 }

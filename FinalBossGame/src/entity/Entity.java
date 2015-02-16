@@ -100,6 +100,10 @@ public class Entity extends GameObject implements Saveable{
 	//TODO: BE ABLE TO DIE
 	public void die(){
 		myStats.modLivesLeft(-1);
+		map.removeEntity(this);
+		if(myStats.getLivesLeft() > 0){
+		map.addEntity(this, new CoordinatePair(15,15));
+		}
 	}
      
 	public String getOccupationName(){

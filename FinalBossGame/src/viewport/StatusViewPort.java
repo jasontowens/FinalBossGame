@@ -61,7 +61,7 @@ public class StatusViewPort extends ViewPort {
             g.drawString("Experience: " + stats.getExperience(), RunGame.WIDTH - 150, RunGame.HEIGHT - 260);
             g.drawString("Hardiness: " + stats.getHardiness(), RunGame.WIDTH - 150, RunGame.HEIGHT - 240);
             g.drawString("Intellect: " + stats.getIntellect(), RunGame.WIDTH - 150, RunGame.HEIGHT - 220);
-            g.drawString("HP Current: " + stats.gethpMax(), RunGame.WIDTH - 150, RunGame.HEIGHT - 200);
+            g.drawString("HP Current: " + stats.gethpCurrent(), RunGame.WIDTH - 150, RunGame.HEIGHT - 200);
             g.drawString("HP Max: " + stats.gethpMax(), RunGame.WIDTH - 150, RunGame.HEIGHT - 180);
             g.drawString("Level: " + stats.getLevel(), RunGame.WIDTH - 150, RunGame.HEIGHT - 160);
             g.drawString("Lives: " + stats.getLivesLeft(), RunGame.WIDTH - 150, RunGame.HEIGHT - 140);

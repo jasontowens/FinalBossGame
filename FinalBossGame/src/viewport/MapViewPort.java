@@ -69,7 +69,7 @@ public class MapViewPort extends ViewPort {
         //Draw Entities
         for (Pair p : map.getAllEntities()){
             Entity e = (Entity) p.getLeft();
-            System.out.print(e.getName());
+            //System.out.print(e.getName());
             CoordinatePair c = (CoordinatePair) p.getRight();            
             ImageSplitter splitter = ImageSplitter.getInstance();
             BufferedImage i = splitter.getTileFromID(e.getID());

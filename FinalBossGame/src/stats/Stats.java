@@ -180,15 +180,15 @@ public class Stats implements Saveable{
 		//them separate child tags
 		
 		String str = "";
-		str += "<stat livesLeft=\"" + livesLeft + "\"" 
+		str += "<stats livesleft=\"" + livesLeft + "\"" 
 				+ " strength=\"" + strength + "\""
 				+ " agility=\"" + agility + "\""
 				+ " intellect=\"" + intellect + "\""
 				+ " hardiness=\"" + hardiness + "\""
 				+ " experience=\"" + experience + "\""
 				+ " movement=\"" + movement + "\""
-				+ " hpCurrent=\"" + hpCurrent + "\""
-				+ " mpCurrent=\"" + mpCurrent + "\""
+				+ " hpcurrent=\"" + hpCurrent + "\""
+				+ " mpcurrent=\"" + mpCurrent + "\""
 				+ " defense=\"" + defense + "\""
 				+ " offense=\"" + offense + "\""
 				;

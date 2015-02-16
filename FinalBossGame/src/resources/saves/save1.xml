@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects>
-<entity occupation="Smasher" x="1" y="1">
+<entity occupation="Smasher" x="15" y="15">
 <stats livesleft = "1" strength="1" agility="1" intellect="1" hardiness="1" experience="1" movement="1" hpcurrent="1" mpcurrent="1" defense="1" offense="1" />
 <inventory>
 <sack>
@@ -16,9 +16,11 @@
 </entity>
 <takeable name="Sword of 1000 Truths" durability="100" x="4" y="4" />
 <takeable name="Health Potion" durability="100" x="4" y="3" />
-<obstacle name="Wall" x="1" y="2" />
-<obstacle name="Wall" x="1" y="5" />
-<obstacle name="Wall" x="3" y="2" />
+<obstacle name="Wall" x="10" y="2" />
+<obstacle name="Wall" x="10" y="5" />
+<obstacle name="Wall" x="30" y="2" />
 <interactive name="Smasher setter" x="4" y="2" />
-<oneshot name="Heart Container" x="3" y="2" />
+<oneshot name="Heart Container" x="24" y="2" />
+<oneshot name="Summoner setter" x="11" y="1" />
+
 </objects>

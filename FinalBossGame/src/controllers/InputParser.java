@@ -10,9 +10,11 @@ import org.xml.sax.SAXException;
 
 public class InputParser implements KeyListener {
 	private SceneControllerDispatcher sceneControllerDispatcher;
-	private static final long TIMER_DELAY = 10;
+	private static final long TIMER_DELAY = 50;
 	private long timerStart;
 	
+        
+        
 	public InputParser() {
 		sceneControllerDispatcher = new SceneControllerDispatcher();
 		timerStart = System.currentTimeMillis();
@@ -25,6 +27,7 @@ public class InputParser implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
+            //System.out.println(e);
 		if(System.currentTimeMillis() - timerStart >= TIMER_DELAY) {
 			timerStart = System.currentTimeMillis();
 			switch(e.getKeyCode()) {

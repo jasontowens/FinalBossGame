@@ -135,13 +135,15 @@ public class GameMap {
     /*-------------------USAGE---------------*/
     public void requestMovement(Entity entity, CoordinatePair change) {
         CoordinatePair ent = getLocation(entity);
-
+        
         CoordinatePair desired = new CoordinatePair(ent.getX() + change.getX(), ent.getY() + change.getY());
 
         //if terrainIsCorrect
         //           if NotOccupiedByEntity
         //                   if NotOccupiedByObstacle
         Tile t = getTileAtCoordinatePair(desired);
+        System.out.println("Terrain: " + t.getTerrain());
+        System.out.println("Verify movement:" +t.getTerrain().verifyMovement(entity));
         if (t.getTerrain().verifyMovement(entity)) {    //terrain is passable
             Entity entityAtDesiredLocation = getEntityAt(desired);
             if (entityAtDesiredLocation != null) {
@@ -159,11 +161,16 @@ public class GameMap {
                     AE.affect(entity);
                     
                 } else {
-                    //return;
+                    return;
                 }
             }
-
+            
+        }else{
+            return;
         }
+        //Move the entity in the map
+        getLocation(entity).add(change);
+        entity.setLocation(getLocation(entity));
     }
 
     //note: this method WILL MOVE the entity if it is able to.
@@ -177,7 +184,7 @@ public class GameMap {
 
     /*--------------PRIVATE UTILITY FUNCTIONS--------------*/
     private Tile getTileAtCoordinatePair(CoordinatePair CP) {
-        return tilesOnMap[CP.getX()][CP.getY()];
+        return tilesOnMap[CP.getY()][CP.getX()];
     }
 
     private Pair getEntityPair(Entity entity) {

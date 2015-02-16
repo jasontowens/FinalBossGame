@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects>
-<entity occupation="Smasher" x="20" y="19">
+<entity occupation="Smasher" x="18" y="16">
 <stats livesleft="1" strength="1" agility="1" intellect="1" hardiness="1" experience="1" movement="1" hpcurrent="1" mpcurrent="1" defense="1" offense="1" />
 <inventory>
 <sack>
@@ -16,6 +16,9 @@
 </entity>
 <oneshot name="Heart Container" x="24" y="2" />
 <interactive name="Door Buster" x="21" y="19" />
+<interactive name="Smasher setter" x="19" y="14" />
+<interactive name="Summoner setter" x="15" y="14" />
+<interactive name="Sneak setter" x="11" y="14" />
 <takeable name="Jesus Boots" durability="100" x="25" y="5" />
 <takeable name="Health Potion" durability="1" x="23" y="2" />
 <takeable name="Sword of 1000 Truths" durability="1" x="19" y="10" />

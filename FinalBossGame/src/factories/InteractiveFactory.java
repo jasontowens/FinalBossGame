@@ -17,7 +17,7 @@ public class InteractiveFactory {
 				return createSummonerSetter();
 			case "Sneak setter":
 				return createSneakSetter();
-			case "Obstacle clearer":
+			case "Door Buster":
 				return createDoorBuster(map);
 			default:
 				return null;

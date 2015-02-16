@@ -33,7 +33,7 @@ public class PlayerStats extends Stats {
 	private void updateArmorRating(){
 		armorRating = hardiness * 10 + defense * 100;
 	}
-	private void updateStats(){
+	public void updateStats(){
 		updateLevel();
 		updatehpMax();
 		updatempMax();

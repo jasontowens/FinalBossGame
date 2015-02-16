@@ -29,8 +29,9 @@ public class Inventory implements Saveable {
 			
 	public void useItem(int location, Entity ent){
 		if(location < 5){
-			//Do unequiping here
-			mySack.addItem(myArmory.unequip(location));
+			Equipable item = myArmory.unequip(location);
+			item.onUnequip(ent);
+			mySack.addItem(item);
 		}
 		else{
 			mySack.useItem(location-5,ent);

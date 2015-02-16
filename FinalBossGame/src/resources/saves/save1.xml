@@ -27,5 +27,8 @@
 <obstacle name="Door" durability="1" x="15" y="12" />
 <obstacle name="Door" durability="1" x="11" y="12" />
 <interactive name="Door Buster" durability="1" x="21" y="19" />
+<interactive name="Smasher setter" durability="1" x="19" y="14" />
+<interactive name="Summoner setter" durability="1" x="15" y="14" />
+<interactive name="Sneak setter" durability="1" x="11" y="14" />
 
 </objects>

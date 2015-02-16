@@ -29,7 +29,12 @@ public class GameMap {
         this.tilesOnMap = map;
         this.width = tilesOnMap.length;
         this.height = tilesOnMap[0].length;
-        this.tileSize = new Dimension(RunGame.TILE_WIDTH, RunGame.TILE_HEIGHT);
+        this.tileSize = new Dimension(RunGame.TILE_WIDTH, RunGame.TILE_HEIGHT);    
+        
+        addAreaEffect(new AreaEffect("Level Up"), new CoordinatePair(15,10));
+        addAreaEffect(new AreaEffect("Heal"), new CoordinatePair(15,12));
+        addAreaEffect(new AreaEffect("Instant Death"), new CoordinatePair(13,12));
+        addAreaEffect(new AreaEffect("Take Damage"), new CoordinatePair(17,12));
     }
 
     private GameMap() {
@@ -39,6 +44,14 @@ public class GameMap {
         itemsOnMap = new ArrayList<Pair<Item, CoordinatePair>>();
 
         thisMap = this; //singleton
+        
+        
+        
+    }
+    
+    public static void refresh()
+    {
+    	thisMap = null;
     }
 
     /*-----------Singleton------------------*/
@@ -181,6 +194,10 @@ public class GameMap {
         }
     }
 
+    public void addAreaEffect(AreaEffect AE, CoordinatePair CP){
+        tilesOnMap[CP.getX()][CP.getY()].setAreaEffect(AE);
+    }
+    
     //note: this method WILL MOVE the entity if it is able to.
     public CoordinatePair requestMovement(Item item, CoordinatePair change) {
         Pair itemPair = getItemPair(item);
@@ -267,19 +284,22 @@ public class GameMap {
 
     }
 
-    public String toXML() {
-        String str = "";
-
-        for (Pair e : entitiesOnMap) {
-            str += ((Entity) e.getLeft()).toXML();
-            str += "\n";
-        }
-
-        for (Pair i : itemsOnMap) {
-            str += ((Item) i.getLeft()).toXML();
-            str += "\n";
-        }
-
-        return str;
+    public String toXML()
+    {
+    	String str = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<objects>\n";
+    	
+    	for(Pair e : entitiesOnMap) {
+    			str += ((Entity) e.getLeft()).toXML();
+    			str += "\n";
+    	}
+    	
+    	for(Pair i : itemsOnMap) {
+    			str += ((Item) i.getLeft()).toXML();
+    			str += "\n";
+    	}
+    	
+    	str += "</objects>";
+    	
+    	return str;
     }
 }

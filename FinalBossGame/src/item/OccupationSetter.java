@@ -25,6 +25,7 @@ public class OccupationSetter extends Interactive{
 	
 	public boolean activate(Entity entity){
 		entity.setOccupation(jobName);
-		return true;
+		//this should block movement
+		return false;
 	}
 }

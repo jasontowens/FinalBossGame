@@ -45,6 +45,7 @@ public abstract class GameObject {
         */
         public int getState(){return 0;}
 	public int getID(){ return id; }
+	public void setID(int id) {this.id = id;}
 	public String getClassName(){ return className; }
 	public String getDescription(){ return description; }
 	public String getName() { return name; }

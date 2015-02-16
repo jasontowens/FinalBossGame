@@ -30,7 +30,7 @@ public abstract class Interactive extends GameObject implements Item{
 		String str = "";
 		
 		//TODO: remember to add stat modifiers for Iteration2
-		str +=  "<interactive name=\"" + this.getName() + "\"" + "x=\"" + this.getLocation().getX() + "\" y=\"" + this.getLocation().getY() +"\" />" ;
+		str +=  "<interactive name=\"" + this.getName() + "\"" + " x=\"" + this.getLocation().getX() + "\" y=\"" + this.getLocation().getY() +"\" />" ;
 		return str;
 	}
 }

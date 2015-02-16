@@ -2,11 +2,14 @@ package coordinators;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.xml.parsers.ParserConfigurationException;
 
 import map.CoordinatePair;
@@ -100,9 +103,10 @@ public class MenuCoordinator {
             case RETURN_TO_MAIN_MENU:
                 setCurrentMenu(mainMenu);
                 SceneManager.getInstance().setActiveScene(SceneManager.MENU_SCENE);
+                GameMap.getInstance().refresh();
                 break;
             case SAVE_FILE:
-
+            	save();
                 break;
             case EXIT:
                 System.exit(0);
@@ -120,13 +124,24 @@ public class MenuCoordinator {
         currentMenu.prev();
     }
 
-    private void saveFile() {
-        JFileChooser chooser = new JFileChooser("/resources/levels");
-        int choice = chooser.showOpenDialog(null);
-        if (choice == JFileChooser.APPROVE_OPTION) {
-            File saveFile = chooser.getSelectedFile();
-            /***** TO DO: SAVE TO FILE ****/
-        }
+    private void save() {
+    	JFileChooser chooser = new JFileChooser();
+    	chooser.setCurrentDirectory(new File("./FinalBossGame/src/resources/saves/"));
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("XML files", "xml");
+		chooser.setFileFilter(filter);
+		int returnVal = chooser.showSaveDialog(null); //MAY NOT NEED TO BE NULL		
+		if(returnVal == JFileChooser.APPROVE_OPTION){
+			System.out.println("Saved to the file: " + chooser.getSelectedFile().getName());
+		}
+		File timeToWrite = chooser.getSelectedFile();
+		try{
+		PrintWriter writeFile = new PrintWriter(timeToWrite);
+		writeFile.println(GameMap.getInstance().toXML());
+		writeFile.close();
+		}
+		catch(FileNotFoundException a){
+			a.printStackTrace();
+		}
     }
 
 	private void startNewGame() {        

@@ -24,7 +24,7 @@ import map.Tile;
 public class IdToGameObjectTranslator {
 	
 	//this REQUIRES that RunGame has been initialized BEFORE this class
-	private static int SIZE = RunGame.NUM_OF_TILES_HIGH * RunGame.NUM_OF_TILES_WIDE;
+	private static int SIZE = 31 * 22;
 	
 	private static IdToGameObjectTranslator thisTranslator = null;
 	
@@ -51,6 +51,9 @@ public class IdToGameObjectTranslator {
 		/*
 		 * Hard coding this shit...refactor in It2.
 		 */
+		
+		System.out.println(SIZE);
+		
 		terrain[11] = util.Terrain.GRASS;
 		terrain[12] = util.Terrain.GRASS;
 		terrain[21] = util.Terrain.GRASS;

@@ -40,8 +40,8 @@ public class MapViewPort extends ViewPort {
 
     public void drawGraphics(Graphics g) {
         queryModel();
-        g.setFont(new Font("TimesRoman", Font.PLAIN, 20));
-        g.drawString("MAP VIEWPORT", RunGame.WIDTH/2 - 85, RunGame.HEIGHT/2);
+        //g.setFont(new Font("TimesRoman", Font.PLAIN, 20));
+        //g.drawString("MAP VIEWPORT", RunGame.WIDTH/2 - 85, RunGame.HEIGHT/2);
         
         GameMap cmap = GameMap.getInstance();
         BufferedImage[][] images = RunGame.ml.getMap();
@@ -69,7 +69,6 @@ public class MapViewPort extends ViewPort {
         //Draw Entities
         for (Pair p : map.getAllEntities()){
             Entity e = (Entity) p.getLeft();
-            System.out.print(e.getName());
             CoordinatePair c = (CoordinatePair) p.getRight();            
             ImageSplitter splitter = ImageSplitter.getInstance();
             BufferedImage i = splitter.getTileFromID(e.getID());

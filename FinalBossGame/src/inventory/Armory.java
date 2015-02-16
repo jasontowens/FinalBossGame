@@ -170,9 +170,11 @@ public class Armory implements Saveable {
 	}
 
     public HashMap<EquipSlot, Equipable> getHMap() {
-        HashMap<EquipSlot, Equipable> hMap = new HashMap<>();
+        HashMap<EquipSlot, Equipable> hMap = new HashMap<EquipSlot, Equipable>();
         for(Equipable e: equippedItems){
-            hMap.put(e.getSlot(), e);
+            if(e != null){
+                hMap.put(e.getSlot(), e);
+            }
         }
         return hMap;
     }

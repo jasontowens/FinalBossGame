@@ -13,8 +13,12 @@ public class GameCoordinator {
     private GameMap activeMap;
     private Boolean showInventory = false, showPauseMenu = false;
 
-    public Boolean isShowInventory() {
+    public Boolean showInventory() {
         return showInventory;
+    }
+    
+    public void showInventory(Boolean show){
+        showInventory = show;
     }
 
     //Instance of singleton

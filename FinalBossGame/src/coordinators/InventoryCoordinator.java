@@ -32,13 +32,13 @@ public class InventoryCoordinator
     public void nextItem() 
     {
         //TODO: Talk to Jason about how inventory will be presented
-        selectedItem = (++selectedItem) % (avatar.getSack().length+ avatar.getArmory().size());
+        selectedItem = (++selectedItem) % 10;
     }
 
     public void previousItem()
     {
         if(--selectedItem == -1){
-            selectedItem = avatar.getSack().length + avatar.getArmory().size();
+            selectedItem = 9;
         }
     }
 

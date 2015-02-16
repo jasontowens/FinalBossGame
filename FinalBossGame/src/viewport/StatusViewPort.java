@@ -49,11 +49,12 @@ public class StatusViewPort extends ViewPort {
         
         queryModel();
         if(stats != null){
+        	stats.updateStats();
             g.setFont(new Font("TimesRoman", Font.PLAIN, 16));
             g.setColor(new Color(0, 0, 0, 150));
-            g.fillRect(RunGame.WIDTH - 160, RunGame.HEIGHT - 380, RunGame.WIDTH, RunGame.HEIGHT);
+            g.fillRect(RunGame.WIDTH - 160, RunGame.HEIGHT - 400, RunGame.WIDTH, RunGame.HEIGHT);
             g.setColor(new Color(255, 255, 0, 255));
-            g.drawString("Occupation: " + GameCoordinator.getInstance().getAvatar().getOccupationName(), RunGame.WIDTH - 150, RunGame.HEIGHT - 360);
+            g.drawString("Occupation: " + GameCoordinator.getInstance().getAvatar().getOccupationName(), RunGame.WIDTH - 150, RunGame.HEIGHT - 380);
             g.drawString("Agility: " + stats.getAgility(), RunGame.WIDTH - 150, RunGame.HEIGHT - 340);
             g.drawString("Armor Rating: " + stats.getArmorRating(), RunGame.WIDTH - 150, RunGame.HEIGHT - 320);
             g.drawString("Defense: " + stats.getDefense(), RunGame.WIDTH - 150, RunGame.HEIGHT - 300);
@@ -63,13 +64,14 @@ public class StatusViewPort extends ViewPort {
             g.drawString("Intellect: " + stats.getIntellect(), RunGame.WIDTH - 150, RunGame.HEIGHT - 220);
             g.drawString("HP Current: " + stats.gethpCurrent(), RunGame.WIDTH - 150, RunGame.HEIGHT - 200);
             g.drawString("HP Max: " + stats.gethpMax(), RunGame.WIDTH - 150, RunGame.HEIGHT - 180);
-            g.drawString("Level: " + stats.getLevel(), RunGame.WIDTH - 150, RunGame.HEIGHT - 160);
+            g.drawString("Level: " + stats.getLevels(), RunGame.WIDTH - 150, RunGame.HEIGHT - 160);
             g.drawString("Lives: " + stats.getLivesLeft(), RunGame.WIDTH - 150, RunGame.HEIGHT - 140);
             g.drawString("MP Current: " + stats.getmpCurrent(), RunGame.WIDTH - 150, RunGame.HEIGHT - 120);
             g.drawString("MP Max: " + stats.getmpMax(), RunGame.WIDTH - 150, RunGame.HEIGHT - 100);
             g.drawString("Movement: " + stats.getMovement(), RunGame.WIDTH - 150, RunGame.HEIGHT - 80);
             g.drawString("Offense: " + stats.getOffense(), RunGame.WIDTH - 150, RunGame.HEIGHT - 60);
             g.drawString("Strength: " + stats.getStrength(), RunGame.WIDTH - 150, RunGame.HEIGHT - 40);
+            g.drawString("Offensive Rating: " + stats.getOffensiveRating(), RunGame.WIDTH - 150, RunGame.HEIGHT - 360);
             
         }
         

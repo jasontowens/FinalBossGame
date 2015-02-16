@@ -23,9 +23,9 @@ public class AreaEffect extends GameObject {
 	public AreaEffect(String name){
             Stats s = new Stats(0,0,0,0,0,0,0,0,0,0,0,0);
             switch(name){
-                case "Heal": s.modhpCurrent(100); break;
-                case "Level Up": s.setLevelUps(1); break;
-                case "Take Dameage": s.modhpCurrent(-10); break;
+                case "Heal": s.modhpCurrent(100); setID(1); break;
+                case "Level Up": s.setLevelUps(1); setID(76); break;
+                case "Take Dameage": s.modhpCurrent(-10); setID(93); break;
                 case "Instant Death": s.modhpCurrent(-1000); break;
                 
             }

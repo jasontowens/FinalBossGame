@@ -29,11 +29,11 @@ public class PauseViewPort extends ViewPort {
 
     @Override
     public void drawGraphics(Graphics g) {
-        if(gc.isShowPauseMenu()){
+        if(gc.showPauseMenu()){
             g.setFont(new Font(g.getFont().getFamily(), Font.PLAIN, 30));
         
         g.setColor(new Color(255,255,255, (int) ((int)255* 0.5)));
-        g.fillRect(0, 0, RunGame.WIDTH, RunGame.HEIGHT);
+        g.fillRect(RunGame.WIDTH/3, 0, (RunGame.WIDTH*2)/3, RunGame.HEIGHT);
         for (int i = 0; i < mc.getCurrentMenu().getOptions().length; i++) {
             if (mc.getCurrentMenu().getCurrentSelection() == mc.getCurrentMenu().getOptions()[i]) {
                 g.setColor(Color.red);

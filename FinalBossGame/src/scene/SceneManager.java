@@ -12,11 +12,11 @@ import util.Observer;
  *
  * @author ChrisMoscoso
  */
-public class SceneManager implements Observer{
+public class SceneManager implements Observer {
 
     private static SceneManager sceneManager = null;
     private static CoordinatorScheduler scheduler = CoordinatorScheduler.getInstance();
-    
+
     public Scene activeScene;
     private Scene gameScene, menuScene;
 
@@ -28,13 +28,6 @@ public class SceneManager implements Observer{
         gameScene = new GameScene();
         activeScene = menuScene;
         scheduler.registerObserver(this);
-       
-        
-        /*gameScene.addModelObject("game", GameCoordinator.getInstance());
-        gameScene.addModelObject("menu", MenuCoordinator.getInstance());
-        gameScene.addModelObject("inevntory", InventoryCoordinator.getInstance());
-        
-        menuScene.addModelObject("menu", MenuCoordinator.getInstance());*/
 
     }
 
@@ -45,6 +38,7 @@ public class SceneManager implements Observer{
                 break;
             case MENU_SCENE:
                 activeScene = menuScene;
+                break;
             default:
                 throw new IllegalArgumentException("Invalid Scene Number");
         }
@@ -53,28 +47,33 @@ public class SceneManager implements Observer{
     public Scene getActiveScene() {
         return activeScene;
     }
-    
-    public static SceneManager getInstance(){
-        if(sceneManager == null){
+
+    public static SceneManager getInstance() {
+        if (sceneManager == null) {
             sceneManager = new SceneManager();
         }
         return sceneManager;
     }
 
-	@Override
-	public void Notify() {
-		switch(scheduler.getCoordinatorType()) {
-		case GAME :
-			setActiveScene(1);
-			break;
-		case MENU :
-			setActiveScene(2);
-		case INVENTORY:
-			setActiveScene(1);
-			break;
-		default :
-			throw new IllegalArgumentException("Error in scene manager notify");
-		}
-	}
+    @Override
+    public void Notify() {
+        
+        System.out.println(scheduler.getCoordinatorType());
+        
+        
+        switch (scheduler.getCoordinatorType()) {
+            case GAME:
+                setActiveScene(SceneManager.GAME_SCENE);
+                break;
+            case MENU:
+                activeScene = menuScene;
+                break;
+            case INVENTORY:
+                setActiveScene(SceneManager.GAME_SCENE);
+                break;
+            default:
+                throw new IllegalArgumentException("Error in scene manager notify");
+        }
+    }
 
 }

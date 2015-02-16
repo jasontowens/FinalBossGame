@@ -28,6 +28,7 @@ public class MapLoader {
 	Document levelXML;
 	
 	int[][] idTable;
+        Tile[][] tiles;
 	BufferedImage[][] map;
 	
 	
@@ -69,10 +70,26 @@ public class MapLoader {
 		map = new BufferedImage[mapHeight][mapWidth];
 		fillIDTable();
 		fillMap();
-		
+                
+                fillTiles();
 	}
 	
+        private void fillTiles(){
+            IdToGameObjectTranslator idTrans = IdToGameObjectTranslator.getInstance();
+            for(int i =0; i < mapHeight; ++i){
+                for(int j =0; j < mapWidth; ++j){
+                    tiles[i][j] = idTrans.getTileFromId(idTable[i][j]);
+                }
+            }
+            
+        }
 	
+        public Tile getTile(int id){
+            int i = (id - 1) / mapWidth;
+            int j = (id - 1) % mapWidth;
+            return tiles[i][j];
+        }
+        
 	public static MapLoader getIntance(InputStream in){
 		if(thisMapLoader == null){
 			thisMapLoader = new MapLoader(in);
@@ -111,9 +128,7 @@ public class MapLoader {
 			i  = counter / mapWidth;
 			j  = counter % mapWidth;
 			idTable[i][j] = id;
-		}
-		
-		
+		}		
 	}
         
 	public BufferedImage[][] getMap(){

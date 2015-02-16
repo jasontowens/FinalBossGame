@@ -87,7 +87,7 @@ public class IdToGameObjectTranslator {
 		
 	}
 	
-	public IdToGameObjectTranslator getInstance(){
+	public static IdToGameObjectTranslator getInstance(){
 		if(thisTranslator == null){
 			thisTranslator = new IdToGameObjectTranslator();
 		}

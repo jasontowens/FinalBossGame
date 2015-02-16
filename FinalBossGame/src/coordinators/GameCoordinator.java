@@ -103,6 +103,7 @@ public class GameCoordinator {
     public void setActiveMap(GameMap map) {
         this.activeMap = map;
     }
+   
 
     /*--------------------- SINGLETON METHODS ---------------------*/
     public static GameCoordinator getInstance() {
@@ -115,6 +116,11 @@ public class GameCoordinator {
     public GameMap getActiveMap() {
         return this.activeMap;
     }
+    
+    public Entity getAvatar(){
+    	return this.avatar;
+    }
+    
 
     void showPauseMenu(boolean b) {
         this.showPauseMenu = b;

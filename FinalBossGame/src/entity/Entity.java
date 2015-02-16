@@ -19,6 +19,7 @@ public class Entity extends GameObject implements Saveable{
 	private MotionType myMotion;
 	private Inventory myInventory;
 	private Occupation myOccupation;
+	private String occupationName;
 	private PlayerStats myStats;
         private GameMap map;			// TODO: is this necessary?
    // private int id;
@@ -33,6 +34,7 @@ public class Entity extends GameObject implements Saveable{
 		myOccupation = occ;
 		myStats = stats;
 		myInventory = inventory;
+		occupationName = "Smasher";
                 this.map = m; 
         //id = 85; 	// TODO: get the directions working.
 	}
@@ -44,6 +46,7 @@ public class Entity extends GameObject implements Saveable{
 		myOccupation = occ;
 		myInventory = inventory;
 		myStats = stats;
+		occupationName = "Smasher";
                  
 	}
 	
@@ -79,7 +82,8 @@ public class Entity extends GameObject implements Saveable{
         return myInventory.setCurrency(newAmount);
     }
         public void setOccupation(String occupationName){
-            myOccupation.setName(occupationName);
+           // myOccupation.setName(occupationName);
+            this.occupationName = occupationName;
         }
 	public void mergeStats(Stats modifiers){
 		this.myStats.mergeStats(modifiers);
@@ -94,6 +98,10 @@ public class Entity extends GameObject implements Saveable{
 		myStats.modLivesLeft(-1);
 	}
      
+	public String getOccupationName(){
+		return this.occupationName;
+	}
+	
 	/*------------ACCESSORS----------------------*/	
 	public int getMoney(){
 		return myInventory.getCurrency();

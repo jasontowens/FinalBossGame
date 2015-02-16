@@ -51,8 +51,9 @@ public class StatusViewPort extends ViewPort {
         if(stats != null){
             g.setFont(new Font("TimesRoman", Font.PLAIN, 16));
             g.setColor(new Color(0, 0, 0, 150));
-            g.fillRect(RunGame.WIDTH - 160, RunGame.HEIGHT - 360, RunGame.WIDTH, RunGame.HEIGHT);
+            g.fillRect(RunGame.WIDTH - 160, RunGame.HEIGHT - 380, RunGame.WIDTH, RunGame.HEIGHT);
             g.setColor(new Color(255, 255, 0, 255));
+            g.drawString("Occupation: " + GameCoordinator.getInstance().getAvatar().getOccupationName(), RunGame.WIDTH - 150, RunGame.HEIGHT - 360);
             g.drawString("Agility: " + stats.getAgility(), RunGame.WIDTH - 150, RunGame.HEIGHT - 340);
             g.drawString("Armor Rating: " + stats.getArmorRating(), RunGame.WIDTH - 150, RunGame.HEIGHT - 320);
             g.drawString("Defense: " + stats.getDefense(), RunGame.WIDTH - 150, RunGame.HEIGHT - 300);

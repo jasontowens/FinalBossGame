@@ -6,7 +6,7 @@ import stats.Stats;
 import util.Saveable;
 
 public class PlayerStats extends Stats {
-	private int level;
+	//private int level;
 	private int hpMax;
 	private int mpMax;
 	private int defensiveRating;
@@ -54,7 +54,7 @@ public class PlayerStats extends Stats {
 					   int mpCurrent,
 					   int defense,
 					   int offense){
-		super(livesLeft, strength, agility, intellect, hardiness, experience, movement, hpCurrent, mpCurrent, defense, offense);
+		super(1,livesLeft, strength, agility, intellect, hardiness, experience, movement, hpCurrent, mpCurrent, defense, offense);
 		updateStats();
 	}
 	

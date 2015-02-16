@@ -177,6 +177,10 @@ public class GameMap {
         if(AE != null) AE.affect(entity);
     }
 
+    public void addAreaEffect(AreaEffect AE, CoordinatePair CP){
+        tilesOnMap[CP.getX()][CP.getY()].setAreaEffect(AE);
+    }
+    
     //note: this method WILL MOVE the entity if it is able to.
     public CoordinatePair requestMovement(Item item, CoordinatePair change) {
         Pair itemPair = getItemPair(item);

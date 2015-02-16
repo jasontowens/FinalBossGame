@@ -58,5 +58,13 @@ public class InventoryCoordinatorTest {
 		
 		EasyMock.verify(ent);
 	}
+	
+	@Test
+	public void testNextItem() {
+		EasyMock.expect(ent.getArmory().size()).andReturn(5).anyTimes();
+		EasyMock.expect(ent.getSack().length).andReturn(5).anyTimes();
+		
+		
+	}
 
 }

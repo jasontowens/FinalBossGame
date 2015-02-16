@@ -3,13 +3,16 @@ import controllers.InputParser;
 import coordinators.GameCoordinator;
 import coordinators.InventoryCoordinator;
 import coordinators.MenuCoordinator;
+import factories.EntityFactory;
 import java.awt.BorderLayout;
 import java.awt.image.BufferedImage;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import javax.xml.parsers.ParserConfigurationException;
+import map.GameMap;
 import org.xml.sax.SAXException;
+import static sun.audio.AudioPlayer.player;
 import util.MapLoader;
 
 /**
@@ -35,7 +38,7 @@ public class RunGame {
         InputStream is = RunGame.class.getResourceAsStream("/resources/levels/10x10.xml");
         ml = MapLoader.getIntance(is);
         
-        BufferedImage[][] map = ml.getMap();
+        //GameMap map = ml.getMap();
         NUM_OF_TILES_WIDE = ml.getMapWidth();
         NUM_OF_TILES_HIGH = ml.getMapHeight();
         WIDTH = NUM_OF_TILES_WIDE * TILE_WIDTH;
@@ -43,17 +46,10 @@ public class RunGame {
         
         System.out.println("Game Window Size: " + WIDTH + "x" + HEIGHT); //initial message
 
-        
+        EntityFactory e = new EntityFactory();
 
-        GameCoordinator gc = GameCoordinator.getInstance();
-        MenuCoordinator mc = MenuCoordinator.getInstance();
-        InventoryCoordinator ic = InventoryCoordinator.getInstance();
-    	
-        //set up view
-
+            	
     	GameWindow window = new GameWindow();
-        GamePanel gp = new GamePanel( gc, mc, ic );
-        window.getContentPane().add(gp, BorderLayout.CENTER);
         window.addKeyListener(new InputParser());
     }
     

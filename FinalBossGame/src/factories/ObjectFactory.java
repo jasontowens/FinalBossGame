@@ -59,21 +59,25 @@ public class ObjectFactory {
 			
 			for(int i = 0; i < sackElements.size(); i++) {
 				if(elementValidator.ValidElement(sackElements.get(i), "takeableItem")) {
-					sack.add(takeableFactory.createTakeable(null, sackElements.get(i).getAttribute("name"), Integer.parseInt(sackElements.get(i).getAttribute("durability"))));
+					Takeable t = takeableFactory.createTakeable(null, sackElements.get(i).getAttribute("name"), Integer.parseInt(sackElements.get(i).getAttribute("durability")));
+					if(t != null) sack.add(t);
 				}
 			}
 			
 			for(int i = 0; i < armoryElements.size(); i++) {
 				if(elementValidator.ValidElement(armoryElements.get(i), "takeableItem")) {
-					armory.add(takeableFactory.createTakeable(null, armoryElements.get(i).getAttribute("name"), Integer.parseInt(armoryElements.get(i).getAttribute("durability"))));
+					Takeable t = takeableFactory.createTakeable(null, armoryElements.get(i).getAttribute("name"), Integer.parseInt(armoryElements.get(i).getAttribute("durability")));
+					if(t != null) armory.add(t);
 				}
 			}
 			
 			if(elementValidator.ValidElement(entityElements.get(counter), "entity")) {
 				Entity e = entityFactory.createEntity(map, entityElements.get(counter).getAttribute("occupation"), xmlreader.getElements("stats", entityElements.get(counter)).get(0), sack, armory);
 
-				map.addEntity(e, new CoordinatePair(Integer.parseInt(entityElements.get(counter).getAttribute("x")), Integer.parseInt(entityElements.get(counter).getAttribute("y"))));
-				player = e;
+				if(e != null){
+					map.addEntity(e, new CoordinatePair(Integer.parseInt(entityElements.get(counter).getAttribute("x")), Integer.parseInt(entityElements.get(counter).getAttribute("y"))));
+					player = e;
+				}
 			}
 		}
 
@@ -85,7 +89,7 @@ public class ObjectFactory {
 			if(elementValidator.ValidElement(oneShotElements.get(counter), "oneshot")) {
 				OneShot o = oneShotFactory.createOneShot(oneShotElements.get(counter).getAttribute("name"));
 
-				map.addItem(o, new CoordinatePair(Integer.parseInt(oneShotElements.get(counter).getAttribute("x")), Integer.parseInt(oneShotElements.get(counter).getAttribute("y"))));
+				if(o != null) map.addItem(o, new CoordinatePair(Integer.parseInt(oneShotElements.get(counter).getAttribute("x")), Integer.parseInt(oneShotElements.get(counter).getAttribute("y"))));
 			}
 		}
 
@@ -97,7 +101,7 @@ public class ObjectFactory {
 			if(elementValidator.ValidElement(interactiveElements.get(counter), "interactive")) {
 				Interactive i = interactiveFactory.createInteractive(map, interactiveElements.get(counter).getAttribute("name"));
 
-				map.addItem(i, new CoordinatePair(Integer.parseInt(interactiveElements.get(counter).getAttribute("x")), Integer.parseInt(interactiveElements.get(counter).getAttribute("y"))));
+				if(i != null) map.addItem(i, new CoordinatePair(Integer.parseInt(interactiveElements.get(counter).getAttribute("x")), Integer.parseInt(interactiveElements.get(counter).getAttribute("y"))));
 			}
 		}
 
@@ -109,7 +113,7 @@ public class ObjectFactory {
 			if(elementValidator.ValidElement(obstacleElements.get(counter), "obstacle")) {
 				Obstacle o = obstacleFactory.createObstacle(obstacleElements.get(counter).getAttribute("name"));
 
-				map.addItem(o, new CoordinatePair(Integer.parseInt(obstacleElements.get(counter).getAttribute("x")), Integer.parseInt(obstacleElements.get(counter).getAttribute("y"))));
+				if(o != null) map.addItem(o, new CoordinatePair(Integer.parseInt(obstacleElements.get(counter).getAttribute("x")), Integer.parseInt(obstacleElements.get(counter).getAttribute("y"))));
 			}
 		}
 
@@ -121,7 +125,7 @@ public class ObjectFactory {
 			if(elementValidator.ValidElement(takeableElements.get(counter), "takeable")) {
 				Takeable t = takeableFactory.createTakeable(map, takeableElements.get(counter).getAttribute("name"), Integer.parseInt(takeableElements.get(counter).getAttribute("durability")));
 
-				map.addItem(t, new CoordinatePair(Integer.parseInt(takeableElements.get(counter).getAttribute("x")), Integer.parseInt(takeableElements.get(counter).getAttribute("y"))));
+				if(t != null) map.addItem(t, new CoordinatePair(Integer.parseInt(takeableElements.get(counter).getAttribute("x")), Integer.parseInt(takeableElements.get(counter).getAttribute("y"))));
 			}
 		}
 		

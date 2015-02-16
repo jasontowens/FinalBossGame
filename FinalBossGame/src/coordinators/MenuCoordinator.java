@@ -27,7 +27,7 @@ import factories.ObjectFactory;
  */
 public class MenuCoordinator {
 
-    Menu mainMenu, pauseMenu, loadMenu;
+    public static Menu mainMenu, pauseMenu, loadMenu;
     Menu currentMenu;//currently active menu
 
     private static CoordinatorScheduler scheduler = CoordinatorScheduler.getInstance();
@@ -42,9 +42,10 @@ public class MenuCoordinator {
         MenuOption[] loadMenuOptions = {MenuOption.OPEN_SAVE_FILE, MenuOption.RETURN_TO_MAIN_MENU};
         loadMenu = new Menu(loadMenuOptions);
         //Create Pause Menu
-        MenuOption[] pauseMenuOptions = {MenuOption.RESUME_GAME, MenuOption.RETURN_TO_MAIN_MENU, MenuOption.SWITCH_TO_LOAD_MENU, MenuOption.SAVE_FILE,MenuOption.EXIT};
-        
+        MenuOption[] pauseMenuOptions = {MenuOption.RESUME_GAME, MenuOption.RETURN_TO_MAIN_MENU, MenuOption.SWITCH_TO_LOAD_MENU, MenuOption.SAVE_FILE, MenuOption.EXIT};
         pauseMenu = new Menu(pauseMenuOptions);
+
+        currentMenu = mainMenu;
     }
 
     public Menu getCurrentMenu() {
@@ -59,6 +60,9 @@ public class MenuCoordinator {
                 break;
             case SWITCH_TO_LOAD_MENU:
                 setCurrentMenu(loadMenu);
+                for (int i = 0; i < menuCoordinator.getCurrentMenu().getOptions().length; i++) {
+                    System.out.println(getCurrentMenu().getOptions()[i].toString());
+                }
                 break;
             //Load Menu options
             case OPEN_SAVE_FILE:
@@ -76,6 +80,9 @@ public class MenuCoordinator {
                 break;
             case RETURN_TO_MAIN_MENU:
                 setCurrentMenu(mainMenu);
+                for (int i = 0; i < getCurrentMenu().getOptions().length; i++) {
+                    System.out.println(getCurrentMenu().getOptions()[i].toString());
+                }
                 break;
             case EXIT:
                 System.exit(0);
@@ -84,31 +91,31 @@ public class MenuCoordinator {
                 throw new IllegalArgumentException();
         }
     }
-    
-    public void next(){
-    	currentMenu.next();
+
+    public void next() {
+        currentMenu.next();
     }
-    
-    public void prev(){
-    	currentMenu.prev();
+
+    public void prev() {
+        currentMenu.prev();
     }
-    
-    private void startNewGame(){
-        
+
+    private void startNewGame() {
+
     }
-    
-    private void loadGame(File saveFile) throws ParserConfigurationException, SAXException, IOException{
-    	InputStream file = new FileInputStream(saveFile);
-    	
-    	//tiles
-    	
-    	GameMap loadedMap = GameMap.getInstance();
-   			
-   		ObjectFactory objectFactory = new ObjectFactory(file,loadedMap);
-   		Entity player = objectFactory.ParseFile();
-   		GameCoordinator gameCoordinator = GameCoordinator.getInstance();
-   		gameCoordinator.setActiveMap(loadedMap);
-   		gameCoordinator.setAvatar(player);    
+
+    private void loadGame(File saveFile) throws ParserConfigurationException, SAXException, IOException {
+        InputStream file = new FileInputStream(saveFile);
+
+        GameMap loadedMap = GameMap.getInstance();
+
+        ObjectFactory objectFactory = new ObjectFactory(file, loadedMap);
+        objectFactory.ParseFile();
+        ArrayList<Pair<Entity, CoordinatePair>> entities = loadedMap.getAllEntities();
+        //Entity entity = entities.get(0).getLeft();
+        GameCoordinator gameCoordinator = GameCoordinator.getInstance();
+        gameCoordinator.setActiveMap(loadedMap);
+        //gameCoordinator.setAvatar(entity);    
     }
 
     public void setCurrentMenu(Menu menu) {
@@ -123,9 +130,9 @@ public class MenuCoordinator {
         return menuCoordinator;
     }
 
-	public void setScheduler(CoordinatorScheduler scheduler2) {
-		this.scheduler = scheduler2;
-		
-	}
+    public void setScheduler(CoordinatorScheduler scheduler2) {
+        this.scheduler = scheduler2;
+
+    }
 
 }

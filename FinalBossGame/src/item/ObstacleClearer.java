@@ -9,31 +9,29 @@ import java.util.ArrayList;
 import map.GameMap;
 
 public class ObstacleClearer extends Interactive {
-	private ArrayList<Obstacle> targetObstacles;
+	private ArrayList<String> targetObstacles;
 	private GameMap current;
 	
-	protected ObstacleClearer(String className, String name, String description, int ID, GameMap currentmap){
+	protected ObstacleClearer(String className, String name, String description, int ID, GameMap currentmap, ArrayList<String> targets){
 		super(className, name, description, ID); //TODO: change ID to how Hanif wants it set up 
-		targetObstacles = new ArrayList<Obstacle>();
+		targetObstacles = targets;
 		current = currentmap;
 	}
-	public ObstacleClearer(String name, String description, int ID, GameMap currentmap){
+	public ObstacleClearer(String name, String description, int ID, GameMap currentmap, ArrayList<String> targets){
 		super("ObstacleClearer", name, description, ID); //TODO: change ID to how Hanif wants it set up 
-		targetObstacles = new ArrayList<Obstacle>();
+		targetObstacles = targets;
 		current = currentmap;
 	}
 	
 	public boolean activate(Entity entity){
-		for(Obstacle o : targetObstacles){
-			current.removeItem(o);
+		for(String t : targetObstacles){
+			ArrayList<Item> targets = current.findItemsByName(t);
+			
+			for(Item o : targets){
+				current.removeItem(o);
+			}
 		}
 		return false;
-	}
-
-	public void addTarget(Obstacle target) {
-		if(!targetObstacles.contains(target)) {
-			targetObstacles.add(target);
-		}
 	}
 	
 }

@@ -1,5 +1,7 @@
 package factories;
 
+import java.util.ArrayList;
+
 import map.GameMap;
 import item.Interactive;
 import item.OccupationSetter;
@@ -16,7 +18,7 @@ public class InteractiveFactory {
 			case "Sneak setter":
 				return createSneakSetter();
 			case "Obstacle clearer":
-				return createObstacleClearer(map);
+				return createDoorBuster(map);
 			default:
 				return null;
 		}
@@ -37,8 +39,11 @@ public class InteractiveFactory {
 		return i;
 	}
 
-	private Interactive createObstacleClearer(GameMap map) {
-		Interactive i = new ObstacleClearer("Obstacle clearer", "Clears obstacles", 2, map);
+	private Interactive createDoorBuster(GameMap map) {
+		ArrayList<String> targets = new ArrayList<String>();
+		targets.add("Door");
+		
+		Interactive i = new ObstacleClearer("Door Buster", "Clears doors", 2, map, targets);
 		return i;
 	}
 }

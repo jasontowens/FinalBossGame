@@ -15,8 +15,8 @@
 <takeable name="Sword of 1000 Truths" durability="1" x="19" y="10" />
 <takeable name="Whistle" durability="1" x="13" y="10" />
 <takeable name="Sloth Helmet" durability="1" x="10" y="10" />
-
 <obstacle name="Door" durability="1" x="7" y="15" />
+<takeable name="Jesus Boots" durability="5" x="25" y="5" />
 <obstacle name="Door" durability="1" x="22" y="13" />
 <obstacle name="Door" durability="1" x="19" y="12" />
 <obstacle name="Door" durability="1" x="15" y="12" />

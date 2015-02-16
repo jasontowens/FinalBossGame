@@ -16,11 +16,11 @@ public class ObstacleFactory {
 	}
 
 	private Obstacle createWall() {
-		Obstacle o = new Obstacle("Wall", "Can't walk through it.", 2);
+		Obstacle o = new Obstacle("Wall", "Can't walk through it.", 56);
 		return o;
 	}
 	
-	//never make this because obstacles should be impassable.
+
 	private Obstacle createDoor() {
 		Obstacle o = new Obstacle("Door", "Can open maybe", 51);
 		return o;

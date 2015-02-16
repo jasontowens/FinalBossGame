@@ -18,7 +18,7 @@ public class InteractiveFactory {
 			case "Sneak setter":
 				return createSneakSetter();
 			case "Obstacle clearer":
-				return createObstacleClearer(map);
+				return createDoorBuster(map);
 			default:
 				return null;
 		}
@@ -39,7 +39,7 @@ public class InteractiveFactory {
 		return i;
 	}
 
-	private Interactive createObstacleClearer(GameMap map) {
+	private Interactive createDoorBuster(GameMap map) {
 		ArrayList<String> targets = new ArrayList<String>();
 		targets.add("Door");
 		

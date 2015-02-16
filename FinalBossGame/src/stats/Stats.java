@@ -171,7 +171,7 @@ public class Stats implements Saveable{
 		return new Stats(level*-1,livesLeft*-1,strength*-1,agility*-1,intellect*-1,hardiness*-1,experience*-1,movement*-1,hpCurrent*-1,mpCurrent*-1,offense*-1,defense*-1);
 	}
 	
-	public boolean verifyBounds(int value) {
+	protected boolean verifyBounds(int value) {
 		return (value < 0) ? false : true;
 	}
 	

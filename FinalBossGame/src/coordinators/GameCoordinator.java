@@ -2,9 +2,6 @@ package coordinators;
 import map.CoordinatePair;
 import map.GameMap;
 import entity.Entity;
-import scene.SceneManager;
-import viewport.MapViewPort;
-import viewport.StatusViewPort;
 
 public class GameCoordinator
 {
@@ -70,8 +67,6 @@ public class GameCoordinator
     /*--------------------- COORDINATOR COMMANDS---------------------*/
     public static void setScheduler(CoordinatorScheduler scheduler) {
     	GameCoordinator.scheduler = scheduler;
-        SceneManager sm = SceneManager.getInstance();
-        sm.setActiveScene(SceneManager.GAME_SCENE);
     }
     
     /*--------------------- ACCESSOR / MUTATOR METHODS ---------------------*/

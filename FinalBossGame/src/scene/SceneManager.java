@@ -1,17 +1,21 @@
 package scene;
 
+import coordinators.CoordinatorScheduler;
+import coordinators.CoordinatorType;
 import coordinators.GameCoordinator;
 import coordinators.InventoryCoordinator;
 import coordinators.MenuCoordinator;
 import stats.PlayerStats;
+import util.Observer;
 
 /**
  *
  * @author ChrisMoscoso
  */
-public class SceneManager {
+public class SceneManager implements Observer{
 
     private static SceneManager sceneManager = null;
+    private static CoordinatorScheduler scheduler = CoordinatorScheduler.getInstance();
     
     public Scene activeScene;
     private Scene gameScene, menuScene;
@@ -23,6 +27,7 @@ public class SceneManager {
         menuScene = new MenuScene();
         gameScene = new GameScene();
         activeScene = menuScene;
+        scheduler.registerObserver(this);
        
         
         /*gameScene.addModelObject("game", GameCoordinator.getInstance());
@@ -55,5 +60,21 @@ public class SceneManager {
         }
         return sceneManager;
     }
+
+	@Override
+	public void Notify() {
+		switch(scheduler.getCoordinatorType()) {
+		case GAME :
+			setActiveScene(1);
+			break;
+		case MENU :
+			setActiveScene(2);
+		case INVENTORY:
+			setActiveScene(1);
+			break;
+		default :
+			throw new IllegalArgumentException("Error in scene manager notify");
+		}
+	}
 
 }

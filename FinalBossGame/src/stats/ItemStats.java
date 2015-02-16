@@ -22,7 +22,8 @@ public class ItemStats extends Stats {
 	  		 int value,
 	  		 int defense,
 	  		 int offense){
-	super(livesLeft, strength, agility, intellect, hardiness, experience, movement, hpCurrent, mpCurrent,defense,offense);
+		//TODO currently implementing so that Items can't give levels
+	super(0,livesLeft, strength, agility, intellect, hardiness, experience, movement, hpCurrent, mpCurrent,defense,offense);
 	this.durability = durability;
 	this.value = value;
 	}
@@ -36,17 +37,17 @@ public class ItemStats extends Stats {
 	}
 	//Setters
 	public void setDurability(int nextDur){
-		durability = nextDur;
+		durability = verifyBounds(nextDur) ? nextDur : durability;
 	}
 	public void setValue(int nextVal){
-		value = nextVal;
+		value = verifyBounds(nextVal) ? nextVal : value;
 	}
 	//Modifiers
 	public void modDurability(int durAdded){
-		durability += durAdded;
+		durability = verifyBounds(durAdded + durability) ? (durAdded + durability) : 0;
 	}
 	public void modValue(int valAdded){
-		value += valAdded;
+		value = verifyBounds(value + valAdded) ? (value + valAdded) : 0;
 	}
 	
 	//TODO: override toXML() to  durability.

@@ -26,9 +26,11 @@ public class AreaEffect extends GameObject {
                 case "Heal": s.modhpCurrent(100);
                 case "Level Up": s.setLevelUps(1);
                 case "Take Dameage": s.modhpCurrent(-10);
-                case "Instant Death": s.modhpCurrent(-1000);   
+                case "Instant Death": s.modhpCurrent(-1000);
                 
             }
+            
+            this.modifiers = s;
 	}
 	
 	/*--------------------- USAGE ---------------------*/

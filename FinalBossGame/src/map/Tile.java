@@ -11,7 +11,8 @@ public class Tile {
 	private AreaEffect effect;
 	
 	public Tile(){
-		
+		terrain = null;
+		effect = null;
 	}
         
     public Terrain getTerrain(){

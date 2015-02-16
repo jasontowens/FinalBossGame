@@ -152,13 +152,13 @@ public class GameMap {
             Item itemAtDesiredLocation = getItemAt(desired);
             if (itemAtDesiredLocation != null) {  //there is an item there.
                 if (itemAtDesiredLocation.activate(entity)) { //item is not an obstacle
+                    /* Commenting this out, because the entity moves later on
                     Pair tmp;
+                    
                     tmp = getEntityPair(entity);
                     tmp.setRight(desired); //actually moving the entity
                     
-                    //apply AreaEffect
-                    AreaEffect AE = t.getAreaEffect();
-                    AE.affect(entity);
+                    */
                     
                 } else {
                     return;
@@ -171,6 +171,10 @@ public class GameMap {
         //Move the entity in the map
         getLocation(entity).add(change);
         entity.setLocation(getLocation(entity));
+        
+      //apply AreaEffect
+        AreaEffect AE = t.getAreaEffect();
+        if(AE != null) AE.affect(entity);
     }
 
     //note: this method WILL MOVE the entity if it is able to.

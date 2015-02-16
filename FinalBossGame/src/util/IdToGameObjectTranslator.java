@@ -87,6 +87,14 @@ public class IdToGameObjectTranslator {
 		
 	}
 	
+	public IdToGameObjectTranslator getInstance(){
+		if(thisTranslator == null){
+			thisTranslator = new IdToGameObjectTranslator();
+		}
+		
+		return thisTranslator;
+	}
+	
 	public Tile getTileFromId(int id){
 		if(id <= 0 || id > SIZE){
 			System.out.println("Bad ID given to Translator");

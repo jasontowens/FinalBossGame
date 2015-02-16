@@ -48,6 +48,11 @@ public class GameMap {
         
         
     }
+    
+    public static void refresh()
+    {
+    	thisMap = null;
+    }
 
     /*-----------Singleton------------------*/
     public static GameMap getInstance() {
@@ -278,7 +283,7 @@ public class GameMap {
 
     public String toXML()
     {
-    	String str = "";
+    	String str = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<objects>\n";
     	
     	for(Pair e : entitiesOnMap) {
     			str += ((Entity) e.getLeft()).toXML();
@@ -289,6 +294,8 @@ public class GameMap {
     			str += ((Item) i.getLeft()).toXML();
     			str += "\n";
     	}
+    	
+    	str += "</objects>";
     	
     	return str;
     }

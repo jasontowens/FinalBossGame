@@ -1,5 +1,7 @@
 package entity;
 
+import coordinators.CoordinatorScheduler;
+import coordinators.CoordinatorType;
 import gameobject.GameObject;
 import inventory.EquipSlot;
 import inventory.Inventory;
@@ -116,6 +118,9 @@ public class Entity extends GameObject implements Saveable{
 		map.addEntity(this, new CoordinatePair(15,15));
 		myStats.sethpCurrent(1);
 		}
+                else{
+                    CoordinatorScheduler.getInstance().changeCoordinator(CoordinatorType.MENU);
+                }
 	}
      
 	public String getOccupationName(){

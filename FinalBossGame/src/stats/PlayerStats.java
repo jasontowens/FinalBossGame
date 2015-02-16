@@ -79,6 +79,11 @@ public class PlayerStats extends Stats {
 	}
 	
 	//Usage
+	public void modhpCurrent(int hpAdded){
+		hpCurrent += hpAdded;
+		if(hpCurrent > hpMax) hpCurrent = hpMax;
+	}
+	
 	public void levelUp(){
 		modExperience(expPerLevel - (experience % expPerLevel));
 	}

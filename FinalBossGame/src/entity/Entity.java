@@ -103,6 +103,7 @@ public class Entity extends GameObject implements Saveable{
 		map.removeEntity(this);
 		if(myStats.getLivesLeft() > 0){
 		map.addEntity(this, new CoordinatePair(15,15));
+		myStats.sethpCurrent(1);
 		}
 	}
      

@@ -40,7 +40,7 @@ public class TakeableFactory {
 	}
 
 	private Takeable createTruthSword(GameMap map, int durability) {
-		ItemStats i = new ItemStats(10, 0, 0, 0, 0, 0, 0, 0, 0, durability, 0, 10, 0);
+		ItemStats i = new ItemStats(10, 0, 0, 0, 0, 0, 0, 0, 0, durability, 0, 0, 10);
 		Takeable t = new Equipable("Sword of 1000 Truths", "Swing it to kill things.", 95, i, map, EquipSlot.MAINHAND);
 		return t;
 	}

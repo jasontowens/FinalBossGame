@@ -31,8 +31,8 @@ public class GameMap {
         this.height = tilesOnMap[0].length;
         this.tileSize = new Dimension(RunGame.TILE_WIDTH, RunGame.TILE_HEIGHT);    
         
-        addAreaEffect(new AreaEffect("Level Up"), new CoordinatePair(15,10));
-        addAreaEffect(new AreaEffect("Heal"), new CoordinatePair(15,6));
+        addAreaEffect(new AreaEffect("Level Up"), new CoordinatePair(15,6));
+        addAreaEffect(new AreaEffect("Heal"), new CoordinatePair(15,10));
         addAreaEffect(new AreaEffect("Die"), new CoordinatePair(15,5));
         addAreaEffect(new AreaEffect("Take Damage"), new CoordinatePair(15,8));
     }

@@ -157,7 +157,7 @@ public class GameMap {
         //           if NotOccupiedByEntity
         //                   if NotOccupiedByObstacle
         Tile t = getTileAtCoordinatePair(desired);
-        System.out.println("Terrain: " + t.getTerrain());
+        System.out.println("Terrain: " + t.getTerrain().getDescription());
         System.out.println("Verify movement:" + t.getTerrain().verifyMovement(entity));
         if (t.getTerrain().verifyMovement(entity)) {    //terrain is passable
             Entity entityAtDesiredLocation = getEntityAt(desired);

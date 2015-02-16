@@ -53,7 +53,7 @@ public class TakeableFactory {
 	
 	private Takeable createJesusBoots(GameMap map, int durability) {
 		ItemStats i = new ItemStats(0, 0, 0, 0, 0, 0, 0, 0, 0, durability, 0, 0, 0);
-		Takeable t = new MobilityEquipable("Jesus Boots", "Walk on water!", 94, i, map, EquipSlot.HEAD, MotionType.WATER);
+		Takeable t = new MobilityEquipable("Jesus Boots", "Walk on water!", 94, i, map, EquipSlot.BOOTS, MotionType.WATER);
 		return t;
 	}
 }

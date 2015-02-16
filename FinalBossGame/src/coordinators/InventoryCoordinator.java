@@ -45,6 +45,42 @@ public class InventoryCoordinator {
     }
 
     public void activateItem() {
+    	/*
+    	switch(selectedItem) {
+    	case 0:
+    		avatar.useItem(0);
+    		break;
+    	case 1:
+    		avatar.useItem(7);
+    		break;
+    	case 2:
+    		avatar.useItem(4);
+    		break;
+    	case 3:
+    		avatar.useItem(5);
+    		break;
+    	case 4:
+    		avatar.useItem(6);
+    		break;
+    	case 5:
+    		avatar.useItem(10);
+    		break;
+    	case 6:
+    		avatar.useItem(11);
+    		break;
+    	case 7:
+    		avatar.useItem(12);
+    		break;
+    	case 8:
+    		avatar.useItem(13);
+    		break;
+    	case 9:
+    		avatar.useItem(14);
+    		break;
+    	default :
+    		break;
+    	}
+    	*/
         avatar.useItem(selectedItem);
     }
 

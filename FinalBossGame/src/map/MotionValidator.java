@@ -12,6 +12,8 @@ public class MotionValidator {
 	}
 
 	public boolean canTraverse(MotionType entityMotion, MotionType terrainMotion) {
+		System.out.println(entityMotion.toString());
+		System.out.println(terrainMotion.toString());
 		switch(entityMotion) {
 			case GROUND:
 				switch(terrainMotion) {
@@ -27,7 +29,7 @@ public class MotionValidator {
 			case WATER:
 				switch(terrainMotion) {
 					case GROUND:
-						return false;
+						return true;
 					case WATER:
 						return true;
 					case UNATTAINABLE:

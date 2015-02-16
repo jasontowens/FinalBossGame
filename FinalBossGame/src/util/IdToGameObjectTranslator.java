@@ -72,17 +72,17 @@ public class IdToGameObjectTranslator {
 		terrain[60] = util.Terrain.GRASS;
 		terrain[76] = util.Terrain.GRASS;
 		terrain[77] = util.Terrain.GRASS;
-		terrain[66] = util.Terrain.WATER;
+		terrain[66] = util.Terrain.MOUNTAIN; 
 		terrain[61] = util.Terrain.MOUNTAIN;
 		terrain[60] = util.Terrain.MOUNTAIN;
 		terrain[61] = util.Terrain.MOUNTAIN;
 		terrain[62] = util.Terrain.MOUNTAIN;
-		terrain[63] = util.Terrain.MOUNTAIN;
+		terrain[63] = util.Terrain.MOUNTAIN; 
 		terrain[64] = util.Terrain.WATER;
 		terrain[65] = util.Terrain.WATER;
-		terrain[71] = util.Terrain.MOUNTAIN;
+		terrain[71] = util.Terrain.WATER; 
 		terrain[72] = util.Terrain.MOUNTAIN;
-		terrain[73] = util.Terrain.MOUNTAIN;
+		terrain[73] = util.Terrain.MOUNTAIN; 
 		terrain[72] = util.Terrain.WATER;
 		terrain[73] = util.Terrain.WATER;
                 terrain[74] = util.Terrain.GRASS;
@@ -122,7 +122,7 @@ public class IdToGameObjectTranslator {
 			tile.setTerrain(new map.Terrain(entity.MotionType.WATER));
 		
 		else{
-			tile.setTerrain(new map.Terrain(entity.MotionType.WATER));
+			tile.setTerrain(new map.Terrain(entity.MotionType.UNATTAINABLE));
 		}
 		
 		

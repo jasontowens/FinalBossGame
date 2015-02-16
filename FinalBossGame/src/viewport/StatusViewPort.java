@@ -68,9 +68,8 @@ public class StatusViewPort extends ViewPort {
             g.drawString("MP Current: " + stats.getmpCurrent(), RunGame.WIDTH - 150, RunGame.HEIGHT - 120);
             g.drawString("MP Max: " + stats.getmpMax(), RunGame.WIDTH - 150, RunGame.HEIGHT - 100);
             g.drawString("Movement: " + stats.getMovement(), RunGame.WIDTH - 150, RunGame.HEIGHT - 80);
-            g.drawString("Lives: " + stats.getLivesLeft(), RunGame.WIDTH - 150, RunGame.HEIGHT - 60);
-            g.drawString("Offense: " + stats.getOffense(), RunGame.WIDTH - 150, RunGame.HEIGHT - 40);
-            g.drawString("Strength: " + stats.getStrength(), RunGame.WIDTH - 150, RunGame.HEIGHT - 20);
+            g.drawString("Offense: " + stats.getOffense(), RunGame.WIDTH - 150, RunGame.HEIGHT - 60);
+            g.drawString("Strength: " + stats.getStrength(), RunGame.WIDTH - 150, RunGame.HEIGHT - 40);
             
         }
         

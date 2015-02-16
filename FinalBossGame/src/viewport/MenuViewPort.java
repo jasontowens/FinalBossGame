@@ -86,7 +86,7 @@ public class MenuViewPort extends ViewPort {
 
         BufferedImage i = null;
         try {
-            i = ImageIO.read(getClass().getResource("/resources/spriteSheets/finalBoss.png"));
+            i = ImageIO.read(getClass().getResource("/resources/spriteSheets/FinalBoss.png"));
         } catch (IOException ex) {
             Logger.getLogger(MenuViewPort.class.getName()).log(Level.SEVERE, null, ex);
         }

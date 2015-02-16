@@ -160,10 +160,6 @@ public class GameMap {
                     
                     */
                     
-                    //apply AreaEffect
-                    AreaEffect AE = t.getAreaEffect();
-                    AE.affect(entity);
-                    
                 } else {
                     return;
                 }
@@ -175,6 +171,10 @@ public class GameMap {
         //Move the entity in the map
         getLocation(entity).add(change);
         entity.setLocation(getLocation(entity));
+        
+      //apply AreaEffect
+        AreaEffect AE = t.getAreaEffect();
+        if(AE != null) AE.affect(entity);
     }
 
     //note: this method WILL MOVE the entity if it is able to.

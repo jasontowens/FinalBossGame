@@ -20,7 +20,7 @@ public class Sack implements Saveable{
 	public Takeable useItem(int location, Entity ent){
 		if(slotsInUse[location]){	
 			Takeable item = itemsInSack[location];
-            item.inventoryUse(ent);
+                        item.inventoryUse(ent);
 			return item;
 		}
 		else{
@@ -39,7 +39,6 @@ public class Sack implements Saveable{
         }	
         return null;//not found
 	}
-
 	public Takeable removeItem(int location){
 		if(location >= 0 && location < sizeOfSack) {
 			slotsInUse[location] = false;

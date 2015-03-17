@@ -4,7 +4,7 @@ import coordinators.GameCoordinator;
 public class GameController extends SceneController {
 	
 	private static GameController gameController = null;
-    private static GameCoordinator gameReceiver = GameCoordinator.getInstance();
+        private static GameCoordinator gameReceiver = GameCoordinator.getInstance();
 	
 	private GameController() {}
 	
@@ -36,10 +36,10 @@ public class GameController extends SceneController {
             gameReceiver.moveAvatar(9);
         } 
 	public void useKeyI() { // Inventory button
-		gameReceiver.inventory();
+            gameReceiver.inventory();
 	}
 	public void useKeyEscape() { // 
-        gameReceiver.pause();
+            gameReceiver.pause();
     }
 	
 	public static GameController getInstance() {

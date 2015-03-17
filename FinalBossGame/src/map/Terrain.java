@@ -12,8 +12,7 @@ public class Terrain extends GameObject {
 		super("Terrain", name, description, -1); //TODO: change ID to how Hanif wants it set up 
 		this.motiontype = motiontype;
 		
-	}
-	
+	}	
 	//name should probably be based on MotionType, 
 	public Terrain(MotionType motiontype){
 		//super("Terrain" , "a terrain" , "unncessary description");

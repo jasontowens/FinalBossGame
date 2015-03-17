@@ -1,7 +1,7 @@
 package coordinators;
 
 public enum CoordinatorType {
-	GAME,
+    GAME,
     INVENTORY,
     MENU
 }

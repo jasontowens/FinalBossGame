@@ -9,6 +9,7 @@ public abstract class GameObject {
 	private String name;
 	private String className;
 	private String description;
+        private int state;
 	
 	
 	//Added this, necessary to save game state. 

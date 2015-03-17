@@ -48,8 +48,7 @@ public class Entity extends GameObject implements Saveable{
 		myOccupation = occ;
 		myInventory = inventory;
 		myStats = stats;
-		setOccupation("Smasher");
-                 
+		setOccupation("Smasher");                
 	}
 	
 	public void setID(int id){
@@ -57,14 +56,14 @@ public class Entity extends GameObject implements Saveable{
 	}
 	
 	/*------------COORDINATOR LEVEL OPERATIONS------------*/
-    public void dropItem(int location){
-    	map.addItem(myInventory.removeItem(location), new CoordinatePair(map.getLocation(this).getX(),map.getLocation(this).getY()));
-    }    
-    public void useItem(int location){
-    	myInventory.useItem(location, this);
-    }
+        public void dropItem(int location){
+            map.addItem(myInventory.removeItem(location), new CoordinatePair(map.getLocation(this).getX(),map.getLocation(this).getY()));
+        }    
+        public void useItem(int location){
+            myInventory.useItem(location, this);
+        }
 	public void move(CoordinatePair change){
-		map.requestMovement(this, change);
+            map.requestMovement(this, change);
 	}   
 	
 	/*------------ITEM LEVEL OPERATIONS---------------*/
@@ -82,12 +81,12 @@ public class Entity extends GameObject implements Saveable{
 		myInventory.removeItem(item);                
 	}
 	public boolean changeMoney(int change){
-    	return myInventory.modCurrency(change);
-    }
+            return myInventory.modCurrency(change);
+        }
 	public boolean setMoney(int newAmount){
-        return myInventory.setCurrency(newAmount);
-    }
-    public void setOccupation(String occupationName){
+            return myInventory.setCurrency(newAmount);
+        }
+        public void setOccupation(String occupationName){
     		if(this.occupationName != null){
     			switch(this.occupationName){
     			case "Smasher": myStats.modStrength(-10); break;
@@ -103,7 +102,7 @@ public class Entity extends GameObject implements Saveable{
 			}
         }
 	public void mergeStats(Stats modifiers){
-		this.myStats.mergeStats(modifiers);
+            this.myStats.mergeStats(modifiers);
 	}
 	
 	/*------------MAP LEVEL OPERATIONS----------------*/
@@ -124,7 +123,7 @@ public class Entity extends GameObject implements Saveable{
 	}
      
 	public String getOccupationName(){
-		return this.occupationName;
+            return this.occupationName;
 	}
 	
 	/*------------ACCESSORS----------------------*/	
@@ -132,7 +131,7 @@ public class Entity extends GameObject implements Saveable{
 		return myInventory.getCurrency();
 	}
 	public MotionType getMotionType(){
-        return myMotion;
+            return myMotion;
 	}
 	public PlayerStats getStats(){
 		return myStats;
@@ -140,7 +139,6 @@ public class Entity extends GameObject implements Saveable{
 	public Occupation getOccupation(){
 		return myOccupation;
 	}
-        
 	public HashMap<EquipSlot, Equipable> getArmory(){
 		return myInventory.getArmoryHMap();
 	}

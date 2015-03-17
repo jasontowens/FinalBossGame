@@ -30,6 +30,5 @@ public abstract class Scene {
     
     public Object getModelObject(String name){
         return modelObjects.get(name);
-    }
-    
+    }  
 }

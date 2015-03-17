@@ -5,7 +5,7 @@ import coordinators.InventoryCoordinator;
 
 public class InventoryController extends SceneController {
 	
-	private static InventoryController inventoryController = null;
+    private static InventoryController inventoryController = null;
     private static InventoryCoordinator inventoryReceiver = InventoryCoordinator.getInstance();
 	
 	private InventoryController() {} 

@@ -16,13 +16,13 @@ public class SceneControllerDispatcher implements Observer {
 	private static final int inventoryControllerLocation = 2;
 	
 	public SceneControllerDispatcher() {
-		sceneControllers = new ArrayList<SceneController>();
-		sceneControllers.add(MenuController.getInstance());
-		sceneControllers.add(GameController.getInstance());
-		sceneControllers.add(InventoryController.getInstance());
-		activeController = MenuController.getInstance();
-		coordinatorScheduler = CoordinatorScheduler.getInstance();
-		coordinatorScheduler.registerObserver(this);
+            sceneControllers = new ArrayList<SceneController>();
+            sceneControllers.add(MenuController.getInstance());
+            sceneControllers.add(GameController.getInstance());
+            sceneControllers.add(InventoryController.getInstance());
+            activeController = MenuController.getInstance();
+            coordinatorScheduler = CoordinatorScheduler.getInstance();
+            coordinatorScheduler.registerObserver(this);
 	}
 
 	public List<SceneController> getSceneControllers() {

@@ -7,13 +7,13 @@ import entity.Entity;
 
 public class Tile {
 	
-	private Terrain terrain;
-	private AreaEffect effect;
-	
-	public Tile(){
-		terrain = null;
-		effect = null;
-	}
+    private Terrain terrain;
+    private AreaEffect effect;
+
+    public Tile(){
+        terrain = null;
+        effect = null;
+    }
         
     public Terrain getTerrain(){
             return terrain;        
@@ -23,13 +23,13 @@ public class Tile {
     	return effect;
     }
     
-	public void setTerrain(Terrain terrain) {
-		this.terrain = terrain;
-	}
+    public void setTerrain(Terrain terrain) {
+            this.terrain = terrain;
+    }
 
-	public void setAreaEffect(AreaEffect effect){
-		this.effect = effect;
-	}
+    public void setAreaEffect(AreaEffect effect){
+            this.effect = effect;
+    }
 	
 }
 
